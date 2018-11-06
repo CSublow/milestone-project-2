@@ -1,5 +1,5 @@
 queue()
-    .defer(d3.json, "assets/data/newdata.json") //fetch the data
+    .defer(d3.json, "assets/data/data.json") //fetch the data
     .await(makeGraph); //call makeGraph when the data is ready 
     
 function makeGraph(error, ggData) {
