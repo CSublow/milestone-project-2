@@ -177,12 +177,7 @@
 /* Imports */
 @import "helpers/mixins.scss";
 
-h1 {
-    font-size: 1.5rem;
-    @include mq(1110px) {
-        font-size: 2.5rem;
-    }
-}
+@import "components/headings.scss";
 
 .navbar-brand {
     /*overwrite default bs styles to center nav text*/
