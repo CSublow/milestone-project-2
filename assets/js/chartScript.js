@@ -343,7 +343,7 @@ function makeGraph(error, ggData) {
     function totalEmissionsFigure(ndx) {
         dc.numberDisplay("#total-emissions-figure")
             .group(sumEmissions)
-            .formatNumber(d3.format(".0f"))
+            .formatNumber(d3.format("0,000"))
             .valueAccessor(function(d) {
                 return d;
             })
