@@ -1,0 +1,51 @@
+/* HELPFUL REMINDERS*/
+/**/
+/**/
+/**/
+/* using placeholders */
+/* placeholders should be used for code that is intended for reuse */
+/* in this example, each div will have the same background properties, but the image used on each div class is different */
+/**/
+/**/
+/**/
+/* select an element using its parent */
+/**/
+/**/
+/**/
+/* use shorthand to declare multiple properties at once */
+/**/
+/**/
+/**/
+/* import other stylesheets */
+/**/
+/**/
+/**/
+/*declare the name of the class as container */
+/**/
+/**/
+/**/
+/* use loops (/)
+/* we want 4 .containers 1 through 4 */
+/**/
+/**/
+/**/
+/* use mixins */
+/**/
+/**/
+/**/
+/* use placeholders */
+/**/
+/**/
+/**/
+/* use of content keyword, useful for media queries */
+/*content can also be used for nested selectors*/
+/*SCSS:*/
+/*CSS output:*/
+/* Media Query Mixin */
+h1 {
+  font-size: 1.5rem; }
+  @media (min-width: 1110px) {
+    h1 {
+      font-size: 2.5rem; } }
+
+/*# sourceMappingURL=style.css.map */
