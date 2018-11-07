@@ -16,3 +16,8 @@ http://www.youtube.com/user/c9ide.
 
 Happy coding!
 The Cloud9 IDE team
+
+References
+Intro text taken with modifications from https://en.wikipedia.org/wiki/Greenhouse_gas
+
+Number formatter function taken with modifications from https://jsfiddle.net/W5jwY/1/
