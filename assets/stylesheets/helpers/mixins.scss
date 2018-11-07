@@ -1,0 +1,6 @@
+/*Media Queries */
+@mixin mq($mq-width) {
+    @media (min-width: $mq-width) {
+        @content
+    }
+}

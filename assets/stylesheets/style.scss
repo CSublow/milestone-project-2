@@ -174,13 +174,6 @@
         //   font-family: 'my-webfont-italic';
         // }
 
-/* Media Query Mixin */
-@mixin mq($mq-width) {
-    @media (min-width: $mq-width) {
-        @content
-    }
-}
-
 h1 {
     font-size: 1.5rem;
     @include mq(1110px) {
