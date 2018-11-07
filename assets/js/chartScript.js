@@ -351,7 +351,7 @@ function makeGraph(error, ggData) {
     function averageEmissionsFigure(ndx) {
         dc.numberDisplay("#average-emissions-figure")
             .group(sumEmissions)
-            .formatNumber(d3.format(".2f"))
+            .formatNumber(d3.format(",.2f"))
             .valueAccessor(function(d) {
                 return d / countYears;
             })
