@@ -426,7 +426,8 @@ function makeGraph(error, ggData) {
             .renderArea(true)
             .renderHorizontalGridLines(true)
             .renderVerticalGridLines(true)
-            .xAxisLabel("Year");
+            .xAxisLabel("Year")
+            .yAxisLabel("Emissions (kilotons)");
     };
     
     function totalEmissionsCarPetrol(ndx) {
