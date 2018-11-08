@@ -417,7 +417,7 @@ function makeGraph(error, ggData) {
         dc.lineChart("#total-emissions-over-time")
             .width(700)
             .height(500)
-            .margins({top:10, right:50, bottom: 100, left:60})
+            .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
             .group(totalEmissionsPerYearGroup)
             .x(d3.scale.ordinal())
@@ -426,8 +426,7 @@ function makeGraph(error, ggData) {
             .renderArea(true)
             .renderHorizontalGridLines(true)
             .renderVerticalGridLines(true)
-            // .xAxisLabel("Year");
-            // .mouseZoomable(true);
+            .xAxisLabel("Year");
     };
     
     function totalEmissionsCarPetrol(ndx) {
