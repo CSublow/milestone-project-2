@@ -178,8 +178,3 @@
 @import "helpers/mixins.scss";
 
 @import "components/navbar.scss";
-
-.navbar-brand {
-    /*overwrite default bs styles to center nav text*/
-    margin: 0 auto;
-}
