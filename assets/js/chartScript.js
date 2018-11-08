@@ -423,7 +423,11 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .interpolate("basis")
-            .renderArea(true);
+            .renderArea(true)
+            .renderHorizontalGridLines(true)
+            .renderVerticalGridLines(true)
+            // .xAxisLabel("Year");
+            // .mouseZoomable(true);
     };
     
     function totalEmissionsCarPetrol(ndx) {
