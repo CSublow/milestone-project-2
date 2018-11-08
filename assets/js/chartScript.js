@@ -416,7 +416,7 @@ function makeGraph(error, ggData) {
     function totalEmissionsOverTime(ndx) {
         dc.lineChart("#total-emissions-over-time")
             .width(700)
-            .height(500)
+            .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
             .group(totalEmissionsPerYearGroup)
