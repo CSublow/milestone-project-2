@@ -463,9 +463,10 @@ function makeGraph(error, ggData) {
             .height(500)
             .margins({top:10, right:50, bottom: 100, left:60})
             .dimension(yearDim)
+            .group(totalEmissionsCarPetrolGroup)
             .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
-            // .xUnits(dc.units.ordinal)
             .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
             .brushOn(false)
             .compose([
@@ -474,8 +475,7 @@ function makeGraph(error, ggData) {
                     .colors("green")
                     .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
                     .valueAccessor(function(d) {
-                        console.log(d.value);
-                        return d.value;
+                      return d.value;
                     })
                     .dashStyle([2,2]),
                 dc.lineChart(compositeChart)
@@ -483,8 +483,7 @@ function makeGraph(error, ggData) {
                     .colors("red")
                     .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
                     .valueAccessor(function(d) {
-                        console.log(d.value);
-                        return d.value;
+                      return d.value;
                     })
                 ]);
     };
