@@ -487,32 +487,4 @@ function makeGraph(error, ggData) {
                     })
                 ]);
     };
-    
-    console.log(totalEmissionsCarPetrolGroup.all());
-    console.log(yearDim.top(Infinity));
-    
-                // .width(1000)
-                // .height(300)
-                // .dimension(date_dim)
-                // .transitionDuration(500)
-                // //our time scale uses our min date and our max date
-                // .x(d3.time.scale().domain([minDate, maxDate]))
-                // .xAxisLabel("Spend")
-                // //here we introduce legend and position it
-                // .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
-                // .renderHorizontalGridLines(true)
-                // .compose([
-                //     //we create a line chart for Bob, Tom, and Alice
-                //     dc.lineChart(compositeChart)
-                //         .colors('green')
-                //         .group(tomSpendPerMonth, 'Tom'),
-                //     dc.lineChart(compositeChart)
-                //         .colors('red')
-                //         .group(bobSpendPerMonth, 'Bob'),
-                //     dc.lineChart(compositeChart)
-                //         .colors('blue')
-                //         .group(aliceSpendPerMonth, 'Alice')
-                //     ])
-                //     //the brush (the selector thing) is on by default, we turn it off here
-                //     .brushOn(false);
 };
