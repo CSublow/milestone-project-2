@@ -421,7 +421,9 @@ function makeGraph(error, ggData) {
             .dimension(yearDim)
             .group(totalEmissionsPerYearGroup)
             .x(d3.scale.ordinal())
-            .xUnits(dc.units.ordinal);
+            .xUnits(dc.units.ordinal)
+            .interpolate("basis")
+            .renderArea(true);
     };
     
     function totalEmissionsCarPetrol(ndx) {
