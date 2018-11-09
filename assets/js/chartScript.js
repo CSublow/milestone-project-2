@@ -414,13 +414,26 @@ function makeGraph(error, ggData) {
     };
 
     function totalEmissionsOverTime(ndx) {
-        dc.lineChart("#total-emissions-over-time")
+        //explicitly map the domain in order to get custom tick layout for x axis
+        var domain = ggData.map(function(d) {
+            return d.Year;
+        });
+        var ticks = domain.filter(function(v, i) {
+            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
+            while (i < countYears) {
+                return i % 2 === 0;
+            }
+        });
+        
+        var lineChart = dc.lineChart("#total-emissions-over-time");
+        
+        lineChart
             .width(700)
             .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
             .group(totalEmissionsPerYearGroup)
-            .x(d3.scale.ordinal())
+            .x(d3.scale.ordinal().domain(domain))
             .xUnits(dc.units.ordinal)
             .interpolate("basis")
             .renderArea(true)
@@ -428,6 +441,10 @@ function makeGraph(error, ggData) {
             .renderVerticalGridLines(true)
             .xAxisLabel("Year")
             .yAxisLabel("Emissions (kilotons)");
+            
+        lineChart
+            .xAxis()
+                .tickValues(ticks);
     };
     
     function totalEmissionsCarPetrol(ndx) {
