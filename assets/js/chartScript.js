@@ -363,7 +363,7 @@ function makeGraph(error, ggData) {
             })
             
     };
-    //Render the select menu to show data for a particular vehicle type
+    //Render the select menu to show data for a particular year
     function showSourceSelector(ndx) {
         dc.selectMenu("#source-selector")
             .dimension(sourceDim)
