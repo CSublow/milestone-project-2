@@ -343,7 +343,7 @@ function makeGraph(error, ggData) {
     //DEFINE FUNCTIONS
     //render the select menu
     function showSourceSelector(ndx) {
-        dc.selectMenu("#discipline-selector")
+        dc.selectMenu("#source-selector")
             .dimension(dim)
             .group(group);
     }
