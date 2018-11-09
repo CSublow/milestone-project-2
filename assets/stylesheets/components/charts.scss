@@ -11,6 +11,11 @@
 #total-emissions-per-source-pie {
     svg {
         @extend %force-center;
+        .pie-slice-group {
+            /*add a stroke to the pie slices*/
+            stroke: black;
+            stroke-width: 1px;
+        }
     }
 }
 

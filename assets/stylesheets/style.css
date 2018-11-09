@@ -63,4 +63,9 @@ h1 {
   /*make stroke thicker than default*/
   stroke-width: 2.5px; }
 
+#total-emissions-per-source-pie svg .pie-slice-group {
+  /*add a stroke to the pie slices*/
+  stroke: black;
+  stroke-width: 1px; }
+
 /*# sourceMappingURL=style.css.map */
