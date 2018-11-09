@@ -347,7 +347,12 @@ function makeGraph(error, ggData) {
     function showSourceSelector(ndx) {
         dc.selectMenu("#source-selector")
             .dimension(sourceDim)
-            .group(totalEmissionsPerSourceGroup);
+            .group(totalEmissionsPerSourceGroup)
+            .promptText("All Vehicles")
+            .title(function(d) {
+                console.log(d);
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            });
     }
 
     function totalEmissionsFigure(ndx) {
