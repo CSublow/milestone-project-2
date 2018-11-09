@@ -399,6 +399,7 @@ function makeGraph(error, ggData) {
             .group(totalEmissionsPerYearGroup)
             .x(d3.scale.ordinal().domain(domain))
             .xUnits(dc.units.ordinal)
+            .elasticY(true)
             .interpolate("basis")
             .renderArea(true)
             .renderHorizontalGridLines(true)
