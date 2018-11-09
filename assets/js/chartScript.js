@@ -365,7 +365,7 @@ function makeGraph(error, ggData) {
             
     };
     
-    //Render the select menu to show data for a particular year
+    //Render the select menu to show data for a particular vehicle type
     function showSourceSelector(ndx) {
         dc.selectMenu("#source-selector")
             .dimension(sourceDim)
@@ -417,6 +417,7 @@ function makeGraph(error, ggData) {
                 .tickValues(ticks);
     };
     
+    //Render the select menu to show data for a particular year
     function showYearSelector(ndx) {
         dc.selectMenu("#year-selector")
             .dimension(yearDim)
@@ -426,6 +427,19 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
     }
+    
+    function totalEmissionsPerSourcePie(ndx) {
+        dc.pieChart("#total-emissions-per-source-pie")
+            .height(500)
+            .radius(600)
+            // .innerRadius(200)
+            .externalLabels(10)
+            .externalRadiusPadding(50)
+            .minAngleForLabel(0)
+            .drawPaths(true)
+            .dimension(sourceDim)
+            .group(totalEmissionsPerSourceGroup)
+    };
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
             .width(700)
@@ -468,19 +482,6 @@ function makeGraph(error, ggData) {
                 return d / emissions1990SumValue;
             })    
     };
-    function totalEmissionsPerSourcePie(ndx) {
-        dc.pieChart("#total-emissions-per-source-pie")
-            .height(500)
-            .radius(600)
-            // .innerRadius(200)
-            .externalLabels(10)
-            .externalRadiusPadding(50)
-            .minAngleForLabel(0)
-            .drawPaths(true)
-            .dimension(sourceDim)
-            .group(totalEmissionsPerSourceGroup)
-    };
-    
     function totalEmissionsCarPetrol(ndx) {
         dc.barChart("#total-emissions-car-petrol")
             .width(700)
