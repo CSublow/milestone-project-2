@@ -431,7 +431,7 @@ function makeGraph(error, ggData) {
     function totalEmissionsPerSourcePie(ndx) {
         dc.pieChart("#total-emissions-per-source-pie")
             .height(700)
-            .radius(700)
+            .radius(500)
             // .innerRadius(200)
             .externalLabels(10)
             .externalRadiusPadding(50)
