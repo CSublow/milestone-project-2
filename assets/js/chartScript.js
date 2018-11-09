@@ -440,7 +440,8 @@ function makeGraph(error, ggData) {
             .renderHorizontalGridLines(true)
             .renderVerticalGridLines(true)
             .xAxisLabel("Year")
-            .yAxisLabel("Emissions (kilotons)");
+            .yAxisLabel("Emissions (kilotons)")
+            .dotRadius(10);
     
         //call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         lineChart
