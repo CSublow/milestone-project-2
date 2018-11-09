@@ -322,6 +322,7 @@ function makeGraph(error, ggData) {
     averageEmissionsFigure(ndx);
     
     showSourceSelector(ndx);
+    showYearSelector(ndx);
     
     carPetrolFigure(ndx);
     carPetrolPercentage(ndx);
@@ -412,6 +413,16 @@ function makeGraph(error, ggData) {
             .xAxis()
                 .tickValues(ticks);
     };
+    function showYearSelector(ndx) {
+        dc.selectMenu("#year-selector")
+            .dimension(yearDim)
+            .group(totalEmissionsPerYearGroup)
+            .promptText("Whole Period")
+            .title(function(d) {
+                console.log(d);
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            });
+    }
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
             .width(700)
