@@ -370,7 +370,6 @@ function makeGraph(error, ggData) {
             .group(totalEmissionsPerSourceGroup)
             .promptText("All Vehicles")
             .title(function(d) {
-                console.log(d);
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
     }
@@ -419,7 +418,6 @@ function makeGraph(error, ggData) {
             .group(totalEmissionsPerYearGroup)
             .promptText("Whole Period")
             .title(function(d) {
-                console.log(d);
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
     }
