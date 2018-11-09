@@ -8,6 +8,12 @@
     }
 }
 
+#total-emissions-per-source {
+    svg {
+        @extend %force-center;
+    }
+}
+
 .dc-select-menu {
     @extend %force-center;
 }
