@@ -55,5 +55,8 @@ h1 {
 
 #total-emissions-over-time {
   margin: 0 auto; }
+  #total-emissions-over-time .line {
+    /*make stroke thicker than default*/
+    stroke-width: 2.5px; }
 
 /*# sourceMappingURL=style.css.map */
