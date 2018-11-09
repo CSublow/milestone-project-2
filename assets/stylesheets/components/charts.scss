@@ -7,6 +7,5 @@
 }
 
 .dc-select-menu {
-    display: block;
-    margin: 0 auto;
+    @extend %force-center;
 }

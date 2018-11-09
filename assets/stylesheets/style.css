@@ -43,6 +43,10 @@
 /*CSS output:*/
 /* Imports */
 /*Media Queries */
+.dc-select-menu {
+  margin: 0 auto;
+  display: block; }
+
 h1 {
   font-size: 1.5rem; }
   @media (min-width: 1110px) {
@@ -58,9 +62,5 @@ h1 {
   #total-emissions-over-time .line {
     /*make stroke thicker than default*/
     stroke-width: 2.5px; }
-
-.dc-select-menu {
-  display: block;
-  margin: 0 auto; }
 
 /*# sourceMappingURL=style.css.map */
