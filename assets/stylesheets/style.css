@@ -43,7 +43,7 @@
 /*CSS output:*/
 /* Imports */
 /*Media Queries */
-.navbar-brand, #total-emissions-over-time svg, #total-emissions-per-source-pie svg, .dc-select-menu {
+.navbar-brand, #total-emissions-over-time svg, #total-emissions-per-source-pie svg, #composite-chart svg, .dc-select-menu {
   margin: 0 auto;
   display: block; }
 
