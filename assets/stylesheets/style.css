@@ -59,4 +59,7 @@ h1 {
     /*make stroke thicker than default*/
     stroke-width: 2.5px; }
 
+#source-selector {
+  margin: 0 auto; }
+
 /*# sourceMappingURL=style.css.map */
