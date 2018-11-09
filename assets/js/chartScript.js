@@ -430,8 +430,8 @@ function makeGraph(error, ggData) {
     
     function totalEmissionsPerSourcePie(ndx) {
         dc.pieChart("#total-emissions-per-source-pie")
-            .height(500)
-            .radius(600)
+            .height(700)
+            .radius(700)
             // .innerRadius(200)
             .externalLabels(10)
             .externalRadiusPadding(50)
@@ -525,7 +525,11 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
-            .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
+            .legend(dc.legend()
+                .x(80)
+                .y(20)
+                .itemHeight(13)
+                .gap(5))
             .brushOn(false)
             .compose([
                 dc.lineChart(compositeChart)
