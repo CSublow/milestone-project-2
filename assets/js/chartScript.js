@@ -353,6 +353,7 @@ function makeGraph(error, ggData) {
                 return d;
             })
     };
+    
     //Render the average emissions figure
     function averageEmissionsFigure(ndx) {
         dc.numberDisplay("#average-emissions-figure")
@@ -363,6 +364,7 @@ function makeGraph(error, ggData) {
             })
             
     };
+    
     //Render the select menu to show data for a particular year
     function showSourceSelector(ndx) {
         dc.selectMenu("#source-selector")
@@ -373,6 +375,8 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
     }
+    
+    //Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
         //explicitly map the domain in order to get custom tick layout for x axis
         var domain = ggData.map(function(d) {
@@ -412,6 +416,7 @@ function makeGraph(error, ggData) {
             .xAxis()
                 .tickValues(ticks);
     };
+    
     function showYearSelector(ndx) {
         dc.selectMenu("#year-selector")
             .dimension(yearDim)
