@@ -436,7 +436,6 @@ function makeGraph(error, ggData) {
             .externalLabels(10)
             .externalRadiusPadding(50)
             .minAngleForLabel(0)
-            .drawPaths(true)
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .legend(dc.legend()
