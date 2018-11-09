@@ -321,6 +321,8 @@ function makeGraph(error, ggData) {
     totalEmissionsFigure(ndx);
     averageEmissionsFigure(ndx);
     
+    showSourceSelector(ndx);
+    
     carPetrolFigure(ndx);
     carPetrolPercentage(ndx);
     carPetrolFigure1990(ndx);
@@ -344,8 +346,8 @@ function makeGraph(error, ggData) {
     //render the select menu
     function showSourceSelector(ndx) {
         dc.selectMenu("#source-selector")
-            .dimension(dim)
-            .group(group);
+            .dimension(sourceDim)
+            .group(totalEmissionsPerSourceGroup);
     }
 
     function totalEmissionsFigure(ndx) {
