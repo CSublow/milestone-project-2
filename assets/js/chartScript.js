@@ -458,8 +458,8 @@ function makeGraph(error, ggData) {
     function compositeChart(ndx) {
         var compositeChart = dc.compositeChart("#composite-chart");
         compositeChart
-            .width(1000)
-            .height(500)
+            .width(680)
+            .height(700)
             .margins({top:10, right:50, bottom: 100, left:60})
             .dimension(yearDim)
             .group(totalEmissionsCarPetrolGroup)
