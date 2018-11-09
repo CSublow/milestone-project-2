@@ -443,6 +443,9 @@ function makeGraph(error, ggData) {
             .label(function(d) { //hide the labels, rely on the legend to orientate the user
                 return "";
             })
+            .title(function(d) {
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            })
             .legend(dc.legend()
                 // .x(-50)
                 // .y(20)
