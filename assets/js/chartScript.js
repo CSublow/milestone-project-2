@@ -317,7 +317,7 @@ function makeGraph(error, ggData) {
             }    
         });
     
-    //Function Calls
+    //FUNCTION CALLS
     totalEmissionsFigure(ndx);
     averageEmissionsFigure(ndx);
     
@@ -339,6 +339,14 @@ function makeGraph(error, ggData) {
     compositeChart(ndx);
     
     dc.renderAll();
+    
+    //DEFINE FUNCTIONS
+    //render the select menu
+    function showSourceSelector(ndx) {
+        dc.selectMenu("#discipline-selector")
+            .dimension(dim)
+            .group(group);
+    }
 
     function totalEmissionsFigure(ndx) {
         dc.numberDisplay("#total-emissions-figure")
