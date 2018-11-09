@@ -7,5 +7,6 @@ h1 {
 
 .navbar-brand {
     /*overwrite default bs styles to center nav text*/
-    margin: 0 auto;
+    // margin: 0 auto;
+    @extend %force-center;
 }

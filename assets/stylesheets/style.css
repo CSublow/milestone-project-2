@@ -43,7 +43,7 @@
 /*CSS output:*/
 /* Imports */
 /*Media Queries */
-.dc-select-menu {
+.navbar-brand, #total-emissions-over-time svg, .dc-select-menu {
   margin: 0 auto;
   display: block; }
 
@@ -54,13 +54,10 @@ h1 {
       font-size: 2.5rem; } }
 
 .navbar-brand {
-  /*overwrite default bs styles to center nav text*/
-  margin: 0 auto; }
+  /*overwrite default bs styles to center nav text*/ }
 
-#total-emissions-over-time {
-  margin: 0 auto; }
-  #total-emissions-over-time .line {
-    /*make stroke thicker than default*/
-    stroke-width: 2.5px; }
+#total-emissions-over-time .line {
+  /*make stroke thicker than default*/
+  stroke-width: 2.5px; }
 
 /*# sourceMappingURL=style.css.map */
