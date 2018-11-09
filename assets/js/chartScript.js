@@ -429,6 +429,7 @@ function makeGraph(error, ggData) {
             });
     }
     
+    //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
         dc.pieChart("#total-emissions-per-source-pie")
             .height(700)
@@ -451,6 +452,43 @@ function makeGraph(error, ggData) {
                 // .y(20)
                 .itemHeight(13)
                 .gap(2))
+    };
+    
+    //Render a composite chart showing all source's emissions over time
+    function compositeChart(ndx) {
+        var compositeChart = dc.compositeChart("#composite-chart");
+        compositeChart
+            .width(1000)
+            .height(500)
+            .margins({top:10, right:50, bottom: 100, left:60})
+            .dimension(yearDim)
+            .group(totalEmissionsCarPetrolGroup)
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal)
+            .renderHorizontalGridLines(true)
+            .legend(dc.legend()
+                .x(80)
+                .y(20)
+                .itemHeight(13)
+                .gap(5))
+            .brushOn(false)
+            .compose([
+                dc.lineChart(compositeChart)
+                    .dimension(yearDim)
+                    .colors("green")
+                    .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
+                    .valueAccessor(function(d) {
+                      return d.value;
+                    })
+                    .dashStyle([2,2]),
+                dc.lineChart(compositeChart)
+                    .dimension(yearDim)
+                    .colors("red")
+                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
+                    .valueAccessor(function(d) {
+                      return d.value;
+                    })
+                ]);
     };
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
@@ -524,41 +562,5 @@ function makeGraph(error, ggData) {
             .group(emissions1990)
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal);
-    };
-
-    function compositeChart(ndx) {
-        var compositeChart = dc.compositeChart("#composite-chart");
-        compositeChart
-            .width(1000)
-            .height(500)
-            .margins({top:10, right:50, bottom: 100, left:60})
-            .dimension(yearDim)
-            .group(totalEmissionsCarPetrolGroup)
-            .x(d3.scale.ordinal())
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .legend(dc.legend()
-                .x(80)
-                .y(20)
-                .itemHeight(13)
-                .gap(5))
-            .brushOn(false)
-            .compose([
-                dc.lineChart(compositeChart)
-                    .dimension(yearDim)
-                    .colors("green")
-                    .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
-                    .valueAccessor(function(d) {
-                      return d.value;
-                    })
-                    .dashStyle([2,2]),
-                dc.lineChart(compositeChart)
-                    .dimension(yearDim)
-                    .colors("red")
-                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
-                    .valueAccessor(function(d) {
-                      return d.value;
-                    })
-                ]);
     };
 };
