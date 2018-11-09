@@ -439,6 +439,11 @@ function makeGraph(error, ggData) {
             .drawPaths(true)
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
+            .legend(dc.legend()
+                .x(80)
+                .y(20)
+                .itemHeight(13)
+                .gap(5))
     };
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
