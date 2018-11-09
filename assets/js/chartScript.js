@@ -432,18 +432,21 @@ function makeGraph(error, ggData) {
         dc.pieChart("#total-emissions-per-source-pie")
             .height(700)
             .width(600)
-            // .radius(200)
+            .radius(275)
             // .innerRadius(200)
             // .externalLabels(10)
             // .externalRadiusPadding(50)
-            .minAngleForLabel(0)
+            // .minAngleForLabel(0)
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
-            // .legend(dc.legend()
-            //     .x(150)
-            //     .y(20)
-            //     .itemHeight(13)
-            //     .gap(5))
+            .label(function(d) { //hide the labels, rely on the legend to orientate the user
+                return "";
+            })
+            .legend(dc.legend()
+                // .x(-50)
+                // .y(20)
+                .itemHeight(13)
+                .gap(2))
     };
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
