@@ -373,6 +373,45 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
     }
+    function totalEmissionsOverTime(ndx) {
+        //explicitly map the domain in order to get custom tick layout for x axis
+        var domain = ggData.map(function(d) {
+            return d.Year;
+        });
+        var ticks = domain.filter(function(v, i) {
+            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
+            while (i < countYears) {
+                return i % 2 === 0;
+            }
+        });
+        
+        var lineChart = dc.lineChart("#total-emissions-over-time");
+        
+        lineChart
+            .width(700)
+            .height(700)
+            .margins({top:10, right:50, bottom: 40, left:60})
+            .dimension(yearDim)
+            .group(totalEmissionsPerYearGroup)
+            .x(d3.scale.ordinal().domain(domain))
+            .xUnits(dc.units.ordinal)
+            .interpolate("basis")
+            .renderArea(true)
+            .renderHorizontalGridLines(true)
+            .renderVerticalGridLines(true)
+            .xAxisLabel("Year")
+            .yAxisLabel("Emissions (kilotons)")
+            .dotRadius(10)
+            .title(function(d) {
+                //format the number as thousands with comma separator
+                return d.value.toLocaleString("en") + " kilotons";
+            });
+    
+        //call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        lineChart
+            .xAxis()
+                .tickValues(ticks);
+    };
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
             .width(700)
@@ -426,46 +465,6 @@ function makeGraph(error, ggData) {
             .drawPaths(true)
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
-    };
-
-    function totalEmissionsOverTime(ndx) {
-        //explicitly map the domain in order to get custom tick layout for x axis
-        var domain = ggData.map(function(d) {
-            return d.Year;
-        });
-        var ticks = domain.filter(function(v, i) {
-            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
-            while (i < countYears) {
-                return i % 2 === 0;
-            }
-        });
-        
-        var lineChart = dc.lineChart("#total-emissions-over-time");
-        
-        lineChart
-            .width(700)
-            .height(700)
-            .margins({top:10, right:50, bottom: 40, left:60})
-            .dimension(yearDim)
-            .group(totalEmissionsPerYearGroup)
-            .x(d3.scale.ordinal().domain(domain))
-            .xUnits(dc.units.ordinal)
-            .interpolate("basis")
-            .renderArea(true)
-            .renderHorizontalGridLines(true)
-            .renderVerticalGridLines(true)
-            .xAxisLabel("Year")
-            .yAxisLabel("Emissions (kilotons)")
-            .dotRadius(10)
-            .title(function(d) {
-                //format the number as thousands with comma separator
-                return d.value.toLocaleString("en") + " kilotons";
-            });
-    
-        //call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
-        lineChart
-            .xAxis()
-                .tickValues(ticks);
     };
     
     function totalEmissionsCarPetrol(ndx) {
