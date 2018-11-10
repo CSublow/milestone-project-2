@@ -497,7 +497,7 @@ function makeGraph(error, ggData) {
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
-                                .dashStyle([2,2]),
+                                    .dashStyle([2,2]),
             busAndCoachLine =   dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
@@ -557,6 +557,10 @@ function makeGraph(error, ggData) {
                 .itemHeight(13)
                 .gap(5))
             .brushOn(false)
+            .title(function(d) {
+                //format the number as thousands with comma separator
+                return d.value.toLocaleString("en") + " kilotons";
+            })
             .compose([carsPetrolLine, 
                       carsDieselLine,
                       lgvPetrolLine,
