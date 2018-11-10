@@ -28,6 +28,7 @@ function makeGraph(error, ggData) {
         sumEmissionsValue = sumEmissions.value(),
         
         countYears = yearDim.group().reduceCount().size(),
+        countSources = sourceDim.group().reduceCount().size(),
         
         
         //Source Groups
@@ -578,7 +579,18 @@ function makeGraph(error, ggData) {
     
     //Render the bar chart breaking down emissions by source
     function totalEmissionsPerSource(ndx) {
-        dc.barChart("#total-emissions-per-source")
+        //explicitly map the domain in order to get custom tick layout for x axis
+        var domain = ggData.map(function(d) {
+            return d.Source;
+        }),
+
+            ticks = domain.filter(function(v, i) {
+
+        });
+        
+        var barChart = dc.barChart("#total-emissions-per-source");
+        
+        barChart
             .width(700)
             .height(700)
             .margins({top:10, right:50, bottom: 100, left:60})
@@ -587,6 +599,16 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .elasticY(true);
+            
+        barChart
+            .xAxis()
+                .tickValues(ticks);
+                
+        // barChart.on("renderlet", function(barChart) {
+        //     barChart.selectAll("g.x text")
+        //         .attr("transform", "translate(-10,20) rotate (340)");
+        // })
+        console.log(domain);
     };
     
     function carPetrolFigure(ndx) {
