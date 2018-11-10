@@ -428,32 +428,7 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
     }
-    
-    //Render the pie chart breaking down emissions by source
-    function totalEmissionsPerSourcePie(ndx) {
-        dc.pieChart("#total-emissions-per-source-pie")
-            .height(700)
-            .width(600)
-            .radius(275)
-            // .innerRadius(200)
-            // .externalLabels(10)
-            // .externalRadiusPadding(50)
-            // .minAngleForLabel(0)
-            .dimension(sourceDim)
-            .group(totalEmissionsPerSourceGroup)
-            .label(function(d) { //hide the labels, rely on the legend to orientate the user
-                return "";
-            })
-            .title(function(d) {
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
-            })
-            .legend(dc.legend()
-                // .x(-50)
-                // .y(20)
-                .itemHeight(13)
-                .gap(2))
-    };
-    
+
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
         //explicitly map the domain in order to get custom tick layout for x axis
@@ -540,18 +515,7 @@ function makeGraph(error, ggData) {
                                       return d.value;
                                     })
                                     .dashStyle([2,2]);
-        //THIS FUNCTION CURRENTLY USELESS                        
-        // function renderLineGraph(colorArg, groupArg, groupArg2, dashStyleArg) {
-        //     dc.lineChart(compositeChart)
-        //         .dimension(yearDim)
-        //         .colors(colorArg)
-        //         .group(groupArg, groupArg2)
-        //         .valueAccessor(function(d) {
-        //           return d.value;
-        //         })
-        //         .dashStyle(dashStyleArg)
-        // };
-        
+
         compositeChart
             .width(680)
             .height(700)
@@ -587,6 +551,31 @@ function makeGraph(error, ggData) {
                 .tickValues(ticks);
     };
     
+    //Render the pie chart breaking down emissions by source
+    function totalEmissionsPerSourcePie(ndx) {
+        dc.pieChart("#total-emissions-per-source-pie")
+            .height(700)
+            .width(600)
+            .radius(275)
+            // .innerRadius(200)
+            // .externalLabels(10)
+            // .externalRadiusPadding(50)
+            // .minAngleForLabel(0)
+            .dimension(sourceDim)
+            .group(totalEmissionsPerSourceGroup)
+            .label(function(d) { //hide the labels, rely on the legend to orientate the user
+                return "";
+            })
+            .title(function(d) {
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            })
+            .legend(dc.legend()
+                // .x(-50)
+                // .y(20)
+                .itemHeight(13)
+                .gap(2))
+    };
+    
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
             .width(700)
@@ -595,7 +584,8 @@ function makeGraph(error, ggData) {
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .x(d3.scale.ordinal())
-            .xUnits(dc.units.ordinal);
+            .xUnits(dc.units.ordinal)
+            .elasticY(true);
     };
     function carPetrolFigure(ndx) {
         dc.numberDisplay("#show-total-figure")
