@@ -579,7 +579,7 @@ function makeGraph(error, ggData) {
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
             .width(700)
-            .height(500)
+            .height(700)
             .margins({top:10, right:50, bottom: 100, left:60})
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
