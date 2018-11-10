@@ -456,7 +456,17 @@ function makeGraph(error, ggData) {
     
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
-        var compositeChart = dc.compositeChart("#composite-chart");
+        //explicitly map the domain in order to get custom tick layout for x axis
+        var domain = ggData.map(function(d) {
+            return d.Year;
+        }),
+            ticks = domain.filter(function(v, i) {
+            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
+            while (i < countYears) {
+                return i % 2 === 0;
+            }
+        }),
+            compositeChart = dc.compositeChart("#composite-chart");
         
         //Define lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
@@ -569,7 +579,12 @@ function makeGraph(error, ggData) {
                       busAndCoachLine,
                       motorcycleLine,
                       mopedLine,
-                      lpgLine])
+                      lpgLine]);
+                      
+        //call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        compositeChart
+            .xAxis()
+                .tickValues(ticks);
     };
     
     function totalEmissionsPerSource(ndx) {
