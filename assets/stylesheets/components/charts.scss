@@ -8,6 +8,12 @@
     }
 }
 
+#composite-chart {
+    svg {
+        @extend %force-center
+    }
+}
+
 #total-emissions-per-source-pie {
     svg {
         @extend %force-center;
@@ -19,11 +25,12 @@
     }
 }
 
-#composite-chart {
+#total-emissions-per-source {
     svg {
-        @extend %force-center
+        @extend %force-center;
     }
 }
+
 .dc-select-menu {
     @extend %force-center;
 }
