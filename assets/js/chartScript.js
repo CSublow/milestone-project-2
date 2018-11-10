@@ -477,7 +477,7 @@ function makeGraph(error, ggData) {
             lgvPetrolLine =      dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
-                                    .group(totalEmissionsLgvPetrolGroup, "Cars - Petrol")
+                                    .group(totalEmissionsLgvPetrolGroup, "LGV - Petrol")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -485,7 +485,7 @@ function makeGraph(error, ggData) {
             lgvDieselLine =     dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
-                                    .group(totalEmissionsLGVDieselGroup, "Cars - Petrol")
+                                    .group(totalEmissionsLGVDieselGroup, "LGV - Diesel")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -493,7 +493,7 @@ function makeGraph(error, ggData) {
             hgvLine =           dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
-                                    .group(totalEmissionsHgvGroup, "Cars - Petrol")
+                                    .group(totalEmissionsHgvGroup, "HGV")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -501,7 +501,7 @@ function makeGraph(error, ggData) {
             busAndCoachLine =   dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
-                                    .group(totalEmissionsBusAndCoachGroup, "Cars - Petrol")
+                                    .group(totalEmissionsBusAndCoachGroup, "Buses and Coaches")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -509,7 +509,7 @@ function makeGraph(error, ggData) {
             motorcycleLine =    dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
-                                    .group(totalEmissionsMotorcyclesGroup, "Cars - Petrol")
+                                    .group(totalEmissionsMotorcyclesGroup, "Motorcycles - >50cc")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -517,7 +517,7 @@ function makeGraph(error, ggData) {
             mopedLine =         dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
-                                    .group(totalEmissionsBusAndCoachGroup, "Cars - Petrol")
+                                    .group(totalEmissionsBusAndCoachGroup, "Mopeds - <50cc")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -525,7 +525,7 @@ function makeGraph(error, ggData) {
             lpgLine =           dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
-                                    .group(totalEmissionsLPGGroup, "Cars - Petrol")
+                                    .group(totalEmissionsLPGGroup, "All LPG Vehicles")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
