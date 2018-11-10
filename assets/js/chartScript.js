@@ -576,6 +576,7 @@ function makeGraph(error, ggData) {
                 .gap(2))
     };
     
+    //Render the bar chart breaking down emissions by source
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
             .width(700)
@@ -587,6 +588,7 @@ function makeGraph(error, ggData) {
             .xUnits(dc.units.ordinal)
             .elasticY(true);
     };
+    
     function carPetrolFigure(ndx) {
         dc.numberDisplay("#show-total-figure")
             .group(totalEmissionsCarPetrolGroupSum)
