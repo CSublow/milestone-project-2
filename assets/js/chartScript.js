@@ -457,6 +457,91 @@ function makeGraph(error, ggData) {
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
         var compositeChart = dc.compositeChart("#composite-chart");
+        
+        //Define lines to go on composite chart
+        var carsPetrolLine =    dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                    .dashStyle([2,2]),
+            carsDieselLine =    dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("red")
+                                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    }),
+            lgvPetrolLine =      dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsLgvPetrolGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                    .dashStyle([2,2]),
+            lgvDieselLine =     dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsLGVDieselGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                    .dashStyle([2,2]),
+            hgvLine =           dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsHgvGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                .dashStyle([2,2]),
+            busAndCoachLine =   dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsBusAndCoachGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                    .dashStyle([2,2]),
+            motorcycleLine =    dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsMotorcyclesGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                    .dashStyle([2,2]),
+            mopedLine =         dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsBusAndCoachGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                    .dashStyle([2,2]),
+            lpgLine =           dc.lineChart(compositeChart)
+                                    .dimension(yearDim)
+                                    .colors("green")
+                                    .group(totalEmissionsLPGGroup, "Cars - Petrol")
+                                    .valueAccessor(function(d) {
+                                      return d.value;
+                                    })
+                                    .dashStyle([2,2]);
+        //THIS FUNCTION CURRENTLY USELESS                        
+        // function renderLineGraph(colorArg, groupArg, groupArg2, dashStyleArg) {
+        //     dc.lineChart(compositeChart)
+        //         .dimension(yearDim)
+        //         .colors(colorArg)
+        //         .group(groupArg, groupArg2)
+        //         .valueAccessor(function(d) {
+        //           return d.value;
+        //         })
+        //         .dashStyle(dashStyleArg)
+        // };
+        
         compositeChart
             .width(680)
             .height(700)
@@ -467,29 +552,22 @@ function makeGraph(error, ggData) {
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
             .legend(dc.legend()
-                .x(80)
+                .x(500)
                 .y(20)
                 .itemHeight(13)
                 .gap(5))
             .brushOn(false)
-            .compose([
-                dc.lineChart(compositeChart)
-                    .dimension(yearDim)
-                    .colors("green")
-                    .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
-                    .valueAccessor(function(d) {
-                      return d.value;
-                    })
-                    .dashStyle([2,2]),
-                dc.lineChart(compositeChart)
-                    .dimension(yearDim)
-                    .colors("red")
-                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
-                    .valueAccessor(function(d) {
-                      return d.value;
-                    })
-                ]);
+            .compose([carsPetrolLine, 
+                      carsDieselLine,
+                      lgvPetrolLine,
+                      lgvDieselLine,
+                      hgvLine,
+                      busAndCoachLine,
+                      motorcycleLine,
+                      mopedLine,
+                      lpgLine])
     };
+    
     function totalEmissionsPerSource(ndx) {
         dc.barChart("#total-emissions-per-source")
             .width(700)
