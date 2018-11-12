@@ -48,7 +48,8 @@
   display: block; }
 
 main {
-  min-width: 758px; }
+  min-width: 758px;
+  max-width: 1990px; }
 
 h1 {
   font-size: 1.5rem; }
