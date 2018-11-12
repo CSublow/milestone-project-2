@@ -682,9 +682,6 @@ function makeGraph(error, ggData) {
     
     //The document must be rendered before d3 selections will work
     $(document).ready(function() {
-        function formatDisplayNumber() {
-            
-        }
         //Move every 2nd tick text down slightly
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
             .style("transform", "translate(0,20px)");
@@ -694,28 +691,28 @@ function makeGraph(error, ggData) {
             .attr("y2", "20");
 
         //Change the source figure descriptive text based on the value of the select element
-        $('#source-selector-select').change(function() {
+        $('#source-selector select').change(function() {
             if($('#source-selector select').val() == "Cars - Petrol") {
                 $('#show-source-figure-p').html("Petrol cars accounted for");
-            } else if ($('#source-selector-select').val() == "Cars - Diesel") {
+            } else if ($('#source-selector select').val() == "Cars - Diesel") {
                 $('#show-source-figure-p').html("Diesel cars accounted for"); 
-            } else if ($('#source-selector-select').val() == "LGV - Petrol") {
+            } else if ($('#source-selector select').val() == "LGV - Petrol") {
                 $('#show-source-figure-p').html("Petrol LGVs accounted for"); 
-            } else if ($('#source-selector-select').val() == "LGV - Diesel") {
+            } else if ($('#source-selector select').val() == "LGV - Diesel") {
                 $('#show-source-figure-p').html("Diesel LGVs accounted for"); 
-            } else if ($('#source-selector-select').val() == "Buses and Coaches") {
+            } else if ($('#source-selector select').val() == "Buses and Coaches") {
                 $('#show-source-figure-p').html("Buses and coaches accounted for"); 
-            } else if ($('#source-selector-select').val() == "HGV") {
+            } else if ($('#source-selector select').val() == "HGV") {
                 $('#show-source-figure-p').html("HGVs accounted for"); 
-            } else if ($('#source-selector-select').val() == "Motorcycles - >50cc") {
+            } else if ($('#source-selector select').val() == "Motorcycles - >50cc") {
                 $('#show-source-figure-p').html("Motorcycles abpve 50cc accounted for"); 
-            } else if ($('#source-selector-select').val() == "Mopeds - <50cc") {
+            } else if ($('#source-selector select').val() == "Mopeds - <50cc") {
                 $('#show-source-figure-p').html("Mopeds below 50cc accounted for"); 
-            } else if ($('#source-selector-select').val() == "All LPG Vehicles") {
+            } else if ($('#source-selector select').val() == "All LPG Vehicles") {
                 $('#show-source-figure-p').html("LPG vehicles accounted for"); 
             };
             
-            formatDisplayNumber();
+            $("#show-year-figure span").toLocaleString("en");
         })
     })   
 };
