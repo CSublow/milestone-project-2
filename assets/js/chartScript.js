@@ -712,7 +712,7 @@ function makeGraph(error, ggData) {
                 $('#show-source-figure-p').html("LPG vehicles accounted for"); 
             };
             
-            $("#show-year-figure span").toLocaleString("en");
+            $("#show-year-figure span").digits();
         })
     })   
 };
