@@ -594,7 +594,10 @@ function makeGraph(error, ggData) {
         //The document must be rendered before this d3 selection will work
         $(document).ready(function() {
             d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
-                .style("transform", "translate(0,20px)")
+                .style("transform", "translate(0,20px)");
+                
+            d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
+                .attr("y2", "20");
         })    
     };
     
