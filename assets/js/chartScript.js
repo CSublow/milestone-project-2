@@ -22,8 +22,10 @@ function makeGraph(error, ggData) {
     
     //Groups
     var totalEmissionsPerSourceGroup = sourceDim.group().reduceSum(dc.pluck("Emissions")),
-        totalEmissionsPerYearGroup = yearDim.group().reduceSum(dc.pluck("Emissions")),
+        totalEmissionsPerSourceGroupSum = sourceDim.groupAll().reduceSum(dc.pluck("Emissions")),
         
+        totalEmissionsPerYearGroup = yearDim.group().reduceSum(dc.pluck("Emissions")),
+        totalEmissionsPerYearGroupSum = yearDim.groupAll().reduceSum(dc.pluck("Emissions")),
         sumEmissions = sourceDim.groupAll().reduceSum(dc.pluck("Emissions")),
         sumEmissionsValue = sumEmissions.value(),
         
@@ -325,6 +327,9 @@ function makeGraph(error, ggData) {
     showSourceSelector(ndx);
     showYearSelector(ndx);
     
+    sourceFigure(ndx);
+    yearFigure(ndx);
+    
     carPetrolFigure(ndx);
     carPetrolPercentage(ndx);
     carPetrolFigure1990(ndx);
@@ -605,6 +610,23 @@ function makeGraph(error, ggData) {
         })    
     };
     
+    function sourceFigure(ndx) {
+        dc.numberDisplay("#show-source-figure")
+            .group(totalEmissionsPerSourceGroupSum)
+            .formatNumber(d3.format(".0f"))
+            .valueAccessor(function(d) {
+                return d;
+            })    
+    }
+    
+    function yearFigure(ndx) {
+        dc.numberDisplay("#show-year-figure")
+            .group(totalEmissionsPerYearGroupSum)
+            .formatNumber(d3.format(".0f"))
+            .valueAccessor(function(d) {
+                return d;
+            })    
+    }
     function carPetrolFigure(ndx) {
         dc.numberDisplay("#show-total-figure")
             .group(totalEmissionsCarPetrolGroupSum)
