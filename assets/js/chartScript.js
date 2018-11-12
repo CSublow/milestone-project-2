@@ -421,17 +421,6 @@ function makeGraph(error, ggData) {
                 .tickValues(ticks);
     };
     
-    //Render the select menu to show data for a particular year
-    function showYearSelector(ndx) {
-        dc.selectMenu("#year-selector")
-            .dimension(yearDim)
-            .group(totalEmissionsPerYearGroup)
-            .promptText("Whole Period")
-            .title(function(d) {
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
-            });
-    }
-
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
         //explicitly map the domain in order to get custom tick layout for x axis
@@ -528,6 +517,9 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
+            .renderVerticalGridLines(true)
+            .xAxisLabel("Year")
+            .yAxisLabel("Emissions (kilotons)")
             .elasticY(true)
             .legend(dc.legend()
                 .x(500)
@@ -554,6 +546,17 @@ function makeGraph(error, ggData) {
             .xAxis()
                 .tickValues(ticks);
     };
+    
+    //Render the select menu to show data for a particular year
+    function showYearSelector(ndx) {
+        dc.selectMenu("#year-selector")
+            .dimension(yearDim)
+            .group(totalEmissionsPerYearGroup)
+            .promptText("Whole Period")
+            .title(function(d) {
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            });
+    }
     
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
