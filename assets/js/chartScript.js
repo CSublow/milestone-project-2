@@ -96,14 +96,14 @@ function makeGraph(error, ggData) {
             }
         }),
         totalEmissionsMotorcyclesGroup = yearDim.group().reduceSum(function(d) {
-            if (d.Source === "Motorcycles - >50 cc") {
+            if (d.Source === "Motorcycles - >50cc") {
                 return d.Emissions;
             } else {
                 return 0;
             }
         }),
         totalEmissionsMopedsGroup = yearDim.group().reduceSum(function(d) {
-            if (d.Source === "Mopeds - <50 cc") {
+            if (d.Source === "Mopeds - <50cc") {
                 return d.Emissions;
             } else {
                 return 0;
@@ -504,8 +504,8 @@ function makeGraph(error, ggData) {
                                     .dashStyle([2,2]),
             mopedLine =         dc.lineChart(compositeChart)
                                     .dimension(yearDim)
-                                    .colors("green")
-                                    .group(totalEmissionsBusAndCoachGroup, "Mopeds - <50cc")
+                                    .colors("blue")
+                                    .group(totalEmissionsMopedsGroup, "Mopeds - <50cc")
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
