@@ -528,6 +528,7 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
+            .elasticY(true)
             .legend(dc.legend()
                 .x(500)
                 .y(20)
