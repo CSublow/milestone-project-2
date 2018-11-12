@@ -602,7 +602,8 @@ function makeGraph(error, ggData) {
     function sourceFigure(ndx) {
         dc.numberDisplay("#show-source-figure")
             .group(totalEmissionsPerSourceGroupSum)
-            .formatNumber(d3.format(".0f"))
+            .formatNumber(d3.format("0,000"))
+            // .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d;
             })    
@@ -611,7 +612,8 @@ function makeGraph(error, ggData) {
     function yearFigure(ndx) {
         dc.numberDisplay("#show-year-figure")
             .group(totalEmissionsPerYearGroupSum)
-            .formatNumber(d3.format(".0f"))
+            .formatNumber(d3.format("0,000"))
+            // .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d;
             })    
@@ -712,7 +714,18 @@ function makeGraph(error, ggData) {
                 $('#show-source-figure-p').html("LPG vehicles accounted for"); 
             };
             
-            $("#show-year-figure span").digits();
+            //In order to format the number correctly, the text value must be retrieved by jQuery and then converted into a number so that toLocaleString() is able to format the thousands with comma separator
+            // var convertedFigure = parseInt($("#show-year-figure span").text());
+            // var formattedFigure = convertedFigure.toLocaleString('en');
+            // console.log(formattedFigure);
+            
+            // //Formatting the number has to be delayed or else dc interferes and sets the number back to its default
+            // var delay = 10;
+            // setTimeout(function() {
+            //     $("#show-year-figure span").text(formattedFigure), delay;    
+            // })
+
+            
         })
     })   
 };
