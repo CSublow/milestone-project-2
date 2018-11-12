@@ -680,8 +680,11 @@ function makeGraph(error, ggData) {
             .xUnits(dc.units.ordinal);
     };
     
-    //The document must be rendered before these d3 selections will work
+    //The document must be rendered before d3 selections will work
     $(document).ready(function() {
+        function formatDisplayNumber() {
+            
+        }
         //Move every 2nd tick text down slightly
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
             .style("transform", "translate(0,20px)");
@@ -689,14 +692,10 @@ function makeGraph(error, ggData) {
         //Increase the length of every 2nd tick line
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
             .attr("y2", "20");
-            
-        d3.selectAll("#source-selector select")
-            //Give the source selector an ID so it can be used with jQuery
-            .attr("id", "source-selector-select")
 
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector-select').change(function() {
-            if($('#source-selector-select').val() == "Cars - Petrol") {
+            if($('#source-selector select').val() == "Cars - Petrol") {
                 $('#show-source-figure-p').html("Petrol cars accounted for");
             } else if ($('#source-selector-select').val() == "Cars - Diesel") {
                 $('#show-source-figure-p').html("Diesel cars accounted for"); 
@@ -715,6 +714,8 @@ function makeGraph(error, ggData) {
             } else if ($('#source-selector-select').val() == "All LPG Vehicles") {
                 $('#show-source-figure-p').html("LPG vehicles accounted for"); 
             };
+            
+            formatDisplayNumber();
         })
     })   
 };
