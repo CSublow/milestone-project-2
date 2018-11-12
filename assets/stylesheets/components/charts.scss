@@ -29,15 +29,6 @@
     svg {
         @extend %force-center;
     }
-    
-    .axis.x {
-        .tick:nth-child(even) {
-            text {
-                color: red;
-                transform: translate(-10px,20px);
-            }
-        }
-    }
 }
 
 .dc-select-menu {

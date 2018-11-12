@@ -342,6 +342,8 @@ function makeGraph(error, ggData) {
     
     compositeChart(ndx);
     
+    styling();
+    
     dc.renderAll();
     
     //DEFINE FUNCTIONS
@@ -588,6 +590,12 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .elasticY(true);
+        
+        //The document must be rendered before this d3 selection will work
+        $(document).ready(function() {
+            d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
+                .style("transform", "translate(0,20px)")
+        })    
     };
     
     function carPetrolFigure(ndx) {
@@ -653,4 +661,11 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal);
     };
+    
+    function styling() {
+        d3.select("#total-emissions-per-source").selectAll(".axis")
+            .style("transform", "translate(-10px,20px)")
+            .style("font-size", "20px")
+            .style("background-color", "red");
+    }
 };

@@ -68,8 +68,4 @@ h1 {
   stroke: black;
   stroke-width: 1px; }
 
-#total-emissions-per-source .axis.x .tick:nth-child(even) text {
-  color: red;
-  transform: translate(-10px, 20px); }
-
 /*# sourceMappingURL=style.css.map */
