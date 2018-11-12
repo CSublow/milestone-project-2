@@ -599,15 +599,6 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .elasticY(true);
-        
-        //The document must be rendered before this d3 selection will work
-        $(document).ready(function() {
-            d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
-                .style("transform", "translate(0,20px)");
-                
-            d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
-                .attr("y2", "20");
-        })    
     };
     
     function sourceFigure(ndx) {
@@ -697,4 +688,26 @@ function makeGraph(error, ggData) {
             .style("font-size", "20px")
             .style("background-color", "red");
     }
+    
+    //The document must be rendered before these d3 selections will work
+    $(document).ready(function() {
+        //Move every 2nd tick text down slightly
+        d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
+            .style("transform", "translate(0,20px)");
+            
+        //Increase the length of every 2nd tick line
+        d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
+            .attr("y2", "20");
+            
+        d3.selectAll("#source-selector select")
+            //Give the source selector an ID so it can be used with jQuery
+            .attr("id", "source-selector-select")
+            //Attach an event handler to the select
+            .attr("onchange", "showChange()")
+            
+        //Change the source figure descriptive text based on the value of the select element
+        $('#source-selector-select').change(function() {
+            $('#show-source-figure-p').html($('#source-selector-select').val());
+        })
+    })   
 };
