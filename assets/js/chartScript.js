@@ -346,9 +346,7 @@ function makeGraph(error, ggData) {
     emissionsPerSource1990(ndx);
     
     compositeChart(ndx);
-    
-    styling();
-    
+
     dc.renderAll();
     
     //DEFINE FUNCTIONS
@@ -682,13 +680,6 @@ function makeGraph(error, ggData) {
             .xUnits(dc.units.ordinal);
     };
     
-    function styling() {
-        d3.select("#total-emissions-per-source").selectAll(".axis")
-            .style("transform", "translate(-10px,20px)")
-            .style("font-size", "20px")
-            .style("background-color", "red");
-    }
-    
     //The document must be rendered before these d3 selections will work
     $(document).ready(function() {
         //Move every 2nd tick text down slightly
@@ -702,9 +693,7 @@ function makeGraph(error, ggData) {
         d3.selectAll("#source-selector select")
             //Give the source selector an ID so it can be used with jQuery
             .attr("id", "source-selector-select")
-            //Attach an event handler to the select
-            .attr("onchange", "showChange()")
-            
+
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector-select').change(function() {
             $('#show-source-figure-p').html($('#source-selector-select').val());
