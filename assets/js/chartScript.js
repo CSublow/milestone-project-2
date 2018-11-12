@@ -436,7 +436,7 @@ function makeGraph(error, ggData) {
         var domain = ggData.map(function(d) {
             return d.Year;
         }),
-            ticks = domain.filter(function(v, i) {
+            ticks = domain.filter(function(v, i, self) {
             //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
             while (i < countYears) {
                 return i % 2 === 0;
@@ -579,18 +579,7 @@ function makeGraph(error, ggData) {
     
     //Render the bar chart breaking down emissions by source
     function totalEmissionsPerSource(ndx) {
-        //explicitly map the domain in order to get custom tick layout for x axis
-        var domain = ggData.map(function(d) {
-            return d.Source;
-        }),
-
-            ticks = domain.filter(function(v, i) {
-
-        });
-        
-        var barChart = dc.barChart("#total-emissions-per-source");
-        
-        barChart
+        dc.barChart("#total-emissions-per-source")
             .width(700)
             .height(700)
             .margins({top:10, right:50, bottom: 100, left:60})
@@ -599,16 +588,6 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .elasticY(true);
-            
-        barChart
-            .xAxis()
-                .tickValues(ticks);
-                
-        // barChart.on("renderlet", function(barChart) {
-        //     barChart.selectAll("g.x text")
-        //         .attr("transform", "translate(-10,20) rotate (340)");
-        // })
-        console.log(domain);
     };
     
     function carPetrolFigure(ndx) {
