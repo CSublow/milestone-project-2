@@ -511,7 +511,7 @@ function makeGraph(error, ggData) {
         compositeChart
             .width(680)
             .height(700)
-            .margins({top:10, right:50, bottom: 100, left:60})
+            .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
             .group(totalEmissionsCarPetrolGroup)
             .x(d3.scale.ordinal())
