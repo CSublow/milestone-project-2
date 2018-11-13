@@ -348,7 +348,7 @@ function makeGraph(error, ggData) {
     
     compositeChart(ndx);
 
-    dc.renderAll();
+    dc.renderAll(); //Render all charts
     
     //DEFINE FUNCTIONS
     //Render the total emissions figure
@@ -390,7 +390,7 @@ function makeGraph(error, ggData) {
             return d.Year;
         });
         var ticks = domain.filter(function(v, i) {
-            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
+            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
             while (i < countYears) {
                 return i % 2 === 0;
             }
