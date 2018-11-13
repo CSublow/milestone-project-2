@@ -389,7 +389,6 @@ function makeGraph(error, ggData) {
             });
     }
     
-    var chartWidth = 700 //Define the chart widths
     //Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
         //explicitly map the domain in order to get custom tick layout for x axis
@@ -403,7 +402,11 @@ function makeGraph(error, ggData) {
             }
         }),
             
+            chartWidth = 700; //Define the chart width
+            
             lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
+            
+            console.log(chartWidth);
         
         lineChart
             .width(chartWidth)
@@ -433,7 +436,7 @@ function makeGraph(error, ggData) {
         
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
-            if ($(window).width() > 1119 && $(window).width() < 1331) {
+            if (($(window).width() > 1199) && ($(window).width() < 1331)) {
                 chartWidth = 600;
                 lineChart
                     .width(chartWidth);
@@ -460,6 +463,9 @@ function makeGraph(error, ggData) {
                 return i % 2 === 0;
             }
         }),
+        
+            chartWidth = 700; //Define the chart width
+        
             compositeChart = dc.compositeChart("#composite-chart");
         
         //Define the lines to go on composite chart
@@ -575,7 +581,7 @@ function makeGraph(error, ggData) {
                 
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
-            if ($(window).width() > 1119 && $(window).width() < 1331) {
+            if ($(window).width() > 1199 && $(window).width() < 1331) {
                 chartWidth = 600;
                 compositeChart
                     .width(chartWidth);
