@@ -458,7 +458,7 @@ function makeGraph(error, ggData) {
             return d.Year;
         }),
             ticks = domain.filter(function(v, i, self) {
-            //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
+            //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
             while (i < countYears) {
                 return i % 2 === 0;
             }
@@ -562,7 +562,7 @@ function makeGraph(error, ggData) {
             .brushOn(false)
             .title(function(d) {
                 //format the number as thousands with comma separator
-                return d.value.toLocaleString("en") + " kilotons";
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .compose([carsPetrolLine, 
                       carsDieselLine,
