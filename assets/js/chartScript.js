@@ -707,7 +707,7 @@ function makeGraph(error, ggData) {
             } else if ($('#source-selector select').val() == "HGV") {
                 $('#show-year-figure-span').html("HGVs accounted for"); 
             } else if ($('#source-selector select').val() == "Motorcycles - >50cc") {
-                $('#show-year-figure-span').html("Motorcycles abpve 50cc accounted for"); 
+                $('#show-year-figure-span').html("Motorcycles above 50cc accounted for"); 
             } else if ($('#source-selector select').val() == "Mopeds - <50cc") {
                 $('#show-year-figure-span').html("Mopeds below 50cc accounted for"); 
             } else if ($('#source-selector select').val() == "All LPG Vehicles") {
