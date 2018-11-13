@@ -429,10 +429,13 @@ function makeGraph(error, ggData) {
                 return d.value.toLocaleString("en") + " kilotons";
             });
         
-        //Call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        //Call the axes outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         lineChart
             .xAxis()
                 .tickValues(ticks);
+        lineChart
+            .yAxis()
+                .ticks([20]);
         
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
