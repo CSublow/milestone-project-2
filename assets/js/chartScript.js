@@ -623,7 +623,7 @@ function makeGraph(error, ggData) {
     function timeFigurePercentage(ndx) {
         dc.numberDisplay("#show-time-figure-percentage")
             .group(totalEmissionsPerYearGroupSum)
-            .formatNumber(d3.format("0,000"))
+            .formatNumber(d3.format(".2%"))
             .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d / sumEmissionsValue;
