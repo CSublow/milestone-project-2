@@ -1,4 +1,4 @@
-//Queue
+//QUEUE
 queue()
     .defer(d3.json, "assets/data/data.json") //fetch the data
     .await(makeGraph); //call makeGraph when the data is ready 
@@ -10,7 +10,7 @@ var w = window.innerWidth
 
 console.log(w);
 
-//Data visualisation function
+//DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
     if (error) throw error;
     
