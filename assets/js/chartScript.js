@@ -695,25 +695,25 @@ function makeGraph(error, ggData) {
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
             if($('#source-selector select').val() == "Cars - Petrol") {
-                $('#show-year-figure-span').html("Petrol cars accounted for");
+                $('.show-source-span').html("Petrol cars accounted for");
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
-                $('#show-year-figure-span').html("Diesel cars accounted for"); 
+                $('.show-source-span').html("Diesel cars accounted for"); 
             } else if ($('#source-selector select').val() == "LGV - Petrol") {
-                $('#show-year-figure-span').html("Petrol LGVs accounted for"); 
+                $('.show-source-span').html("Petrol LGVs accounted for"); 
             } else if ($('#source-selector select').val() == "LGV - Diesel") {
-                $('#show-year-figure-span').html("Diesel LGVs accounted for"); 
+                $('.show-source-span').html("Diesel LGVs accounted for"); 
             } else if ($('#source-selector select').val() == "Buses and Coaches") {
-                $('#show-year-figure-span').html("Buses and coaches accounted for"); 
+                $('.show-source-span').html("Buses and coaches accounted for"); 
             } else if ($('#source-selector select').val() == "HGV") {
-                $('#show-year-figure-span').html("HGVs accounted for"); 
+                $('.show-source-span').html("HGVs accounted for"); 
             } else if ($('#source-selector select').val() == "Motorcycles - >50cc") {
-                $('#show-year-figure-span').html("Motorcycles above 50cc accounted for"); 
+                $('.show-source-span').html("Motorcycles above 50cc accounted for"); 
             } else if ($('#source-selector select').val() == "Mopeds - <50cc") {
-                $('#show-year-figure-span').html("Mopeds below 50cc accounted for"); 
+                $('.show-source-span').html("Mopeds below 50cc accounted for"); 
             } else if ($('#source-selector select').val() == "All LPG Vehicles") {
-                $('#show-year-figure-span').html("LPG vehicles accounted for"); 
+                $('.show-source-span').html("LPG vehicles accounted for"); 
             } else { 
-                $('#show-year-figure-span').html("There was a total of");
+                $('.show-source-span').html("There was a total of");
             };
             
             //In order to format the number correctly, the text value must be retrieved by jQuery and then converted into a number so that toLocaleString() is able to format the thousands with comma separator
