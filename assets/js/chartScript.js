@@ -1,7 +1,16 @@
+//Queue
 queue()
     .defer(d3.json, "assets/data/data.json") //fetch the data
     .await(makeGraph); //call makeGraph when the data is ready 
-    
+ 
+//Obtain the width of the browser in order to implement responsive chart sizing   
+var w = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+console.log(w);
+
+//Data visualisation function
 function makeGraph(error, ggData) {
     if (error) throw error;
     
@@ -727,5 +736,11 @@ function makeGraph(error, ggData) {
                 $('.show-source-span').html("There was a total of");
             };
         })
+        
+        // $(window).resize(function() {
+        //     if ($(window).width() > 1000) {
+        //         console.log("SUP");
+        //     };
+        // });
     })   
 };
