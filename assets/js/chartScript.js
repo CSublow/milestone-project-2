@@ -389,6 +389,7 @@ function makeGraph(error, ggData) {
             });
     }
     
+    var chartWidth = 700 //Define the chart widths
     //Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
         //explicitly map the domain in order to get custom tick layout for x axis
@@ -401,7 +402,6 @@ function makeGraph(error, ggData) {
                 return i % 2 === 0;
             }
         }),
-            chartWidth = 700 //Define the width of the chart
             
             lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
         
