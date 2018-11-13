@@ -434,7 +434,7 @@ function makeGraph(error, ggData) {
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
             if ($(window).width() > 1119 && $(window).width() < 1331) {
-                chartWidth = 500;
+                chartWidth = 600;
                 lineChart
                     .width(chartWidth);
                 lineChart.render();
@@ -572,6 +572,21 @@ function makeGraph(error, ggData) {
         compositeChart
             .xAxis()
                 .tickValues(ticks);
+                
+        //Add a degree of responsiveness to the chart
+        $(window).resize(function() {
+            if ($(window).width() > 1119 && $(window).width() < 1331) {
+                chartWidth = 600;
+                compositeChart
+                    .width(chartWidth);
+                compositeChart.render();
+            } else {
+                chartWidth = 700;
+                compositeChart
+                    .width(chartWidth);
+                compositeChart.render();
+            };
+        });
     };
     
     //Render the select menu to show data for a particular year
