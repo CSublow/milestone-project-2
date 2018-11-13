@@ -581,6 +581,9 @@ function makeGraph(error, ggData) {
         compositeChart
             .xAxis()
                 .tickValues(ticks);
+        compositeChart
+            .yAxis()
+                .ticks([20]);
                 
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
