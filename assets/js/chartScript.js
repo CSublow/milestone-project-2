@@ -713,6 +713,8 @@ function makeGraph(error, ggData) {
                 $('#show-year-figure-span').html("Mopeds below 50cc accounted for"); 
             } else if ($('#source-selector select').val() == "All LPG Vehicles") {
                 $('#show-year-figure-span').html("LPG vehicles accounted for"); 
+            } else { 
+                $('#show-year-figure-span').html("There was a total of");
             };
             
             //In order to format the number correctly, the text value must be retrieved by jQuery and then converted into a number so that toLocaleString() is able to format the thousands with comma separator
