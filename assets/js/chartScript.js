@@ -477,6 +477,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("green")
                                     .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -485,6 +486,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("red")
                                     .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     }),
@@ -492,6 +494,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("green")
                                     .group(totalEmissionsLgvPetrolGroup, "LGV - Petrol")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -500,6 +503,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("green")
                                     .group(totalEmissionsLGVDieselGroup, "LGV - Diesel")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -508,6 +512,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("green")
                                     .group(totalEmissionsHgvGroup, "HGV")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -516,6 +521,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("green")
                                     .group(totalEmissionsBusAndCoachGroup, "Buses and Coaches")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -524,6 +530,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("green")
                                     .group(totalEmissionsMotorcyclesGroup, "Motorcycles - >50cc")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -532,6 +539,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("blue")
                                     .group(totalEmissionsMopedsGroup, "Mopeds - <50cc")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
@@ -540,6 +548,7 @@ function makeGraph(error, ggData) {
                                     .dimension(yearDim)
                                     .colors("green")
                                     .group(totalEmissionsLPGGroup, "All LPG Vehicles")
+                                    .dotRadius(10)
                                     .valueAccessor(function(d) {
                                       return d.value;
                                     })
