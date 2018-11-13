@@ -726,19 +726,6 @@ function makeGraph(error, ggData) {
             } else { 
                 $('.show-source-span').html("There was a total of");
             };
-            
-            //In order to format the number correctly, the text value must be retrieved by jQuery and then converted into a number so that toLocaleString() is able to format the thousands with comma separator
-            // var convertedFigure = parseInt($("#show-year-figure span").text());
-            // var formattedFigure = convertedFigure.toLocaleString('en');
-            // console.log(formattedFigure);
-            
-            // //Formatting the number has to be delayed or else dc interferes and sets the number back to its default
-            // var delay = 10;
-            // setTimeout(function() {
-            //     $("#show-year-figure span").text(formattedFigure), delay;    
-            // })
-
-            
         })
     })   
 };
