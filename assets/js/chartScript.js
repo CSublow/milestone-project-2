@@ -603,7 +603,7 @@ function makeGraph(error, ggData) {
         dc.numberDisplay("#show-source-figure")
             .group(totalEmissionsPerSourceGroupSum)
             .formatNumber(d3.format("0,000"))
-            // .transitionDuration(0)
+            .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d;
             })    
@@ -613,7 +613,7 @@ function makeGraph(error, ggData) {
         dc.numberDisplay("#show-year-figure")
             .group(totalEmissionsPerYearGroupSum)
             .formatNumber(d3.format("0,000"))
-            // .transitionDuration(0)
+            .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d;
             })    
