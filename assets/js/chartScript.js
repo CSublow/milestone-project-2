@@ -469,6 +469,7 @@ function makeGraph(error, ggData) {
         }),
         
             chartWidth = 700; //Define the chart width
+            legendX = 500; //Define the x of the legend
         
             compositeChart = dc.compositeChart("#composite-chart");
         
@@ -569,7 +570,7 @@ function makeGraph(error, ggData) {
             .yAxisPadding("2")
             .elasticY(true)
             .legend(dc.legend()
-                .x(500)
+                .x(legendX)
                 .y(20)
                 .itemHeight(13)
                 .gap(5))
@@ -598,15 +599,27 @@ function makeGraph(error, ggData) {
                 
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
-            if ($(window).width() > 1199 && $(window).width() < 1331) {
-                chartWidth = 600;
+            if ($(window).width() > 1199 && $(window).width() < 1331) { //If the browser window is within the target width range
+                chartWidth = 600; //Define the new chart width
+                legendX = 400 //Define the new legendX, or else the lower chart width cuts out some of the legend
                 compositeChart
-                    .width(chartWidth);
+                    .width(chartWidth)
+                    .legend(dc.legend()
+                        .x(legendX)
+                        .y(20)
+                        .itemHeight(13)
+                        .gap(5));
                 compositeChart.render();
-            } else {
+            } else { //Else make sure vars are at default values
                 chartWidth = 700;
+                legendX = 500;
                 compositeChart
-                    .width(chartWidth);
+                    .width(chartWidth)
+                    .legend(dc.legend()
+                        .x(legendX)
+                        .y(20)
+                        .itemHeight(13)
+                        .gap(5));
                 compositeChart.render();
             };
         });
