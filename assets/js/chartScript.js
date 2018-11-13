@@ -618,6 +618,16 @@ function makeGraph(error, ggData) {
                 return d;
             })    
     }
+    
+    function timeFigurePercentage(ndx) {
+        dc.numberDisplay("#show-time-figure")
+            .group(totalEmissionsPerYearGroupSum)
+            .formatNumber(d3.format("0,000"))
+            .transitionDuration(0)
+            .valueAccessor(function(d) {
+                return d / sumEmissionsValue;
+            })    
+    }
     function carPetrolFigure(ndx) {
         dc.numberDisplay("#show-total-figure")
             .group(totalEmissionsCarPetrolGroupSum)
@@ -631,7 +641,7 @@ function makeGraph(error, ggData) {
             .group(totalEmissionsCarPetrolGroupSum)
             .formatNumber(d3.format(".2%"))
             .valueAccessor(function(d) {
-                return (d / sumEmissionsValue);
+                return d / sumEmissionsValue;
             })    
     };
     function carPetrolFigure1990(ndx) {
