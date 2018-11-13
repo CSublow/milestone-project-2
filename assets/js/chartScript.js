@@ -556,6 +556,7 @@ function makeGraph(error, ggData) {
             .renderVerticalGridLines(true)
             .xAxisLabel("Year")
             .yAxisLabel("Emissions (kilotons)")
+            .yAxisPadding("2")
             .elasticY(true)
             .legend(dc.legend()
                 .x(500)
