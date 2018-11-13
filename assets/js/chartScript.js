@@ -450,19 +450,19 @@ function makeGraph(error, ggData) {
     
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
-        //explicitly map the domain in order to get custom tick layout for x axis
+        //Explicitly map the domain in order to get custom tick layout for x axis
         var domain = ggData.map(function(d) {
             return d.Year;
         }),
             ticks = domain.filter(function(v, i, self) {
-            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
+            //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the yearDim var is used as a reference
             while (i < countYears) {
                 return i % 2 === 0;
             }
         }),
             compositeChart = dc.compositeChart("#composite-chart");
         
-        //Define lines to go on composite chart
+        //Define the lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
                                     .dimension(yearDim)
                                     .colors("green")
