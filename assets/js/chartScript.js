@@ -328,7 +328,7 @@ function makeGraph(error, ggData) {
     showYearSelector(ndx);
     
     sourceFigure(ndx);
-    yearFigure(ndx);
+    timeFigure(ndx);
     
     carPetrolFigure(ndx);
     carPetrolPercentage(ndx);
@@ -609,8 +609,8 @@ function makeGraph(error, ggData) {
             })    
     }
     
-    function yearFigure(ndx) {
-        dc.numberDisplay("#show-year-figure")
+    function timeFigure(ndx) {
+        dc.numberDisplay("#show-time-figure")
             .group(totalEmissionsPerYearGroupSum)
             .formatNumber(d3.format("0,000"))
             .transitionDuration(0)
