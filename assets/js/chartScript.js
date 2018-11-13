@@ -377,7 +377,6 @@ function makeGraph(error, ggData) {
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .promptText("All Vehicles")
-            .promptValue(null)
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
