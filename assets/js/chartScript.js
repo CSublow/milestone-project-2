@@ -401,12 +401,12 @@ function makeGraph(error, ggData) {
                 return i % 2 === 0;
             }
         }),
-            lineChartWidth = 700 //Define the width of the chart
+            chartWidth = 700 //Define the width of the chart
             
             lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
         
         lineChart
-            .width(lineChartWidth)
+            .width(chartWidth)
             .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
@@ -434,14 +434,14 @@ function makeGraph(error, ggData) {
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
             if ($(window).width() > 1119 && $(window).width() < 1331) {
-                lineChartWidth = 500;
+                chartWidth = 500;
                 lineChart
-                    .width(lineChartWidth);
+                    .width(chartWidth);
                 lineChart.render();
             } else {
-                lineChartWidth = 700;
+                chartWidth = 700;
                 lineChart
-                    .width(lineChartWidth);
+                    .width(chartWidth);
                 lineChart.render();
             };
         });
