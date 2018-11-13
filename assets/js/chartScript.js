@@ -4,11 +4,17 @@ queue()
     .await(makeGraph); //call makeGraph when the data is ready 
  
 //Obtain the width of the browser in order to implement responsive chart sizing   
-var w = window.innerWidth
-|| document.documentElement.clientWidth
-|| document.body.clientWidth;
+// var w = window.innerWidth
+// || document.documentElement.clientWidth
+// || document.body.clientWidth;
 
-console.log(w);
+// $(window).resize(function(w) {
+//     var w = $(window).width();
+//     if (w > 1500) {
+//         console.log("SUP");
+//     };
+// });
+// console.log(w);
 
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
@@ -388,18 +394,19 @@ function makeGraph(error, ggData) {
         //explicitly map the domain in order to get custom tick layout for x axis
         var domain = ggData.map(function(d) {
             return d.Year;
-        });
-        var ticks = domain.filter(function(v, i) {
+        }),
+            ticks = domain.filter(function(v, i) {
             //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
             while (i < countYears) {
                 return i % 2 === 0;
             }
-        });
-        
-        var lineChart = dc.lineChart("#total-emissions-over-time");
+        }),
+            lineChartWidth = 700 //Define the width of the chart
+            
+            lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
         
         lineChart
-            .width(700)
+            .width(lineChartWidth)
             .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
@@ -418,12 +425,28 @@ function makeGraph(error, ggData) {
                 //format the number as thousands with comma separator
                 return d.value.toLocaleString("en") + " kilotons";
             });
-    
-        //call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        
+        //Call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         lineChart
             .xAxis()
                 .tickValues(ticks);
+        
+        //Add a degree of responsiveness to the chart
+        $(window).resize(function() {
+            if ($(window).width() > 1119 && $(window).width() < 1331) {
+                lineChartWidth = 500;
+                lineChart
+                    .width(lineChartWidth);
+                lineChart.render();
+            } else {
+                lineChartWidth = 700;
+                lineChart
+                    .width(lineChartWidth);
+                lineChart.render();
+            };
+        });
     };
+        
     
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
@@ -727,11 +750,5 @@ function makeGraph(error, ggData) {
                 $('.show-source-span').html("There was a total of");
             };
         })
-        
-        // $(window).resize(function() {
-        //     if ($(window).width() > 1000) {
-        //         console.log("SUP");
-        //     };
-        // });
     })   
 };
