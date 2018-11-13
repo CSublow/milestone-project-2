@@ -605,10 +605,7 @@ function makeGraph(error, ggData) {
                 compositeChart
                     .width(chartWidth)
                     .legend(dc.legend()
-                        .x(legendX)
-                        .y(20)
-                        .itemHeight(13)
-                        .gap(5));
+                        .x(legendX));
                 compositeChart.render();
             } else { //Else make sure vars are at default values
                 chartWidth = 700;
@@ -616,10 +613,7 @@ function makeGraph(error, ggData) {
                 compositeChart
                     .width(chartWidth)
                     .legend(dc.legend()
-                        .x(legendX)
-                        .y(20)
-                        .itemHeight(13)
-                        .gap(5));
+                        .x(legendX));
                 compositeChart.render();
             };
         });
