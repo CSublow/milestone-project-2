@@ -440,7 +440,7 @@ function makeGraph(error, ggData) {
         
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
-            if (($(window).width() > 1199) && ($(window).width() < 1331)) {
+            if ($(window).width() > 1182 && $(window).width() < 1331) {
                 chartWidth = 600;
                 lineChart
                     .width(chartWidth);
@@ -472,6 +472,25 @@ function makeGraph(error, ggData) {
             legendX = 500; //Define the x of the legend
         
             compositeChart = dc.compositeChart("#composite-chart");
+            
+        //Add a degree of responsiveness to the chart
+        if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+            chartWidth = 600; //Define a lower chart width so that the charts don't overlap
+            legendX = 400 //Define a lower legendX, or else the lower chart width cuts out some of the legend
+            compositeChart
+                .width(chartWidth)
+                .legend(dc.legend()
+                    .x(legendX));
+            compositeChart.render();
+        } else { //Else make sure vars are at default values
+            chartWidth = 700;
+            legendX = 500;
+            compositeChart
+                .width(chartWidth)
+                .legend(dc.legend()
+                    .x(legendX));
+            compositeChart.render();
+        };
         
         //Define the lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
@@ -599,9 +618,9 @@ function makeGraph(error, ggData) {
                 
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
-            if ($(window).width() > 1199 && $(window).width() < 1331) { //If the browser window is within the target width range
-                chartWidth = 600; //Define the new chart width
-                legendX = 400 //Define the new legendX, or else the lower chart width cuts out some of the legend
+            if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+                chartWidth = 600; //Define a lower chart width so that the charts don't overlap
+                legendX = 400 //Define a lower legendX, or else the lower chart width cuts out some of the legend
                 compositeChart
                     .width(chartWidth)
                     .legend(dc.legend()
