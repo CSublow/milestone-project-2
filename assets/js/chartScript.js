@@ -653,7 +653,8 @@ function makeGraph(error, ggData) {
     
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
-        dc.pieChart("#total-emissions-per-source-pie")
+        var pieChart = dc.pieChart("#total-emissions-per-source-pie");
+        pieChart
             .height(700)
             .width(600)
             .radius(275)
@@ -674,6 +675,8 @@ function makeGraph(error, ggData) {
                 // .y(20)
                 .itemHeight(13)
                 .gap(2))
+                
+        pieChart.filter = function() {};
     };
     
     //Render the bar chart breaking down emissions by source
