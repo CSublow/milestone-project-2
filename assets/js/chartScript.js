@@ -402,14 +402,25 @@ function makeGraph(error, ggData) {
             }
         }),
             
-            chartWidth = 700; //Define the chart width
+            // chartWidth = 700; //Define the chart width
             
             lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
             
-            console.log(chartWidth);
+        //Add a degree of responsiveness to the chart
+        if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+            chartWidth = 600; //Define a lower chart width so that the charts don't overlap
+            lineChart
+                .width(chartWidth)
+            // compositeChart.render();
+        } else { //Else the width is able to be higher
+            chartWidth = 700;
+            lineChart
+                .width(chartWidth)
+            // compositeChart.render();
+        };
         
         lineChart
-            .width(chartWidth)
+            // .width(chartWidth)
             .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
@@ -468,8 +479,8 @@ function makeGraph(error, ggData) {
             }
         }),
         
-            chartWidth = 700; //Define the chart width
-            legendX = 500; //Define the x of the legend
+            // chartWidth = 700; //Define the chart width
+            // legendX = 500; //Define the x of the legend
         
             compositeChart = dc.compositeChart("#composite-chart");
             
@@ -480,16 +491,22 @@ function makeGraph(error, ggData) {
             compositeChart
                 .width(chartWidth)
                 .legend(dc.legend()
-                    .x(legendX));
-            compositeChart.render();
+                    .x(legendX)
+                    .y(20)
+                    .itemHeight(13)
+                    .gap(5));
+            // compositeChart.render();
         } else { //Else the width is able to be higher
             chartWidth = 700;
             legendX = 500;
             compositeChart
                 .width(chartWidth)
                 .legend(dc.legend()
-                    .x(legendX));
-            compositeChart.render();
+                    .x(legendX)
+                    .y(20)
+                    .itemHeight(13)
+                    .gap(5));
+            // compositeChart.render();
         };
         
         //Define the lines to go on composite chart
@@ -575,7 +592,7 @@ function makeGraph(error, ggData) {
                                     .dashStyle([2,2]);
 
         compositeChart
-            .width(680)
+            // .width(680)
             .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
@@ -588,14 +605,14 @@ function makeGraph(error, ggData) {
             .yAxisLabel("Emissions (kilotons)")
             .yAxisPadding("2")
             .elasticY(true)
-            .legend(dc.legend()
-                .x(legendX)
-                .y(20)
-                .itemHeight(13)
-                .gap(5))
+            // .legend(dc.legend()
+            //     // .x(legendX)
+            //     .y(20)
+            //     .itemHeight(13)
+            //     .gap(5))
             .brushOn(false)
             .title(function(d) {
-                //format the number as thousands with comma separator
+                //Format the number as thousands with comma separator
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .compose([carsPetrolLine, 
