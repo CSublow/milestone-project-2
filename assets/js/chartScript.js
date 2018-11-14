@@ -676,12 +676,13 @@ function makeGraph(error, ggData) {
                 .itemHeight(13)
                 .gap(2))
                 
-        pieChart.filter = function() {};
+        pieChart.filter = function() {}; //Remove chart interactivity
     };
     
     //Render the bar chart breaking down emissions by source
     function totalEmissionsPerSource(ndx) {
-        dc.barChart("#total-emissions-per-source")
+        var barChart = dc.barChart("#total-emissions-per-source");
+        barChart
             .width(700)
             .height(700)
             .margins({top:10, right:50, bottom: 100, left:60})
@@ -693,6 +694,8 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
+            
+        barChart.filter = function() {}; //Remove chart interactivity
     };
     
     function sourceFigure(ndx) {
