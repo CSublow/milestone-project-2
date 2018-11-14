@@ -686,7 +686,10 @@ function makeGraph(error, ggData) {
             .group(totalEmissionsPerSourceGroup)
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
-            .elasticY(true);
+            .elasticY(true)
+            .title(function(d) {
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            });
     };
     
     function sourceFigure(ndx) {
