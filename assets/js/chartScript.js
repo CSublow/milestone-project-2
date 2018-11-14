@@ -440,12 +440,12 @@ function makeGraph(error, ggData) {
         
         //Add a degree of responsiveness to the chart
         $(window).resize(function() {
-            if ($(window).width() > 1182 && $(window).width() < 1331) {
-                chartWidth = 600;
+            if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+                chartWidth = 600; //Define a lower chart width so that the charts don't overlap
                 lineChart
                     .width(chartWidth);
                 lineChart.render();
-            } else {
+            } else { //Else the width is able to be higher
                 chartWidth = 700;
                 lineChart
                     .width(chartWidth);
@@ -482,7 +482,7 @@ function makeGraph(error, ggData) {
                 .legend(dc.legend()
                     .x(legendX));
             compositeChart.render();
-        } else { //Else make sure vars are at default values
+        } else { //Else the width is able to be higher
             chartWidth = 700;
             legendX = 500;
             compositeChart
@@ -626,7 +626,7 @@ function makeGraph(error, ggData) {
                     .legend(dc.legend()
                         .x(legendX));
                 compositeChart.render();
-            } else { //Else make sure vars are at default values
+            } else { //Else the width is able to be higher
                 chartWidth = 700;
                 legendX = 500;
                 compositeChart
