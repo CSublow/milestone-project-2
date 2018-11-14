@@ -459,7 +459,6 @@ function makeGraph(error, ggData) {
             };
         });
     };
-        
     
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
@@ -473,13 +472,13 @@ function makeGraph(error, ggData) {
                 return i % 2 === 0;
             }
         }),
-
+        
             compositeChart = dc.compositeChart("#composite-chart");
             
         //Add a degree of responsiveness to the chart
         if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
             chartWidth = 600; //Define a lower chart width so that the charts don't overlap
-            legendX = 400 //Define a lower legendX, or else the lower chart width cuts out some of the legend
+            legendX = 400; //Define a lower legendX, or else the lower chart width cuts out some of the legend
             compositeChart
                 .width(chartWidth)
                 .legend(dc.legend()
@@ -592,7 +591,7 @@ function makeGraph(error, ggData) {
             .renderVerticalGridLines(true)
             .xAxisLabel("Year")
             .yAxisLabel("Emissions (kilotons)")
-            .yAxisPadding("2")
+            .yAxisPadding("26")
             .elasticY(true)
             .brushOn(false)
             .title(function(d) {
@@ -609,7 +608,7 @@ function makeGraph(error, ggData) {
                       mopedLine,
                       lpgLine]);
                       
-        //call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        //Call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         compositeChart
             .xAxis()
                 .tickValues(ticks);
@@ -812,8 +811,8 @@ function makeGraph(error, ggData) {
             } else if ($('#source-selector select').val() == "All LPG Vehicles") {
                 $('.show-source-span').html("LPG vehicles accounted for"); 
             } else { 
-                $('.show-source-span').html("There was a total of");
-            };
-        })
-    })   
+                    $('.show-source-span').html("There was a total of");
+                };
+        });
+    });
 };
