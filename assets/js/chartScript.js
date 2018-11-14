@@ -402,8 +402,6 @@ function makeGraph(error, ggData) {
             }
         }),
             
-            // chartWidth = 700; //Define the chart width
-            
             lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
             
         //Add a degree of responsiveness to the chart
@@ -411,16 +409,13 @@ function makeGraph(error, ggData) {
             chartWidth = 600; //Define a lower chart width so that the charts don't overlap
             lineChart
                 .width(chartWidth)
-            // compositeChart.render();
         } else { //Else the width is able to be higher
             chartWidth = 700;
             lineChart
                 .width(chartWidth)
-            // compositeChart.render();
         };
         
         lineChart
-            // .width(chartWidth)
             .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
@@ -449,7 +444,7 @@ function makeGraph(error, ggData) {
             .yAxis()
                 .ticks([20]);
         
-        //Add a degree of responsiveness to the chart
+        //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
                 chartWidth = 600; //Define a lower chart width so that the charts don't overlap
@@ -478,10 +473,7 @@ function makeGraph(error, ggData) {
                 return i % 2 === 0;
             }
         }),
-        
-            // chartWidth = 700; //Define the chart width
-            // legendX = 500; //Define the x of the legend
-        
+
             compositeChart = dc.compositeChart("#composite-chart");
             
         //Add a degree of responsiveness to the chart
@@ -495,7 +487,6 @@ function makeGraph(error, ggData) {
                     .y(20)
                     .itemHeight(13)
                     .gap(5));
-            // compositeChart.render();
         } else { //Else the width is able to be higher
             chartWidth = 700;
             legendX = 500;
@@ -506,7 +497,6 @@ function makeGraph(error, ggData) {
                     .y(20)
                     .itemHeight(13)
                     .gap(5));
-            // compositeChart.render();
         };
         
         //Define the lines to go on composite chart
@@ -592,7 +582,6 @@ function makeGraph(error, ggData) {
                                     .dashStyle([2,2]);
 
         compositeChart
-            // .width(680)
             .height(700)
             .margins({top:10, right:50, bottom: 40, left:60})
             .dimension(yearDim)
@@ -605,11 +594,6 @@ function makeGraph(error, ggData) {
             .yAxisLabel("Emissions (kilotons)")
             .yAxisPadding("2")
             .elasticY(true)
-            // .legend(dc.legend()
-            //     // .x(legendX)
-            //     .y(20)
-            //     .itemHeight(13)
-            //     .gap(5))
             .brushOn(false)
             .title(function(d) {
                 //Format the number as thousands with comma separator
@@ -633,7 +617,7 @@ function makeGraph(error, ggData) {
             .yAxis()
                 .ticks([20]);
                 
-        //Add a degree of responsiveness to the chart
+        //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
                 chartWidth = 600; //Define a lower chart width so that the charts don't overlap
