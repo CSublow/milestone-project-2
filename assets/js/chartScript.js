@@ -333,7 +333,7 @@ function makeGraph(error, ggData) {
     showSourceSelector(ndx);
     showYearSelector(ndx);
     
-    sourceFigure(ndx);
+    periodFigure(ndx);
     timeFigure(ndx);
     timeFigurePercentage(ndx);
     
@@ -700,8 +700,8 @@ function makeGraph(error, ggData) {
         barChart.filter = function() {}; //Remove chart interactivity
     };
     
-    function sourceFigure(ndx) {
-        dc.numberDisplay("#show-source-figure")
+    function periodFigure(ndx) {
+        dc.numberDisplay("#show-period-figure")
             .group(totalEmissionsPerSourceGroupSum)
             .formatNumber(d3.format("0,000"))
             .transitionDuration(0)
@@ -805,7 +805,7 @@ function makeGraph(error, ggData) {
         
         //Reset the year selection menu if the user changes the source selection menu. This keeps the data presented consistent and meaningful
         function resetYearSelector() {
-            yearSelectMenu.filterAll();
+            // yearSelectMenu.filterAll();
         }
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
