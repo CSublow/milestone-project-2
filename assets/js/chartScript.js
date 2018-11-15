@@ -699,10 +699,10 @@ function makeGraph(error, ggData) {
             
         barChart.filter = function() {}; //Remove chart interactivity
     };
-    
-    function periodFigure(ndx) {
-        dc.numberDisplay("#show-period-figure")
-            .group(totalEmissionsPerSourceGroupSum)
+
+    function timeFigure(ndx) {
+        dc.numberDisplay("#show-time-figure")
+            .group(totalEmissionsPerYearGroupSum)
             .formatNumber(d3.format("0,000"))
             .transitionDuration(0)
             .valueAccessor(function(d) {
@@ -710,9 +710,9 @@ function makeGraph(error, ggData) {
             })    
     }
     
-    function timeFigure(ndx) {
-        dc.numberDisplay("#show-time-figure")
-            .group(totalEmissionsPerYearGroupSum)
+    function periodFigure(ndx) {
+        dc.numberDisplay("#show-period-figure")
+            .group(totalEmissionsPerSourceGroupSum)
             .formatNumber(d3.format("0,000"))
             .transitionDuration(0)
             .valueAccessor(function(d) {
