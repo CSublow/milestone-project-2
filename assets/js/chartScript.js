@@ -813,22 +813,31 @@ function makeGraph(error, ggData) {
                 resetYearSelector();
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
                 $('.show-source-span').html("Diesel cars accounted for"); 
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "LGV - Petrol") {
                 $('.show-source-span').html("Petrol LGVs accounted for"); 
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "LGV - Diesel") {
                 $('.show-source-span').html("Diesel LGVs accounted for"); 
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "Buses and Coaches") {
                 $('.show-source-span').html("Buses and coaches accounted for"); 
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "HGV") {
                 $('.show-source-span').html("HGVs accounted for"); 
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "Motorcycles - >50cc") {
                 $('.show-source-span').html("Motorcycles above 50cc accounted for"); 
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "Mopeds - <50cc") {
                 $('.show-source-span').html("Mopeds below 50cc accounted for"); 
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "All LPG Vehicles") {
                 $('.show-source-span').html("LPG vehicles accounted for"); 
+                resetYearSelector();
             } else { 
                 $('.show-source-span').html("There was a total of");
+                resetYearSelector();
             };
         });
     });
