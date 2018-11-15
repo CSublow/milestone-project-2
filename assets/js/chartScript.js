@@ -899,6 +899,8 @@ function makeGraph(error, ggData) {
                 $('#period-span').html("in 2015"); 
             } else if ($('#year-selector select').val() == '2016') {
                 $('#period-span').html("in 2016"); 
+            } else {
+                $('#period-span').html("throughout the period"); 
             }
         })
     });
