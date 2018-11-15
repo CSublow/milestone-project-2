@@ -656,8 +656,7 @@ function makeGraph(error, ggData) {
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
         
-        var pieChart = dc.pieChart("#total-emissions-per-source-pie"),
-            chartWidth;
+        var pieChart = dc.pieChart("#total-emissions-per-source-pie");
         
         //Add a degree of responsiveness to the chart
         if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
@@ -693,6 +692,23 @@ function makeGraph(error, ggData) {
                 .gap(2))
                 
         pieChart.filter = function() {}; //Remove chart interactivity
+        
+        //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
+        $(window).resize(function() {
+            if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+                chartWidth = 500; //Define a lower chart width so that the charts don't overlap
+                pieChart
+                    .width(chartWidth)
+                    .transitionDuration(0)
+                pieChart.render();
+            } else { //Else the width is able to be higher
+                chartWidth = 600;
+                pieChart
+                    .width(chartWidth)
+                    .transitionDuration(0)
+                pieChart.render();
+            };
+        });
     };
     
     //Render the bar chart breaking down emissions by source
