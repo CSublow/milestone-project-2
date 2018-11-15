@@ -802,12 +802,15 @@ function makeGraph(error, ggData) {
         //Increase the length of every 2nd tick line
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
             .attr("y2", "20");
-
+        
+        function resetYearSelector() {
+            yearSelectMenu.filterAll();
+        }
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
             if($('#source-selector select').val() == "Cars - Petrol") {
                 $('.show-source-span').html("Petrol cars accounted for");
-                yearSelectMenu.filterAll();
+                resetYearSelector();
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
                 $('.show-source-span').html("Diesel cars accounted for"); 
             } else if ($('#source-selector select').val() == "LGV - Petrol") {
