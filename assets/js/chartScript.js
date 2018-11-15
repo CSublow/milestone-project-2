@@ -638,25 +638,10 @@ function makeGraph(error, ggData) {
         var pieChart = dc.pieChart("#total-emissions-per-source-pie");
         
         chartsResponsive(pieChart, 500, 600, false);
-        //Add a degree of responsiveness to the chart
-        // if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
-        //     chartWidth = 500; //Define a lower chart width so that the charts don't overlap
-        //     pieChart
-        //         .width(chartWidth)
-        // } else { //Else the width is able to be higher
-        //     chartWidth = 600;
-        //     pieChart
-        //         .width(chartWidth)
-        // };
         
         pieChart
             .height(700)
-            // .width(chartWidth)
             .radius(275)
-            // .innerRadius(200)
-            // .externalLabels(10)
-            // .externalRadiusPadding(50)
-            // .minAngleForLabel(0)
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .label(function(d) { //hide the labels, rely on the legend to orientate the user
@@ -666,8 +651,6 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .legend(dc.legend()
-                // .x(-50)
-                // .y(20)
                 .itemHeight(13)
                 .gap(2))
                 
