@@ -803,6 +803,7 @@ function makeGraph(error, ggData) {
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
             .attr("y2", "20");
         
+        //Reset the year selection menu if the user changes the source selection menu. This keeps the data presented consistent and meaningful
         function resetYearSelector() {
             yearSelectMenu.filterAll();
         }
