@@ -667,8 +667,10 @@ function makeGraph(error, ggData) {
     //Render the bar chart breaking down emissions by source
     function totalEmissionsPerSource(ndx) {
         var barChart = dc.barChart("#total-emissions-per-source");
+        
+        chartsResponsive(barChart, 600, 700, false);
+        
         barChart
-            .width(700)
             .height(700)
             .margins({top:10, right:50, bottom: 100, left:60})
             .dimension(sourceDim)
@@ -681,6 +683,12 @@ function makeGraph(error, ggData) {
             });
             
         barChart.filter = function() {}; //Remove chart interactivity
+        
+        $(window).resize(function() {
+            barChart
+                .transitionDuration(0);
+            chartsResponsive(barChart, 600, 700, true);
+        });
     };
 
     function timeFigure(ndx) {
