@@ -494,29 +494,6 @@ function makeGraph(error, ggData) {
             compositeChart = dc.compositeChart("#composite-chart");
             
         chartsResponsive(compositeChart, 600, 700, false, true, 400, 500);
-            
-        // //Add a degree of responsiveness to the chart
-        // if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
-        //     chartWidth = 600; //Define a lower chart width so that the charts don't overlap
-        //     legendX = 400; //Define a lower legendX, or else the lower chart width cuts out some of the legend
-        //     compositeChart
-        //         .width(chartWidth)
-        //         .legend(dc.legend()
-        //             .x(legendX)
-        //             .y(20)
-        //             .itemHeight(13)
-        //             .gap(5));
-        // } else { //Else the width is able to be higher
-        //     chartWidth = 700;
-        //     legendX = 500;
-        //     compositeChart
-        //         .width(chartWidth)
-        //         .legend(dc.legend()
-        //             .x(legendX)
-        //             .y(20)
-        //             .itemHeight(13)
-        //             .gap(5));
-        // };
         
         //Define the lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
@@ -660,20 +637,21 @@ function makeGraph(error, ggData) {
         
         var pieChart = dc.pieChart("#total-emissions-per-source-pie");
         
+        chartsResponsive(pieChart, 500, 600, false);
         //Add a degree of responsiveness to the chart
-        if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
-            chartWidth = 500; //Define a lower chart width so that the charts don't overlap
-            pieChart
-                .width(chartWidth)
-        } else { //Else the width is able to be higher
-            chartWidth = 600;
-            pieChart
-                .width(chartWidth)
-        };
+        // if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+        //     chartWidth = 500; //Define a lower chart width so that the charts don't overlap
+        //     pieChart
+        //         .width(chartWidth)
+        // } else { //Else the width is able to be higher
+        //     chartWidth = 600;
+        //     pieChart
+        //         .width(chartWidth)
+        // };
         
         pieChart
             .height(700)
-            .width(chartWidth)
+            // .width(chartWidth)
             .radius(275)
             // .innerRadius(200)
             // .externalLabels(10)
@@ -697,19 +675,9 @@ function makeGraph(error, ggData) {
         
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
-            if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
-                chartWidth = 500; //Define a lower chart width so that the charts don't overlap
-                pieChart
-                    .width(chartWidth)
-                    .transitionDuration(0)
-                pieChart.render();
-            } else { //Else the width is able to be higher
-                chartWidth = 600;
-                pieChart
-                    .width(chartWidth)
-                    .transitionDuration(0)
-                pieChart.render();
-            };
+            pieChart
+                .transitionDuration(0); //I don't want to see the chart rerendering when the window is resized, it is an ugly effect
+            chartsResponsive(pieChart, 500, 600, true);
         });
     };
     
