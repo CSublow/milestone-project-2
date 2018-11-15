@@ -807,6 +807,7 @@ function makeGraph(error, ggData) {
         function resetYearSelector() {
             // yearSelectMenu.filterAll();
         }
+        
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
             if($('#source-selector select').val() == "Cars - Petrol") {
@@ -846,6 +847,58 @@ function makeGraph(error, ggData) {
             if($('#year-selector select').val() == '1990') {
                 console.log("Hello");
                 $('#period-span').html("in 1990");
+            } else if ($('#year-selector select').val() == '1991') {
+                $('#period-span').html("in 1991"); 
+            } else if ($('#year-selector select').val() == '1992') {
+                $('#period-span').html("in 1992"); 
+            } else if ($('#year-selector select').val() == '1993') {
+                $('#period-span').html("in 1993"); 
+            } else if ($('#year-selector select').val() == '1994') {
+                $('#period-span').html("in 1994"); 
+            } else if ($('#year-selector select').val() == '1995') {
+                $('#period-span').html("in 1995"); 
+            } else if ($('#year-selector select').val() == '1996') {
+                $('#period-span').html("in 1996"); 
+            } else if ($('#year-selector select').val() == '1997') {
+                $('#period-span').html("in 1997"); 
+            } else if ($('#year-selector select').val() == '1998') {
+                $('#period-span').html("in 1998"); 
+            } else if ($('#year-selector select').val() == '1999') {
+                $('#period-span').html("in 1999"); 
+            } else if ($('#year-selector select').val() == '2000') {
+                $('#period-span').html("in 2000"); 
+            } else if ($('#year-selector select').val() == '2001') {
+                $('#period-span').html("in 2001"); 
+            } else if ($('#year-selector select').val() == '2002') {
+                $('#period-span').html("in 2002"); 
+            } else if ($('#year-selector select').val() == '2003') {
+                $('#period-span').html("in 2003"); 
+            } else if ($('#year-selector select').val() == '2004') {
+                $('#period-span').html("in 2004"); 
+            } else if ($('#year-selector select').val() == '2005') {
+                $('#period-span').html("in 2005"); 
+            } else if ($('#year-selector select').val() == '2006') {
+                $('#period-span').html("in 2006"); 
+            } else if ($('#year-selector select').val() == '2007') {
+                $('#period-span').html("in 2007"); 
+            } else if ($('#year-selector select').val() == '2008') {
+                $('#period-span').html("in 2008"); 
+            } else if ($('#year-selector select').val() == '2009') {
+                $('#period-span').html("in 2009"); 
+            } else if ($('#year-selector select').val() == '2010') {
+                $('#period-span').html("in 2010"); 
+            } else if ($('#year-selector select').val() == '2011') {
+                $('#period-span').html("in 2011"); 
+            } else if ($('#year-selector select').val() == '2012') {
+                $('#period-span').html("in 2012"); 
+            } else if ($('#year-selector select').val() == '2013') {
+                $('#period-span').html("in 2013"); 
+            } else if ($('#year-selector select').val() == '2014') {
+                $('#period-span').html("in 2014"); 
+            } else if ($('#year-selector select').val() == '2015') {
+                $('#period-span').html("in 2015"); 
+            } else if ($('#year-selector select').val() == '2016') {
+                $('#period-span').html("in 2016"); 
             }
         })
     });
