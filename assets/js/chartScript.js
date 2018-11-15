@@ -390,7 +390,18 @@ function makeGraph(error, ggData) {
                         .gap(5));
             };
         };
-    }
+    };
+    
+    //This function helps the source bar chart's x axis ticks be more visible
+    function adjustXTicks() {
+        //Move every 2nd tick text down slightly
+        d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
+            .style("transform", "translate(0,20px)");
+            
+        //Increase the length of every 2nd tick line
+        d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
+            .attr("y2", "20");
+    };
     
     // // // Chart Rendering Functions
     
@@ -688,6 +699,8 @@ function makeGraph(error, ggData) {
             barChart
                 .transitionDuration(0);
             chartsResponsive(barChart, 600, 700, true);
+            
+            adjustXTicks(); //The x ticks must also be rerendered or else they revert to their default and unwanted values
         });
     };
 
@@ -786,13 +799,8 @@ function makeGraph(error, ggData) {
     
     //The document must be rendered before d3 selections will work
     $(document).ready(function() {
-        //Move every 2nd tick text down slightly
-        d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
-            .style("transform", "translate(0,20px)");
-            
-        //Increase the length of every 2nd tick line
-        d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
-            .attr("y2", "20");
+        
+        adjustXTicks(); //This function must be called once the document is ready
         
         //Reset the year selection menu if the user changes the source selection menu. This keeps the data presented consistent and meaningful
         function resetYearSelector() {
