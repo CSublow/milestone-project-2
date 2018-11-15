@@ -356,7 +356,22 @@ function makeGraph(error, ggData) {
 
     dc.renderAll(); //Render all charts
     
-    //DEFINE FUNCTIONS
+    // // // DEFINE FUNCTIONS
+    // // // General Functions
+    
+    //Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
+    function chartsResponsive(chartType, chartWidthSmall, chartWidthLarge, legendX) {
+        if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+            chartType
+                .width(chartWidthSmall)
+        } else { //Else the chart width is able to be higher
+            chartType
+                .width(chartWidthLarge)
+        };
+    }
+    
+    // // // Chart Rendering Functions
+    
     //Render the total emissions figure
     function totalEmissionsFigure(ndx) {
         dc.numberDisplay("#total-emissions-figure")
@@ -406,16 +421,7 @@ function makeGraph(error, ggData) {
             
             lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
             
-        //Add a degree of responsiveness to the chart
-        if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
-            chartWidth = 600; //Define a lower chart width so that the charts don't overlap
-            lineChart
-                .width(chartWidth)
-        } else { //Else the width is able to be higher
-            chartWidth = 700;
-            lineChart
-                .width(chartWidth)
-        };
+        chartsResponsive(lineChart, 600, 700);
         
         lineChart
             .height(700)
