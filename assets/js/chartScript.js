@@ -360,19 +360,35 @@ function makeGraph(error, ggData) {
     // // // General Functions
     
     //Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
-    function chartsResponsive(chartType, chartWidthSmall, chartWidthLarge, renderChart, legendX) {
+    function chartsResponsive(chartType, chartWidthSmall, chartWidthLarge, renderChart, chartLegend, legendXSmall, legendXLarge) {
         if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
             chartType
                 .width(chartWidthSmall);
             if (renderChart == true) { //Chart render only has to be called when the window resize function is invoked, not when the page is loaded initially
                 chartType.render();
             };
+            if (chartLegend == true) { //Only some chart types need a legend
+                chartType
+                    .legend(dc.legend()
+                        .x(legendXSmall)
+                        .y(20)
+                        .itemHeight(13)
+                        .gap(5));
+            };
         } else { //Else the chart width is able to be higher
             chartType
                 .width(chartWidthLarge);
-        if (renderChart == true) {
-            chartType.render();
-        }
+            if (renderChart == true) {
+                chartType.render();
+            };
+            if (chartLegend == true) { //Only some chart types need a legend
+                chartType
+                    .legend(dc.legend()
+                        .x(legendXLarge)
+                        .y(20)
+                        .itemHeight(13)
+                        .gap(5));
+            };
         };
     }
     
@@ -477,28 +493,30 @@ function makeGraph(error, ggData) {
         
             compositeChart = dc.compositeChart("#composite-chart");
             
-        //Add a degree of responsiveness to the chart
-        if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
-            chartWidth = 600; //Define a lower chart width so that the charts don't overlap
-            legendX = 400; //Define a lower legendX, or else the lower chart width cuts out some of the legend
-            compositeChart
-                .width(chartWidth)
-                .legend(dc.legend()
-                    .x(legendX)
-                    .y(20)
-                    .itemHeight(13)
-                    .gap(5));
-        } else { //Else the width is able to be higher
-            chartWidth = 700;
-            legendX = 500;
-            compositeChart
-                .width(chartWidth)
-                .legend(dc.legend()
-                    .x(legendX)
-                    .y(20)
-                    .itemHeight(13)
-                    .gap(5));
-        };
+        chartsResponsive(compositeChart, 600, 700, false, true, 400, 500);
+            
+        // //Add a degree of responsiveness to the chart
+        // if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+        //     chartWidth = 600; //Define a lower chart width so that the charts don't overlap
+        //     legendX = 400; //Define a lower legendX, or else the lower chart width cuts out some of the legend
+        //     compositeChart
+        //         .width(chartWidth)
+        //         .legend(dc.legend()
+        //             .x(legendX)
+        //             .y(20)
+        //             .itemHeight(13)
+        //             .gap(5));
+        // } else { //Else the width is able to be higher
+        //     chartWidth = 700;
+        //     legendX = 500;
+        //     compositeChart
+        //         .width(chartWidth)
+        //         .legend(dc.legend()
+        //             .x(legendX)
+        //             .y(20)
+        //             .itemHeight(13)
+        //             .gap(5));
+        // };
         
         //Define the lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
@@ -620,23 +638,7 @@ function makeGraph(error, ggData) {
                 
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
-            if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
-                chartWidth = 600; //Define a lower chart width so that the charts don't overlap
-                legendX = 400 //Define a lower legendX, or else the lower chart width cuts out some of the legend
-                compositeChart
-                    .width(chartWidth)
-                    .legend(dc.legend()
-                        .x(legendX));
-                compositeChart.render();
-            } else { //Else the width is able to be higher
-                chartWidth = 700;
-                legendX = 500;
-                compositeChart
-                    .width(chartWidth)
-                    .legend(dc.legend()
-                        .x(legendX));
-                compositeChart.render();
-            };
+            chartsResponsive(compositeChart, 600, 700, true, true, 400, 500);
         });
     };
     
