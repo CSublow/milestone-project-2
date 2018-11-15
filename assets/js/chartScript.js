@@ -641,15 +641,17 @@ function makeGraph(error, ggData) {
     };
     
     //Render the select menu to show data for a particular year
+    var yearSelectMenu; //Declare outside of function so that resetFilter can be applied elsewhere
     function showYearSelector(ndx) {
-        dc.selectMenu("#year-selector")
+        yearSelectMenu = dc.selectMenu('#year-selector');
+        yearSelectMenu
             .dimension(yearDim)
             .group(totalEmissionsPerYearGroup)
             .promptText("Whole Period")
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
-    }
+    };
     
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
@@ -801,15 +803,21 @@ function makeGraph(error, ggData) {
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
             .attr("y2", "20");
 
+        // d3.select('#year-selector select option')
+        //     .attr('value', 'Whole Period');
+            
         //This reset function ensures that if one select box is changed, the other reverts to its default value to ensure that the information being displayed is consistent
-        function resetSelect() {
-            $('#year-selector select').val('Whole Period')
+        function resetYearSelector() {
+            $('#year-selector select').prop('selected', true);
+            console.log("HI");
         }
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
             if($('#source-selector select').val() == "Cars - Petrol") {
                 $('.show-source-span').html("Petrol cars accounted for");
-                resetSelect();
+                resetYearSelector();
+                yearSelectMenu.filterAll();
+                dc.redrawAll();
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
                 $('.show-source-span').html("Diesel cars accounted for"); 
             } else if ($('#source-selector select').val() == "LGV - Petrol") {
@@ -827,8 +835,8 @@ function makeGraph(error, ggData) {
             } else if ($('#source-selector select').val() == "All LPG Vehicles") {
                 $('.show-source-span').html("LPG vehicles accounted for"); 
             } else { 
-                    $('.show-source-span').html("There was a total of");
-                };
+                $('.show-source-span').html("There was a total of");
+            };
         });
     });
 };
