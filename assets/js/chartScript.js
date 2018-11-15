@@ -655,10 +655,24 @@ function makeGraph(error, ggData) {
     
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
-        var pieChart = dc.pieChart("#total-emissions-per-source-pie");
+        
+        var pieChart = dc.pieChart("#total-emissions-per-source-pie"),
+            chartWidth;
+        
+        //Add a degree of responsiveness to the chart
+        if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
+            chartWidth = 500; //Define a lower chart width so that the charts don't overlap
+            pieChart
+                .width(chartWidth)
+        } else { //Else the width is able to be higher
+            chartWidth = 600;
+            pieChart
+                .width(chartWidth)
+        };
+        
         pieChart
             .height(700)
-            .width(600)
+            .width(chartWidth)
             .radius(275)
             // .innerRadius(200)
             // .externalLabels(10)
