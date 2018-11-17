@@ -472,7 +472,7 @@ function makeGraph(error, ggData) {
             .dotRadius(10)
             .title(function(d) {
                 //format the number as thousands with comma separator
-                return d.value.toLocaleString("en") + " kilotons";
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
         
         //Call the axes outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
