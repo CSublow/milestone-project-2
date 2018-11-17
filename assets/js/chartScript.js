@@ -683,7 +683,7 @@ function makeGraph(error, ggData) {
         
         barChart
             .height(700)
-            .margins({top:10, right:50, bottom: 100, left:60})
+            .margins({top:10, right:50, bottom: 60, left:60})
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .x(d3.scale.ordinal())
