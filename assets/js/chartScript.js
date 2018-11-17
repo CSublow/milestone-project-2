@@ -28,7 +28,6 @@ function makeGraph(error, ggData) {
     
     //Groups
     var totalEmissionsPerSourceGroup = sourceDim.group().reduceSum(dc.pluck("Emissions")),
-        totalEmissionsPerSourceGroupSum = sourceDim.groupAll().reduceSum(dc.pluck("Emissions")),
         
         totalEmissionsPerYearGroup = yearDim.group().reduceSum(dc.pluck("Emissions")),
         totalEmissionsPerYearGroupSum = yearDim.groupAll().reduceSum(dc.pluck("Emissions")),
@@ -646,6 +645,7 @@ function makeGraph(error, ggData) {
                 return "";
             })
             .title(function(d) {
+                console.log(sumEmissionsValue);
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .legend(dc.legend()
@@ -709,7 +709,7 @@ function makeGraph(error, ggData) {
     
     function periodFigure(ndx) {
         dc.numberDisplay("#show-period-figure")
-            .group(totalEmissionsPerSourceGroupSum)
+            .group(sumEmissions)
             .formatNumber(d3.format("0,000"))
             .transitionDuration(0)
             .valueAccessor(function(d) {
