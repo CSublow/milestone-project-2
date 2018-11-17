@@ -468,7 +468,7 @@ function makeGraph(error, ggData) {
             .renderVerticalGridLines(true)
             .xAxisLabel("Year")
             .yAxisLabel("Emissions (kilotons)")
-            .yAxisPadding("2")
+            .yAxisPadding("5")
             .dotRadius(10)
             .title(function(d) {
                 //format the number as thousands with comma separator
@@ -689,6 +689,8 @@ function makeGraph(error, ggData) {
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .elasticY(true)
+            .xAxisLabel("Type of Vehicle")
+            .yAxisLabel("Emissions (kilotons)")
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
