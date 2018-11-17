@@ -378,7 +378,7 @@ function makeGraph(error, ggData) {
         };
     };
     
-    //This function helps the source bar chart's x axis ticks be more visible
+    //This function helps totalEmissionsPerSource's x axis ticks be more visible
     function adjustXTicks() {
         //Move every 2nd tick text down slightly
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
