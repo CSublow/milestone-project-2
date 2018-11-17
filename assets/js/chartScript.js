@@ -439,12 +439,12 @@ function makeGraph(error, ggData) {
     
     //Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
-        //explicitly map the domain in order to get custom tick layout for x axis
+        //Explicitly map the domain in order to get custom tick layout for x axis
         var domain = ggData.map(function(d) {
             return d.Year;
         }),
             ticks = domain.filter(function(v, i) {
-            //without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
+            //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
             while (i < countYears) {
                 return i % 2 === 0;
             }
