@@ -491,6 +491,11 @@ function makeGraph(error, ggData) {
     
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
+        //Function to give each line on the composite chart a title
+        function lineTitle(sourceArg, dataArg) {
+            return sourceArg + dataArg.key + ": " + dataArg.value.toLocaleString("en") + " kilotons";
+        }
+        
         //Explicitly map the domain in order to get custom tick layout for x axis
         var domain = ggData.map(function(d) {
             return d.Year;
@@ -510,10 +515,16 @@ function makeGraph(error, ggData) {
         var carsPetrolLine =    dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
+                                    .title(function(d) {
+                                        return "Cars - Petrol " + d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+                                    })
                                     .dashStyle([2,2]),
             carsDieselLine =    dc.lineChart(compositeChart)
                                     .colors("red")
-                                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel"),
+                                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
+                                    .title(function(d) {
+                                        return lineTitle("Cars - Diesel ", d);
+                                    }),
             lgvPetrolLine =      dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsLgvPetrolGroup, "LGV - Petrol")
@@ -557,9 +568,10 @@ function makeGraph(error, ggData) {
             .yAxisPadding("27")
             .elasticY(true)
             .brushOn(false)
-            .title(function(d) {
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
-            })
+            // .title(function(d) {
+            //     return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            // })
+            .shareTitle(false)
             .childOptions({
                 dotRadius: 10  
             })
