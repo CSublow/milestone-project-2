@@ -516,42 +516,63 @@ function makeGraph(error, ggData) {
                                     .colors("green")
                                     .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
                                     .title(function(d) {
-                                        return "Cars - Petrol " + d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+                                        return lineTitle("Cars - Petrol, ", d);
                                     })
                                     .dashStyle([2,2]),
             carsDieselLine =    dc.lineChart(compositeChart)
                                     .colors("red")
                                     .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
                                     .title(function(d) {
-                                        return lineTitle("Cars - Diesel ", d);
+                                        return lineTitle("Cars - Diesel, ", d);
                                     }),
             lgvPetrolLine =      dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsLgvPetrolGroup, "LGV - Petrol")
+                                    .title(function(d) {
+                                        return lineTitle("LGV - Petrol, ", d);
+                                    })
                                     .dashStyle([2,2]),
             lgvDieselLine =     dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsLGVDieselGroup, "LGV - Diesel")
+                                    .title(function(d) {
+                                        return lineTitle("LGV - Diesel, ", d);
+                                    })
                                     .dashStyle([2,2]),
             hgvLine =           dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsHgvGroup, "HGV")
+                                    .title(function(d) {
+                                        return lineTitle("HGV, ", d);
+                                    })
                                     .dashStyle([2,2]),
             busAndCoachLine =   dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsBusAndCoachGroup, "Buses and Coaches")
+                                    .title(function(d) {
+                                        return lineTitle("Buses and Coaches, ", d);
+                                    })
                                     .dashStyle([2,2]),
             motorcycleLine =    dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsMotorcyclesGroup, "Motorcycles - >50cc")
+                                    .title(function(d) {
+                                        return lineTitle("Motorcycles - >50cc, ", d);
+                                    })
                                     .dashStyle([2,2]),
             mopedLine =         dc.lineChart(compositeChart)
                                     .colors("blue")
                                     .group(totalEmissionsMopedsGroup, "Mopeds - <50cc")
+                                    .title(function(d) {
+                                        return lineTitle("Mopeds - <50cc, ", d);
+                                    })
                                     .dashStyle([2,2]),
             lpgLine =           dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsLPGGroup, "All LPG Vehicles")
+                                    .title(function(d) {
+                                        return lineTitle("All LPG Vehicles, ", d);
+                                    })
                                     .dashStyle([2,2]);
 
         compositeChart
