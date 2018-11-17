@@ -655,7 +655,7 @@ function makeGraph(error, ggData) {
             .radius(275)
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
-            .label(function(d) { //hide the labels, rely on the legend to orientate the user
+            .label(function(d) { //Hide the labels, rely on the legend to orientate the user
                 return "";
             })
             .title(function(d) {
