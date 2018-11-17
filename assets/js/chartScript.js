@@ -526,7 +526,7 @@ function makeGraph(error, ggData) {
                                         return lineTitle("Cars - Diesel, ", d);
                                     }),
             lgvPetrolLine =      dc.lineChart(compositeChart)
-                                    .colors("green")
+                                    .colors("blue")
                                     .group(totalEmissionsLgvPetrolGroup, "LGV - Petrol")
                                     .title(function(d) {
                                         return lineTitle("LGV - Petrol, ", d);
