@@ -589,9 +589,6 @@ function makeGraph(error, ggData) {
             .yAxisPadding("31")
             .elasticY(true)
             .brushOn(false)
-            // .title(function(d) {
-            //     return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
-            // })
             .shareTitle(false)
             .childOptions({
                 dotRadius: 10  
@@ -613,9 +610,7 @@ function makeGraph(error, ggData) {
         compositeChart
             .yAxis()
                 .ticks([20]);
-                
-        console.log(Object.values(totalEmissionsPerSourceGroup.all())[0].key);
-        
+
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             chartsResponsive(compositeChart, 600, 700, true, true, 400, 500);
