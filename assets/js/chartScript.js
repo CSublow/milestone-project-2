@@ -6,7 +6,7 @@ queue()
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
     if (error) throw error;
-    var ndx = crossfilter(ggData); //load the data into a crossfilter
+    var ndx = crossfilter(ggData); //Load the data into a crossfilter
     
     //Dimensions
     var sourceDim = ndx.dimension(dc.pluck("Source")),
@@ -632,8 +632,8 @@ function makeGraph(error, ggData) {
                 return "";
             })
             .title(function(d) {
-                console.log(sumEmissionsValue);
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+                console.log(d.endAngle);
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + Math.round((d3.layout.pie.endAngle - d.startAngle) / Math.PI * 50) + "%";
             })
             .legend(dc.legend()
                 .itemHeight(13)
