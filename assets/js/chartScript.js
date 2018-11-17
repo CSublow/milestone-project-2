@@ -510,64 +510,37 @@ function makeGraph(error, ggData) {
         var carsPetrolLine =    dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]),
             carsDieselLine =    dc.lineChart(compositeChart)
                                     .colors("red")
-                                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    }),
+                                    .group(totalEmissionsCarDieselGroup, "Cars - Diesel"),
             lgvPetrolLine =      dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsLgvPetrolGroup, "LGV - Petrol")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]),
             lgvDieselLine =     dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsLGVDieselGroup, "LGV - Diesel")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]),
             hgvLine =           dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsHgvGroup, "HGV")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]),
             busAndCoachLine =   dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsBusAndCoachGroup, "Buses and Coaches")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]),
             motorcycleLine =    dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsMotorcyclesGroup, "Motorcycles - >50cc")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]),
             mopedLine =         dc.lineChart(compositeChart)
                                     .colors("blue")
                                     .group(totalEmissionsMopedsGroup, "Mopeds - <50cc")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]),
             lpgLine =           dc.lineChart(compositeChart)
                                     .colors("green")
                                     .group(totalEmissionsLPGGroup, "All LPG Vehicles")
-                                    .valueAccessor(function(d) {
-                                      return d.value;
-                                    })
                                     .dashStyle([2,2]);
 
         compositeChart
