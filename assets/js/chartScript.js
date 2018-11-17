@@ -590,7 +590,7 @@ function makeGraph(error, ggData) {
 
         compositeChart
             .height(700)
-            .margins({top:10, right:50, bottom: 40, left:60})
+            .margins({top:10, right:60, bottom: 40, left:60})
             .dimension(yearDim)
             .group(totalEmissionsCarPetrolGroup)
             .x(d3.scale.ordinal())
@@ -683,7 +683,7 @@ function makeGraph(error, ggData) {
         
         barChart
             .height(700)
-            .margins({top:10, right:50, bottom: 60, left:60})
+            .margins({top:10, right:60, bottom: 60, left:60})
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .x(d3.scale.ordinal())
