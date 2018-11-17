@@ -631,7 +631,7 @@ function makeGraph(error, ggData) {
     };
     
     //Render the select menu to show data for a particular year
-    var yearSelectMenu; //Declare outside of function so that resetFilter can be applied elsewhere
+    var yearSelectMenu; //Declare outside of function so that resetFilter can be applied on the dc.selectMenu call elsewhere
     function showYearSelector(ndx) {
         yearSelectMenu = dc.selectMenu('#year-selector');
         yearSelectMenu
@@ -670,8 +670,10 @@ function makeGraph(error, ggData) {
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             pieChart
-                .transitionDuration(0); //I don't want to see the chart rerendering when the window is resized, it is an ugly effect
+                .transitionDuration(0); //Remove transitionDuration before the chart has been resized
             chartsResponsive(pieChart, 500, 600, true);
+            pieChart
+                .transitionDuration(250); //Reset transitionDuration to default once the size changes have been applied
         });
     };
     
@@ -699,8 +701,10 @@ function makeGraph(error, ggData) {
         
         $(window).resize(function() {
             barChart
-                .transitionDuration(0);
+                .transitionDuration(0); //Remove transitionDuration before the chart has been resized
             chartsResponsive(barChart, 600, 700, true);
+            barChart
+                .transitionDuration(250); //Reset transitionDuration to default once the size changes have been applied
             
             adjustXTicks(); //The x ticks must also be rerendered or else they revert to their default and unwanted values
         });
