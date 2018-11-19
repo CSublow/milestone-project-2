@@ -694,7 +694,7 @@ function makeGraph(error, ggData) {
             
                     gLabels
                         .append("text")
-                        .text(barsData[i].data.value)
+                        .text((barsData[i].data.value).toLocaleString('en'))
                         .attr('x', +b.getAttribute('x') + (b.getAttribute('width')/2) )
                         .attr('y', +b.getAttribute('y') + -10)
                         .attr('text-anchor', 'middle')
