@@ -822,6 +822,7 @@ function makeGraph(error, ggData) {
         
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
+            yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
             if($('#source-selector select').val() == "Cars - Petrol") {
                 $('.show-source-span').html("Petrol cars accounted for");
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
