@@ -677,6 +677,7 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
             
+            //Show values on top of the bars
             barChart.on('renderlet', function(chart){
             
                 var barsData = [];
@@ -690,8 +691,6 @@ function makeGraph(error, ggData) {
                 for (var i = bars[0].length - 1; i >= 0; i--) {
             
                     var b = bars[0][i];
-                    // //Only create label if bar height is tall enough
-                    // if (+b.getAttribute('height') < 18) continue;
             
                     gLabels
                         .append("text")
@@ -704,6 +703,7 @@ function makeGraph(error, ggData) {
             
             });
             
+            //Remove values on top of bars when chart is being redrawn
             barChart.on("preRedraw", function(chart){
                 //Remove old values (if found)
                 chart.select('#inline-labels').remove();
