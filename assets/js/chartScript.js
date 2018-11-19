@@ -686,7 +686,7 @@ function makeGraph(error, ggData) {
                 var bars = chart.selectAll('.bar').each(function(d) { barsData.push(d); });
             
                 //Remove old values (if found)
-                d3.select(bars[0][0].parentNode).select('#inline-labels').remove();
+                // d3.select(bars[0][0].parentNode).select('#inline-labels').remove();
                 //Create group for labels 
                 var gLabels = d3.select(bars[0][0].parentNode).append('g').attr('id','inline-labels');
             
