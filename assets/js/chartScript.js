@@ -674,8 +674,9 @@ function makeGraph(error, ggData) {
             .yAxisLabel("Emissions (kilotons)")
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
-            })
-            .renderlet(function(chart){
+            });
+            
+            barChart.on('renderlet', function(chart){
             
                 var barsData = [];
                 var bars = chart.selectAll('.bar').each(function(d) { barsData.push(d); });
