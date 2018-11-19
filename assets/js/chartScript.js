@@ -418,8 +418,10 @@ function makeGraph(error, ggData) {
     $('#average-emissions-figure').html(generatedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering
 
     //Render the select menu to show data for a particular vehicle type
+    var sourceSelectMenu; //Declare outside of function so that a reset can be applied in jQuery code during select box change event
     function showSourceSelector(ndx) {
-        dc.selectMenu("#source-selector")
+        sourceSelectMenu = dc.selectMenu("#source-selector");
+        sourceSelectMenu
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .promptText("All Vehicles")
@@ -609,7 +611,7 @@ function makeGraph(error, ggData) {
     };
     
     //Render the select menu to show data for a particular year
-    var yearSelectMenu; //Declare outside of function so that resetFilter can be applied on the dc.selectMenu call elsewhere
+    var yearSelectMenu; //Declare outside of function so that a reset can be applied in jQuery code during select box change event
     function showYearSelector(ndx) {
         yearSelectMenu = dc.selectMenu('#year-selector');
         yearSelectMenu
@@ -847,6 +849,7 @@ function makeGraph(error, ggData) {
         });
         
         $('#year-selector select').change(function() {
+            sourceSelectMenu.filterAll(); //Reset the source select box when the source select box is changed
             if($('#year-selector select').val() == '1990') {
                 $('#period-span').html("in 1990");
             } else if ($('#year-selector select').val() == '1991') {
