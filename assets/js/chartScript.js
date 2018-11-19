@@ -674,6 +674,32 @@ function makeGraph(error, ggData) {
             .yAxisLabel("Emissions (kilotons)")
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
+            })
+            .renderlet(function(chart){
+            
+                var barsData = [];
+                var bars = chart.selectAll('.bar').each(function(d) { barsData.push(d); });
+            
+                //Remove old values (if found)
+                d3.select(bars[0][0].parentNode).select('#inline-labels').remove();
+                //Create group for labels 
+                var gLabels = d3.select(bars[0][0].parentNode).append('g').attr('id','inline-labels');
+            
+                for (var i = bars[0].length - 1; i >= 0; i--) {
+            
+                    var b = bars[0][i];
+                    // //Only create label if bar height is tall enough
+                    // if (+b.getAttribute('height') < 18) continue;
+            
+                    gLabels
+                        .append("text")
+                        .text(barsData[i].data.value)
+                        .attr('x', +b.getAttribute('x') + (b.getAttribute('width')/2) )
+                        .attr('y', +b.getAttribute('y') + -10)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', 'black');
+                }
+            
             });
             
         barChart.filter = function() {}; //Remove chart interactivity
