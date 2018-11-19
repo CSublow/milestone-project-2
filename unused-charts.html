@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Warmup MSP2</title>
+    <!-- STYLESHEETS -->
+    <!-- DC -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.css" type="text/css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom -->
+    <link rel="stylesheet" href="assets/stylesheets/style.css" type="text/css" />
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#"><h1>UK Road Transport Greenhouse Gas Emissions 1990-2016</h1></a>
+    </nav>
+    <main class="container-fluid">
+        <section class="row">
+            <div class="offset-md-2 col-md-8">
+                <p>A greenhouse gas is a gas that absorbs and emits radiant energy within the thermal infrared range, causing the greenhouse effect. On Earth, the primary greenhouse gases within the atmosphere are water vapour, carbon dioxide, methane, nitrous oxide and ozone.</p>
+                <p>Greenhouse gases and the greenhouse effect are not neccessarily bad things. Without them, the temperature of the Earth's surface would be on average about -18&#176;C (0&#176;F), rather than the present average of 15&#176;C (59&#176;F). At such low temperatures, life on Earth would be vastly different if not impossible, and human society would likely have not come to exist.</p>
+                <p>However, since the dawn of the Industrial Revolution in around 1750, human activities have increased the atmospheric concentration of greenhouse gases. This is of concern, as the current scientific consensus holds that anthropogenic (human) greenhouse gas emissions will lead to a rise in average global temperatures over the next few decades, with potentially harmful effects on ecosystems, biodiversity, and the economy.</p>
+                <p>Road transport in particular is a major contributor to greenhouse gas emissions in many countries. In the UK, as of 2018 <a href="https://www.independent.co.uk/environment/air-pollution-uk-transport-most-polluting-sector-greenhouse-gas-emissions-drop-carbon-dioxide-a8196866.html" target="_blank">the majority of man-made greenhouse gas emissions come from road transport</a>. The dashboard below visualises the latest official statistics available from UK government sources, covering road transport emissions between the years 1990 and 2016. More information on the statistics used to generate this dashboard can be found <a href="https://www.gov.uk/government/statistics/final-uk-greenhouse-gas-emissions-national-statistics-1990-2016" target="_blank">here</a>.</p>
+            </div>
+        </section>
+        
+        <h2 class="text-center">Highlights</h2>
+        <figure class="row text-center">
+            <div id="total-emissions-figure" class="col-12 number-display"></div>
+            <figcaption class="col-12">Kilotons of greenhouse gasses emitted by UK road transport betwen 1990-2016.</figcaption>
+        </figure>
+        <figure class="row text-center">
+            <div id="average-emissions-figure" class="col-12 number-display"></div>
+            <figcaption class="col-12">Average kilotons of emissions emitted each year.</figcaption>
+        </figure>
+        
+        <h2 class="text-center">Total emissions over the period.</h2>
+        <figure class="row">
+            <figcaption class="offset-md-2 col-md-8">
+                <p>Emissions from road transport rose steadily between 1990 and 2007. Beginning in 2008 emissions began to dip, reaching a period low of 108,134 kilotons in 2013. Since 2013 emissions have been on the rise again, although they are some way off the record highs in 2007; for the latest period (2016) emissions are about the same level as they were in the early 90's.</p>
+                <p>Cleaner and more efficient engines, rather than lower road usage, have helped keep emissions levels relatively stable, since the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/741953/road-traffic-estimates-in-great-britain-2017.pdf" target="_blank"> traffic volume on UK roads is at record highs</a>. With increasing investment in cleaner fuel types, and a <a href="https://www.statista.com/topics/2298/the-uk-electric-vehicle-industry/" target="_blank">growing number of hybrid and electric vehicles on UK roads</a>, it is hoped that the emissions from UK roads will begin to decrease over the coming decades.</p>
+                <p>The two charts below show the trend in emissions over time. Use the selection box to focus on a particular vehicle type. You can also hover over the lines to see more information.</p>
+                </figcaption>
+            <div id="source-selector" class="col-12"></div>
+            <div class="text-center col-12">
+                <p><span class="show-source-span">There was a total of</span> <span id="show-time-figure"></span> kilotons of emissions throughout the period.</p>
+                <p>That is <span id="show-time-figure-percentage"></span> of the emissions for the period.</p>
+            </div>
+            <div id="total-emissions-over-time" class="col-xl-6"></div>
+            <div id="composite-chart" class="col-xl-6"></div>
+        </figure>
+
+        <h2 class="text-center">Total emissions by type of vehicle.</h2>
+        <figure class="row">
+            <figcaption class="offset-md-2 col-md-8">
+                <p>Cars are responsible for the bulk of emissions over the period, with petrol cars being the biggest contributor to the total emissions figure. However, although emissions from petrol cars have nearly halved since 1990, emissions from diesel cars are now 10x what they were in 1990. Diesel as a fuel source has <a href="https://www.autoexpress.co.uk/car-news/consumer-news/98747/diesel-ban-the-future-of-diesel-cars-in-the-uk-and-beyond" target="_blank">attracted much negative criticism</a> in recent years, with this criticism perhaps stemming from diesel's rapid increase in pollution. There have even been calls for a <a href="https://www.theguardian.com/environment/2018/aug/23/ban-diesel-cars-from-cities-say-half-of-uk-drivers-in-poll" target="_blank">ban on diesel cars</a> in urban areas.</p>
+                <p>You can hover over the pie chart's slices or bar chart's bars in order to see the exact value that is represented.</p>
+                <!--<p>Some vehicle types (e.g. LPG vehicles) are responsible for relatively few emissions and may be difficult to see on the charts in comparison to more polluting vehicles. You can use the selection box below to select these vehicle types in order to get a better understanding of a particular emissions trend for a given vehicle type.</p>-->
+                <!--<p>Some vehicle types, in particular motorcycles, mopeds, and LPG vehicles, make up a tiny fraction of total emissions</p>-->
+            </figcaption>
+            <div id="year-selector" class="col-12"></div>
+            <div class="text-center col-12">
+                <p><span class="show-year-span">There was a total of</span> <span id="show-period-figure"></span> kilotons of emissions <span id="period-span">throughout the period</span>.</p>
+            </div>
+            <div id="total-emissions-per-source-pie" class="col-xl-6"></div>
+            <div id="total-emissions-per-source" class="col-xl-6"></div>
+        </figure>
+        
+        <div class="col-xs-12">
+            <h2>Total Emissions car petrol percentage</h2>
+            <div id="show-total-figure-percentage"></div>
+        </div>
+        <div class="col-xs-12">
+            <h2>Total Emissions car petrol 1990</h2>
+            <div id="show-total-figure-1990"></div>
+        </div>
+        <div class="col-xs-12">
+            <h2>Total Emissions car petrol percentage 1990</h2>
+            <div id="show-total-figure-percentage-1990"></div>
+        </div>
+        
+        <div class="col-xs-12">
+            <h2>Total emissions per source pie</h2>
+        </div>
+        
+        <div class="col-xs-12">
+            <h2>Total emissions Car Petrol</h2>
+            <div id="total-emissions-car-petrol"></div>
+        </div>
+        <div class="col-xs-12">
+            <h2>Total emissions Car Diesel</h2>
+            <div id="total-emissions-car-diesel"></div>
+        </div>
+        
+        <div class="col-xs-12">
+            <h2>Emissions 1990</h2>
+            <div id="emissions-1990"></div>
+        </div>
+    </main>
+    
+    <!-- SCRIPTS -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- DC and DC dependencies -->
+    <script src="https://fastcdn.org/D3.js/3.5.6/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="assets/js/chartScript.js"></script>
+</body>
+</html>
