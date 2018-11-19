@@ -862,7 +862,6 @@ function makeGraph(error, ggData) {
         
         $('#year-selector select').change(function() {
             if($('#year-selector select').val() == '1990') {
-                console.log("Hello");
                 $('#period-span').html("in 1990");
             } else if ($('#year-selector select').val() == '1991') {
                 $('#period-span').html("in 1991"); 
