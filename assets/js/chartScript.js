@@ -389,6 +389,11 @@ function makeGraph(error, ggData) {
             .attr("y2", "20");
     };
     
+    //Rounding function, courtesy of https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places/34796988#34796988
+    function round(value, decimals) {
+        return Number(Math.round(value +'e'+ decimals) +'e-'+ decimals).toFixed(decimals);
+    }
+    
     // // // Chart Rendering Functions
     
     //Render the total emissions figure
@@ -620,7 +625,7 @@ function makeGraph(error, ggData) {
     function totalEmissionsPerSourcePie(ndx) {
         
         var pieChart = dc.pieChart("#total-emissions-per-source-pie");
-        
+
         chartsResponsive(pieChart, 500, 600, false);
         
         pieChart
@@ -632,13 +637,13 @@ function makeGraph(error, ggData) {
                 return "";
             })
             .title(function(d) {
-                console.log(d.endAngle);
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + Math.round((d3.layout.pie.endAngle - d.startAngle) / Math.PI * 50) + "%";
+                console.log(sumEmissions.value()); //sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + round(d.value / sumEmissions.value(), 4) * 100 + "%";
             })
             .legend(dc.legend()
                 .itemHeight(13)
-                .gap(2))
-                
+                .gap(2));
+
         pieChart.filter = function() {}; //Remove chart interactivity
         
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
