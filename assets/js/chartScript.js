@@ -672,6 +672,7 @@ function makeGraph(error, ggData) {
             .elasticY(true)
             .xAxisLabel("Type of Vehicle")
             .yAxisLabel("Emissions (kilotons)")
+            .yAxisPadding('5')
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
@@ -701,6 +702,11 @@ function makeGraph(error, ggData) {
                         .attr('fill', 'black');
                 }
             
+            });
+            
+            barChart.on("preRedraw", function(chart){
+                //Remove old values (if found)
+                chart.select('#inline-labels').remove();
             });
             
         barChart.filter = function() {}; //Remove chart interactivity
