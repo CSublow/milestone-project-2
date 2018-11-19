@@ -43,6 +43,7 @@
 /*CSS output:*/
 /* Imports */
 /*Media Queries */
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
 .navbar-brand, #total-emissions-over-time svg, #composite-chart svg, #total-emissions-per-source-pie svg, #total-emissions-per-source svg, .dc-select-menu {
   margin: 0 auto;
   display: block; }
@@ -68,6 +69,9 @@ h1 {
   /*add a stroke to the pie slices*/
   stroke: black;
   stroke-width: 1px; }
+
+body {
+  font-family: 'Ubuntu', sans-serif; }
 
 .intro-text {
   margin-top: 10px; }
