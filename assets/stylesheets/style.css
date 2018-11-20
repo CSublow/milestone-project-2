@@ -46,7 +46,7 @@
 /*Media Queries */
 @import url("https://fonts.googleapis.com/css?family=Ubuntu");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
-.navbar-brand, #total-emissions-over-time svg, #composite-chart svg, #total-emissions-per-source-pie svg, #total-emissions-per-source svg, .dc-select-menu, h2, img {
+.force-center, .navbar-brand, .dc-select-menu, h2, img {
   margin: 0 auto;
   display: block; }
 

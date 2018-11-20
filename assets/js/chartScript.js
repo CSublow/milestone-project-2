@@ -378,6 +378,7 @@ function makeGraph(error, ggData) {
                         .gap(5));
             };
         };
+        addForceCenter(); //Rerendering the chart removes the class, this has to be added back in
     };
     
     //This function helps totalEmissionsPerSource's x axis ticks be more visible
@@ -483,7 +484,7 @@ function makeGraph(error, ggData) {
         lineChart
             .yAxis()
                 .ticks([20]);
-        
+
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             chartsResponsive(lineChart, 600, 700, true);
