@@ -342,6 +342,8 @@ function makeGraph(error, ggData) {
 
     dc.renderAll(); //Render all charts
     
+    addForceCenter();
+    
     // // // DEFINE FUNCTIONS
     // // // General Functions
     
@@ -392,7 +394,13 @@ function makeGraph(error, ggData) {
     //Rounding function, courtesy of https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places/34796988#34796988
     function round(value, decimals) {
         return Number(Math.round(value +'e'+ decimals) +'e-'+ decimals).toFixed(decimals);
-    }
+    };
+    
+    //Add a class used to center the charts in the viewport
+    function addForceCenter() {
+        d3.selectAll('svg')
+            .attr('class', 'force-center');
+    };
     
     // // // Chart Rendering Functions
     
