@@ -45,6 +45,7 @@
 /* Colors */
 /*Media Queries */
 @import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 .navbar-brand, #total-emissions-over-time svg, #composite-chart svg, #total-emissions-per-source-pie svg, #total-emissions-per-source svg, .dc-select-menu, h2 {
   margin: 0 auto;
   display: block; }
@@ -77,7 +78,13 @@ h1 {
 body {
   font-family: 'Ubuntu', sans-serif; }
 
+h2 {
+  font-family: 'Ubunto Mono', monospace; }
+
 .intro-text {
   margin-top: 10px; }
+
+.reveal-two div {
+  font-size: 2rem; }
 
 /*# sourceMappingURL=style.css.map */
