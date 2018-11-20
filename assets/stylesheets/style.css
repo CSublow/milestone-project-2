@@ -1,79 +1,39 @@
-/* HELPFUL REMINDERS*/
-/**/
-/**/
-/**/
-/* using placeholders */
-/* placeholders should be used for code that is intended for reuse */
-/* in this example, each div will have the same background properties, but the image used on each div class is different */
-/**/
-/**/
-/**/
-/* select an element using its parent */
-/**/
-/**/
-/**/
-/* use shorthand to declare multiple properties at once */
-/**/
-/**/
-/**/
-/* import other stylesheets */
-/**/
-/**/
-/**/
-/*declare the name of the class as container */
-/**/
-/**/
-/**/
-/* use loops (/)
-/* we want 4 .containers 1 through 4 */
-/**/
-/**/
-/**/
-/* use mixins */
-/**/
-/**/
-/**/
-/* use placeholders */
-/**/
-/**/
-/**/
-/* use of content keyword, useful for media queries */
-/*content can also be used for nested selectors*/
-/*SCSS:*/
-/*CSS output:*/
-/* Imports */
-/*Media Queries */
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
-.navbar-brand, #total-emissions-over-time svg, #composite-chart svg, #total-emissions-per-source-pie svg, #total-emissions-per-source svg, .dc-select-menu, h2 {
-  margin: 0 auto;
-  display: block; }
+/*
+Error: Invalid CSS after "...variables.scss"": expected selector or at-rule, was "@import "helper..."
+        on line 180 of style.scss
 
-main {
-  min-width: 758px;
-  max-width: 1990px; }
+175:         // }
+176: 
+177: /* Imports *\/
+178: // @import "helpers/media-queries.scss";
+179: @import "helpers/variables.scss"
+180: @import "helpers/mixins.scss";
+181: @import "helpers/placeholders.scss";
+182: 
+183: @import "components/structure.scss";
+184: @import "components/navbar.scss";
+185: @import "components/charts.scss";
 
-h1 {
-  font-size: 1.5rem; }
-  @media (min-width: 1110px) {
-    h1 {
-      font-size: 2.5rem; } }
-
-.navbar-brand {
-  /*overwrite default bs styles to center nav text*/ }
-
-#total-emissions-over-time .line {
-  /*make stroke thicker than default*/
-  stroke-width: 2.5px; }
-
-#total-emissions-per-source-pie svg .pie-slice-group {
-  /*add a stroke to the pie slices*/
-  stroke: black;
-  stroke-width: 1px; }
-
-body {
-  font-family: 'Ubuntu', sans-serif; }
-
-.intro-text {
-  margin-top: 10px; }
-
-/*# sourceMappingURL=style.css.map */
+Backtrace:
+style.scss:180
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:42:in `parse'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+/nix/store/zmisxnl63ica4zaviifixamr3xg27kzp-ruby-2.3.1-p0/lib/ruby/gems/2.3.0/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...variables.scss\"\": expected selector or at-rule, was \"@import \"helper...\"\A         on line 180 of style.scss\A \A 175:         // }\A 176: \A 177: /* Imports */\A 178: // @import \"helpers/media-queries.scss\";\A 179: @import \"helpers/variables.scss\"\A 180: @import \"helpers/mixins.scss\";\A 181: @import \"helpers/placeholders.scss\";\A 182: \A 183: @import \"components/structure.scss\";\A 184: @import \"components/navbar.scss\";\A 185: @import \"components/charts.scss\";"; }

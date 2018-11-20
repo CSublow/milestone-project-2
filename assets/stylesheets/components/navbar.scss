@@ -5,6 +5,10 @@ h1 {
     }
 }
 
+.navbar {
+    background-color: $green;
+}
+
 .navbar-brand {
     /*overwrite default bs styles to center nav text*/
     // margin: 0 auto;
