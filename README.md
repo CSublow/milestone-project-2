@@ -19,3 +19,5 @@ The Cloud9 IDE team
 
 References
 Intro text taken with modifications from https://en.wikipedia.org/wiki/Greenhouse_gas
+
+Scroll effect (delete if needed) - https://scrollrevealjs.org/guide/hello-world.html
