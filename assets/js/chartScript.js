@@ -3,6 +3,10 @@ queue()
     .defer(d3.json, "assets/data/data.json") //Fetch the data
     .await(makeGraph); //Call makeGraph when the data is ready 
 
+//Global Color Variables
+var green = "#0b9c00";
+console.log(green);
+
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
     if (error) throw error;
@@ -345,6 +349,7 @@ function makeGraph(error, ggData) {
     addForceCenter();
     
     // // // DEFINE FUNCTIONS
+    
     // // // General Functions
     
     //Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
@@ -404,7 +409,7 @@ function makeGraph(error, ggData) {
     };
     
     // // // Chart Rendering Functions
-
+    
     //Render the total emissions figure
     function totalEmissionsFigure(ndx) {
         dc.numberDisplay("#total-emissions-figure")
@@ -475,7 +480,9 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 //format the number as thousands with comma separator
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
-            });
+            })
+            .colorAccessor(d => d.key)
+            .ordinalColors([green, '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99']);;
         
         //Call the axes outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         lineChart
