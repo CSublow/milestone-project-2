@@ -659,6 +659,7 @@ function makeGraph(error, ggData) {
                 console.log(sumEmissions.value()); //sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + round(d.value / sumEmissions.value(), 4) * 100 + "%";
             })
+            .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor]) //The colors here go in order of highest to lowest value for the whole period
             .legend(dc.legend()
                 .itemHeight(13)
                 .gap(2));
@@ -695,7 +696,7 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
-            .colorAccessor(d => d.key)
+            .colorAccessor(d => d.key) //Required to give each bar an individual color
             //The ordinal data is ordered alphabetically, so we assign colors in the same way
             .ordinalColors([lpgColor, busesAndCoachesColor, carsDieselColor, carsPetrolColor, hgvColor, lgvDieselColor, lgvPetrolColor, mopedsColor, motorcyclesColor]);
             
