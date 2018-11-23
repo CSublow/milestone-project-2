@@ -835,7 +835,7 @@ function makeGraph(error, ggData) {
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
             yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
-            $('#percentage-p').css('visibility', 'visible'); //I want to ensure that paragraph with the percentage information is shown for all selection options bar all vehicles
+            $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
             if($('#source-selector select').val() == "Cars - Petrol") {
                 $('.show-source-span').html("Petrol cars accounted for");
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
