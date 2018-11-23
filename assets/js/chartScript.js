@@ -4,7 +4,9 @@ queue()
     .await(makeGraph); //Call makeGraph when the data is ready 
 
 //Global Color Variables
-var generalGreen = "#0b9c00";
+var generalColor = "#0b9c00",
+    carsPetrolColor = "#0b6623",
+    carsDieselColor
 
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
@@ -481,7 +483,7 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .colorAccessor(d => d.key)
-            .ordinalColors([generalGreen]);
+            .ordinalColors([generalColor]);
         
         //Call the axes outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         lineChart
