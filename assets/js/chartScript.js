@@ -5,8 +5,15 @@ queue()
 
 //Global Color Variables
 var generalColor = "#0b9c00",
-    carsPetrolColor = "#0b6623",
-    carsDieselColor
+    carsPetrolColor = "#9dc183",
+    carsDieselColor = "#708238",
+    lgvPetrolColor = "#c7ea46",
+    lgvDieselColor = "#3f704d",
+    hgvColor = "#00A86B",
+    busesAndCoachesColor = "#8F9779",
+    motorcyclesColor = "#4F7942",
+    mopedsColor = "#29AB87",
+    lpvColor = "#A9BA9D";
 
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
