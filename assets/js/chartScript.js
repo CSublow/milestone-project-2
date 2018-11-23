@@ -716,7 +716,8 @@ function makeGraph(error, ggData) {
                     .attr('x', +b.getAttribute('x') + (b.getAttribute('width')/2) )
                     .attr('y', +b.getAttribute('y') + -10)
                     .attr('text-anchor', 'middle')
-                    .attr('fill', 'black');
+                    .attr('fill', 'black')
+                    .style({'font-size': '0.8rem', 'font-style': 'italic'});
             }
 
             // // Declare colors
