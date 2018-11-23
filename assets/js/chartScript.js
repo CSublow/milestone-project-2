@@ -404,7 +404,7 @@ function makeGraph(error, ggData) {
     };
     
     // // // Chart Rendering Functions
-    
+
     //Render the total emissions figure
     function totalEmissionsFigure(ndx) {
         dc.numberDisplay("#total-emissions-figure")
@@ -686,39 +686,47 @@ function makeGraph(error, ggData) {
             .yAxisPadding('5')
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
-            });
+            })
+            .colorAccessor(d => d.key)
+            .ordinalColors(['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99']);
             
-            //Show values on top of the bars
-            barChart.on('renderlet', function(chart){
-            
-                var barsData = [];
-                var bars = chart.selectAll('.bar').each(function(d) { barsData.push(d); });
-            
-                //Remove old values (if found)
-                // d3.select(bars[0][0].parentNode).select('#inline-labels').remove();
-                //Create group for labels 
-                var gLabels = d3.select(bars[0][0].parentNode).append('g').attr('id','inline-labels');
-            
-                for (var i = bars[0].length - 1; i >= 0; i--) {
-            
-                    var b = bars[0][i];
-            
-                    gLabels
-                        .append("text")
-                        .text((barsData[i].data.value).toLocaleString('en'))
-                        .attr('x', +b.getAttribute('x') + (b.getAttribute('width')/2) )
-                        .attr('y', +b.getAttribute('y') + -10)
-                        .attr('text-anchor', 'middle')
-                        .attr('fill', 'black');
-                }
-            
-            });
-            
-            //Remove values on top of bars when chart is being redrawn
-            barChart.on("preRedraw", function(chart){
-                //Remove old values (if found)
-                chart.select('#inline-labels').remove();
-            });
+        //Show values on top of the bars
+        barChart.on('renderlet', function(chart){
+        
+            var barsData = [];
+            var bars = chart.selectAll('.bar').each(function(d) { barsData.push(d); });
+        
+            //Remove old values (if found)
+            // d3.select(bars[0][0].parentNode).select('#inline-labels').remove();
+            //Create group for labels 
+            var gLabels = d3.select(bars[0][0].parentNode).append('g').attr('id','inline-labels');
+        
+            for (var i = bars[0].length - 1; i >= 0; i--) {
+        
+                var b = bars[0][i];
+        
+                gLabels
+                    .append("text")
+                    .text((barsData[i].data.value).toLocaleString('en'))
+                    .attr('x', +b.getAttribute('x') + (b.getAttribute('width')/2) )
+                    .attr('y', +b.getAttribute('y') + -10)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'black');
+            }
+
+            // // Declare colors
+            // var colors = d3.scale.ordinal().domain(['Cars - Petrol', 'Cars - Diesel', 'LGV - Petrol', 'LGV - Diesel', 'HGV', 'Buses and Coaches', 'Motorcycles - >50c', 'Mopeds - <50cc', 'All LPG Vehicles'])
+            //                                 .range(['#16ff00', '#000000', '#87ff7c', '#71d868', '#46d639', '#24ce14', '#19a30d', '#31a327', '#53a84b']);
+            // chart.selectAll('rect.bar').each(function(d) {
+            //     d3.select(this).attr('style', 'fill: ' + colors(d.key));
+            // })
+        });
+        
+        //Remove values on top of bars when chart is being redrawn
+        barChart.on("preRedraw", function(chart){
+            //Remove old values (if found)
+            chart.select('#inline-labels').remove();
+        });
             
         barChart.filter = function() {}; //Remove chart interactivity
         

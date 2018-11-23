@@ -47,7 +47,7 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 .force-center, .navbar-brand, .dc-select-menu, h2, img {
-  margin: 0 auto;
+  margin: 10px auto;
   display: block; }
 
 main {
