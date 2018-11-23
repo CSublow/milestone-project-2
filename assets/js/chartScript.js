@@ -14,7 +14,7 @@ var generalColor = "#0b9c00",
     busesAndCoachesColor = "#8F9779",
     motorcyclesColor = "#4F7942",
     mopedsColor = "#29AB87",
-    lpvColor = "#A9BA9D";
+    lpgColor = "#A9BA9D";
 
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
@@ -579,7 +579,7 @@ function makeGraph(error, ggData) {
                                         return lineTitle("Mopeds - <50cc, ", d);
                                     }),
             lpgLine =           dc.lineChart(compositeChart)
-                                    .colors(lpvColor)
+                                    .colors(lpgColor)
                                     .group(totalEmissionsLPGGroup, "All LPG Vehicles")
                                     .title(function(d) {
                                         return lineTitle("All LPG Vehicles, ", d);
@@ -696,7 +696,8 @@ function makeGraph(error, ggData) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .colorAccessor(d => d.key)
-            .ordinalColors(['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99']);
+            //The ordinal data is ordered alphabetically, so we assign colors in the same way
+            .ordinalColors([lpgColor, busesAndCoachesColor, carsDieselColor, carsPetrolColor, hgvColor, lgvDieselColor, lgvPetrolColor, mopedsColor, motorcyclesColor]);
             
         //Show values on top of the bars
         barChart.on('renderlet', function(chart){
