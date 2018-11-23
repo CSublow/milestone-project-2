@@ -828,12 +828,14 @@ function makeGraph(error, ggData) {
     
     //The document must be rendered before d3 selections will work
     $(document).ready(function() {
+        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows initially, hide the percentage information
         
         adjustXTicks(); //This function must be called once the document is ready
         
         //Change the source figure descriptive text based on the value of the select element
         $('#source-selector select').change(function() {
             yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
+            $('#percentage-p').css('visibility', 'visible'); //I want to ensure that paragraph with the percentage information is shown for all selection options bar all vehicles
             if($('#source-selector select').val() == "Cars - Petrol") {
                 $('.show-source-span').html("Petrol cars accounted for");
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
@@ -854,6 +856,7 @@ function makeGraph(error, ggData) {
                 $('.show-source-span').html("LPG vehicles accounted for"); 
             } else { 
                 $('.show-source-span').html("There was a total of");
+                $('#percentage-p').css('visibility', 'hidden'); //Make sure the percentage information is hidden if the user reselects the default option
             };
         });
         
