@@ -15,7 +15,7 @@ ScrollReveal().reveal('.reveal-three', {
     reset: false
 });
 ScrollReveal().reveal('.reveal-four', {
-    delay: 1500,
+    delay: 1125,
     duration: 1000,
     reset: false
 });
