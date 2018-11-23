@@ -406,11 +406,6 @@ function makeGraph(error, ggData) {
             .attr("y2", "20");
     };
     
-    //Rounding function, courtesy of https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places/34796988#34796988
-    function round(value, decimals) {
-        return Number(Math.round(value +'e'+ decimals) +'e-'+ decimals).toFixed(decimals);
-    };
-    
     //Add a class used to center the charts in the viewport
     function addForceCenter() {
         d3.selectAll('svg')
@@ -657,7 +652,7 @@ function makeGraph(error, ggData) {
             })
             .title(function(d) {
                 console.log(sumEmissions.value()); //sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + round(d.value / sumEmissions.value(), 4) * 100 + "%";
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%";
             })
             .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor]) //The colors here go in order of highest to lowest value for the whole period
             .legend(dc.legend()
