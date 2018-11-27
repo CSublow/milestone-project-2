@@ -46,7 +46,7 @@
 /*Media Queries */
 @import url("https://fonts.googleapis.com/css?family=Ubuntu");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
-.force-center, .navbar-brand, .dc-select-menu, h2, img, footer p {
+.force-center, .navbar-brand, .dc-select-menu, h2, img {
   margin: 10px auto;
   display: block; }
 
