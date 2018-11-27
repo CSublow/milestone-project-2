@@ -89,6 +89,9 @@ h2 {
 .reveal-two div {
   font-size: 2rem; }
 
+footer p {
+  font-size: 0.75rem; }
+
 img {
   width: 620px;
   /*Different image widths based on viewport size*/ }
@@ -101,9 +104,5 @@ img {
   @media (min-width: 1266px) {
     img {
       width: initial; } }
-
-footer {
-  width: 100%;
-  /*stops footer wandering off to the right on very large screens*/ }
 
 /*# sourceMappingURL=style.css.map */
