@@ -1,3 +1,15 @@
 img {
     @extend %force-center;
+    width: 620px;
+    
+    /*Different image widths based on viewport size*/
+    @include mq(768px) {
+        width: 430px;
+    }
+    @include mq(1114px) {
+        width: 660px;
+    }
+    @include mq(1266px) {
+        width: initial;
+    }
 }

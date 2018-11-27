@@ -729,7 +729,7 @@ function makeGraph(error, ggData) {
         });
         
         //Remove values on top of bars when chart is being redrawn
-        barChart.on("preRedraw", function(chart){
+        barChart.on('preRedraw', function(chart){
             //Remove old values (if found)
             chart.select('#inline-labels').remove();
         });

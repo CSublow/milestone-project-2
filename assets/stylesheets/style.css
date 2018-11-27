@@ -89,4 +89,17 @@ h2 {
 .reveal-two div {
   font-size: 2rem; }
 
+img {
+  width: 620px;
+  /*Different image widths based on viewport size*/ }
+  @media (min-width: 768px) {
+    img {
+      width: 430px; } }
+  @media (min-width: 1114px) {
+    img {
+      width: 660px; } }
+  @media (min-width: 1266px) {
+    img {
+      width: initial; } }
+
 /*# sourceMappingURL=style.css.map */
