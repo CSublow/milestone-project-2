@@ -1,11 +1,7 @@
 footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     // font-family: 'Spirax', cursive;
     /*stops footer wandering off to the right on very large screens*/
-    max-width: 1904px;
-    border-top: 2px solid black;
     p {
         @extend %force-center;
     }
