@@ -65,7 +65,7 @@ h1 {
 
 .navbar {
   background-color: #0b9c00;
-  border: 2px solid black; }
+  border-bottom: 2px solid black; }
 
 .navbar-brand {
   /*overwrite default bs styles to center nav text*/ }
