@@ -659,6 +659,11 @@ function makeGraph(error, ggData) {
                 .itemHeight(13)
                 .gap(2));
 
+        //Remove click functionality from chart, this has to be done both here and on the bar chart to prevent clicks
+        pieChart.on('pretransition', function(chart) {
+            pieChart.selectAll('path').on('click', null);
+        });
+        
         pieChart.filter = function() {}; //Remove chart interactivity
         
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
@@ -726,7 +731,6 @@ function makeGraph(error, ggData) {
         
         //Remove values on top of bars when chart is being redrawn
         barChart.on('preRedraw', function(chart){
-            //Remove old values (if found)
             chart.select('#inline-labels').remove();
         });
     
