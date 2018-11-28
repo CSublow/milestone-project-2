@@ -97,6 +97,8 @@ footer {
   footer a {
     margin: 0 20px;
     color: white; }
+  footer a:hover {
+    color: white; }
   footer p {
     font-size: 0.75rem;
     margin-top: -10px; }
