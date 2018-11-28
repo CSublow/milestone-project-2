@@ -92,7 +92,8 @@ h2 {
 footer {
   background-color: #0b9c00;
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  color: white; }
   footer a {
     margin: 0 20px;
     color: white; }
