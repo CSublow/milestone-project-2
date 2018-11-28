@@ -694,15 +694,18 @@ function makeGraph(error, ggData) {
             .colorAccessor(d => d.key) //Required to give each bar an individual color
             //The ordinal data is ordered alphabetically, so we assign colors in the same way
             .ordinalColors([lpgColor, busesAndCoachesColor, carsDieselColor, carsPetrolColor, hgvColor, lgvDieselColor, lgvPetrolColor, mopedsColor, motorcyclesColor]);
-            
+ 
+        //Remove click functionality from chart, this conflicts with the values that are dislayed above the bars
+        barChart.on('pretransition', function(chart) {
+            barChart.selectAll('rect.bar').on('click', null);
+        });
+        
         //Show values on top of the bars
         barChart.on('renderlet', function(chart){
         
             var barsData = [];
             var bars = chart.selectAll('.bar').each(function(d) { barsData.push(d); });
-        
-            //Remove old values (if found)
-            // d3.select(bars[0][0].parentNode).select('#inline-labels').remove();
+            
             //Create group for labels 
             var gLabels = d3.select(bars[0][0].parentNode).append('g').attr('id','inline-labels');
         
@@ -719,13 +722,6 @@ function makeGraph(error, ggData) {
                     .attr('fill', 'black')
                     .style({'font-size': '0.8rem', 'font-style': 'italic'});
             }
-
-            // // Declare colors
-            // var colors = d3.scale.ordinal().domain(['Cars - Petrol', 'Cars - Diesel', 'LGV - Petrol', 'LGV - Diesel', 'HGV', 'Buses and Coaches', 'Motorcycles - >50c', 'Mopeds - <50cc', 'All LPG Vehicles'])
-            //                                 .range(['#16ff00', '#000000', '#87ff7c', '#71d868', '#46d639', '#24ce14', '#19a30d', '#31a327', '#53a84b']);
-            // chart.selectAll('rect.bar').each(function(d) {
-            //     d3.select(this).attr('style', 'fill: ' + colors(d.key));
-            // })
         });
         
         //Remove values on top of bars when chart is being redrawn
@@ -733,9 +729,7 @@ function makeGraph(error, ggData) {
             //Remove old values (if found)
             chart.select('#inline-labels').remove();
         });
-            
-        barChart.filter = function() {}; //Remove chart interactivity
-        
+    
         $(window).resize(function() {
             barChart
                 .transitionDuration(0); //Remove transitionDuration before the chart has been resized
