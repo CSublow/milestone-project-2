@@ -89,11 +89,16 @@ h2 {
 .reveal-two div {
   font-size: 2rem; }
 
-footer a {
-  margin: 0 20px; }
-footer p {
-  font-size: 0.75rem;
-  margin-top: -10px; }
+footer {
+  background-color: #0b9c00;
+  width: 100%;
+  position: absolute; }
+  footer a {
+    margin: 0 20px;
+    color: white; }
+  footer p {
+    font-size: 0.75rem;
+    margin-top: -10px; }
 
 img {
   width: 620px;
