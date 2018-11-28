@@ -117,3 +117,70 @@
     <script src="assets/js/chartScript.js"></script>
 </body>
 </html>
+
+<!-- UNUSUED SCRIPTS -->
+<script>
+    function carPetrolFigure(ndx) {
+        dc.numberDisplay("#show-total-figure")
+            .group(totalEmissionsCarPetrolGroupSum)
+            .formatNumber(d3.format(".0f"))
+            .valueAccessor(function(d) {
+                return d;
+            })    
+    };
+    function carPetrolPercentage(ndx) {
+        dc.numberDisplay("#show-total-figure-percentage")
+            .group(totalEmissionsCarPetrolGroupSum)
+            .formatNumber(d3.format(".2%"))
+            .valueAccessor(function(d) {
+                return d / sumEmissionsValue;
+            })    
+    };
+    function carPetrolFigure1990(ndx) {
+        dc.numberDisplay("#show-total-figure-1990")
+            .group(emissionsCarPetrolGroup1990)
+            .formatNumber(d3.format(".0f"))
+            .valueAccessor(function(d) {
+                    return d;
+            })  
+    }
+    function carPetrolPercentage1990(ndx) {
+        dc.numberDisplay("#show-total-figure-percentage-1990")
+            .group(emissionsCarPetrolGroup1990)
+            .formatNumber(d3.format(".2%"))
+            .valueAccessor(function(d) {
+                return d / emissions1990SumValue;
+            })    
+    };
+    function totalEmissionsCarPetrol(ndx) {
+        dc.barChart("#total-emissions-car-petrol")
+            .width(700)
+            .height(500)
+            .margins({top:10, right:50, bottom: 100, left:60})
+            .dimension(yearDim)
+            .group(totalEmissionsCarPetrolGroup)
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal);
+    };
+    function totalEmissionsCarDiesel(ndx) {
+        dc.barChart("#total-emissions-car-diesel")
+            .width(700)
+            .height(500)
+            .margins({top:10, right:50, bottom: 100, left:60})
+            .dimension(yearDim)
+            .group(totalEmissionsCarDieselGroup)
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal);
+    };
+    
+    function emissionsPerSource1990(ndx) {
+        dc.barChart("#emissions-1990")
+            .width(700)
+            .height(500)
+            .margins({top:10, right:50, bottom: 100, left:60})
+            .dimension(sourceDim)
+            .group(emissions1990)
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal);
+    };
+</script>

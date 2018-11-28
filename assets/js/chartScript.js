@@ -330,28 +330,26 @@ function makeGraph(error, ggData) {
     averageEmissionsFigure(ndx);
     
     showSourceSelector(ndx);
-    showYearSelector(ndx);
-    
-    periodFigure(ndx);
     timeFigure(ndx);
     timeFigurePercentage(ndx);
+    totalEmissionsOverTime(ndx);
+    compositeChart(ndx);
     
-    carPetrolFigure(ndx);
-    carPetrolPercentage(ndx);
-    carPetrolFigure1990(ndx);
-    
-    carPetrolPercentage1990(ndx);
-    
+    showYearSelector(ndx);
+    periodFigure(ndx);
     totalEmissionsPerSource(ndx);
     totalEmissionsPerSourcePie(ndx);
-    totalEmissionsOverTime(ndx);
     
-    totalEmissionsCarPetrol(ndx);
-    totalEmissionsCarDiesel(ndx);
+    // carPetrolFigure(ndx);
+    // carPetrolPercentage(ndx);
+    // carPetrolFigure1990(ndx);
     
-    emissionsPerSource1990(ndx);
+    // carPetrolPercentage1990(ndx);
     
-    compositeChart(ndx);
+    // totalEmissionsCarPetrol(ndx);
+    // totalEmissionsCarDiesel(ndx);
+    
+    // emissionsPerSource1990(ndx);
 
     dc.renderAll(); //Render all charts
     
@@ -359,7 +357,7 @@ function makeGraph(error, ggData) {
     
     // // // DEFINE FUNCTIONS
     
-    // // // General Functions
+    // // // GENERAL FUNCTIONS
     
     //Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
     function chartsResponsive(chartType, chartWidthSmall, chartWidthLarge, renderChart, chartLegend, legendXSmall, legendXLarge) {
@@ -412,7 +410,7 @@ function makeGraph(error, ggData) {
             .attr('class', 'force-center');
     };
     
-    // // // Chart Rendering Functions
+    // // // CHART RENDERING FUNCTIONS
     
     //Render the total emissions figure
     function totalEmissionsFigure(ndx) {
@@ -446,6 +444,26 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
+    }
+    
+    function timeFigure(ndx) {
+        dc.numberDisplay("#show-time-figure")
+            .group(totalEmissionsPerYearGroupSum)
+            .formatNumber(d3.format("0,000"))
+            .transitionDuration(0)
+            .valueAccessor(function(d) {
+                return d;
+            })    
+    }
+    
+    function timeFigurePercentage(ndx) {
+        dc.numberDisplay("#show-time-figure-percentage")
+            .group(totalEmissionsPerYearGroupSum)
+            .formatNumber(d3.format(".2%"))
+            .transitionDuration(0)
+            .valueAccessor(function(d) {
+                return d / sumEmissionsValue;
+            })    
     }
     
     //Render the total emissions over time chart
@@ -635,6 +653,16 @@ function makeGraph(error, ggData) {
             });
     };
     
+    function periodFigure(ndx) {
+        dc.numberDisplay("#show-period-figure")
+            .group(sumEmissions)
+            .formatNumber(d3.format("0,000"))
+            .transitionDuration(0)
+            .valueAccessor(function(d) {
+                return d;
+            })    
+    }
+    
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
         
@@ -743,99 +771,6 @@ function makeGraph(error, ggData) {
             
             adjustXTicks(); //The x ticks must also be rerendered or else they revert to their default and unwanted values
         });
-    };
-
-    function timeFigure(ndx) {
-        dc.numberDisplay("#show-time-figure")
-            .group(totalEmissionsPerYearGroupSum)
-            .formatNumber(d3.format("0,000"))
-            .transitionDuration(0)
-            .valueAccessor(function(d) {
-                return d;
-            })    
-    }
-    
-    function periodFigure(ndx) {
-        dc.numberDisplay("#show-period-figure")
-            .group(sumEmissions)
-            .formatNumber(d3.format("0,000"))
-            .transitionDuration(0)
-            .valueAccessor(function(d) {
-                return d;
-            })    
-    }
-    
-    function timeFigurePercentage(ndx) {
-        dc.numberDisplay("#show-time-figure-percentage")
-            .group(totalEmissionsPerYearGroupSum)
-            .formatNumber(d3.format(".2%"))
-            .transitionDuration(0)
-            .valueAccessor(function(d) {
-                return d / sumEmissionsValue;
-            })    
-    }
-    function carPetrolFigure(ndx) {
-        dc.numberDisplay("#show-total-figure")
-            .group(totalEmissionsCarPetrolGroupSum)
-            .formatNumber(d3.format(".0f"))
-            .valueAccessor(function(d) {
-                return d;
-            })    
-    };
-    function carPetrolPercentage(ndx) {
-        dc.numberDisplay("#show-total-figure-percentage")
-            .group(totalEmissionsCarPetrolGroupSum)
-            .formatNumber(d3.format(".2%"))
-            .valueAccessor(function(d) {
-                return d / sumEmissionsValue;
-            })    
-    };
-    function carPetrolFigure1990(ndx) {
-        dc.numberDisplay("#show-total-figure-1990")
-            .group(emissionsCarPetrolGroup1990)
-            .formatNumber(d3.format(".0f"))
-            .valueAccessor(function(d) {
-                    return d;
-            })  
-    }
-    function carPetrolPercentage1990(ndx) {
-        dc.numberDisplay("#show-total-figure-percentage-1990")
-            .group(emissionsCarPetrolGroup1990)
-            .formatNumber(d3.format(".2%"))
-            .valueAccessor(function(d) {
-                return d / emissions1990SumValue;
-            })    
-    };
-    function totalEmissionsCarPetrol(ndx) {
-        dc.barChart("#total-emissions-car-petrol")
-            .width(700)
-            .height(500)
-            .margins({top:10, right:50, bottom: 100, left:60})
-            .dimension(yearDim)
-            .group(totalEmissionsCarPetrolGroup)
-            .x(d3.scale.ordinal())
-            .xUnits(dc.units.ordinal);
-    };
-    function totalEmissionsCarDiesel(ndx) {
-        dc.barChart("#total-emissions-car-diesel")
-            .width(700)
-            .height(500)
-            .margins({top:10, right:50, bottom: 100, left:60})
-            .dimension(yearDim)
-            .group(totalEmissionsCarDieselGroup)
-            .x(d3.scale.ordinal())
-            .xUnits(dc.units.ordinal);
-    };
-    
-    function emissionsPerSource1990(ndx) {
-        dc.barChart("#emissions-1990")
-            .width(700)
-            .height(500)
-            .margins({top:10, right:50, bottom: 100, left:60})
-            .dimension(sourceDim)
-            .group(emissions1990)
-            .x(d3.scale.ordinal())
-            .xUnits(dc.units.ordinal);
     };
     
     $(document).ready(function() {
