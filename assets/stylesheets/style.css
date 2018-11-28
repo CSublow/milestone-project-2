@@ -90,7 +90,8 @@ h2 {
   font-size: 2rem; }
 
 footer p {
-  font-size: 0.75rem; }
+  font-size: 0.75rem;
+  margin-top: -10px; }
 
 img {
   width: 620px;
