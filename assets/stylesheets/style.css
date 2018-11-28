@@ -1,87 +1,121 @@
-/*
-Error: Undefined variable: "$min-width".
-        on line 8 of components/structure.scss
-        from line 182 of style.scss
+/* HELPFUL REMINDERS*/
+/**/
+/**/
+/**/
+/* using placeholders */
+/* placeholders should be used for code that is intended for reuse */
+/* in this example, each div will have the same background properties, but the image used on each div class is different */
+/**/
+/**/
+/**/
+/* select an element using its parent */
+/**/
+/**/
+/**/
+/* use shorthand to declare multiple properties at once */
+/**/
+/**/
+/**/
+/* import other stylesheets */
+/**/
+/**/
+/**/
+/*declare the name of the class as container */
+/**/
+/**/
+/**/
+/* use loops (/)
+/* we want 4 .containers 1 through 4 */
+/**/
+/**/
+/**/
+/* use mixins */
+/**/
+/**/
+/**/
+/* use placeholders */
+/**/
+/**/
+/**/
+/* use of content keyword, useful for media queries */
+/*content can also be used for nested selectors*/
+/*SCSS:*/
+/*CSS output:*/
+/* Imports */
+/* Colors */
+/* Structure */
+/*Media Queries */
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+.force-center, .navbar-brand, .dc-select-menu, h2, img {
+  margin: 10px auto;
+  display: block; }
 
-3: /**\/
-4: /**\/
-5: /* using placeholders *\/
-6: /* placeholders should be used for code that is intended for reuse *\/
-7: /* in this example, each div will have the same background properties, but the image used on each div class is different *\/
-8:             // %backgroundImage {
-9:             //     background: {
-10:             //         size: cover;
-11:             //         position: center center;
-12:             //         repeat: no-repeat;
-13:             //     }
+body {
+  min-width: 758px;
+  max-width: 1990px; }
 
-Backtrace:
-components/structure.scss:8
-style.scss:182
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/script/tree/variable.rb:49:in `_perform'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/script/tree/node.rb:50:in `perform'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `block in with_base'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `with_base'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:440:in `map'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `block in with_base'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `with_base'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:325:in `map'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:88:in `block in with_import'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:88:in `with_import'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `block in with_base'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `with_base'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `map'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/root_node.rb:36:in `css_tree'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:209:in `each'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:320:in `block in watch'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
-/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$min-width\".\A         on line 8 of components/structure.scss\A         from line 182 of style.scss\A \A 3: /**/\A 4: /**/\A 5: /* using placeholders */\A 6: /* placeholders should be used for code that is intended for reuse */\A 7: /* in this example, each div will have the same background properties, but the image used on each div class is different */\A 8:             // %backgroundImage {\A 9:             //     background: {\A 10:             //         size: cover;\A 11:             //         position: center center;\A 12:             //         repeat: no-repeat;\A 13:             //     }"; }
+section {
+  margin-top: 20px; }
+
+h1 {
+  font-size: 1.5rem; }
+  @media (min-width: 1110px) {
+    h1 {
+      font-size: 2.5rem; } }
+
+.navbar {
+  background-color: #0b9c00;
+  border-bottom: 2px solid black; }
+
+.navbar-brand {
+  /*overwrite default bs styles to center nav text*/ }
+
+#total-emissions-over-time .line {
+  /*make stroke thicker than default*/
+  stroke-width: 2.5px; }
+
+#total-emissions-per-source-pie svg .pie-slice-group {
+  /*add a stroke to the pie slices*/
+  stroke: black;
+  stroke-width: 1px; }
+
+body {
+  font-family: 'Ubuntu', sans-serif; }
+
+h2 {
+  font-family: 'Ubunto Mono', monospace;
+  font-size: 2.5rem; }
+
+.reveal-two div {
+  font-size: 2rem; }
+
+footer {
+  min-width: 758px;
+  background-color: #0b9c00;
+  width: 100%;
+  position: absolute;
+  color: white; }
+  footer a {
+    margin: 0 20px;
+    color: white; }
+  footer a:hover {
+    color: white; }
+  footer p {
+    font-size: 0.75rem;
+    margin-top: -10px; }
+
+img {
+  width: 620px;
+  /*Different image widths based on viewport size*/ }
+  @media (min-width: 768px) {
+    img {
+      width: 430px; } }
+  @media (min-width: 1114px) {
+    img {
+      width: 660px; } }
+  @media (min-width: 1266px) {
+    img {
+      width: initial; } }
+
+/*# sourceMappingURL=style.css.map */
