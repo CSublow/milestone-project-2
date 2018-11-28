@@ -92,15 +92,11 @@ h2 {
 
 footer {
   min-width: 758px;
-  background-color: #0b9c00;
+  /* Prevent the footer being squashed down on smaller viewports */
   width: 100%;
-  position: absolute;
-  color: white; }
+  position: absolute; }
   footer a {
-    margin: 0 20px;
-    color: white; }
-  footer a:hover {
-    color: white; }
+    margin: 0 20px; }
   footer p {
     font-size: 0.75rem;
     margin-top: -10px; }

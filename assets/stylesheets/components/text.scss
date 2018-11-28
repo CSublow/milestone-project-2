@@ -20,17 +20,17 @@ h2 {
 }
 
 footer {
-    min-width: 758px;
-    background-color: $green;
+    min-width: $min-width; /* Prevent the footer being squashed down on smaller viewports */
+    // background-color: $green;
     width: 100%;
     position: absolute;
-    color: white;
+    // color: white;
     a {
         margin: 0 20px;
-        color: white;
+        // color: white;
     }
     a:hover {
-        color: white;
+        // color: white;
     }
     p {
         font-size: 0.75rem;
