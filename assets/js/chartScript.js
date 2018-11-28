@@ -840,7 +840,6 @@ function makeGraph(error, ggData) {
             .xUnits(dc.units.ordinal);
     };
     
-    //The document must be rendered before d3 selections will work
     $(document).ready(function() {
         $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows initially, hide the percentage information
         
