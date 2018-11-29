@@ -67,7 +67,16 @@ h1 {
 
 .navbar {
   background-color: #0b9c00;
-  border-bottom: 2px solid black; }
+  border-bottom: 2px solid black;
+  flex-direction: column;
+  /*Bootstrap navbars are display: flex by default, so this declaration ensures the subtitles are stack properly*/ }
+  .navbar h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: white; }
+    @media (min-width: 1110px) {
+      .navbar h2 {
+        font-size: 2rem; } }
 
 #total-emissions-over-time .line {
   /*make stroke thicker than default*/

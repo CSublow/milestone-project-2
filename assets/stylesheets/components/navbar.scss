@@ -10,4 +10,15 @@ h1 {
 .navbar {
     background-color: $green;
     border-bottom: 2px solid black;
+    flex-direction: column; /*Bootstrap navbars are display: flex by default, so this declaration ensures the subtitles are stack properly*/
+    h2 {
+       font: {
+           family: 'Roboto', sans-serif;
+           size: 1.2rem;
+       }
+       color: white;
+        @include mq(1110px) {
+            font-size: 2rem;
+        }
+    }
 }
