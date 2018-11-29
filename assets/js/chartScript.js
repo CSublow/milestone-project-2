@@ -35,11 +35,11 @@ function makeGraph(error, ggData) {
         sumEmissionsValue = sumEmissions.value(),
         
         countYears = yearDim.group().reduceCount().size(),
-        countSources = sourceDim.group().reduceCount().size(),
+        countSources = sourceDim.group().reduceCount().size();
         
         
-        //Source Groups
-        totalEmissionsCarPetrolGroup = yearDim.group().reduceSum(function(d) {
+    //Source Groups
+    var totalEmissionsCarPetrolGroup = yearDim.group().reduceSum(function(d) {
             if (d.Source === "Cars - Petrol") {
                 return d.Emissions;
             } else {
