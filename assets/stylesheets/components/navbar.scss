@@ -1,5 +1,7 @@
 h1 {
     font-size: 1.5rem;
+    color: white;
+    @extend %force-center;
     @include mq(1110px) {
         font-size: 2.5rem;
     }
@@ -8,10 +10,4 @@ h1 {
 .navbar {
     background-color: $green;
     border-bottom: 2px solid black;
-}
-
-.navbar-brand {
-    /*overwrite default bs styles to center nav text*/
-    // margin: 0 auto;
-    @extend %force-center;
 }

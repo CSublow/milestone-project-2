@@ -47,7 +47,7 @@
 /*Media Queries */
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
-.force-center, .navbar-brand, .dc-select-menu, h2, img {
+.force-center, h1, .dc-select-menu, h2, img {
   margin: 15px auto;
   display: block; }
 
@@ -59,7 +59,8 @@ section {
   margin-top: 20px; }
 
 h1 {
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  color: white; }
   @media (min-width: 1110px) {
     h1 {
       font-size: 2.5rem; } }
@@ -67,9 +68,6 @@ h1 {
 .navbar {
   background-color: #0b9c00;
   border-bottom: 2px solid black; }
-
-.navbar-brand {
-  /*overwrite default bs styles to center nav text*/ }
 
 #total-emissions-over-time .line {
   /*make stroke thicker than default*/
