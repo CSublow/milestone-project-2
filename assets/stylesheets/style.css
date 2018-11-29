@@ -104,8 +104,8 @@ h2 {
 
 footer {
   min-width: 758px;
-  /* Prevent the footer being squashed down on smaller viewports */
   width: 100%;
+  max-width: 1990px;
   position: absolute; }
   footer a {
     margin: 0 20px; }
