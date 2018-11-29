@@ -782,6 +782,7 @@ function makeGraph(error, ggData) {
         $('#source-selector select').change(function() {
             yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
             $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+            //The text to update to the span is different for each value, hence the neccessity for the long logic chain below
             if($('#source-selector select').val() == "Cars - Petrol") {
                 $('.show-source-span').html("Petrol cars accounted for");
             } else if ($('#source-selector select').val() == "Cars - Diesel") {
@@ -808,7 +809,6 @@ function makeGraph(error, ggData) {
         
         $('#year-selector select').change(function() { //On the year select box change...
             sourceSelectMenu.filterAll(); //Reset the source select box when the year select box is changed
-            // console.log(parseInt($('#year-selector select').val()))
             if ($('#year-selector select').val() == '') { //If the year selector is the default value
                 $('#period-span').html("throughout the period"); //Update html to correct text 
             } else {
