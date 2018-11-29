@@ -25,3 +25,5 @@ Scroll effect (delete if needed) - https://scrollrevealjs.org/guide/hello-world.
 congestion image - https://e3.365dm.com/16/11/1096x616/a7d3092211c1414867d45fd9b660a8e4742e80027de15cf0853ae24f6e540144_3843067.jpg?bypass-service-worker&20161216060748
 
 navbar background image - https://www.dealfuel.com/wp-content/uploads/2015/06/color5.png
+
+image resize tool - https://imageresize.org/
