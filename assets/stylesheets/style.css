@@ -47,7 +47,7 @@
 /*Media Queries */
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
-.force-center, h1, .dc-select-menu, h2, img {
+body, .force-center, h1, .dc-select-menu, h2, img {
   margin: 15px auto;
   display: block; }
 
