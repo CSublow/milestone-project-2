@@ -129,5 +129,7 @@ img {
 .fa-div {
   font-size: 50px;
   margin: 0 auto; }
+  .fa-div i {
+    margin: 0 20px; }
 
 /*# sourceMappingURL=style.css.map */
