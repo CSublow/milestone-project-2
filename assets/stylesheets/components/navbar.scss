@@ -8,10 +8,10 @@ h1 {
 }
 
 .navbar {
-    // background-color: $green;
+    background-color: $green; //Backup background color in case failure to load image
     background-image: url("../images/color5.png");
     border-bottom: 2px solid black;
-    flex-direction: column; /*Bootstrap navbars are display: flex by default, so this declaration ensures the subtitles are stack properly*/
+    flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the subtitles are stacked properly
     h2 {
        font: {
            family: 'Roboto', sans-serif;

@@ -66,10 +66,10 @@ h1 {
       font-size: 2.5rem; } }
 
 .navbar {
+  background-color: #0b9c00;
   background-image: url("../images/color5.png");
   border-bottom: 2px solid black;
-  flex-direction: column;
-  /*Bootstrap navbars are display: flex by default, so this declaration ensures the subtitles are stack properly*/ }
+  flex-direction: column; }
   .navbar h2 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
