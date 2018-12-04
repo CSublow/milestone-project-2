@@ -576,61 +576,51 @@ function makeGraph(error, ggData) {
             $(targetDiv).change(function() {
                 yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
                 $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                
+                //Redraw the graphs with required filter
+                function redrawGraphs(sourceFilter) {
+                    sourceSelectMenu
+                        .replaceFilter([sourceFilter])
+                        .redrawGroup();     
+                };
+                
                 //The text to update to the span is different for each value, hence the neccessity for the long logic chain below
                 if($(targetDiv).val() == "Cars - Petrol") {
                     $('.show-source-span').html("Petrol cars accounted for");
                     $(otherDiv).val("Cars - Petrol");
-                    sourceSelectMenu
-                        .replaceFilter(["Cars - Petrol"])
-                        .redrawGroup();
+                    redrawGraphs("Cars - Petrol");
                 } else if ($(targetDiv).val() == "Cars - Diesel") {
                     $('.show-source-span').html("Diesel cars accounted for");
                     $(otherDiv).val("Cars - Diesel");
-                    sourceSelectMenu
-                        .replaceFilter(["Cars - Diesel"])
-                        .redrawGroup();
+                    redrawGraphs("Cars - Diesel");
                 } else if ($(targetDiv).val() == "LGV - Petrol") {
                     $('.show-source-span').html("Petrol LGVs accounted for");
                     $(otherDiv).val("LGV - Petrol");
-                    sourceSelectMenu
-                        .replaceFilter(["LGV - Petrol"])
-                        .redrawGroup();
+                    redrawGraphs("LGV - Petrol");
                 } else if ($(targetDiv).val() == "LGV - Diesel") {
                     $('.show-source-span').html("Diesel LGVs accounted for");
                     $(otherDiv).val("LGV - Diesel");
-                    sourceSelectMenu
-                        .replaceFilter(["LGV - Diesel"])
-                        .redrawGroup();
+                    redrawGraphs("LGV - Diesel");
                 } else if ($(targetDiv).val() == "Buses and Coaches") {
                     $('.show-source-span').html("Buses and coaches accounted for"); 
                     $(otherDiv).val("Buses and Coaches");
-                    sourceSelectMenu
-                        .replaceFilter(["Buses and Coaches"])
-                        .redrawGroup();
+                    redrawGraphs("Buses and Coaches");
                 } else if ($(targetDiv).val() == "HGV") {
                     $('.show-source-span').html("HGVs accounted for"); 
                     $(otherDiv).val("HGV");
-                    sourceSelectMenu
-                        .replaceFilter(["HGV"])
-                        .redrawGroup();
+                    redrawGraphs("HGV");
                 } else if ($(targetDiv).val() == "Motorcycles - >50cc") {
                     $('.show-source-span').html("Motorcycles above 50cc accounted for"); 
                     $(otherDiv).val("Motorcycles - >50cc");
-                    sourceSelectMenu
-                        .replaceFilter(["Motorcycles - >50cc"])
-                        .redrawGroup();
+                    redrawGraphs("Motorcycles - >50cc");
                 } else if ($(targetDiv).val() == "Mopeds - <50cc") {
                     $('.show-source-span').html("Mopeds below 50cc accounted for"); 
                     $(otherDiv).val("Mopeds - <50cc");
-                    sourceSelectMenu
-                        .replaceFilter(["Mopeds - <50cc"])
-                        .redrawGroup();
+                    redrawGraphs("Mopeds - <50cc");
                 } else if ($(targetDiv).val() == "All LPG Vehicles") {
                     $('.show-source-span').html("LPG vehicles accounted for"); 
                     $(otherDiv).val("All LPG Vehicles");
-                    sourceSelectMenu
-                        .replaceFilter(["All LPG Vehicles"])
-                        .redrawGroup();
+                    redrawGraphs("All LPG Vehicles");
                 } else { 
                     $('.show-source-span').html("There was a total of");
                     $(otherDiv).val("");
