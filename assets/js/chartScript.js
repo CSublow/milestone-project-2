@@ -212,7 +212,7 @@ function makeGraph(error, ggData) {
     $('#average-emissions-figure').html(generatedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering
 
     //Render the select menu to show data for a particular vehicle type
-    var sourceSelectMenu; //Declare outside of function so that a reset can be applied in jQuery code during select box change event
+    var sourceSelectMenu; //Declare outside of function for use in jQuery beginning line x
     function showSourceSelector(ndx) {
         sourceSelectMenu = dc.selectMenu("#source-selector");
         sourceSelectMenu
@@ -419,7 +419,7 @@ function makeGraph(error, ggData) {
     };
     
     //Render the select menu to show data for a particular year
-    var yearSelectMenu; //Declare outside of function so that a reset can be applied in jQuery code during select box change event
+    var yearSelectMenu; //Declare outside of function for use in jQuery beginning line x
     function showYearSelector(ndx) {
         yearSelectMenu = dc.selectMenu('#year-selector');
         yearSelectMenu
@@ -567,6 +567,10 @@ function makeGraph(error, ggData) {
         sourceSelectChange('#source-selector select', '#source-selector-2');
         sourceSelectChange('#source-selector-2', '#source-selector select');
         
+        //Likewise for both year selects
+        yearSelectorChange('#year-selector select', '#year-selector-2');
+        yearSelectorChange('#year-selector-2', '#year-selector select');
+        
         //Change the source figure descriptive text based on the value of the select element and ensure selection boxes match
         function sourceSelectChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() {
@@ -629,7 +633,7 @@ function makeGraph(error, ggData) {
                         .redrawGroup();
                 } else { 
                     $('.show-source-span').html("There was a total of");
-                    $(otherDiv).val('');
+                    $(otherDiv).val("");
                     sourceSelectMenu
                         .filterAll()
                         .redrawGroup();
@@ -637,16 +641,24 @@ function makeGraph(error, ggData) {
                 };
             });
         };
-            
-        $('#year-selector select').change(function() { //On the year select boxes change...
-            //Reset the source select boxes when the year select box is changed
-            sourceSelectMenu.filterAll(); //Source select box 1
-            $('#source-selector-2').val(''); //Source select box 2
-            if ($('#year-selector select').val() == '') { //If the year selector is the default value
-                $('#period-span').html("throughout the period"); //Update html to correct text 
-            } else {
-                $('#period-span').html("in " + $('#year-selector select').val()); //Update the html to reflect the value that is in the select box
-            };
-        });
+        
+        function yearSelectorChange(targetDiv, otherDiv) {
+            $(targetDiv).change(function() { //On the year select boxes change...
+                //Reset the source select boxes when the year select box is changed
+                sourceSelectMenu.filterAll(); //Source select box 1
+                $('#source-selector-2').val(""); //Source select box 2
+                if ($(targetDiv).val() == "") { //If the year selector is the default value
+                    $('#period-span').html("throughout the period"); //Update html to correct text 
+                    $(otherDiv).val(""); //Set other select box to default value
+                } else {
+                    $('#period-span').html("in " + $(targetDiv).val()); //Update the html to reflect the value that is in the select box
+                    $(otherDiv).val($(targetDiv).val()); //Set the other year select box to match the target's value
+                    //Make sure the graph is redrawn no matter which select box the user interacts with
+                    yearSelectMenu
+                        .replaceFilter($(targetDiv).val())
+                        .redrawGroup();
+                };
+            });
+        };
     });
 };
