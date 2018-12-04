@@ -560,34 +560,79 @@ function makeGraph(error, ggData) {
         
         adjustXTicks(); //This function must be called once the document is ready
         
+        sourceSelectChange('#source-selector select', '#source-selector-2');
+        sourceSelectChange('#source-selector-2', '#source-selector select');
+        
         //Change the source figure descriptive text based on the value of the select element
-        $('#source-selector select').change(function() {
-            yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
-            $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
-            //The text to update to the span is different for each value, hence the neccessity for the long logic chain below
-            if($('#source-selector select').val() == "Cars - Petrol") {
-                $('.show-source-span').html("Petrol cars accounted for");
-            } else if ($('#source-selector select').val() == "Cars - Diesel") {
-                $('.show-source-span').html("Diesel cars accounted for"); 
-            } else if ($('#source-selector select').val() == "LGV - Petrol") {
-                $('.show-source-span').html("Petrol LGVs accounted for"); 
-            } else if ($('#source-selector select').val() == "LGV - Diesel") {
-                $('.show-source-span').html("Diesel LGVs accounted for"); 
-            } else if ($('#source-selector select').val() == "Buses and Coaches") {
-                $('.show-source-span').html("Buses and coaches accounted for"); 
-            } else if ($('#source-selector select').val() == "HGV") {
-                $('.show-source-span').html("HGVs accounted for"); 
-            } else if ($('#source-selector select').val() == "Motorcycles - >50cc") {
-                $('.show-source-span').html("Motorcycles above 50cc accounted for"); 
-            } else if ($('#source-selector select').val() == "Mopeds - <50cc") {
-                $('.show-source-span').html("Mopeds below 50cc accounted for"); 
-            } else if ($('#source-selector select').val() == "All LPG Vehicles") {
-                $('.show-source-span').html("LPG vehicles accounted for"); 
-            } else { 
-                $('.show-source-span').html("There was a total of");
-                $('#percentage-p').css('visibility', 'hidden'); //Make sure the percentage information is hidden if the user reselects the default option
-            };
-        });
+        function sourceSelectChange(targetDiv, otherDiv) {
+            $(targetDiv).change(function() {
+                yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
+                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                //The text to update to the span is different for each value, hence the neccessity for the long logic chain below
+                if($(targetDiv).val() == "Cars - Petrol") {
+                    $('.show-source-span').html("Petrol cars accounted for");
+                    $(otherDiv).val("Cars - Petrol");
+                    sourceSelectMenu
+                        .replaceFilter(["Cars - Petrol"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "Cars - Diesel") {
+                    $('.show-source-span').html("Diesel cars accounted for");
+                    $(otherDiv).val("Cars - Diesel");
+                    sourceSelectMenu
+                        .replaceFilter(["Cars - Diesel"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "LGV - Petrol") {
+                    $('.show-source-span').html("Petrol LGVs accounted for");
+                    $(otherDiv).val("LGV - Petrol");
+                    sourceSelectMenu
+                        .replaceFilter(["LGV - Petrol"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "LGV - Diesel") {
+                    $('.show-source-span').html("Diesel LGVs accounted for");
+                    $(otherDiv).val("LGV - Diesel");
+                    sourceSelectMenu
+                        .replaceFilter(["LGV - Diesel"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "Buses and Coaches") {
+                    $('.show-source-span').html("Buses and coaches accounted for"); 
+                    $(otherDiv).val("Buses and Coaches");
+                    sourceSelectMenu
+                        .replaceFilter(["Buses and Coaches"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "HGV") {
+                    $('.show-source-span').html("HGVs accounted for"); 
+                    $(otherDiv).val("HGV");
+                    sourceSelectMenu
+                        .replaceFilter(["HGV"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "Motorcycles - >50cc") {
+                    $('.show-source-span').html("Motorcycles above 50cc accounted for"); 
+                    $(otherDiv).val("Motorcycles - >50cc");
+                    sourceSelectMenu
+                        .replaceFilter(["Motorcycles - >50cc"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "Mopeds - <50cc") {
+                    $('.show-source-span').html("Mopeds below 50cc accounted for"); 
+                    $(otherDiv).val("Mopeds - <50cc");
+                    sourceSelectMenu
+                        .replaceFilter(["Mopeds - <50cc"])
+                        .redrawGroup();
+                } else if ($(targetDiv).val() == "All LPG Vehicles") {
+                    $('.show-source-span').html("LPG vehicles accounted for"); 
+                    $(otherDiv).val("All LPG Vehicles");
+                    sourceSelectMenu
+                        .replaceFilter(["All LPG Vehicles"])
+                        .redrawGroup();
+                } else { 
+                    $('.show-source-span').html("There was a total of");
+                    $(otherDiv).val('');
+                    sourceSelectMenu
+                        .filterAll()
+                        .redrawGroup();
+                    $('#percentage-p').css('visibility', 'hidden'); //Make sure the percentage information is hidden if the user reselects the default option
+                };
+            });
+        };
             
         $('#year-selector select').change(function() { //On the year select box change...
             sourceSelectMenu.filterAll(); //Reset the source select box when the year select box is changed
