@@ -552,7 +552,11 @@ function makeGraph(error, ggData) {
     };
     
     $(document).ready(function() {
-        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows initially, hide the percentage information
+        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information
+        
+        //Duplicate the options from the 1st source select box to the 2nd source select box
+        var $options = $('#source-selector select > option').clone();
+        $('#source-selector-2').append($options);
         
         adjustXTicks(); //This function must be called once the document is ready
         
@@ -584,7 +588,7 @@ function makeGraph(error, ggData) {
                 $('#percentage-p').css('visibility', 'hidden'); //Make sure the percentage information is hidden if the user reselects the default option
             };
         });
-        
+            
         $('#year-selector select').change(function() { //On the year select box change...
             sourceSelectMenu.filterAll(); //Reset the source select box when the year select box is changed
             if ($('#year-selector select').val() == '') { //If the year selector is the default value
