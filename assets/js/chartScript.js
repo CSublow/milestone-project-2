@@ -559,11 +559,12 @@ function makeGraph(error, ggData) {
         $('#source-selector-2').append($options);
         
         adjustXTicks(); //This function must be called once the document is ready
-        
+
+        //Make sure the sourceSelectChange function is invoked for both source selection boxes
         sourceSelectChange('#source-selector select', '#source-selector-2');
         sourceSelectChange('#source-selector-2', '#source-selector select');
         
-        //Change the source figure descriptive text based on the value of the select element
+        //Change the source figure descriptive text based on the value of the select element and ensure selection boxes match
         function sourceSelectChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() {
                 yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
@@ -634,8 +635,10 @@ function makeGraph(error, ggData) {
             });
         };
             
-        $('#year-selector select').change(function() { //On the year select box change...
-            sourceSelectMenu.filterAll(); //Reset the source select box when the year select box is changed
+        $('#year-selector select').change(function() { //On the year select boxes change...
+            //Reset the source select boxes when the year select box is changed
+            sourceSelectMenu.filterAll(); //Source select box 1
+            $('#source-selector-2').val(''); //Source select box 2
             if ($('#year-selector select').val() == '') { //If the year selector is the default value
                 $('#period-span').html("throughout the period"); //Update html to correct text 
             } else {
