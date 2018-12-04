@@ -555,8 +555,11 @@ function makeGraph(error, ggData) {
         $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information
         
         //Duplicate the options from the 1st source select box to the 2nd source select box
-        var $options = $('#source-selector select > option').clone();
-        $('#source-selector-2').append($options);
+        var $sourceOptions = $('#source-selector select > option').clone();
+        $('#source-selector-2').append($sourceOptions);
+        //Likewise for the year select boxes
+        var $yearOptions = $('#year-selector select > option').clone();
+        $('#year-selector-2').append($yearOptions);
         
         adjustXTicks(); //This function must be called once the document is ready
 
