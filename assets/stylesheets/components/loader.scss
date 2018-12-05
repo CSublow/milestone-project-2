@@ -57,6 +57,20 @@
         text-align: center;
         font-size: 2rem;
     }
+    .loader-section {
+        position: fixed;
+        top: 0;
+        width: 51%;
+        height: 100%;
+        background: #9bcd64;
+        z-index: -1;
+    }
+    .loader-section.section-left {
+        left: 0;
+    }
+    .loader-section.section-right {
+        right: 0;
+    }
 }
 
 @-webkit-keyframes spin {
@@ -82,23 +96,6 @@
         -ms-transform: rotate(360deg);  /* IE 9 */
         transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
     }
-}
-
-#loader-wrapper .loader-section {
-    position: fixed;
-    top: 0;
-    width: 51%;
-    height: 100%;
-    background: #9bcd64;
-    z-index: -1;
-}
- 
-#loader-wrapper .loader-section.section-left {
-    left: 0;
-}
- 
-#loader-wrapper .loader-section.section-right {
-    right: 0;
 }
 
 /* Loaded */
