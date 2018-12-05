@@ -637,6 +637,7 @@ function makeGraph(error, ggData) {
     });
 };
 
+//Hide the informative pop up above the pie chart if the user clicks on it
 function chartPopup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("hide");
