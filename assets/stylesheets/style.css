@@ -45,11 +45,20 @@
 /* Colors */
 /* Structure */
 /*Media Queries */
+/* Structural */
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 body, .force-center, h1, select, .popup, h2, img {
   margin: 15px auto;
   display: block; }
+
+/* Loading effect */
+#loader-wrapper #loader, #loader-wrapper #loader:before, #loader-wrapper #loader:after {
+  border-width: 3px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: black;
+  border-radius: 50%; }
 
 body {
   min-width: 758px;
@@ -59,6 +68,7 @@ body {
 section {
   margin-top: 20px; }
 
+/* Loading effect css courtesy of https://ihatetomatoes.net/create-css3-spinning-preloader/, adapted into scss */
 #loader-wrapper {
   position: fixed;
   top: 0;
@@ -74,9 +84,6 @@ section {
     width: 150px;
     height: 150px;
     margin: -75px 0 0 -75px;
-    border: 3px solid transparent;
-    border-top-color: black;
-    border-radius: 50%;
     z-index: 1500;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite; }
@@ -87,9 +94,6 @@ section {
       left: 5px;
       right: 5px;
       bottom: 5px;
-      border: 3px solid transparent;
-      border-top-color: black;
-      border-radius: 50%;
       -webkit-animation: spin 3s linear infinite;
       animation: spin 3s linear infinite; }
     #loader-wrapper #loader:after {
@@ -99,9 +103,6 @@ section {
       left: 15px;
       right: 15px;
       bottom: 15px;
-      border: 3px solid transparent;
-      border-top-color: black;
-      border-radius: 50%;
       -webkit-animation: spin 1.5s linear infinite;
       animation: spin 1.5s linear infinite; }
   #loader-wrapper p {
