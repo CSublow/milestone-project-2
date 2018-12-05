@@ -634,7 +634,7 @@ function makeGraph(error, ggData) {
                 };
             });
         };
-    $('body').addClass('loaded'); //Remove the loading overlay when the document is ready
+    // $('body').addClass('loaded'); //Remove the loading overlay when the document is ready
     });
 };
 
