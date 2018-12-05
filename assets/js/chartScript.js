@@ -107,6 +107,18 @@ function makeGraph(error, ggData) {
             }
         });
     
+    //Axes
+    //Explicitly map the domain in order to get custom tick layout for x axis on some charts
+    var domain = ggData.map(function(d) {
+        return d.Year;
+    }),
+        ticks = domain.filter(function(v, i) {
+        //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
+        while (i < countYears) {
+            return i % 2 === 0;
+        }
+    });
+    
     //FUNCTION CALLS
     totalEmissionsFigure(ndx);
     averageEmissionsFigure(ndx);
@@ -240,18 +252,7 @@ function makeGraph(error, ggData) {
     
     //Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
-        //Explicitly map the domain in order to get custom tick layout for x axis
-        var domain = ggData.map(function(d) {
-            return d.Year;
-        }),
-            ticks = domain.filter(function(v, i) {
-            //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
-            while (i < countYears) {
-                return i % 2 === 0;
-            }
-        }),
-            
-            lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
+        var lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
             
         chartsResponsive(lineChart, 600, 700, false); //Make sure the chart is responsive
         
@@ -299,20 +300,9 @@ function makeGraph(error, ggData) {
             return sourceArg + dataArg.key + ": " + dataArg.value.toLocaleString("en") + " kilotons";
         };
         
-        //Explicitly map the domain in order to get custom tick layout for x axis
-        var domain = ggData.map(function(d) {
-            return d.Year;
-        }),
-            ticks = domain.filter(function(v, i) {
-            //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
-            while (i < countYears) {
-                return i % 2 === 0;
-            }
-        }),
-        
-            compositeChart = dc.compositeChart("#composite-chart");
+        var compositeChart = dc.compositeChart("#composite-chart"); //Define the call to compositeChart
             
-        chartsResponsive(compositeChart, 600, 700, false, true, 400, 500);
+        chartsResponsive(compositeChart, 600, 700, false, true, 400, 500); //Pass in the relevant arguments
         
         //Define the lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
@@ -413,7 +403,7 @@ function makeGraph(error, ggData) {
     };
     
     //Render the select menu to show data for a particular year
-    var yearSelectMenu; //Declare outside of function for use in jQuery beginning line x
+    var yearSelectMenu; //Declare outside of function for use in jQuery document ready function
     function showYearSelector(ndx) {
         yearSelectMenu = dc.selectMenu('#year-selector');
         yearSelectMenu
@@ -425,6 +415,7 @@ function makeGraph(error, ggData) {
             });
     };
     
+    //Render the figure showing the amount of emissions within the period or for a given year
     function periodFigure(ndx) {
         dc.numberDisplay("#show-period-figure")
             .group(sumEmissions)
@@ -432,8 +423,8 @@ function makeGraph(error, ggData) {
             .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d;
-            })    
-    }
+            });    
+    };
     
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
@@ -452,19 +443,18 @@ function makeGraph(error, ggData) {
             })
             .title(function(d) {
                 console.log(sumEmissions.value()); //sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%";
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%"; //Format the title as the key + the value with commas separator + the percentage expressed by the pie chart's slice
             })
             .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor]) //The colors here go in order of highest to lowest value for the whole period
             .legend(dc.legend()
                 .itemHeight(13)
                 .gap(2));
 
-        //Remove click functionality from chart, this has to be done both here and on the bar chart to prevent clicks
+        //Remove click functionality from chart, this has to be done both here and on the bar chart to prevent clicks from rerendering the values that are displayed above the bar chart's bars
         pieChart.on('pretransition', function(chart) {
-            pieChart.selectAll('path').on('click', null);
+            pieChart.selectAll('path,.dc-legend-item').on('click', null);
         });
-        
-        pieChart.filter = function() {}; //Remove chart interactivity
+        pieChart.filter = function() {}; //Remove chart interactivity, preventing slices from greying out
         
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
@@ -526,7 +516,7 @@ function makeGraph(error, ggData) {
                     .attr('text-anchor', 'middle')
                     .attr('fill', 'black')
                     .style({'font-size': '0.8rem', 'font-style': 'italic'});
-            }
+            };
         });
         
         //Remove values on top of bars when chart is being redrawn
@@ -541,7 +531,7 @@ function makeGraph(error, ggData) {
             barChart
                 .transitionDuration(250); //Reset transitionDuration to default once the size changes have been applied
             
-            adjustXTicks(); //The x ticks must also be rerendered or else they revert to their default and unwanted values
+            adjustXTicks(); //The x ticks must also be rerendered or else they revert to their default and unwanted position
         });
     };
     
