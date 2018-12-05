@@ -634,7 +634,10 @@ function makeGraph(error, ggData) {
                 };
             });
         };
-    // $('body').addClass('loaded'); //Remove the loading overlay when the document is ready
+    //Remove the loading overlay when the document is ready. A delay is set to ensure that users on quick connections, or those who have already visited the site and have cookies saved, can see the screen is a loading screen and not get confused if it disappears quickly
+        $('body').delay(1000).queue(function() { //The loading screen will appear for at least one second
+            $(this).addClass('loaded');
+        });
     });
 };
 
@@ -642,4 +645,4 @@ function makeGraph(error, ggData) {
 function chartPopup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("hide");
-}
+};
