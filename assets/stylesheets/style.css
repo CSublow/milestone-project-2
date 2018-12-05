@@ -47,7 +47,7 @@
 /*Media Queries */
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
-body, .force-center, h1, select, h2, img {
+body, .force-center, h1, select, .popup, h2, img {
   margin: 15px auto;
   display: block; }
 
@@ -83,14 +83,49 @@ h1 {
   /*make stroke thicker than default*/
   stroke-width: 2.5px; }
 
-#total-emissions-per-source-pie svg .pie-slice-group {
-  /*add a stroke to the pie slices*/
-  stroke: black;
-  stroke-width: 1px; }
+#total-emissions-per-source-pie {
+  width: 100%; }
+  #total-emissions-per-source-pie svg .pie-slice-group {
+    /*add a stroke to the pie slices*/
+    stroke: black;
+    stroke-width: 1px; }
 
 select {
   padding: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5); }
+
+/* Popup container */
+.popup {
+  cursor: pointer;
+  /* The actual popup (appears on top) */
+  /* Popup arrow */
+  /* Toggle this class when clicking on the popup container (hide the popup) */ }
+  .popup .popuptext {
+    font-size: 0.8rem;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 89%;
+    left: 50%;
+    margin-left: -80px; }
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent; }
+  .popup .hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s linear; }
 
 body {
   font-family: 'Roboto', sans-serif; }

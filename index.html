@@ -91,7 +91,12 @@
                 <div class="text-center col-12">
                     <p><span class="show-year-span">There was a total of</span> <span id="show-period-figure"></span> kilotons of emissions <span id="period-span">throughout the period</span>.</p>
                 </div>
-                <div id="total-emissions-per-source-pie" class="col-xl-6"></div>
+                <div id="pie-container" class="col-xl-6">
+                    <div class="popup" onclick="chartPopup()">
+                         <span class="popuptext" id="myPopup">Hover over the slices to see more information</span>
+                    </div>
+                    <div id="total-emissions-per-source-pie"></div>
+                </div>
                 <div id="total-emissions-per-source" class="col-xl-6"></div>
                 <select id="year-selector-2"></select>
         </section>

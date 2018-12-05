@@ -652,3 +652,8 @@ function makeGraph(error, ggData) {
         };
     });
 };
+
+function chartPopup() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("hide");
+}
