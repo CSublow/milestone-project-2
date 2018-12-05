@@ -26,10 +26,10 @@
             @extend %loading-spin-border;
             content: "";
             position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
+            top: $loaderBeforeDimension;
+            left: $loaderBeforeDimension;
+            right: $loaderBeforeDimension;
+            bottom: $loaderBeforeDimension;
             
             -webkit-animation: spin 3s linear infinite;
             animation: spin 3s linear infinite;
@@ -38,10 +38,10 @@
             @extend %loading-spin-border;
             content: "";
             position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
+            top: $loaderAfterDimension;
+            left: $loaderAfterDimension;
+            right: $loaderAfterDimension;
+            bottom: $loaderAfterDimension;
             
             -webkit-animation: spin 1.5s linear infinite;
             animation: spin 1.5s linear infinite;
