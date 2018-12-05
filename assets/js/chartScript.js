@@ -1,3 +1,9 @@
+/*global $*/
+/*global crossfilter*/
+/*global queue*/
+/*global d3*/
+/*global dc*/
+
 //QUEUE
 queue()
     .defer(d3.json, "assets/data/data.json") //Fetch the data
@@ -34,9 +40,7 @@ function makeGraph(error, ggData) {
         sumEmissions = sourceDim.groupAll().reduceSum(dc.pluck("Emissions")),
         sumEmissionsValue = sumEmissions.value(),
         
-        countYears = yearDim.group().reduceCount().size(),
-        countSources = sourceDim.group().reduceCount().size();
-        
+        countYears = yearDim.group().reduceCount().size();
         
     //Source Groups
     var totalEmissionsCarPetrolGroup = yearDim.group().reduceSum(function(d) {
@@ -117,17 +121,6 @@ function makeGraph(error, ggData) {
     periodFigure(ndx);
     totalEmissionsPerSource(ndx);
     totalEmissionsPerSourcePie(ndx);
-    
-    // carPetrolFigure(ndx);
-    // carPetrolPercentage(ndx);
-    // carPetrolFigure1990(ndx);
-    
-    // carPetrolPercentage1990(ndx);
-    
-    // totalEmissionsCarPetrol(ndx);
-    // totalEmissionsCarDiesel(ndx);
-    
-    // emissionsPerSource1990(ndx);
 
     dc.renderAll(); //Render all charts
     
@@ -136,7 +129,6 @@ function makeGraph(error, ggData) {
     // // // DEFINE FUNCTIONS
     
     // // // GENERAL FUNCTIONS
-    
     //Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
     function chartsResponsive(chartType, chartWidthSmall, chartWidthLarge, renderChart, chartLegend, legendXSmall, legendXLarge) {
         if ($(window).width() > 1182 && $(window).width() < 1331) { //If the browser window is within the target width range
@@ -197,7 +189,7 @@ function makeGraph(error, ggData) {
             .formatNumber(d3.format("0,000"))
             .valueAccessor(function(d) {
                 return d;
-            })
+            });
     };
 
     //Render the average emissions figure
@@ -209,10 +201,10 @@ function makeGraph(error, ggData) {
                 generatedValue = d / countYears; //I generate a value and assign it to the variable
             });
     };
-    $('#average-emissions-figure').html(generatedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering
+    $('#average-emissions-figure').html(generatedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering, which is the desire functionality
 
     //Render the select menu to show data for a particular vehicle type
-    var sourceSelectMenu; //Declare outside of function for use in jQuery beginning line x
+    var sourceSelectMenu; //Declare outside of function for use in jQuery document.ready function
     function showSourceSelector(ndx) {
         sourceSelectMenu = dc.selectMenu("#source-selector");
         sourceSelectMenu
@@ -222,8 +214,9 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             });
-    }
+    };
     
+    //Render the figure that interacts with the emissions over time charts
     function timeFigure(ndx) {
         dc.numberDisplay("#show-time-figure")
             .group(totalEmissionsPerYearGroupSum)
@@ -231,9 +224,10 @@ function makeGraph(error, ggData) {
             .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d;
-            })    
-    }
+            });
+    };
     
+    //Render the figure that expresses emissions over time as a percentage of total emissions
     function timeFigurePercentage(ndx) {
         dc.numberDisplay("#show-time-figure-percentage")
             .group(totalEmissionsPerYearGroupSum)
@@ -241,8 +235,8 @@ function makeGraph(error, ggData) {
             .transitionDuration(0)
             .valueAccessor(function(d) {
                 return d / sumEmissionsValue;
-            })    
-    }
+            });    
+    };
     
     //Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
@@ -303,13 +297,13 @@ function makeGraph(error, ggData) {
         //Function to give each line on the composite chart a title
         function lineTitle(sourceArg, dataArg) {
             return sourceArg + dataArg.key + ": " + dataArg.value.toLocaleString("en") + " kilotons";
-        }
+        };
         
         //Explicitly map the domain in order to get custom tick layout for x axis
         var domain = ggData.map(function(d) {
             return d.Year;
         }),
-            ticks = domain.filter(function(v, i, self) {
+            ticks = domain.filter(function(v, i) {
             //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
             while (i < countYears) {
                 return i % 2 === 0;
