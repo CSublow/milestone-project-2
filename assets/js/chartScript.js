@@ -364,7 +364,7 @@ function makeGraph(error, ggData) {
             .height(700)
             .margins({top:10, right:60, bottom: 40, left:60})
             .dimension(yearDim)
-            .group(totalEmissionsCarPetrolGroup)
+            .group(totalEmissionsCarPetrolGroup) //It doesn't matter here which source group is used
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
