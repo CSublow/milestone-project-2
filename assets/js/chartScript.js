@@ -175,7 +175,7 @@ function makeGraph(error, ggData) {
         addForceCenter(); //Rerendering the chart removes the class, this has to be added back in
     };
     
-    //This function helps totalEmissionsPerSource's x axis ticks be more visible
+    //This function helps totalEmissionsPerSource's x axis ticks be more legible
     function adjustXTicks() {
         //Move every 2nd tick text down slightly
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
@@ -545,7 +545,7 @@ function makeGraph(error, ggData) {
         var $yearOptions = $('#year-selector select > option').clone();
         $('#year-selector-2').append($yearOptions);
         
-        adjustXTicks(); //This function must be called once the document is ready
+        adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
         //Make sure the sourceSelectChange function is invoked for both source selection boxes
         sourceSelectChange('#source-selector select', '#source-selector-2');
