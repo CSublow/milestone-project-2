@@ -10,17 +10,17 @@ ScrollReveal().reveal('.reveal-one', {
     reset: false
 });
 ScrollReveal().reveal('.reveal-two', {
-    delay: 750,
+    delay: 600,
     duration: 1000,
     reset: false
 });
 ScrollReveal().reveal('.reveal-three', {
-    delay: 1125,
+    delay: 700,
     duration: 1000,
     reset: false
 });
 ScrollReveal().reveal('.reveal-four', {
-    delay: 1125,
+    delay: 700,
     duration: 1000,
     reset: false
 }); 

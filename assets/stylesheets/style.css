@@ -67,7 +67,7 @@ h1 {
       font-size: 2.5rem; } }
 
 .navbar {
-  background-color: #0b9c00;
+  background-color: #2a9445;
   background-image: url("../images/color5.png");
   border-bottom: 2px solid black;
   flex-direction: column; }
@@ -129,8 +129,8 @@ select {
 
 .fa-window-close {
   position: absolute;
-  left: 148px;
-  bottom: 41px;
+  left: 141px;
+  bottom: 43px;
   font-size: 1rem; }
 
 body {

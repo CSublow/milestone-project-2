@@ -27,3 +27,7 @@ congestion image - https://e3.365dm.com/16/11/1096x616/a7d3092211c1414867d45fd9b
 navbar background image - https://www.dealfuel.com/wp-content/uploads/2015/06/color5.png
 
 image resize tool - https://imageresize.org/
+
+css popup - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup
+
+back to top function - https://www.w3schools.com/howto/howto_js_scroll_to_top.asp

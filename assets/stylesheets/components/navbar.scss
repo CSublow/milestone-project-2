@@ -9,7 +9,7 @@ h1 {
 
 .navbar {
     background: {
-        color: $green; //Backup background color in case failure to load image
+        color: $backgroundGreen; //Backup background color in case failure to load image
         image: url("../images/color5.png");
     }
     border-bottom: 2px solid black;
