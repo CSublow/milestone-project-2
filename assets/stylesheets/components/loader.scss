@@ -10,12 +10,9 @@
     z-index: 1000;
     #loader {
         //These declarations, including :before and :after, generate 3 circles that envelop each other. All but the top sides of the circles are then set to transparent so that when the spin animation is applied it gives the effect of lines going around in a circle
-        // @extend %loading-spin-border;
         @include loaderBorder(50%, 0, 0, 50%);
         display: block;
         position: relative;
-        // left: 50%;
-        // top: 50%;
         width: 150px;
         height: 150px;
         margin: -75px 0 0 -75px;
@@ -24,8 +21,6 @@
         -webkit-animation: spin 2s linear infinite;
         animation: spin 2s linear infinite;
         &:before {
-            // @extend %loading-spin-border;
-            // @extend %loader-before-dimensions;
             @include loaderBorder(5px, 5px, 5px, 5px);
             content: "";
             position: absolute;
@@ -34,8 +29,6 @@
             animation: spin 3s linear infinite;
         }
         &:after {
-            // @extend %loading-spin-border;
-            // @extend %loader-after-dimensions;
             @include loaderBorder(15px, 15px, 15px, 15px);
             content: "";
             position: absolute;
