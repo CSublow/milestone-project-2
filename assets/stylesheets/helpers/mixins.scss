@@ -21,3 +21,9 @@
     bottom: $bottom;
     left: $left;
 }
+
+/* Animations */
+@mixin animation($animationName, $animationDuration) {
+    -webkit-animation: $animationName $animationDuration linear infinite;
+    animation: $animationName $animationDuration linear infinite;
+}
