@@ -32,3 +32,15 @@
     bottom: $dimension;
     left: $dimension;
 }
+
+// %rotate-keyframe-start {
+//     -webkit-transform: rotate($startDeg);  /* Chrome, Opera 15+, Safari 3.1+ */
+//     -ms-transform: rotate($startDeg);  /* IE 9 */
+//     transform: rotate($startDeg);  /* Firefox 16+, IE 10+, Opera */
+// }
+
+// %rotate-keyframe-finish {
+//     -webkit-transform: rotate($endDeg);  /* Chrome, Opera 15+, Safari 3.1+ */
+//     -ms-transform: rotate($endDeg);  /* IE 9 */
+//     transform: rotate($endDeg);  /* Firefox 16+, IE 10+, Opera */
+// }
