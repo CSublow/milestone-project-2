@@ -189,10 +189,13 @@ section {
     /* Firefox 16+, IE 10+, Opera */ } }
 /* These styles only take effect when .loaded has been applied to the body via jQuery */
 .loaded #loader-wrapper {
-  visibility: hidden;
   -webkit-transform: translateY(-100%);
+  /* Chrome, Opera 15+, Safari 3.1+ */
   -ms-transform: translateY(-100%);
+  /* IE 9 */
   transform: translateY(-100%);
+  /* Firefox 16+, IE 10+, Opera */
+  visibility: hidden;
   -webkit-transition: all 0.1s 0.6s ease-out;
   transition: all 0.1s 0.6s ease-out; }
   .loaded #loader-wrapper #loader, .loaded #loader-wrapper p {
