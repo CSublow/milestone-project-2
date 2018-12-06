@@ -8,7 +8,7 @@
 
 /* Loading 
 --------------------*/
-@mixin loaderBorder($top, $right, $bottom, $left) {
+@mixin loaderBorder($position, $top, $right, $bottom, $left) {
     border: {
         width: 3px;
         style: solid;
@@ -16,10 +16,12 @@
         top-color: black;
         radius: 50%;
     }
+    position: $position;
     top: $top;
     right: $right;
     bottom: $bottom;
     left: $left;
+    content: "";
 }
 
 /* Animations */
@@ -27,3 +29,4 @@
     -webkit-animation: $animationName $animationDuration linear infinite;
     animation: $animationName $animationDuration linear infinite;
 }
+
