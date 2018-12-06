@@ -73,16 +73,20 @@
     @include button(#e84610, 200px)
 }
 
+@mixin transform($prop) {
+    -webkit-transform: $prop; /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: $prop; /* IE 9 */
+            transform: $prop; /* Firefox 16+, IE 10+, Opera */
+}
 @include keyframes(spin) {
     0%   {
-        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-        -ms-transform: rotate(0deg);  /* IE 9 */
-        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+        @include transform(rotate(0deg));
     }
     100% {
-        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-        -ms-transform: rotate(360deg);  /* IE 9 */
-        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+        // -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        // -ms-transform: rotate(360deg);  /* IE 9 */
+        @include transform(rotate(360deg));
+        // transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
     }
 }
 

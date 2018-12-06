@@ -39,3 +39,9 @@
         @content
     }
 }
+
+@mixin transform($prop) {
+    -webkit-transform: $prop; /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: $prop; /* IE 9 */
+            transform: $prop; /* Firefox 16+, IE 10+, Opera */
+}
