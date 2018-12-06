@@ -221,9 +221,6 @@ section {
 .no-js #loader-wrapper {
   display: none; }
 
-.no-js h1 {
-  color: #222222; }
-
 h1 {
   font-size: 1.5rem;
   color: white; }
