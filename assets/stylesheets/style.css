@@ -156,6 +156,7 @@ section {
   /* this statement says that if someone specifies the color as red, it will be set to white. If the color is not set to red it will just leave the color set as it is */
   color: #fff; }
 
+/* The various vendor prefixes have been included in a mixin for conciseness */
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -186,7 +187,7 @@ section {
     /* IE 9 */
     transform: rotate(360deg);
     /* Firefox 16+, IE 10+, Opera */ } }
-/* Loaded */
+/* These styles only take effect when .loaded has been applied to the body via jQuery */
 .loaded #loader-wrapper {
   visibility: hidden;
   -webkit-transform: translateY(-100%);
