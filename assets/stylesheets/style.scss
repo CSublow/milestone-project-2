@@ -124,8 +124,8 @@
 /**/
 /**/
 /* use of content keyword, useful for media queries */
-        // @mixin mQ($mq-width) {
-        //     @media screen and (min-width: $mq-width) {
+        // @mixin mQ($mqWidth) {
+        //     @media screen and (min-width: $mqWidth) {
         //         @content
         //     }
         // }

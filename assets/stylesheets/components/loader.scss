@@ -10,11 +10,12 @@
     z-index: 1000;
     #loader {
         //These declarations, including :before and :after, generate 3 circles that envelop each other. All but the top sides of the circles are then set to transparent so that when the spin animation is applied it gives the effect of lines going around in a circle
-        @extend %loading-spin-border;
+        // @extend %loading-spin-border;
+        @include loaderBorder(50%, 0, 0, 50%);
         display: block;
         position: relative;
-        left: 50%;
-        top: 50%;
+        // left: 50%;
+        // top: 50%;
         width: 150px;
         height: 150px;
         margin: -75px 0 0 -75px;
@@ -23,8 +24,9 @@
         -webkit-animation: spin 2s linear infinite;
         animation: spin 2s linear infinite;
         &:before {
-            @extend %loading-spin-border;
-            @extend %loader-before-dimensions;
+            // @extend %loading-spin-border;
+            // @extend %loader-before-dimensions;
+            @include loaderBorder(5px, 5px, 5px, 5px);
             content: "";
             position: absolute;
             
@@ -32,8 +34,9 @@
             animation: spin 3s linear infinite;
         }
         &:after {
-            @extend %loading-spin-border;
-            @extend %loader-after-dimensions;
+            // @extend %loading-spin-border;
+            // @extend %loader-after-dimensions;
+            @include loaderBorder(15px, 15px, 15px, 15px);
             content: "";
             position: absolute;
             
@@ -64,6 +67,27 @@
     .loader-section.section-right {
         right: 0;
     }
+}
+
+/* MIXINS */
+/* note: if you don't include any arguments, you don't need the () in either the mixin declaration or when you include */
+@mixin button($color, $size) {
+    width: $size;
+    height: $size / 2;
+    color: $color;
+    border: 1px solid $color;
+    /* you can implement logic within a mixin */
+    /* this statement says that if someone specifies the color as red, it will be set to white. If the color is not set to red it will just leave the color set as it is */
+    @if $color == #e84610 {
+        color: #fff;
+    } @else {
+        $color: $color;
+    }
+}
+
+/* this is how you call the mixin */
+.btn {
+    @include button(#e84610, 200px)
 }
 
 @-webkit-keyframes spin {

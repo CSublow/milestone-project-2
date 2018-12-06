@@ -20,7 +20,7 @@ h2 {
 }
 
 footer {
-    min-width: $min-width; //Prevent the footer being squashed down on smaller viewports
+    min-width: $minWidth; //Prevent the footer being squashed down on smaller viewports
     //background-color: $green;
     width: 100%;
     max-width: 1990px; //Needs to match body to ensure alignment, especially on larger viewports

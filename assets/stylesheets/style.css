@@ -44,7 +44,10 @@
 /* Imports */
 /* Colors */
 /* Structure */
-/*Media Queries */
+/* Media Queries 
+--------------------*/
+/* Loading 
+--------------------*/
 /* Structural
 --------------------*/
 @import url("https://fonts.googleapis.com/css?family=Roboto");
@@ -55,25 +58,6 @@ body, .force-center, h1, select, .popup, h2, img {
 
 /* Loading effect
 --------------------*/
-#loader-wrapper #loader, #loader-wrapper #loader:before, #loader-wrapper #loader:after {
-  border-width: 3px;
-  border-style: solid;
-  border-color: transparent;
-  border-top-color: black;
-  border-radius: 50%; }
-
-#loader-wrapper #loader:before {
-  top: 5px;
-  right: 5px;
-  bottom: 5px;
-  left: 5px; }
-
-#loader-wrapper #loader:after {
-  top: 15px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px; }
-
 body {
   min-width: 758px;
   max-width: 1990px;
@@ -91,10 +75,17 @@ section {
   height: 100%;
   z-index: 1000; }
   #loader-wrapper #loader {
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: black;
+    border-radius: 50%;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 50%;
     display: block;
     position: relative;
-    left: 50%;
-    top: 50%;
     width: 150px;
     height: 150px;
     margin: -75px 0 0 -75px;
@@ -102,11 +93,29 @@ section {
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite; }
     #loader-wrapper #loader:before {
+      border-width: 3px;
+      border-style: solid;
+      border-color: transparent;
+      border-top-color: black;
+      border-radius: 50%;
+      top: 5px;
+      right: 5px;
+      bottom: 5px;
+      left: 5px;
       content: "";
       position: absolute;
       -webkit-animation: spin 3s linear infinite;
       animation: spin 3s linear infinite; }
     #loader-wrapper #loader:after {
+      border-width: 3px;
+      border-style: solid;
+      border-color: transparent;
+      border-top-color: black;
+      border-radius: 50%;
+      top: 15px;
+      right: 15px;
+      bottom: 15px;
+      left: 15px;
       content: "";
       position: absolute;
       -webkit-animation: spin 1.5s linear infinite;
@@ -130,6 +139,18 @@ section {
     left: 0; }
   #loader-wrapper .loader-section.section-right {
     right: 0; }
+
+/* MIXINS */
+/* note: if you don't include any arguments, you don't need the () in either the mixin declaration or when you include */
+/* this is how you call the mixin */
+.btn {
+  width: 200px;
+  height: 100px;
+  color: #e84610;
+  border: 1px solid #e84610;
+  /* you can implement logic within a mixin */
+  /* this statement says that if someone specifies the color as red, it will be set to white. If the color is not set to red it will just leave the color set as it is */
+  color: #fff; }
 
 @-webkit-keyframes spin {
   0% {

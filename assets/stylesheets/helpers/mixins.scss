@@ -1,6 +1,23 @@
-/*Media Queries */
-@mixin mq($mq-width) {
-    @media (min-width: $mq-width) {
+/* Media Queries 
+--------------------*/
+@mixin mq($mqWidth) {
+    @media (min-width: $mqWidth) {
         @content
     }
+}
+
+/* Loading 
+--------------------*/
+@mixin loaderBorder($top, $right, $bottom, $left) {
+    border: {
+        width: 3px;
+        style: solid;
+        color: transparent;
+        top-color: black;
+        radius: 50%;
+    }
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
 }
