@@ -10,7 +10,7 @@
     z-index: $baseLoadZIndex;
     #loader {
         //These declarations, including :before and :after, generate 3 circles that envelop each other. All but the top sides of the circles are then set to transparent so that when the spin animation is applied it gives the effect of lines going around in a circle
-        @include loaderBorder(50%, 0, 0, 50%);
+        @include loaderBorder($loaderTopPosition, 0, 0, 50%);
         @include animation(spin, 2s);
         display: block;
         position: relative;
@@ -36,7 +36,7 @@
         z-index: $baseLoadZIndex + 1000;
         display: block;
         position: relative;
-        top: 50%;
+        top: $loaderTopPosition;
         text-align: center;
         font-size: 2rem;
     }
