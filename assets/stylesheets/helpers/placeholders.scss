@@ -1,10 +1,12 @@
-/* Structural */
+/* Structural
+--------------------*/
 %force-center {
     margin: 15px auto;
     display: block;
 }
 
-/* Loading effect */
+/* Loading effect
+--------------------*/
 %loading-spin-border {
     border: {
         width: 3px;
@@ -13,4 +15,20 @@
         top-color: black;
         radius: 50%;
     }
+}
+
+%loader-before-dimensions {
+    $dimension: 5px;
+    top: $dimension;
+    right: $dimension;
+    bottom: $dimension;
+    left: $dimension;
+}
+
+%loader-after-dimensions {
+    $dimension: 15px;
+    top: $dimension;
+    right: $dimension;
+    bottom: $dimension;
+    left: $dimension;
 }

@@ -44,22 +44,35 @@
 /* Imports */
 /* Colors */
 /* Structure */
-/* Loading */
 /*Media Queries */
-/* Structural */
+/* Structural
+--------------------*/
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 body, .force-center, h1, select, .popup, h2, img {
   margin: 15px auto;
   display: block; }
 
-/* Loading effect */
+/* Loading effect
+--------------------*/
 #loader-wrapper #loader, #loader-wrapper #loader:before, #loader-wrapper #loader:after {
   border-width: 3px;
   border-style: solid;
   border-color: transparent;
   border-top-color: black;
   border-radius: 50%; }
+
+#loader-wrapper #loader:before {
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px; }
+
+#loader-wrapper #loader:after {
+  top: 15px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px; }
 
 body {
   min-width: 758px;
@@ -91,19 +104,11 @@ section {
     #loader-wrapper #loader:before {
       content: "";
       position: absolute;
-      top: 5px;
-      left: 5px;
-      right: 5px;
-      bottom: 5px;
       -webkit-animation: spin 3s linear infinite;
       animation: spin 3s linear infinite; }
     #loader-wrapper #loader:after {
       content: "";
       position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      bottom: 15px;
       -webkit-animation: spin 1.5s linear infinite;
       animation: spin 1.5s linear infinite; }
   #loader-wrapper p {

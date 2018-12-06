@@ -24,24 +24,18 @@
         animation: spin 2s linear infinite;
         &:before {
             @extend %loading-spin-border;
+            @extend %loader-before-dimensions;
             content: "";
             position: absolute;
-            top: $loaderBeforeDimension;
-            left: $loaderBeforeDimension;
-            right: $loaderBeforeDimension;
-            bottom: $loaderBeforeDimension;
             
             -webkit-animation: spin 3s linear infinite;
             animation: spin 3s linear infinite;
         }
         &:after {
             @extend %loading-spin-border;
+            @extend %loader-after-dimensions;
             content: "";
             position: absolute;
-            top: $loaderAfterDimension;
-            left: $loaderAfterDimension;
-            right: $loaderAfterDimension;
-            bottom: $loaderAfterDimension;
             
             -webkit-animation: spin 1.5s linear infinite;
             animation: spin 1.5s linear infinite;
