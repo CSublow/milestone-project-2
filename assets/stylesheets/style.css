@@ -44,6 +44,7 @@
 /* Imports */
 /* Colors */
 /* Structure */
+/* Loading */
 /* Media Queries 
 --------------------*/
 /* Loading 
@@ -117,8 +118,8 @@ section {
       right: 15px;
       bottom: 15px;
       left: 15px;
-      -webkit-animation: spin 1.5ss linear infinite;
-      animation: spin 1.5ss linear infinite;
+      -webkit-animation: spin 1.5s linear infinite;
+      animation: spin 1.5s linear infinite;
       content: "";
       position: absolute; }
   #loader-wrapper p {
@@ -135,7 +136,7 @@ section {
     width: 51%;
     height: 100%;
     background: #9bcd64;
-    z-index: -1; }
+    z-index: 999; }
   #loader-wrapper .loader-section.section-left {
     left: 0; }
   #loader-wrapper .loader-section.section-right {
