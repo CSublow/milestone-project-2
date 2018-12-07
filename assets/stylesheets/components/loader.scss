@@ -35,7 +35,6 @@
         text-align: center;
         font-size: 2rem;
     }
-    /*The loader sections are divided into left and right to give a curtain opening effect*/
     .loader-section {
         position: fixed;
         top: 0;
@@ -44,33 +43,6 @@
         background: #9bcd64;
         z-index: $baseLoadZIndex - 1;
     }
-    .loader-section.section-left {
-        left: 0;
-    }
-    .loader-section.section-right {
-        right: 0;
-    }
-}
-
-/* MIXINS */
-/* note: if you don't include any arguments, you don't need the () in either the mixin declaration or when you include */
-@mixin button($color, $size) {
-    width: $size;
-    height: $size / 2;
-    color: $color;
-    border: 1px solid $color;
-    /* you can implement logic within a mixin */
-    /* this statement says that if someone specifies the color as red, it will be set to white. If the color is not set to red it will just leave the color set as it is */
-    @if $color == #e84610 {
-        color: #fff;
-    } @else {
-        $color: $color;
-    }
-}
-
-/* this is how you call the mixin */
-.btn {
-    @include button(#e84610, 200px)
 }
 
 /* The various vendor prefixes have been included in a mixin for conciseness */

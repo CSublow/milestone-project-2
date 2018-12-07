@@ -76,8 +76,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
-  /*The loader sections are divided into left and right to give a curtain opening effect*/ }
+  z-index: 1000; }
   #loader-wrapper #loader {
     border-width: 3px;
     border-style: solid;
@@ -140,22 +139,6 @@ section {
     height: 100%;
     background: #9bcd64;
     z-index: 999; }
-  #loader-wrapper .loader-section.section-left {
-    left: 0; }
-  #loader-wrapper .loader-section.section-right {
-    right: 0; }
-
-/* MIXINS */
-/* note: if you don't include any arguments, you don't need the () in either the mixin declaration or when you include */
-/* this is how you call the mixin */
-.btn {
-  width: 200px;
-  height: 100px;
-  color: #e84610;
-  border: 1px solid #e84610;
-  /* you can implement logic within a mixin */
-  /* this statement says that if someone specifies the color as red, it will be set to white. If the color is not set to red it will just leave the color set as it is */
-  color: #fff; }
 
 /* The various vendor prefixes have been included in a mixin for conciseness */
 @-webkit-keyframes spin {
