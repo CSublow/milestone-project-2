@@ -173,6 +173,7 @@ section {
     /* Firefox 16+, IE 10+, Opera */ } }
 /* These styles only take effect when .loaded has been applied to the body via jQuery */
 .loaded #loader-wrapper {
+  /* Fade the loading wrapper out */
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
   opacity: 0; }
