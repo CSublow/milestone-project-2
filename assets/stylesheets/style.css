@@ -180,7 +180,27 @@ section {
   visibility: hidden; }
 
 /* No JS fallback */
-.no-js #loader-wrapper {
+#no-js-display {
+  display: none; }
+
+.no-js #no-js-display {
+  width: 100%;
+  height: 100%;
+  background: #9bcd64;
+  color: white;
+  position: fixed;
+  display: block; }
+  .no-js #no-js-display div {
+    position: relative;
+    top: 50%;
+    text-align: center; }
+    .no-js #no-js-display div p {
+      font-size: 2rem; }
+      .no-js #no-js-display div p span {
+        font-size: 3rem; }
+    .no-js #no-js-display div i {
+      font-size: 3rem; }
+.no-js #loader-wrapper, .no-js nav, .no-js main, .no-js footer {
   display: none; }
 
 h1 {
