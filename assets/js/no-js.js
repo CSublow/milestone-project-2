@@ -1,2 +1,3 @@
 //Remove no-js class if jaavscript is enabled
-document.body.classList.remove('no-js');
+var body = document.getElementsByTagName('body')[0];
+body.classList.remove('no-js');
