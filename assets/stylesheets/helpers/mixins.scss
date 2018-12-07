@@ -45,3 +45,9 @@
         -ms-transform: $prop; /* IE 9 */
             transform: $prop; /* Firefox 16+, IE 10+, Opera */
 }
+
+/* Only the necessary shorthand properties are added, if desired it won't take long to add delay in to this mixin as well */
+@mixin transition($prop, $dur, $timing) {
+    -webkit-transition: $prop $dur $timing; 
+            transition: $prop $dur $timing;
+}
