@@ -33,3 +33,5 @@ css popup - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup
 back to top function - https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 
 loading screen (delete if needed) - https://ihatetomatoes.net/create-css3-spinning-preloader/
+
+favicon - https://www.kisspng.com/png-earth-drawing-cartoon-sketch-planet-cartoon-1506130/
