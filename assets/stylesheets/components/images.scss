@@ -2,7 +2,7 @@ img {
     @extend %force-center;
     width: 620px;
     
-    /*Different image widths based on viewport size*/
+    //Different image widths based on viewport size
     @include mq(768px) {
         width: 430px;
     }
