@@ -216,7 +216,7 @@ function makeGraph(error, ggData) {
     $('#average-emissions-figure').html(generatedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering, which is the desire functionality
 
     //Render the select menu to show data for a particular vehicle type
-    var sourceSelectMenu; //Declare outside of function for use in jQuery document.ready function
+    var sourceSelectMenu; //Declare outside of function for use in jQuery document.ready
     function showSourceSelector(ndx) {
         sourceSelectMenu = dc.selectMenu("#source-selector");
         sourceSelectMenu

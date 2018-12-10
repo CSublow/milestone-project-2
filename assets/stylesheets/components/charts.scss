@@ -4,12 +4,12 @@
     }
     p {
         text-align: center;
-        margin-bottom: -15px;
+        margin-bottom: -15px; //Bring the instruction text close to the select boxes
     }
 }
 #total-emissions-over-time {
     .line {
-        /*make stroke thicker than default*/
+        //Make stroke thicker than default
         stroke-width: 2.5px;
     }
 }
@@ -18,7 +18,7 @@
     width: 100%;
     svg {
         .pie-slice-group {
-            /*add a stroke to the pie slices*/
+            //Add a stroke to the pie slices
             stroke: $pureBlack;
             stroke-width: 1px;
         }
@@ -29,50 +29,4 @@ select {
     @extend %force-center;
     padding: 10px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5)
-}
-
-/* Popup container */
-.popup {
-    @extend %force-center;
-    // position: absolute;
-    cursor: pointer;
-    /* The actual popup (appears on top) */
-    .popuptext {
-        // visibility: hidden;
-        font-size: 0.8rem;
-        width: 160px;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 14px 0 8px;
-        position: absolute;
-        z-index: 1;
-        bottom: 89%;
-        left: 50%;
-        margin-left: -80px;
-    }
-    /* Popup arrow */
-    .popuptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-    }
-    /* Toggle this class when clicking on the popup container (hide the popup) */
-    .hide {
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0s 0.3s, opacity 0.3s linear;
-    }
-}
-.fa-window-close {
-    position: absolute;
-    left: 141px;
-    bottom: 43px;
-    font-size: 1rem;
 }
