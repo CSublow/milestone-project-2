@@ -103,7 +103,8 @@ hr {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000; }
+  z-index: 1000;
+  background: #9bcd64; }
   #loader-wrapper #loader {
     border-width: 3px;
     border-style: solid;
@@ -159,12 +160,6 @@ hr {
     top: 50%;
     text-align: center;
     font-size: 2rem; }
-  #loader-wrapper .loader-section {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #9bcd64; }
 
 /* The various vendor prefixes have been included in a mixin for conciseness */
 @-webkit-keyframes spin {
