@@ -42,7 +42,7 @@
         <h2>Interactive Data Dashboard</h2>
     </nav>
     <main class="container-fluid">
-        <section class="intro-text row reveal-one">
+        <section class="intro-text row">
             <div class="fa-div col-12 text-center">
                 <i class="fas fa-chart-pie"></i>
                 <i class="fas fa-chart-line"></i>
@@ -65,7 +65,7 @@
         
         <hr>
         
-        <section class="reveal-two">
+        <section>
             <h2 class="text-uppercase text-center ">Highlights</h2>
             <figure class="row text-center">
                 <div id="total-emissions-figure" class="col-12"></div>
@@ -80,7 +80,7 @@
         <hr>
         
         <a name="charts"></a>
-        <section class="row reveal-three">
+        <section class="row">
             <h2 class="text-uppercase text-center">Total emissions over the period.</h2>
             <div class="offset-md-1 col-md-10">
                 <p>Emissions from road transport rose steadily between 1990 and 2007. Beginning in 2008 emissions began to dip, reaching a period low of 108,134 kilotons in 2013. Since 2013 emissions have been on the rise again, although they are some way off the record highs in 2007; for the latest period (2016) emissions are about the same level as they were in the early 90's.</p>
@@ -105,7 +105,7 @@
 
         <hr>
         
-        <section class="row reveal-four">
+        <section class="row">
             <h2 class="text-uppercase text-center">Total emissions by type of vehicle.</h2>
                 <div class="offset-md-1 col-md-10">
                     <p>Cars are responsible for the bulk of emissions over the period, with petrol cars being the biggest contributor to the total emissions figure. However, although emissions from petrol cars have nearly halved since 1990, emissions from diesel cars are now 10x what they were in 1990. Diesel as a fuel source has <a href="https://www.autoexpress.co.uk/car-news/consumer-news/98747/diesel-ban-the-future-of-diesel-cars-in-the-uk-and-beyond" target="_blank">attracted much negative criticism</a> in recent years, with this criticism perhaps stemming from diesel's rapid increase in pollution. There have even been calls for a <a href="https://www.theguardian.com/environment/2018/aug/23/ban-diesel-cars-from-cities-say-half-of-uk-drivers-in-poll" target="_blank">ban on diesel cars</a> in urban areas.</p>
@@ -121,7 +121,7 @@
                     <p><span class="show-year-span">There was a total of</span> <span id="show-period-figure"></span> kilotons of emissions <span id="period-span">throughout the period</span>.</p>
                 </div>
                 <div id="pie-container" class="col-xl-6">
-                    <div class="popup" onclick="chartPopup()">
+                    <div class="popup reveal" onclick="chartPopup()">
                         <span class="popuptext" id="myPopup">Hover over the slices to see more information<i class="fa fa-window-close" aria-hidden="true"></i></span>
                     </div>
                     <div id="total-emissions-per-source-pie"></div>
@@ -154,8 +154,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
     <!-- Page scroll scripts -->
-    <!--<script src="https://unpkg.com/scrollreveal"></script>-->
-    <!--<script src="assets/js/pageScroll.js"></script>-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="assets/js/pageScroll.js"></script>
     <!-- Custom scripts -->
     <script src="assets/js/chartScript.js"></script>
     <!-- No JS Script -->
