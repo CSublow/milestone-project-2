@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: $baseLoadZIndex;
+    z-index: $baseLoadZIndex; //Ensure the loader wrapper sits above all other content
     #loader {
         //These declarations, including :before and :after, generate 3 circles that envelop each other. All but the top sides of the circles are then set to transparent so that when the spin animation is applied it gives the effect of lines going around in a circle
         @include loaderBorder(relative, 50%, 0, 0, 50%);
@@ -16,7 +16,7 @@
         width: 150px;
         height: 150px;
         margin: -75px 0 0 -75px;
-        z-index: $baseLoadZIndex + 500;
+        z-index: $baseLoadZIndex + 500; //The spinning icon needs to sit above the loader wrapper
         &:before {
             @include loaderBorder(absolute, 5px, 5px, 5px, 5px);
             @include animation(spin, 3s);
@@ -28,7 +28,7 @@
     }
     p {
         color: $pureWhite;
-        z-index: $baseLoadZIndex + 1000;
+        z-index: $baseLoadZIndex + 500; //The text and the icon need to be on the same level, so have the same z-index
         display: block;
         position: relative;
         top: 50%;
