@@ -226,6 +226,12 @@ h1 {
       .navbar h2 {
         font-size: 2rem; } }
 
+#source-selector-container {
+  width: 100%; }
+  #source-selector-container p {
+    text-align: center;
+    margin-bottom: -15px; }
+
 #total-emissions-over-time .line {
   /*make stroke thicker than default*/
   stroke-width: 2.5px; }

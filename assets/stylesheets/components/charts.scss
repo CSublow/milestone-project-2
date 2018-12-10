@@ -1,3 +1,10 @@
+#source-selector-container {
+    width: 100%;
+    p {
+        text-align: center;
+        margin-bottom: -15px;
+    }
+}
 #total-emissions-over-time {
     .line {
         /*make stroke thicker than default*/
