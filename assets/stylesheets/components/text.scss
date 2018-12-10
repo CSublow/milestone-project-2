@@ -12,29 +12,3 @@ h2 {
         size: 2.5rem;
     }
 }
-
-.reveal-two {
-    div {
-        font-size: 2rem;
-    }
-}
-
-footer {
-    min-width: $minWidth; //Prevent the footer being squashed down on smaller viewports
-    //background-color: $green;
-    width: 100%;
-    max-width: 1990px; //Needs to match body to ensure alignment, especially on larger viewports
-    position: absolute;
-    // color: $pureWhite;
-    a {
-        margin: 0 20px;
-        // color: $pureWhite;
-    }
-    a:hover {
-        // color: $pureWhite;
-    }
-    p {
-        font-size: 0.75rem;
-        margin-top: -10px;
-    }
-}
