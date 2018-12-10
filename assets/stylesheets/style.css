@@ -69,6 +69,9 @@ body {
 section {
   margin-top: 20px; }
 
+hr {
+  border-top: 4px solid rgba(0, 0, 0, 0.1); }
+
 /* No JS fallback */
 #no-js-display {
   display: none; }
@@ -77,7 +80,7 @@ section {
   width: 100%;
   height: 100%;
   background: #9bcd64;
-  color: white;
+  color: #ffffff;
   position: fixed;
   display: block; }
   .no-js #no-js-display div {
@@ -105,7 +108,7 @@ section {
     border-width: 3px;
     border-style: solid;
     border-color: transparent;
-    border-top-color: black;
+    border-top-color: #000000;
     border-radius: 50%;
     position: relative;
     top: 50%;
@@ -124,7 +127,7 @@ section {
       border-width: 3px;
       border-style: solid;
       border-color: transparent;
-      border-top-color: black;
+      border-top-color: #000000;
       border-radius: 50%;
       position: absolute;
       top: 5px;
@@ -138,7 +141,7 @@ section {
       border-width: 3px;
       border-style: solid;
       border-color: transparent;
-      border-top-color: black;
+      border-top-color: #000000;
       border-radius: 50%;
       position: absolute;
       top: 15px;
@@ -149,7 +152,7 @@ section {
       -webkit-animation: spin 1.5s linear infinite;
       animation: spin 1.5s linear infinite; }
   #loader-wrapper p {
-    color: white;
+    color: #ffffff;
     z-index: 2000;
     display: block;
     position: relative;
@@ -205,7 +208,7 @@ section {
 
 h1 {
   font-size: 1.5rem;
-  color: white; }
+  color: #ffffff; }
   @media (min-width: 1110px) {
     h1 {
       font-size: 2.5rem; } }
@@ -213,12 +216,12 @@ h1 {
 .navbar {
   background-color: #2a9445;
   background-image: url("../images/color5.png");
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #000000;
   flex-direction: column; }
   .navbar h2 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
-    color: white; }
+    color: #ffffff; }
     @media (min-width: 1110px) {
       .navbar h2 {
         font-size: 2rem; } }
@@ -231,7 +234,7 @@ h1 {
   width: 100%; }
   #total-emissions-per-source-pie svg .pie-slice-group {
     /*add a stroke to the pie slices*/
-    stroke: black;
+    stroke: #000000;
     stroke-width: 1px; }
 
 select {

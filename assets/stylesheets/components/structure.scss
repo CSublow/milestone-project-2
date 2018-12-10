@@ -15,6 +15,10 @@ section {
     margin-top: 20px;
 }
 
+hr {
+    border-top: 4px solid rgba(0,0,0,.1);
+}
+
 //%force-center is extended here, rather than on individual classes, so that the .force-center class can be added to elements via javascript
 .force-center {
     @extend %force-center;
