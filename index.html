@@ -87,7 +87,7 @@
                 <p>Cleaner and more efficient engines, rather than lower road usage, have helped keep emissions levels relatively stable, since the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/741953/road-traffic-estimates-in-great-britain-2017.pdf" target="_blank"> traffic volume on UK roads is at record highs</a>. With increasing investment in cleaner fuel types, and a <a href="https://www.statista.com/topics/2298/the-uk-electric-vehicle-industry/" target="_blank">growing number of hybrid and electric vehicles on UK roads</a>, it is hoped that the emissions from UK roads will begin to decrease over the coming decades.</p>
                 <p>The two charts below show the trend in emissions over time. Use the selection box to focus on a particular vehicle type. You can also hover over the lines to see more information.</p>
             </div>
-            <div class="selector-container">
+            <div class="selector-container col-12">
                 <p>Select vehicle type:</p>
                 <div id="source-selector" class="col-12"></div>
             </div>
@@ -97,7 +97,7 @@
             </div>
             <div id="total-emissions-over-time" class="col-xl-6"></div>
             <div id="composite-chart" class="col-xl-6"></div>
-            <div class="selector-container">
+            <div class="selector-container col-12">
                 <p>Select vehicle type:</p>
                 <select id="source-selector-2"></select>
             </div>
@@ -113,7 +113,10 @@
                     <!--<p>Some vehicle types (e.g. LPG vehicles) are responsible for relatively few emissions and may be difficult to see on the charts in comparison to more polluting vehicles. You can use the selection box below to select these vehicle types in order to get a better understanding of a particular emissions trend for a given vehicle type.</p>-->
                     <!--<p>Some vehicle types, in particular motorcycles, mopeds, and LPG vehicles, make up a tiny fraction of total emissions</p>-->
                 </div>
-                <div id="year-selector" class="col-12"></div>
+                <div class="selector-container col-12">
+                    <p>Select year:</p>
+                    <div id="year-selector"></div>
+                </div>
                 <div class="text-center col-12">
                     <p><span class="show-year-span">There was a total of</span> <span id="show-period-figure"></span> kilotons of emissions <span id="period-span">throughout the period</span>.</p>
                 </div>
@@ -124,7 +127,10 @@
                     <div id="total-emissions-per-source-pie"></div>
                 </div>
                 <div id="total-emissions-per-source" class="col-xl-6"></div>
-                <select id="year-selector-2"></select>
+                <div class="selector-container col-12">
+                    <p>Select year:</p>
+                    <select id="year-selector-2"></select>
+                </div>
         </section>
     </main>
     

@@ -1,5 +1,7 @@
 .selector-container {
-    width: 100%;
+    div {
+        width: 100%; //Ensure %force-center has the desired effect for the select boxes
+    }
     p {
         text-align: center;
         margin-bottom: -15px;

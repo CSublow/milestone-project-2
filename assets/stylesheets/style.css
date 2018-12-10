@@ -226,11 +226,11 @@ h1 {
       .navbar h2 {
         font-size: 2rem; } }
 
-.selector-container {
+.selector-container div {
   width: 100%; }
-  .selector-container p {
-    text-align: center;
-    margin-bottom: -15px; }
+.selector-container p {
+  text-align: center;
+  margin-bottom: -15px; }
 
 #total-emissions-over-time .line {
   /*make stroke thicker than default*/
