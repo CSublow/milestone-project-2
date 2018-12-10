@@ -164,8 +164,7 @@ hr {
     top: 0;
     width: 100%;
     height: 100%;
-    background: #9bcd64;
-    z-index: 999; }
+    background: #9bcd64; }
 
 /* The various vendor prefixes have been included in a mixin for conciseness */
 @-webkit-keyframes spin {
