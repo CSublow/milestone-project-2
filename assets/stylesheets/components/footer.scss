@@ -1,7 +1,7 @@
 footer {
     min-width: $minWidth; //Prevent the footer being squashed down on smaller viewports
     width: 100%;
-    max-width: 1990px; //Needs to match body to ensure alignment, especially on larger viewports
+    max-width: $maxWidth; //Needs to match body to ensure alignment, especially on larger viewports
     position: absolute;
     margin-top: 50px;
     a {

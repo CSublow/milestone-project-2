@@ -6,7 +6,7 @@
 
 body {
     min-width: $minWidth;
-    max-width: 1990px;
+    max-width: $maxWidth;
     @extend %force-center;
     margin-top: 0;
 }
