@@ -157,7 +157,7 @@
         //   }
         
         //   // outside mixin call
-        //   background-color: black;
+        //   background-color: $pureBlack;
         // }
 
         /*CSS output:*/
@@ -165,7 +165,7 @@
         // .content-sample {
         //   margin: 0;
         //   font-size: 14px;
-        //   background-color: black;
+        //   background-color: $pureBlack;
         // }
         // .content-sample .important-thing {
         //   color: red;

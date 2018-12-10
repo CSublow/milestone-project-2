@@ -12,7 +12,7 @@ h1 {
         color: $backgroundGreen; //Backup background color in case failure to load image
         image: url("../images/color5.png");
     }
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid $pureBlack;
     flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the subtitles are stacked properly
     h2 {
        font: {
