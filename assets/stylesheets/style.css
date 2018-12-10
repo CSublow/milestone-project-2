@@ -236,7 +236,8 @@ footer {
   min-width: 758px;
   width: 100%;
   max-width: 1990px;
-  position: absolute; }
+  position: absolute;
+  margin-top: 50px; }
   footer a {
     margin: 0 20px; }
   footer p {

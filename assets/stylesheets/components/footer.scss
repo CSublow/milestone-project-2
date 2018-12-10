@@ -3,10 +3,9 @@ footer {
     width: 100%;
     max-width: 1990px; //Needs to match body to ensure alignment, especially on larger viewports
     position: absolute;
+    margin-top: 50px;
     a {
         margin: 0 20px;
-    }
-    a:hover {
     }
     p {
         font-size: 0.75rem;
