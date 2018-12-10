@@ -25,13 +25,13 @@ footer {
     width: 100%;
     max-width: 1990px; //Needs to match body to ensure alignment, especially on larger viewports
     position: absolute;
-    // color: white;
+    // color: $pureWhite;
     a {
         margin: 0 20px;
-        // color: white;
+        // color: $pureWhite;
     }
     a:hover {
-        // color: white;
+        // color: $pureWhite;
     }
     p {
         font-size: 0.75rem;

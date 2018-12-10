@@ -1,6 +1,6 @@
 h1 {
     font-size: 1.5rem;
-    color: white;
+    color: $pureWhite;
     @extend %force-center;
     @include mq(1110px) {
         font-size: 2.5rem;
@@ -19,7 +19,7 @@ h1 {
            family: 'Roboto', sans-serif;
            size: 1.2rem;
        }
-       color: white;
+       color: $pureWhite;
         @include mq(1110px) {
             font-size: 2rem;
         }
