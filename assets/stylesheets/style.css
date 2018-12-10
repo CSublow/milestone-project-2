@@ -226,6 +226,17 @@ h1 {
       .navbar h2 {
         font-size: 2rem; } }
 
+footer {
+  min-width: 758px;
+  width: 100%;
+  max-width: 1990px;
+  position: absolute; }
+  footer a {
+    margin: 0 20px; }
+  footer p {
+    font-size: 0.75rem;
+    margin-top: -10px; }
+
 .selector-container div {
   width: 100%; }
 .selector-container p {
