@@ -622,6 +622,8 @@ function makeGraph(error, ggData) {
         
         function yearSelectorChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //On the year select boxes change...
+            
+                //This function 
                 function checkArray(valueArray){
                    for (var i=0; i < valueArray.length; i++){
                        if (valueArray[i] === "")   
@@ -638,35 +640,31 @@ function makeGraph(error, ggData) {
                     
                     var valueArrayLength = valueArray.length - 1;
                     
+                    //Change the array so that there is a space at the beginning of each array element
                     var modifiedArray = valueArray.map(function(valueArray) {
                          return " " + valueArray;
                     });
                     
-                    if (valueArrayLength == 0) {
-                        $('#period-span').html("in" + modifiedArray);
-                    } else if (valueArrayLength == 1) {
-                        // Here output elements are seperated by dot (.). 
-                        var andArray = modifiedArray.join(" and ");
-                        $('#period-span').html("in" + andArray);
-                    } else if (valueArrayLength > 1) {
-                        var lastItem = modifiedArray[valueArrayLength];
-                        console.log(modifiedArray);
-                        modifiedArray[valueArrayLength] = " and " + lastItem;  
-                        $('#period-span').html("in" + modifiedArray);
-                    }
                     
-                    console.log(valueArrayLength);
-                    
-                    // $('#period-span').html("in " + resultArr);
+                    if (valueArrayLength == 0) { //If the user has only selected one value
+                        $('#period-span').html("in" + modifiedArray); //Simply print the value they have selected
+                    } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
+                        var andArray = modifiedArray.join(" and "); //Join the two elements and separate them with "and"
+                        $('#period-span').html("in" + andArray); //And then print the joined array
+                    } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
+                        var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
+                        modifiedArray[valueArrayLength] = " and " + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
+                        $('#period-span').html("in" + modifiedArray); //Then print the array
+                    };
+
                 } else { //Else the user has selected "Whole Period"
                     //It doesn't make sense for the user to be able to select "Whole Period" along with individual years, so if the user tries to select "Whole Period" along with separate years, only "Whole Period" will be selected
                     $(targetDiv).val("");
                     $(otherDiv).val("");
-                    //Draw graph to represent all data
+                    //Then draw graph to represent all data
                     yearSelectMenu
                         .filterAll()
                         .redrawGroup();
-                        
                     $('#period-span').html(" throughout the whole period") //Update text on screen
                 };
             });
