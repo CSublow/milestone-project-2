@@ -410,6 +410,7 @@ function makeGraph(error, ggData) {
             .dimension(yearDim)
             .group(totalEmissionsPerYearGroup)
             .promptText("Whole Period")
+            .multiple(true)
             .title(function(d) {
                 return d.key;
             });
@@ -547,64 +548,67 @@ function makeGraph(error, ggData) {
         
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
-        //Make sure the sourceSelectChange function is invoked for both source selection boxes
+        // Make sure the sourceSelectChange function is invoked for both source selection boxes
         sourceSelectChange('#source-selector select', '#source-selector-2');
         sourceSelectChange('#source-selector-2', '#source-selector select');
         
-        //Likewise for both year selects
+        // //Likewise for both year selects
         yearSelectorChange('#year-selector select', '#year-selector-2');
         yearSelectorChange('#year-selector-2', '#year-selector select');
-        
+                
+        //Redraw the graphs with required filter
+        function redrawGraphs(menu, newFilter) {
+            menu
+                .replaceFilter([newFilter])
+                .redrawGroup();     
+        };
+                
         //Change the source figure descriptive text based on the value of the select element and ensure selection boxes match
         function sourceSelectChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() {
-                yearSelectMenu.filterAll(); //Reset the year select box when the source select box is changed
-                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                //Reset both year select boxes when the source select box is changed
+                yearSelectMenu.filterAll();
+                $('#year-selector-2').val("");
                 
-                //Redraw the graphs with required filter
-                function redrawGraphs(sourceFilter) {
-                    sourceSelectMenu
-                        .replaceFilter([sourceFilter])
-                        .redrawGroup();     
-                };
+                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 
                 //The text to update to the span is different for each value, hence the neccessity for the long logic chain below
                 if($(targetDiv).val() == "Cars - Petrol") {
                     $('.show-source-span').html("Petrol cars accounted for");
                     $(otherDiv).val("Cars - Petrol");
-                    redrawGraphs("Cars - Petrol");
+                    redrawGraphs(sourceSelectMenu, "Cars - Petrol");
                 } else if ($(targetDiv).val() == "Cars - Diesel") {
                     $('.show-source-span').html("Diesel cars accounted for");
                     $(otherDiv).val("Cars - Diesel");
-                    redrawGraphs("Cars - Diesel");
+                    redrawGraphs(sourceSelectMenu, "Cars - Diesel");
                 } else if ($(targetDiv).val() == "LGV - Petrol") {
                     $('.show-source-span').html("Petrol LGVs accounted for");
                     $(otherDiv).val("LGV - Petrol");
-                    redrawGraphs("LGV - Petrol");
+                    redrawGraphs(sourceSelectMenu, "LGV - Petrol");
                 } else if ($(targetDiv).val() == "LGV - Diesel") {
                     $('.show-source-span').html("Diesel LGVs accounted for");
                     $(otherDiv).val("LGV - Diesel");
-                    redrawGraphs("LGV - Diesel");
+                    redrawGraphs(sourceSelectMenu, "LGV - Diesel");
                 } else if ($(targetDiv).val() == "Buses and Coaches") {
                     $('.show-source-span').html("Buses and coaches accounted for"); 
                     $(otherDiv).val("Buses and Coaches");
-                    redrawGraphs("Buses and Coaches");
+                    redrawGraphs(sourceSelectMenu, "Buses and Coaches");
                 } else if ($(targetDiv).val() == "HGV") {
                     $('.show-source-span').html("HGVs accounted for"); 
                     $(otherDiv).val("HGV");
-                    redrawGraphs("HGV");
+                    redrawGraphs(sourceSelectMenu, "HGV");
                 } else if ($(targetDiv).val() == "Motorcycles - >50cc") {
                     $('.show-source-span').html("Motorcycles above 50cc accounted for"); 
                     $(otherDiv).val("Motorcycles - >50cc");
-                    redrawGraphs("Motorcycles - >50cc");
+                    redrawGraphs(sourceSelectMenu, "Motorcycles - >50cc");
                 } else if ($(targetDiv).val() == "Mopeds - <50cc") {
                     $('.show-source-span').html("Mopeds below 50cc accounted for"); 
                     $(otherDiv).val("Mopeds - <50cc");
-                    redrawGraphs("Mopeds - <50cc");
+                    redrawGraphs(sourceSelectMenu, "Mopeds - <50cc");
                 } else if ($(targetDiv).val() == "All LPG Vehicles") {
                     $('.show-source-span').html("LPG vehicles accounted for"); 
                     $(otherDiv).val("All LPG Vehicles");
-                    redrawGraphs("All LPG Vehicles");
+                    redrawGraphs(sourceSelectMenu, "All LPG Vehicles");
                 } else { 
                     $('.show-source-span').html("There was a total of");
                     $(otherDiv).val("");
@@ -618,18 +622,21 @@ function makeGraph(error, ggData) {
         
         function yearSelectorChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //On the year select boxes change...
-                //Reset the source select boxes when the year select box is changed
-                sourceSelectMenu.filterAll(); //Source select box 1
-                $('#source-selector-2').val(""); //Source select box 2
-                if ($(targetDiv).val() == "") { //If the year selector is the default value
-                    $('#period-span').html("throughout the period"); //Update html to correct text 
-                    $(otherDiv).val(""); //Set other select box to default value
+                function checkArray(valueArray){
+                   for(var i=0; i < valueArray.length; i++){
+                       if (valueArray[i] === "")   
+                          return false;
+                   }
+                   return true;
+                };
+                if (checkArray($(targetDiv).val())) {
+                    $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
+                    redrawGraphs(yearSelectMenu, $(targetDiv).val());
                 } else {
-                    $('#period-span').html("in " + $(targetDiv).val()); //Update the html to reflect the value that is in the select box
-                    $(otherDiv).val($(targetDiv).val()); //Set the other year select box to match the target's value
-                    //Make sure the graph is redrawn no matter which select box the user interacts with
+                    $(targetDiv).val("");
+                    $(otherDiv).val("")
                     yearSelectMenu
-                        .replaceFilter($(targetDiv).val())
+                        .filterAll()
                         .redrawGroup();
                 };
             });
