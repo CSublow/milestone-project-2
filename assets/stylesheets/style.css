@@ -55,6 +55,7 @@
 --------------------*/
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
 body, h2, .force-center, h1, select, .popup, img {
   margin: 15px auto;
   display: block; }
@@ -267,6 +268,9 @@ footer {
   #total-emissions-per-source-pie svg .pie-slice-group {
     stroke: #000000;
     stroke-width: 1px; }
+
+.x-axis-label, .y-axis-label {
+  font-family: 'Inconsolata', monospace; }
 
 select {
   padding: 10px;

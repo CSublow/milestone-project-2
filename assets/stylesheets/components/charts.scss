@@ -28,6 +28,10 @@
     }
 }
 
+.x-axis-label, .y-axis-label {
+    font-family: 'Inconsolata', monospace;
+}
+
 select {
     @extend %force-center;
     padding: 10px;
