@@ -1,12 +1,28 @@
+/* Page Structure
+-------------------- */
+
+//Import Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+
 body {
     min-width: $minWidth;
     max-width: $maxWidth;
     @extend %force-center;
     margin-top: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 section {
     margin-top: 20px;
+}
+
+h2 {
+    @extend %force-center;
+    font: {
+        family: 'Ubunto Mono', monospace;
+        size: 2.5rem;
+    }
 }
 
 hr {
