@@ -7,6 +7,8 @@ footer {
     max-width: $maxWidth; //Needs to match body to ensure alignment, especially on larger viewports
     position: absolute;
     margin-top: 50px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.1);
     a {
         margin: 0 20px;
     }

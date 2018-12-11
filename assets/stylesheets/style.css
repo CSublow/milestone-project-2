@@ -245,7 +245,9 @@ footer {
   width: 100%;
   max-width: 1990px;
   position: absolute;
-  margin-top: 50px; }
+  margin-top: 50px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
   footer a {
     margin: 0 20px; }
   footer p {
