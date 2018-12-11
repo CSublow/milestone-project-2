@@ -102,7 +102,7 @@ hr {
         font-size: 3rem; }
     .no-js #no-js-display div i {
       font-size: 3rem; }
-.no-js #loader-wrapper, .no-js nav, .no-js main, .no-js footer {
+.no-js #loader-wrapper, .no-js nav, .no-js .alert, .no-js main, .no-js footer {
   display: none; }
 
 /* Loading effect css courtesy of https://ihatetomatoes.net/create-css3-spinning-preloader/, adapted into scss */
@@ -231,6 +231,12 @@ h1 {
       .navbar h2 {
         font-size: 2rem; } }
 
+.alert {
+  display: none; }
+  @media (hover: none) {
+    .alert {
+      display: block; } }
+
 /* Chart Icons */
 .fa-div {
   font-size: 50px;
@@ -247,7 +253,7 @@ footer {
   position: absolute;
   margin-top: 50px;
   padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+  border-top: 1px solid rgba(0, 0, 0, 0.2); }
   footer a {
     margin: 0 20px; }
   footer p {

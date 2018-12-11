@@ -29,6 +29,13 @@ h1 {
     }
 }
 
+.alert {
+    display: none;
+    @include mqHover(none) {
+        display: block;
+    }
+}
+
 /* Chart Icons */
 .fa-div {
     font-size: 50px;
