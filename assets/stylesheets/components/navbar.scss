@@ -13,7 +13,7 @@ h1 {
         image: url("../images/color5.png");
     }
     border-bottom: 2px solid $pureBlack;
-    flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the subtitles are stacked properly
+    flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the titles are stacked properly
     h2 {
        font: {
            family: 'Roboto', sans-serif;
@@ -26,6 +26,7 @@ h1 {
     }
 }
 
+/* Chart Icons */
 .fa-div {
     font-size: 50px;
     margin: 0 auto;
