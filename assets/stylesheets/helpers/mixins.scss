@@ -1,7 +1,13 @@
 /* Media Queries 
 --------------------*/
-@mixin mq($mqWidth) {
+@mixin mqWidth($mqWidth) {
     @media (min-width: $mqWidth) {
+        @content
+    }
+}
+
+@mixin mqHover($mqHover) {
+    @media (hover: $mqHover) {
         @content
     }
 }

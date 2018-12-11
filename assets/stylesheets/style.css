@@ -276,6 +276,12 @@ select {
 -------------------- */
 .popup {
   cursor: pointer; }
+  @media (hover: none) {
+    .popup {
+      display: none; } }
+  @media (hover: hover) {
+    .popup {
+      display: block; } }
   .popup .popuptext {
     font-size: 0.8rem;
     width: 160px;
@@ -302,12 +308,11 @@ select {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 0.3s, opacity 0.3s linear; }
-
-.fa-window-close {
-  position: absolute;
-  left: 141px;
-  bottom: 43px;
-  font-size: 1rem; }
+  .popup .fa-window-close {
+    position: absolute;
+    left: 141px;
+    bottom: 43px;
+    font-size: 1rem; }
 
 /* Image Styling
 -------------------- */

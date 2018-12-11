@@ -3,6 +3,12 @@
 
 .popup { //The popup container
     @extend %force-center;
+    @include mqHover(none) {
+        display: none;
+    }
+    @include mqHover(hover) {
+        display: block;
+    }
     cursor: pointer;
     .popuptext { //The actual popup
         font-size: 0.8rem;
@@ -33,10 +39,10 @@
         opacity: 0;
         transition: visibility 0s 0.3s, opacity 0.3s linear;
     }
-}
-.fa-window-close { //Close icon
-    position: absolute;
-    left: 141px;
-    bottom: 43px;
-    font-size: 1rem;
+    .fa-window-close { //Close icon
+        position: absolute;
+        left: 141px;
+        bottom: 43px;
+        font-size: 1rem;
+    }
 }
