@@ -443,7 +443,7 @@ function makeGraph(error, ggData) {
                 return "";
             })
             .title(function(d) {
-                console.log(sumEmissions.value()); //sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
+                //sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%"; //Format the title as the key + the value with commas separator + the percentage expressed by the pie chart's slice
             })
             .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor]) //The colors here go in order of highest to lowest value for the whole period
@@ -623,21 +623,51 @@ function makeGraph(error, ggData) {
         function yearSelectorChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //On the year select boxes change...
                 function checkArray(valueArray){
-                   for(var i=0; i < valueArray.length; i++){
+                   for (var i=0; i < valueArray.length; i++){
                        if (valueArray[i] === "")   
                           return false;
                    }
                    return true;
                 };
-                if (checkArray($(targetDiv).val())) {
+                
+                var valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
+                
+                if (checkArray(valueArray)) { //If no empty value is found (this represents "Whole Period", since all other options have values)
                     $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
-                    redrawGraphs(yearSelectMenu, $(targetDiv).val());
-                } else {
+                    redrawGraphs(yearSelectMenu, $(targetDiv).val()); //Update the display
+                    
+                    var valueArrayLength = valueArray.length - 1;
+                    
+                    var modifiedArray = valueArray.map(function(valueArray) {
+                         return " " + valueArray;
+                    });
+                    
+                    if (valueArrayLength == 0) {
+                        $('#period-span').html("in" + modifiedArray);
+                    } else if (valueArrayLength == 1) {
+                        // Here output elements are seperated by dot (.). 
+                        var andArray = modifiedArray.join(" and ");
+                        $('#period-span').html("in" + andArray);
+                    } else if (valueArrayLength > 1) {
+                        var lastItem = modifiedArray[valueArrayLength];
+                        console.log(modifiedArray);
+                        modifiedArray[valueArrayLength] = " and " + lastItem;  
+                        $('#period-span').html("in" + modifiedArray);
+                    }
+                    
+                    console.log(valueArrayLength);
+                    
+                    // $('#period-span').html("in " + resultArr);
+                } else { //Else the user has selected "Whole Period"
+                    //It doesn't make sense for the user to be able to select "Whole Period" along with individual years, so if the user tries to select "Whole Period" along with separate years, only "Whole Period" will be selected
                     $(targetDiv).val("");
-                    $(otherDiv).val("")
+                    $(otherDiv).val("");
+                    //Draw graph to represent all data
                     yearSelectMenu
                         .filterAll()
                         .redrawGroup();
+                        
+                    $('#period-span').html(" throughout the whole period") //Update text on screen
                 };
             });
         };
