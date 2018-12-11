@@ -1,11 +1,9 @@
-/* Popup container */
-.popup {
+/* Piechart Informative Popup
+-------------------- */
+.popup { //The popup container
     @extend %force-center;
-    // position: absolute;
     cursor: pointer;
-    /* The actual popup (appears on top) */
-    .popuptext {
-        // visibility: hidden;
+    .popuptext { //The actual popup
         font-size: 0.8rem;
         width: 160px;
         background-color: #555;
@@ -19,8 +17,7 @@
         left: 50%;
         margin-left: -80px;
     }
-    /* Popup arrow */
-    .popuptext::after {
+    .popuptext::after { //Popup arrow
         content: "";
         position: absolute;
         top: 100%;
@@ -30,14 +27,13 @@
         border-style: solid;
         border-color: #555 transparent transparent transparent;
     }
-    /* Toggle this class when clicking on the popup container (hide the popup) */
-    .hide {
+    .hide { //Toggle this class when clicking on the popup container (hide the popup)
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s 0.3s, opacity 0.3s linear;
     }
 }
-.fa-window-close {
+.fa-window-close { //Close icon
     position: absolute;
     left: 141px;
     bottom: 43px;

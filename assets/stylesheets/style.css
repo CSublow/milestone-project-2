@@ -259,12 +259,10 @@ select {
   padding: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5); }
 
-/* Popup container */
+/* Piechart Informative Popup
+-------------------- */
 .popup {
-  cursor: pointer;
-  /* The actual popup (appears on top) */
-  /* Popup arrow */
-  /* Toggle this class when clicking on the popup container (hide the popup) */ }
+  cursor: pointer; }
   .popup .popuptext {
     font-size: 0.8rem;
     width: 160px;
