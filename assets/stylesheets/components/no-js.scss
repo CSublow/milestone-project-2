@@ -1,8 +1,10 @@
-/* No JS fallback */
+/* No JS fallback
+-------------------- */
 #no-js-display {
-    display: none;
+    display: none; //By default with Javascript enabled, the no-js-display is removed
 }
 
+//If the body still has the no-js class which is normally removed (via Javascript), then show the no-js-display
 .no-js {
     #no-js-display {
     width: 100%;
@@ -27,6 +29,6 @@
         }
     }
     #loader-wrapper, nav, main, footer {
-    display: none;
+    display: none; //Remove all other elements except the no-js-display
     }
 }
