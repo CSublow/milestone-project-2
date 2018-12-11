@@ -1,9 +1,3 @@
-// html {
-//     /*Required to ensure footer stays at the bottom of viewport*/
-//     position: relative;
-//     min-height: 100%;
-// }
-
 body {
     min-width: $minWidth;
     max-width: $maxWidth;
@@ -19,7 +13,7 @@ hr {
     border-top: 4px solid rgba(0,0,0,.1);
 }
 
-//%force-center is extended here, rather than on individual classes, so that the .force-center class can be added to elements via javascript
+//This class is added to charts via Javscript in chartScript.js
 .force-center {
     @extend %force-center;
 }
