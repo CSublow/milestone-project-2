@@ -2,6 +2,9 @@
 -------------------- */
 
 .selector-container {
+    @extend %force-center;
+    border: 1px solid $pureBlack;
+    max-width: 500px;
     div {
         width: 100%; //Ensure %force-center has the desired effect for the select boxes
     }

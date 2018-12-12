@@ -56,7 +56,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 @import url("https://fonts.googleapis.com/css?family=Inconsolata");
-body, h2, .force-center, h1, select, .popup, img {
+body, h2, .force-center, h1, .selector-container, select, .popup, img {
   margin: 15px auto;
   display: block; }
 
@@ -262,14 +262,17 @@ footer {
 
 /* Chart Styling
 -------------------- */
-.selector-container div {
-  width: 100%; }
-.selector-container p {
-  text-align: center;
-  margin-bottom: -5px; }
-.selector-container p:nth-child(2) {
-  font-size: 0.8rem;
-  font-style: italic; }
+.selector-container {
+  border: 1px solid #000000;
+  max-width: 500px; }
+  .selector-container div {
+    width: 100%; }
+  .selector-container p {
+    text-align: center;
+    margin-bottom: -5px; }
+  .selector-container p:nth-child(2) {
+    font-size: 0.8rem;
+    font-style: italic; }
 
 #total-emissions-over-time .line {
   stroke-width: 2.5px; }
