@@ -623,10 +623,10 @@ function makeGraph(error, ggData) {
         function yearSelectorChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //On the year select boxes change...
             
-                //This function 
+                //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not
                 function checkArray(valueArray){
-                   for (var i=0; i < valueArray.length; i++){
-                       if (valueArray[i] === "")   
+                   for (var i=0; i < valueArray.length; i++){ //Loop through the array
+                       if (valueArray[i] === "") //If the default option is selected   
                           return false;
                    }
                    return true;
