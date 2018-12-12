@@ -223,6 +223,7 @@ function makeGraph(error, ggData) {
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
             .promptText("All Vehicles")
+            .multiple(true)
             .title(function(d) {
                 return d.key;
             });
