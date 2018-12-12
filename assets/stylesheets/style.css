@@ -266,7 +266,7 @@ footer {
   width: 100%; }
 .selector-container p {
   text-align: center;
-  margin-bottom: -15px; }
+  margin-bottom: -5px; }
 
 #total-emissions-over-time .line {
   stroke-width: 2.5px; }
