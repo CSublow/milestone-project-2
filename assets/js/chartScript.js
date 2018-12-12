@@ -538,6 +538,8 @@ function makeGraph(error, ggData) {
     };
     
     $(document).ready(function() {
+        var valueArray;
+        
         $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information
         
         //Duplicate the options from the 1st source select box to the 2nd source select box
@@ -563,6 +565,15 @@ function makeGraph(error, ggData) {
                 .replaceFilter([newFilter])
                 .redrawGroup();     
         };
+        
+        //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not
+        function checkArray(valueArray){
+           for (var i=0; i < valueArray.length; i++){ //Loop through the array
+               if (valueArray[i] === "") //If the default option is selected   
+                  return false;
+           }
+           return true;
+        };
                 
         //Change the source figure descriptive text based on the value of the select element and ensure selection boxes match
         function sourceSelectChange(targetDiv, otherDiv) {
@@ -571,69 +582,60 @@ function makeGraph(error, ggData) {
                 yearSelectMenu.filterAll();
                 $('#year-selector-2').val("");
                 
-                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
-                
-                //The text to update to the span is different for each value, hence the neccessity for the long logic chain below
-                if($(targetDiv).val() == "Cars - Petrol") {
-                    $('.show-source-span').html("Petrol cars accounted for");
-                    $(otherDiv).val("Cars - Petrol");
-                    redrawGraphs(sourceSelectMenu, "Cars - Petrol");
-                } else if ($(targetDiv).val() == "Cars - Diesel") {
-                    $('.show-source-span').html("Diesel cars accounted for");
-                    $(otherDiv).val("Cars - Diesel");
-                    redrawGraphs(sourceSelectMenu, "Cars - Diesel");
-                } else if ($(targetDiv).val() == "LGV - Petrol") {
-                    $('.show-source-span').html("Petrol LGVs accounted for");
-                    $(otherDiv).val("LGV - Petrol");
-                    redrawGraphs(sourceSelectMenu, "LGV - Petrol");
-                } else if ($(targetDiv).val() == "LGV - Diesel") {
-                    $('.show-source-span').html("Diesel LGVs accounted for");
-                    $(otherDiv).val("LGV - Diesel");
-                    redrawGraphs(sourceSelectMenu, "LGV - Diesel");
-                } else if ($(targetDiv).val() == "Buses and Coaches") {
-                    $('.show-source-span').html("Buses and coaches accounted for"); 
-                    $(otherDiv).val("Buses and Coaches");
-                    redrawGraphs(sourceSelectMenu, "Buses and Coaches");
-                } else if ($(targetDiv).val() == "HGV") {
-                    $('.show-source-span').html("HGVs accounted for"); 
-                    $(otherDiv).val("HGV");
-                    redrawGraphs(sourceSelectMenu, "HGV");
-                } else if ($(targetDiv).val() == "Motorcycles - >50cc") {
-                    $('.show-source-span').html("Motorcycles above 50cc accounted for"); 
-                    $(otherDiv).val("Motorcycles - >50cc");
-                    redrawGraphs(sourceSelectMenu, "Motorcycles - >50cc");
-                } else if ($(targetDiv).val() == "Mopeds - <50cc") {
-                    $('.show-source-span').html("Mopeds below 50cc accounted for"); 
-                    $(otherDiv).val("Mopeds - <50cc");
-                    redrawGraphs(sourceSelectMenu, "Mopeds - <50cc");
-                } else if ($(targetDiv).val() == "All LPG Vehicles") {
-                    $('.show-source-span').html("LPG vehicles accounted for"); 
-                    $(otherDiv).val("All LPG Vehicles");
-                    redrawGraphs(sourceSelectMenu, "All LPG Vehicles");
-                } else { 
-                    $('.show-source-span').html("There was a total of");
+                valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
+
+                if (checkArray(valueArray)) { //If no empty value is found (this represents "All Vehicles", since all other options have values)
+                    $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
+                    redrawGraphs(sourceSelectMenu, $(targetDiv).val()); //Update the display
+                    
+                    var valueArrayLength = valueArray.length - 1;
+                    
+                    //Change the array so that there is a space at the beginning of each array element
+                    var modifiedArray = valueArray.map(function(valueArray) {
+                         return " " + valueArray;
+                    });
+                    
+                    var multiArray = valueArray.map(function(valueArray) {
+                        return valueArray + ", ";
+                    });
+
+                    if (valueArrayLength == 0) { //If the user has only selected one value
+                        $('#show-source-span').html(modifiedArray); //Simply print the value they have selected
+                        $('#accounted').html("accounted for");
+                    } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
+                        var andArray = modifiedArray.join(" and "); //Join the two elements and separate them with "and"
+                        $('#show-source-span').html(andArray); //And then print the joined array
+                        $('#accounted').html("accounted for");
+                    } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
+                        var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
+                        multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
+                        $('#show-source-span').html(multiArray); //Then print the array
+                        $('#accounted').html("accounted for");
+                    }
+
+                } else { //Else the user has selected "All Vehicles"
+                    //It doesn't make sense for the user to be able to select "All Vehicles" along with individual vehicle types, so if the user tries to select "All Vehicles" along with separate vehicles, only "All Vehicles" will be selected
+                    $(targetDiv).val("");
                     $(otherDiv).val("");
+                    //Then draw graph to represent all data
                     sourceSelectMenu
                         .filterAll()
                         .redrawGroup();
-                    $('#percentage-p').css('visibility', 'hidden'); //Make sure the percentage information is hidden if the user reselects the default option
-                };
+                    $('#show-source-span').html("There was a total of "); //Update text on screen
+                    $('#accounted').html("");
+                }
+                
+                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
             });
         };
         
         function yearSelectorChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //On the year select boxes change...
-            
-                //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not
-                function checkArray(valueArray){
-                   for (var i=0; i < valueArray.length; i++){ //Loop through the array
-                       if (valueArray[i] === "") //If the default option is selected   
-                          return false;
-                   }
-                   return true;
-                };
+                //Reset both source select boxes when the year select boxes are changed
+                sourceSelectMenu.filterAll();
+                $('#source-selector-2').val("");
                 
-                var valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
+                valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
                 
                 if (checkArray(valueArray)) { //If no empty value is found (this represents "Whole Period", since all other options have values)
                     $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
@@ -666,10 +668,10 @@ function makeGraph(error, ggData) {
                     yearSelectMenu
                         .filterAll()
                         .redrawGroup();
-                    $('#period-span').html(" throughout the whole period") //Update text on screen
-                };
+                    $('#period-span').html(" throughout the whole period"); //Update text on screen
+                }
             });
-        };
+        }
     //Remove the loading overlay when the document is ready. A delay is set to ensure that users on quick connections, or those who have already visited the site and have cookies saved, can see the screen is a loading screen and not get confused if it disappears quickly
         $('body').delay(1000).queue(function() { //The loading screen will appear for at least one second
             $(this).addClass('loaded');
