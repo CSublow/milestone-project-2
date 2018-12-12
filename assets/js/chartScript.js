@@ -573,11 +573,13 @@ function makeGraph(error, ggData) {
                   return false;
            }
            return true;
-        };
+        }
                 
         //Change the source figure descriptive text based on the value of the select element and ensure selection boxes match
         function sourceSelectChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() {
+                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                
                 //Reset both year select boxes when the source select box is changed
                 yearSelectMenu.filterAll();
                 $('#year-selector-2').val("");
@@ -612,7 +614,6 @@ function makeGraph(error, ggData) {
                         $('#show-source-span').html(multiArray); //Then print the array
                         $('#accounted').html("accounted for");
                     }
-
                 } else { //Else the user has selected "All Vehicles"
                     //It doesn't make sense for the user to be able to select "All Vehicles" along with individual vehicle types, so if the user tries to select "All Vehicles" along with separate vehicles, only "All Vehicles" will be selected
                     $(targetDiv).val("");
@@ -623,9 +624,8 @@ function makeGraph(error, ggData) {
                         .redrawGroup();
                     $('#show-source-span').html("There was a total of "); //Update text on screen
                     $('#accounted').html("");
+                    $('#percentage-p').css('visibility', 'hidden'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 }
-                
-                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
             });
         };
         
