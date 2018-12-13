@@ -546,9 +546,11 @@ function makeGraph(error, ggData) {
         //Duplicate the options from the 1st source select box to the 2nd source select box
         var $sourceOptions = $('#source-selector select > option').clone();
         $('#source-selector-2').append($sourceOptions);
+        $('#source-selector-2 option:nth-child(1)').attr('selected','selected'); //Set the first option of the cloned select box to be default
         //Likewise for the year select boxes
         var $yearOptions = $('#year-selector select > option').clone();
         $('#year-selector-2').append($yearOptions);
+        $('#year-selector-2 option:nth-child(1)').attr('selected','selected'); //Set the first option of the cloned select box to be default
         
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
