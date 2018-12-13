@@ -560,14 +560,14 @@ function makeGraph(error, ggData) {
         yearSelectorChange('#year-selector select', '#year-selector-2');
         yearSelectorChange('#year-selector-2', '#year-selector select');
                 
-        //Redraw the graphs with required filter
+        //Redraw the graphs with required filter, this function is called when the select boxes are changed
         function redrawGraphs(menu, newFilter) {
             menu
                 .replaceFilter([newFilter])
                 .redrawGroup();     
         };
         
-        //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not
+        //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not. Called on select box change
         function checkArray(valueArray){
            for (var i=0; i < valueArray.length; i++){ //Loop through the array
                if (valueArray[i] === "") //If the default option is selected   
@@ -578,30 +578,32 @@ function makeGraph(error, ggData) {
                 
         //Change the source figure descriptive text based on the value of the select element and ensure selection boxes match
         function sourceSelectChange(targetDiv, otherDiv) {
-            $(targetDiv).change(function() {
+            $(targetDiv).change(function() { //When the select box the user clicks on changes
                 $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 
                 //Reset both year select boxes when the source select box is changed
                 yearSelectMenu.filterAll();
                 $('#year-selector-2').val("");
                 
-                valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
+                valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array. The array elements are composed of the user's selection
 
-                if (checkArray(valueArray)) { //If no empty value is found (this represents "All Vehicles", since all other options have values)
-                    $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
-                    redrawGraphs(sourceSelectMenu, $(targetDiv).val()); //Update the display
+                if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All Vehicles", since all other options have values)
+                    $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
+                    redrawGraphs(sourceSelectMenu, $(targetDiv).val()); //Update the charts
                     
                     var valueArrayLength = valueArray.length - 1;
                     
-                    //Change the array so that there is a space at the beginning of each array element
+                    //Change the array so that there is a space at the beginning of each array element. This is so the array prints like a proper English sentence
                     var modifiedArray = valueArray.map(function(valueArray) {
                          return " " + valueArray;
                     });
                     
+                    //For when there are 3 or more array items, I want them to print with commas separating them
                     var multiArray = valueArray.map(function(valueArray) {
                         return valueArray + ", ";
                     });
-
+                    
+                    //The below logic chain checks for how many select options are currently selected
                     if (valueArrayLength == 0) { //If the user has only selected one value
                         $('#show-source-span').html(modifiedArray); //Simply print the value they have selected
                         $('#accounted').html("accounted for");
