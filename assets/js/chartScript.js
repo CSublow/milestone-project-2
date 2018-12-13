@@ -539,9 +539,9 @@ function makeGraph(error, ggData) {
     
     //Once the charts are rendered, jQuery is able to manipulate the DOM
     $(document).ready(function() {
-        var valueArray;
+        var valueArray; //Declare the variable which the array of select options are contained in. The exact array depends upon the user's selection
         
-        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information
+        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions"
         
         //Duplicate the options from the 1st source select box to the 2nd source select box
         var $sourceOptions = $('#source-selector select > option').clone();
@@ -552,11 +552,11 @@ function makeGraph(error, ggData) {
         
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
-        // Make sure the sourceSelectChange function is invoked for both source selection boxes
+        //Make sure the sourceSelectChange function is invoked for both source selection boxes
         sourceSelectChange('#source-selector select', '#source-selector-2');
         sourceSelectChange('#source-selector-2', '#source-selector select');
         
-        // //Likewise for both year selects
+        //Likewise for both year selects and the yearSelectorChange
         yearSelectorChange('#year-selector select', '#year-selector-2');
         yearSelectorChange('#year-selector-2', '#year-selector select');
                 
