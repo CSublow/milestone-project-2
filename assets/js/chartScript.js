@@ -537,6 +537,7 @@ function makeGraph(error, ggData) {
         });
     };
     
+    //Once the charts are rendered, jQuery is able to manipulate the DOM
     $(document).ready(function() {
         var valueArray;
         
