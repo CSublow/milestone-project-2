@@ -54,7 +54,6 @@
 /* Structural
 --------------------*/
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 @import url("https://fonts.googleapis.com/css?family=Inconsolata");
 body, h2, .force-center, h1, .selector-container, select, .popup, img {
   margin: 15px auto;
@@ -74,7 +73,6 @@ section {
   margin-top: 20px; }
 
 h2 {
-  font-family: 'Ubunto Mono', monospace;
   font-size: 2.5rem; }
 
 hr {
