@@ -588,34 +588,31 @@ function makeGraph(error, ggData) {
                 valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array. The array elements are composed of the user's selection
 
                 if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All Vehicles", since all other options have values)
-                    $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
-                    redrawGraphs(sourceSelectMenu, $(targetDiv).val()); //Update the charts
-                    
                     var valueArrayLength = valueArray.length - 1;
-                    
                     //Change the array so that there is a space at the beginning of each array element. This is so the array prints like a proper English sentence
                     var modifiedArray = valueArray.map(function(valueArray) {
                          return " " + valueArray;
                     });
-                    
                     //For when there are 3 or more array items, I want them to print with commas separating them
                     var multiArray = valueArray.map(function(valueArray) {
                         return valueArray + ", ";
                     });
                     
+                    $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
+                    redrawGraphs(sourceSelectMenu, $(targetDiv).val()); //Update the charts
+                    
+                    $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
+                    
                     //The below logic chain checks for how many select options are currently selected
                     if (valueArrayLength == 0) { //If the user has only selected one value
                         $('#show-source-span').html(modifiedArray); //Simply print the value they have selected
-                        $('#accounted').html("accounted for");
                     } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
                         var andArray = modifiedArray.join(" and "); //Join the two elements and separate them with "and"
                         $('#show-source-span').html(andArray); //And then print the joined array
-                        $('#accounted').html("accounted for");
                     } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
                         var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
-                        multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
+                        multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the last item
                         $('#show-source-span').html(multiArray); //Then print the array
-                        $('#accounted').html("accounted for");
                     }
                 } else { //Else the user has selected "All Vehicles"
                     //It doesn't make sense for the user to be able to select "All Vehicles" along with individual vehicle types, so if the user tries to select "All Vehicles" along with separate vehicles, only "All Vehicles" will be selected
