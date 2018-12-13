@@ -638,16 +638,14 @@ function makeGraph(error, ggData) {
                 valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
                 
                 if (checkArray(valueArray)) { //If no empty value is found (this represents "Whole Period", since all other options have values)
-                    $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
-                    redrawGraphs(yearSelectMenu, $(targetDiv).val()); //Update the display
-                    
                     var valueArrayLength = valueArray.length - 1;
-                    
                     //Change the array so that there is a space at the beginning of each array element
                     var modifiedArray = valueArray.map(function(valueArray) {
                          return " " + valueArray;
                     });
                     
+                    $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
+                    redrawGraphs(yearSelectMenu, $(targetDiv).val()); //Update the display
                     
                     if (valueArrayLength == 0) { //If the user has only selected one value
                         $('#period-span').html("in" + modifiedArray); //Simply print the value they have selected
