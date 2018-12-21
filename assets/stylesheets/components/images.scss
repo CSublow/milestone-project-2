@@ -6,32 +6,10 @@ figure {
 
 .img-figure {
     max-width: 450px;
-    // :after {
-    //     content:""; 
-    //     background: black; 
-    //     position: absolute; 
-    //     bottom: 0; 
-    //     left: 0; 
-    //     height: 50%; 
-    //     width: 1px;
-    // }
     @include mqWidth(992px) {
         float: right;
     }
     img {
         @extend %force-center;
-    //     width: 620px;
-        
-    //     //Different image widths based on viewport size
-    //     @include mqWidth(768px) {
-    //         width: 430px;
-    //     }
-    //     @include mqWidth(1114px) {
-    //         width: 660px;
-    //     }
-    //     @include mqWidth(1266px) {
-    //         width: initial;
-    //     }
-    // }
     }   
 }
