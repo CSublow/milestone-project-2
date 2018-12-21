@@ -1,3 +1,4 @@
+//Declare cloud9 global variables to prevent cloud9 warnings
 /*global $*/
 /*global crossfilter*/
 /*global queue*/
