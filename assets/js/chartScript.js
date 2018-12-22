@@ -518,7 +518,7 @@ function makeGraph(error, ggData) {
                     .attr('y', +b.getAttribute('y') + -10)
                     .attr('text-anchor', 'middle')
                     .attr('fill', 'black')
-                    .style({'font-size': '0.8rem', 'font-style': 'italic'});
+                    .style({'font-size': '0.7rem', 'font-style': 'italic'});
             };
         });
         
