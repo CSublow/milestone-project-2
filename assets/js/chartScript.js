@@ -687,7 +687,7 @@ function chartPopup() {
 };
 
 //Reset charts to default when user clicks the reset button
-function resetSelects(select) {
+function resetSelects(select) { //The arg passed into 'select' depends upon which button the user clicks
     select
         .filterAll()
         .redrawGroup();  
