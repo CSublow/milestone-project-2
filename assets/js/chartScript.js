@@ -22,6 +22,11 @@ var generalColor = "#0b9c00",
     motorcyclesColor = "#4F7942",
     mopedsColor = "#29AB87",
     lpgColor = "#A9BA9D";
+    
+//Global Selector Vars
+//Declare outside of main function for use in reset buttons
+var sourceSelectMenu;
+var yearSelectMenu;
 
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
@@ -217,7 +222,6 @@ function makeGraph(error, ggData) {
     $('#average-emissions-figure').html(generatedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering, which is the desire functionality
 
     //Render the select menu to show data for a particular vehicle type
-    var sourceSelectMenu; //Declare outside of function for use in jQuery document.ready
     function showSourceSelector(ndx) {
         sourceSelectMenu = dc.selectMenu("#source-selector");
         sourceSelectMenu
@@ -405,7 +409,6 @@ function makeGraph(error, ggData) {
     };
     
     //Render the select menu to show data for a particular year
-    var yearSelectMenu; //Declare outside of function for use in jQuery document ready function
     function showYearSelector(ndx) {
         yearSelectMenu = dc.selectMenu('#year-selector');
         yearSelectMenu
@@ -682,3 +685,15 @@ function chartPopup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("hide");
 };
+
+//Reset charts to default when user clicks the reset button
+function resetSourceSelects() {
+    sourceSelectMenu
+        .filterAll()
+        .redrawGroup();  
+}
+function resetYearSelects() {
+    yearSelectMenu
+        .filterAll()
+        .redrawGroup();  
+}
