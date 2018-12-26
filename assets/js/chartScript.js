@@ -687,13 +687,8 @@ function chartPopup() {
 };
 
 //Reset charts to default when user clicks the reset button
-function resetSourceSelects() {
-    sourceSelectMenu
-        .filterAll()
-        .redrawGroup();  
-}
-function resetYearSelects() {
-    yearSelectMenu
+function resetSelects(select) {
+    select
         .filterAll()
         .redrawGroup();  
 }
