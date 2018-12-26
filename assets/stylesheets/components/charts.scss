@@ -46,3 +46,11 @@ select {
     padding: 10px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5)
 }
+
+/* Reset Button */
+
+button {
+    &:focus {
+        outline: none; //Remove default outline change when buttons are clicked/focused on
+    }
+}
