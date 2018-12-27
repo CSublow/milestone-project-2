@@ -26,6 +26,10 @@ hr {
     border-top: 4px solid rgba(0,0,0,.1);
 }
 
+.selection-description {
+    min-height: 80px; //Since the 1st selection-description div contains more text than the 2nd, this ensures the 2nd div is the same height as the 1st
+}
+
 //This class is added to charts via Javscript in chartScript.js
 .force-center {
     @extend %force-center;

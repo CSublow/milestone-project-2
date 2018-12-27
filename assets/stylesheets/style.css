@@ -78,6 +78,9 @@ h2 {
 hr {
   border-top: 4px solid rgba(0, 0, 0, 0.1); }
 
+.selection-description {
+  min-height: 80px; }
+
 /* No JS Fallback
 -------------------- */
 #no-js-display {
