@@ -43,6 +43,7 @@
 /*CSS output:*/
 /* Imports */
 /* Colors */
+/* Background Image */
 /* Structure */
 /* Loading */
 /* Media Queries 
@@ -85,7 +86,8 @@ footer {
   position: absolute;
   margin-top: 50px;
   padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.2); }
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  background-image: url("../images/color5.png"); }
   footer a {
     margin: 0 20px; }
   footer p {
