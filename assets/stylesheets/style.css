@@ -78,6 +78,20 @@ h2 {
 hr {
   border-top: 4px solid rgba(0, 0, 0, 0.1); }
 
+footer {
+  min-width: 758px;
+  width: 100%;
+  max-width: 1990px;
+  position: absolute;
+  margin-top: 50px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2); }
+  footer a {
+    margin: 0 20px; }
+  footer p {
+    font-size: 0.75rem;
+    margin-top: -10px; }
+
 .selection-description {
   min-height: 80px; }
 
@@ -244,22 +258,6 @@ h1 {
   margin: 0 auto; }
   .fa-div i {
     margin: 0 20px; }
-
-/* Footer
--------------------- */
-footer {
-  min-width: 758px;
-  width: 100%;
-  max-width: 1990px;
-  position: absolute;
-  margin-top: 50px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.2); }
-  footer a {
-    margin: 0 20px; }
-  footer p {
-    font-size: 0.75rem;
-    margin-top: -10px; }
 
 /* Chart Styling
 -------------------- */

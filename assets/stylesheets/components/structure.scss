@@ -27,6 +27,23 @@ hr {
     border-top: 4px solid rgba(0,0,0,.1);
 }
 
+footer {
+    min-width: $minWidth; //Prevent the footer being squashed down on smaller viewports
+    width: 100%;
+    max-width: $maxWidth; //Needs to match body to ensure alignment, especially on larger viewports
+    position: absolute;
+    margin-top: 50px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    a {
+        margin: 0 20px;
+    }
+    p {
+        font-size: 0.75rem;
+        margin-top: -10px;
+    }
+}
+
 .selection-description {
     min-height: 80px; //Since the 1st selection-description div contains more text than the 2nd, this ensures the 2nd div is the same height as the 1st
 }
