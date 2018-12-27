@@ -2,7 +2,16 @@
 -------------------- */
 
 .highlights-figure {
-    font-weight: bold;
+    font: {
+        weight: bold;
+        size: 1.5rem;
+    }
+    span {
+        font: {
+            weight: bold;
+            size: 1.5rem;
+        }
+    }
 }
 
 .selector-container {
