@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 body {
+    //Variables used here for efficiency if this ever needs to change, footer uses same values
     min-width: $minWidth;
     max-width: $maxWidth;
     @extend %force-center;
