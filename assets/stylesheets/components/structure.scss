@@ -24,7 +24,9 @@ h2 {
 }
 
 hr {
-    border-top: 4px solid rgba(0,0,0,.1);
+    background-image: $bgImage;
+    height: 5px;
+    border-top: 1px solid rgba(0,0,0,.1);
 }
 
 footer {

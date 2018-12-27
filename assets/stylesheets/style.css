@@ -77,7 +77,9 @@ h2 {
   font-size: 2.5rem; }
 
 hr {
-  border-top: 4px solid rgba(0, 0, 0, 0.1); }
+  background-image: url("../images/color5.png");
+  height: 5px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
 footer {
   min-width: 758px;
