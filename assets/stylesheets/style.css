@@ -91,6 +91,8 @@ footer {
   footer a {
     margin: 0 20px;
     color: #ffffff; }
+    footer a:hover {
+      color: #ffffff; }
   footer p {
     font-size: 0.75rem;
     margin-top: -10px;
