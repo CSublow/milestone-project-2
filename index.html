@@ -30,11 +30,15 @@
     <!-- Loading -->
     <script src="assets/js/loading.js"></script>
 </head>
+
 <body class="no-js">
+    <!-- Loader -->
     <div id="loader-wrapper">
         <div id="loader"></div>
         <p>Loading...</p>
     </div>
+    
+    <!-- No JS Display -->
     <noscript id="no-js-display">
         <div>
             <p><span>No Javascript Detected!</span></p>
@@ -42,36 +46,50 @@
             <p>Please enable Javascript to view the dashboard</p>
         </div>
     </noscript>
+    
+    <!-- Navbar -->
     <nav class="navbar navbar-dark">
         <h1>UK Road Transport Greenhouse Gas Emissions 1990-2016</h1>
         <h2>Interactive Data Dashboard</h2>
     </nav>
+    <!-- Mouse/Trackpad Alert -->
     <div class="alert alert-danger alert-dismissable fade show text-center" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label-"Close">
             <span aria-hidden="true">&times;</span>
         </button>
         <span><strong>NOTE:</strong> This dashboard is best viewed with a device that has a mouse/trackpad, such as a laptop or desktop PC.</span>
     </div>
+    
+    <!-- Main -->
     <main class="container-fluid">
+        <!-- Introduction -->
         <section class="intro-text row">
+            <!-- Font Awesome Icons -->
             <div class="fa-div col-12 text-center">
                 <i class="fas fa-chart-pie"></i>
                 <i class="fas fa-chart-line"></i>
                 <i class="fas fa-chart-bar"></i>
                 <i class="fas fa-chart-area"></i>
             </div>
+            
+            <!-- Jump to Charts Link -->
             <a href="#charts" class="chart-jump col-12 text-center"><p>Jump to Charts</p></a>
+            
+            <!-- Introduction Text and Image -->
             <div class="offset-md-1 col-md-10">
                 <h2 class="text-uppercase text-center">Introduction</h2>
+                
                 <!--Display this figure on large and above viewports. Floating to the right of the text-->
                 <figure class="img-figure d-none d-lg-block">
                     <img class="figure-img rounded" src="assets/images/congestion-smaller.jpg" alt="Congestion on UK roads">
                     <figcaption class="figure-caption text-center">Congestion on UK roads is becoming a major problem. With congestion comes an increase in pollution.</figcaption>
                 </figure>
+                
                 <p>A greenhouse gas is a gas that absorbs and emits radiant energy within the thermal infrared range, causing the greenhouse effect. On Earth, the primary greenhouse gases within the atmosphere are water vapour, carbon dioxide, methane, nitrous oxide and ozone.</p>
                 <p>Greenhouse gases and the greenhouse effect are not neccessarily bad things. Without them, the temperature of the Earth's surface would be on average about -18&#176;C (0&#176;F), rather than the present average of 15&#176;C (59&#176;F). At such low temperatures, life on Earth would be vastly different if not impossible, and human society would likely have not come to exist.</p>
                 <p>However, since the dawn of the Industrial Revolution in around 1750, human activities have increased the atmospheric concentration of greenhouse gases. This is of concern, as the current scientific consensus holds that anthropogenic (human) greenhouse gas emissions will lead to a rise in average global temperatures over the next few decades, with potentially harmful effects on ecosystems, biodiversity, and the economy.</p>
                 <p>Road transport in particular is a major contributor to greenhouse gas emissions in many countries. In the UK, as of 2018 <a href="https://www.independent.co.uk/environment/air-pollution-uk-transport-most-polluting-sector-greenhouse-gas-emissions-drop-carbon-dioxide-a8196866.html" target="_blank">the majority of man-made greenhouse gas emissions come from road transport</a>. The dashboard below visualises the latest official statistics available from UK government sources, covering road transport emissions between the years 1990 and 2016. More information on the statistics used to generate this dashboard can be found <a href="https://www.gov.uk/government/statistics/final-uk-greenhouse-gas-emissions-national-statistics-1990-2016" target="_blank">here</a>.</p>
+                
                 <!--Display this figure on xs to md viewports. Displays below the text-->
                 <figure class="img-figure d-lg-none">
                     <img class="figure-img rounded" src="assets/images/congestion-smaller.jpg" alt="Congestion on UK roads">
@@ -81,7 +99,11 @@
         </section>
         
         <hr>
+        
+        <!-- Jump to Charts Link takes the user here -->
         <a name="charts"></a>
+        
+        <!-- Highlights Section -->
         <section>
             <h2 class="text-uppercase text-center ">Highlights</h2>
             <figure class="row text-center">
@@ -96,6 +118,7 @@
         
         <hr>
         
+        <!-- Total Emissions Over The Period Section -->
         <section class="row">
             <h2 class="text-uppercase text-center">Total emissions over the period.</h2>
             <div class="offset-md-1 col-md-10">
@@ -103,23 +126,36 @@
                 <p>Cleaner and more efficient engines, rather than lower road usage, have helped keep emissions levels relatively stable, since the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/741953/road-traffic-estimates-in-great-britain-2017.pdf" target="_blank"> traffic volume on UK roads is at record highs</a>. With increasing investment in cleaner fuel types, and a <a href="https://www.statista.com/topics/2298/the-uk-electric-vehicle-industry/" target="_blank">growing number of hybrid and electric vehicles on UK roads</a>, it is hoped that the emissions from UK roads will begin to decrease over the coming decades.</p>
                 <p>The two charts below show the trend in emissions over time. Use the selection box to focus on a particular vehicle type. You can also hover over the lines to see more information.</p>
             </div>
+            
+            <!-- Vehicle Select Box -->
             <div class="selector-container col-12">
                 <p>Select vehicle type:</p>
                 <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple vehicle types.</p>
                 <div id="source-selector" class="col-12"></div>
             </div>
+            
+            <!-- Descriptive Text -->
             <div class="text-center col-12 selection-description">
                 <p><span id="show-source-span">There was a total of</span> <span id="accounted"></span> <span id="show-time-figure"></span> kilotons of emissions throughout the period.</p>
                 <p id="percentage-p">That is <span id="show-time-figure-percentage"></span> of the emissions for the period.</p>
             </div>
+            
+            <!-- Reset Button -->
             <div class="col-12">
                 <button class="reset-button text-center" onclick="resetSelects(sourceSelectMenu, '#source-selector-2')">
                     <strong>Reset Charts</strong>
                     <i class="fas fa-redo"></i>
                 </button>
             </div>
+            
+            <!-- Total Emissions Over Time Line Chart -->
             <div id="total-emissions-over-time" class="col-xl-6"></div>
+            
+            <!-- Total Emissions Over Time Composite Chart -->
             <div id="composite-chart" class="col-xl-6"></div>
+            
+            <!-- Duplicate Select Box -->
+            <!-- Two identical select boxes are used for the benefit of users with smaller viewports. No need to scroll up to the top select box -->
             <div class="selector-container col-12">
                 <p>Select vehicle type:</p>
                 <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple vehicle types.</p>
@@ -129,33 +165,46 @@
 
         <hr>
         
+        <!-- Total Emissions By Type Of Vehicle Section -->
         <section class="row">
             <h2 class="text-uppercase text-center">Total emissions by type of vehicle.</h2>
                 <div class="offset-md-1 col-md-10">
                     <p>Cars are responsible for the bulk of emissions over the period, with petrol cars being the biggest contributor to the total emissions figure. However, although emissions from petrol cars have nearly halved since 1990, emissions from diesel cars are now 10x what they were in 1990. Diesel as a fuel source has <a href="https://www.autoexpress.co.uk/car-news/consumer-news/98747/diesel-ban-the-future-of-diesel-cars-in-the-uk-and-beyond" target="_blank">attracted much negative criticism</a> in recent years, with this criticism perhaps stemming from diesel's rapid increase in pollution. There have even been calls for a <a href="https://www.theguardian.com/environment/2018/aug/23/ban-diesel-cars-from-cities-say-half-of-uk-drivers-in-poll" target="_blank">ban on diesel cars</a> in urban areas.</p>
                     <p>You can hover over the pie chart's slices or bar chart's bars in order to see the exact value that is represented.</p>
                 </div>
+                
+                <!-- Year Select Box -->
                 <div class="selector-container col-12">
                     <p>Select year:</p>
                     <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple years.</p>
                     <div id="year-selector"></div>
                 </div>
+                
+                <!-- Descriptive Text -->
                 <div class="text-center col-12 selection-description">
                     <p><span class="show-year-span">There was a total of</span> <span id="show-period-figure"></span> kilotons of emissions <span id="period-span">throughout the whole period.</span>.</p>
                 </div>
+                
+                <!-- Reset Button -->
                 <div class="col-12">
                     <button class="reset-button text-center" onclick="resetSelects(yearSelectMenu, '#year-selector-2')">
                         <strong>Reset Charts</strong>
                         <i class="fas fa-redo"></i>
                     </button>
                 </div>
+                
+                <!-- Pie Chart -->
                 <div id="pie-container" class="col-xl-6">
                     <div class="popup" onclick="chartPopup()">
                         <span class="popuptext" id="myPopup">Hover over the slices to see more information<i class="fa fa-window-close" aria-hidden="true"></i></span>
                     </div>
                     <div id="total-emissions-per-source-pie"></div>
                 </div>
+                
+                <!-- Bar Chart -->
                 <div id="total-emissions-per-source" class="col-xl-6"></div>
+                
+                <!-- Duplicate Select Box -->
                 <div class="selector-container col-12">
                     <p>Select year:</p>
                     <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple years.</p>
@@ -164,6 +213,7 @@
         </section>
     </main>
     
+    <!-- Footer -->
     <footer>
         <ul class="list-inline text-center">
             <li class="list-inline-item"><a href="#" onclick="topFunction()">Back to Top</a></li>
@@ -181,9 +231,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
-    <!-- Page Scroll Script -->
+    <!-- Custom Scripts -->
     <script src="assets/js/pageScroll.js"></script>
-    <!-- Custom scripts -->
     <script src="assets/js/chartScript.js"></script>
     <!-- No JS Script -->
     <script src="assets/js/no-js.js"></script>
