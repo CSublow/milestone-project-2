@@ -678,19 +678,26 @@ function makeGraph(error, ggData) {
             });
         }
     });
-};
+}
 
 //Hide the informative pie chart pop up if the user clicks on it
 function chartPopup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("hide");
-};
+}
 
 //Reset charts to default when user clicks the reset button
 function resetSelects(select, resetDuplicate) { //The arg passed into 'select' depends upon which button the user clicks
+    //Reset the charts
     select
         .filterAll()
         .redrawGroup();  
-        
+      
+    //Ensure the duplicate select box for source or year are reset  
     $(resetDuplicate).val("");
+    
+    //Ensure the percentage-p is hidden on reset
+    if (resetDuplicate == '#source-selector-2') {
+        $('#percentage-p').css('visibility', 'hidden');
+    }
 }
