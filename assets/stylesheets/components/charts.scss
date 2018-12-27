@@ -1,6 +1,10 @@
 /* Chart Styling
 -------------------- */
 
+.highlights-figure {
+    font-weight: bold;
+}
+
 .selector-container {
     @extend %force-center;
     border: 1px solid $pureBlack;

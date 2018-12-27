@@ -267,6 +267,9 @@ h1 {
 
 /* Chart Styling
 -------------------- */
+.highlights-figure {
+  font-weight: bold; }
+
 .selector-container {
   border: 1px solid #000000;
   max-width: 500px; }
