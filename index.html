@@ -168,48 +168,48 @@
         <!-- Total Emissions By Type Of Vehicle Section -->
         <section class="row">
             <h2 class="text-uppercase text-center">Total emissions by type of vehicle.</h2>
-                <div class="offset-md-1 col-md-10">
-                    <p>Cars are responsible for the bulk of emissions over the period, with petrol cars being the biggest contributor to the total emissions figure. However, although emissions from petrol cars have nearly halved since 1990, emissions from diesel cars are now 10x what they were in 1990. Diesel as a fuel source has <a href="https://www.autoexpress.co.uk/car-news/consumer-news/98747/diesel-ban-the-future-of-diesel-cars-in-the-uk-and-beyond" target="_blank">attracted much negative criticism</a> in recent years, with this criticism perhaps stemming from diesel's rapid increase in pollution. There have even been calls for a <a href="https://www.theguardian.com/environment/2018/aug/23/ban-diesel-cars-from-cities-say-half-of-uk-drivers-in-poll" target="_blank">ban on diesel cars</a> in urban areas.</p>
-                    <p>You can hover over the pie chart's slices or bar chart's bars in order to see the exact value that is represented.</p>
+            <div class="offset-md-1 col-md-10">
+                <p>Cars are responsible for the bulk of emissions over the period, with petrol cars being the biggest contributor to the total emissions figure. However, although emissions from petrol cars have nearly halved since 1990, emissions from diesel cars are now 10x what they were in 1990. Diesel as a fuel source has <a href="https://www.autoexpress.co.uk/car-news/consumer-news/98747/diesel-ban-the-future-of-diesel-cars-in-the-uk-and-beyond" target="_blank">attracted much negative criticism</a> in recent years, with this criticism perhaps stemming from diesel's rapid increase in pollution. There have even been calls for a <a href="https://www.theguardian.com/environment/2018/aug/23/ban-diesel-cars-from-cities-say-half-of-uk-drivers-in-poll" target="_blank">ban on diesel cars</a> in urban areas.</p>
+                <p>You can hover over the pie chart's slices or bar chart's bars in order to see the exact value that is represented.</p>
+            </div>
+            
+            <!-- Year Select Box -->
+            <div class="selector-container col-12">
+                <p>Select year:</p>
+                <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple years.</p>
+                <div id="year-selector"></div>
+            </div>
+            
+            <!-- Descriptive Text -->
+            <div class="text-center col-12 selection-description">
+                <p><span class="show-year-span">There was a total of</span> <span id="show-period-figure"></span> kilotons of emissions <span id="period-span">throughout the whole period.</span>.</p>
+            </div>
+            
+            <!-- Reset Button -->
+            <div class="col-12">
+                <button class="reset-button text-center" onclick="resetSelects(yearSelectMenu, '#year-selector-2')">
+                    <strong>Reset Charts</strong>
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+            
+            <!-- Pie Chart -->
+            <div id="pie-container" class="col-xl-6">
+                <div class="popup" onclick="chartPopup()">
+                    <span class="popuptext" id="myPopup">Hover over the slices to see more information<i class="fa fa-window-close" aria-hidden="true"></i></span>
                 </div>
-                
-                <!-- Year Select Box -->
-                <div class="selector-container col-12">
-                    <p>Select year:</p>
-                    <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple years.</p>
-                    <div id="year-selector"></div>
-                </div>
-                
-                <!-- Descriptive Text -->
-                <div class="text-center col-12 selection-description">
-                    <p><span class="show-year-span">There was a total of</span> <span id="show-period-figure"></span> kilotons of emissions <span id="period-span">throughout the whole period.</span>.</p>
-                </div>
-                
-                <!-- Reset Button -->
-                <div class="col-12">
-                    <button class="reset-button text-center" onclick="resetSelects(yearSelectMenu, '#year-selector-2')">
-                        <strong>Reset Charts</strong>
-                        <i class="fas fa-redo"></i>
-                    </button>
-                </div>
-                
-                <!-- Pie Chart -->
-                <div id="pie-container" class="col-xl-6">
-                    <div class="popup" onclick="chartPopup()">
-                        <span class="popuptext" id="myPopup">Hover over the slices to see more information<i class="fa fa-window-close" aria-hidden="true"></i></span>
-                    </div>
-                    <div id="total-emissions-per-source-pie"></div>
-                </div>
-                
-                <!-- Bar Chart -->
-                <div id="total-emissions-per-source" class="col-xl-6"></div>
-                
-                <!-- Duplicate Select Box -->
-                <div class="selector-container col-12">
-                    <p>Select year:</p>
-                    <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple years.</p>
-                    <select multiple id="year-selector-2"></select>
-                </div>
+                <div id="total-emissions-per-source-pie"></div>
+            </div>
+            
+            <!-- Bar Chart -->
+            <div id="total-emissions-per-source" class="col-xl-6"></div>
+            
+            <!-- Duplicate Select Box -->
+            <div class="selector-container col-12">
+                <p>Select year:</p>
+                <p>Hold ctrl (Windows) or cmd (Mac) whilst clicking to select multiple years.</p>
+                <select multiple id="year-selector-2"></select>
+            </div>
         </section>
     </main>
     
