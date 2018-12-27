@@ -101,6 +101,10 @@ footer {
 .selection-description {
   min-height: 80px; }
 
+/* ADD TO SEPARATE SCSS FILE?? */
+ul {
+  list-style-type: none; }
+
 /* No JS Fallback
 -------------------- */
 #no-js-display {

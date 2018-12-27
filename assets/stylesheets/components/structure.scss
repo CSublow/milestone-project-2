@@ -58,3 +58,8 @@ footer {
 .force-center {
     @extend %force-center;
 }
+
+/* ADD TO SEPARATE SCSS FILE?? */
+ul {
+    list-style-type: none;
+}
