@@ -89,10 +89,12 @@ footer {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   background-image: url("../images/color5.png"); }
   footer a {
-    margin: 0 20px; }
+    margin: 0 20px;
+    color: #ffffff; }
   footer p {
     font-size: 0.75rem;
-    margin-top: -10px; }
+    margin-top: -10px;
+    color: #ffffff; }
 
 .selection-description {
   min-height: 80px; }
