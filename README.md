@@ -1,4 +1,4 @@
-# Milestone One Project - The Monkees Band Website
+# Milestone Project 2 - UK Road Transport Greenhouse Gas Emissions 1990-2016 Interactive Data Dashboard
 
 ## Table Of Contents
 
@@ -52,19 +52,8 @@
 
 ## Introduction
 
-This project represents a fictional scenario in which the famous 1960s rock band The Monkees asks me (the developer) to create a band website that fulfils a number of stated objectives. These objectives are:
+This project is an interactive data dashboard created with the dc.js library as a SPA (single page application). The dashboard visualises publically available data on emissions from road transport within the UK between the years 1990 and 2016.
 
-1. Provide a place for fans and prospective fans to listen to select recordings from The Monkees' back catalogue and any new material.
-2. Publicise The Monkees' availability to perform at private events, such as weddings and private parties.
-3. Provide links to wider social media, including Facebook, Twitter and YouTube.
-
-In addition, the developer has identified a number of other objectives that the website should fulfil, in keeping with users' expectations of how a website for a household name band such as The Monkees should look and what functionality it should possess. These additional objectives are:
-
-4. Provide a platform on which the band can publicise relevant news and maintain older news stories in an archive-like format.
-5. Provide information on the band's publicly available live performances, with links enabling the user to buy tickets from third-party ticket vendors.
-6. Showcase relevant multimedia, featuring not only audio but image and video content.
-
-All of these objectives must be achieved in a visual style that matches The Monkees' legacy 1960s aesthetic, utilising the relevant technologies to achieve a professional-looking website.
 
 ## UX
 
