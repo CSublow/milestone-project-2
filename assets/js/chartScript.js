@@ -48,8 +48,6 @@ function makeGraph(error, ggData) {
         
         countYears = yearDim.group().reduceCount().size();
         
-        topYear = yearDim.group().reduceSum(dc.pluck("Emissions"));
-        
     //Source Groups
     var totalEmissionsCarPetrolGroup = yearDim.group().reduceSum(function(d) {
             if (d.Source === "Cars - Petrol") {
@@ -227,10 +225,10 @@ function makeGraph(error, ggData) {
     //Render the most polluting year on record
     function topYearFigure(ndx) {
         dc.numberDisplay("#top-year-figure")
-            .group(topYear)
+            .group(totalEmissionsPerYearGroup)
             .formatNumber(d3.format("0000"))
             .valueAccessor(function(d) {
-                return d.key; //Render the key, I don't want the value (emissions)
+                return d.key; //Using totalEmissionsPerYearGroup here will return the most polluting year
             });
     }
 
