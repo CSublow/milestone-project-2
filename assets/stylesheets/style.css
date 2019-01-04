@@ -327,7 +327,7 @@ button:focus {
   font-size: 12px;
   line-height: 20px;
   padding: 9px 16px 9px;
-  transition: all 20ms ease-out;
+  transition: all 100ms ease-out;
   width: 200px; }
   .reset-button:hover, .reset-button:focus {
     background: #f2f2f2;
