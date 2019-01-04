@@ -328,7 +328,6 @@ button:focus {
   line-height: 20px;
   padding: 9px 16px 9px;
   transition: all 20ms ease-out;
-  vertical-align: top;
   width: 200px; }
   .reset-button:hover, .reset-button:focus {
     background: #f2f2f2;
