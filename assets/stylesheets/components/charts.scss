@@ -76,8 +76,10 @@ button {
     border-radius: 3px;
     cursor: pointer;
     display: block;
-    font-family: Verdana, sans-serif;
-    font-size: 12px;
+    font: {
+        family: Verdana, sans-serif;
+        size: 12px;
+    }
     line-height: 20px;
     padding: 9px 16px 9px;
     transition: all 100ms ease-out; //Hover effect transition
