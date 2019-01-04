@@ -48,6 +48,8 @@ function makeGraph(error, ggData) {
         
         countYears = yearDim.group().reduceCount().size();
         
+        topYear = yearDim.group().reduceSum(dc.pluck("Emissions"));
+        
     //Source Groups
     var totalEmissionsCarPetrolGroup = yearDim.group().reduceSum(function(d) {
             if (d.Source === "Cars - Petrol") {
@@ -128,6 +130,7 @@ function makeGraph(error, ggData) {
     //FUNCTION CALLS
     totalEmissionsFigure(ndx);
     averageEmissionsFigure(ndx);
+    topYearFigure(ndx);
     
     showSourceSelector(ndx);
     timeFigure(ndx);
@@ -220,6 +223,16 @@ function makeGraph(error, ggData) {
             });
     };
     $('#average-emissions-figure').html(generatedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering, which is the desire functionality
+    
+    //Render the most polluting year on record
+    function topYearFigure(ndx) {
+        dc.numberDisplay("#top-year-figure")
+            .group(topYear)
+            .formatNumber(d3.format("0000"))
+            .valueAccessor(function(d) {
+                return d.key; //Render the key, I don't want the value (emissions)
+            });
+    }
 
     //Render the select menu to show data for a particular vehicle type
     function showSourceSelector(ndx) {
