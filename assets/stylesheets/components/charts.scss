@@ -1,16 +1,10 @@
 /* Chart Styling
 -------------------- */
 
-.highlights-figure {
+.highlights-figure, .highlights-figure span {
     font: {
         weight: bold;
         size: 1.5rem;
-    }
-    span {
-        font: {
-            weight: bold;
-            size: 1.5rem;
-        }
     }
 }
 
