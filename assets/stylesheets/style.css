@@ -325,7 +325,6 @@ button:focus {
   display: block;
   font-family: Verdana, sans-serif;
   font-size: 12px;
-  font-weight: 400;
   line-height: 20px;
   padding: 9px 16px 9px;
   transition: all 20ms ease-out;
