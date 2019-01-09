@@ -67,7 +67,7 @@ Prior to work beginning on the website, wireframes were created in order to aid 
 The wireframes served as the initial inspiration for the project, although the finished project diverges from them on a number of points. DC.js is a versatile and (to my mind) complex library, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
 
 ## Features
-The website is constituted of 26 html pages. 7 of these (index.html, news.html, tour.html, book-us.html, music.html, featured-video.html and photo-gallery.html) are located within the project's root directory and are directly accessible via the site's main navigation. Of the remaining 19 html pages, 8 constitute news articles that are found within the news-articles directory, 7 are music pages found with the music-pages directory, and 3 are video pages found with the video-pages directory. There is also a dummy action-page.html that the user is taken to when they submit the form on book-us.html.
+The website is an SPA consisting of a single HTML page, utilising JavaScript to render the charts. Styling is achieved with CSS using SCSS-syntax pre-processing.
 
 ### Main Navigation
 The main navigation is consistent across all pages. It consists of 7 links labelled Home, News, Tour, Book Us, Music, Video, and Photo Gallery. The navigation is achieved with Bootstrap and is responsive, collapsing on all viewports less than 768px wide. When the navigation is collapsed it can be revealed if the user clicks or taps on the hamburger icon.
