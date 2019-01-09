@@ -127,8 +127,8 @@ function makeGraph(error, ggData) {
     
     //FUNCTION CALLS
     totalEmissionsFigure(ndx);
-    highlightsFigure(ndx, sumEmissions, '#average-emissions-figure', true);
-    highlightsFigure(ndx, totalEmissionsPerYearGroup, '#top-year-figure');
+    highlightsFigure(ndx, sumEmissions, true);
+    highlightsFigure(ndx, totalEmissionsPerYearGroup);
     
     showSourceSelector(ndx);
     timeFigure(ndx);
@@ -214,20 +214,19 @@ function makeGraph(error, ggData) {
     //Render the figures that reside in the Highlights section
     //The figures are generated using dc numberDisplay. However, since I want the figures to remain static and not be changed via crossfilter, the dc numberDisplay values are then rendered using jQuery
     var averageGeneratedValue, topYearValue; //Declare the vars where generated values will live
-    function highlightsFigure(ndx, group, targetDiv, averageValue) {
+    function highlightsFigure(ndx, group, averageValue) {
         dc.numberDisplay("null") //I don't actually want dc to render the value, hence I provide a dummy parent
             .group(group)
             .valueAccessor(function(d) {
                 if (averageValue) { //If it is the average emissions per year value we want
-                    averageGeneratedValue = d / countYears; //Generate a value and assign it to the variable           
+                    averageGeneratedValue = d / countYears; //Generate a value and assign it to the variable  
+                    $('#average-emissions-figure').html(averageGeneratedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document.
                 } else { //Else the desired value is the most polluting year
-                    topYearValue = d.key;                
+                    topYearValue = d.key;     
+                    $('#top-year-figure').html(topYearValue.toLocaleString("en", {maximumFractionDigits: 2}));
                 }
             });
     }    
-
-    $('#average-emissions-figure').html(averageGeneratedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering, which is the desire functionality
-    $('#top-year-figure').html(topYearValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document. Using jQuery means the value stays constant regardless of any crossfilter filtering, which is the desire functionality
 
     //Render the select menu to show data for a particular vehicle type
     function showSourceSelector(ndx) {
