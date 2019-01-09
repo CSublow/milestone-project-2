@@ -52,7 +52,9 @@
 
 ## Introduction
 
-This project is an interactive data dashboard created with the dc.js library as a SPA (single page application). The dashboard visualises publically available data on emissions from road transport within the UK between the years 1990 and 2016.
+This project is an SPA (single page application) interactive data dashboard. The dashboard visualises publically available data on emissions from road transport within the UK between the years 1990 and 2016.
+
+The dashboard primarily relies on [dc.js](https://dc-js.github.io/dc.js/) in order to render the charts. dc in turn relies on [crossfilter](http://crossfilter.github.io/crossfilter/) and [d3.js](https://d3js.org/).
 
 
 ## UX
@@ -64,7 +66,7 @@ Because of this potential broad user-base, it was decided to keep the dashboard 
 ### Wireframes
 Prior to work beginning on the website, wireframes were created in order to aid the design progress and provide direction during actual coding. These can be found in the "mockups" folder in the root directory of the project.
 
-The wireframes served as the initial inspiration for the project, although the finished project diverges from them on a number of points. DC.js is a versatile and (to my mind) complex library, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
+The wireframes served as the initial inspiration for the project, although the finished project diverges from them on a number of points. dc.js is a versatile and (to my mind) complex library, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
 
 ## Features
 The website is an SPA data dashboard consisting of a single HTML page, utilising JavaScript to render the charts. Styling is achieved with CSS using SCSS-syntax pre-processing. The data the app works with is in JSON format.
