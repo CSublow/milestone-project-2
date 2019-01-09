@@ -193,13 +193,13 @@ function makeGraph(error, ggData) {
         //Increase the length of every 2nd tick line
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
             .attr("y2", "20");
-    };
+    }
     
     //Add a class used to center the charts in the viewport
     function addForceCenter() {
         d3.selectAll('svg')
             .attr('class', 'force-center');
-    };
+    }
     
     // // // CHART RENDERING FUNCTIONS
     
@@ -211,7 +211,7 @@ function makeGraph(error, ggData) {
             .valueAccessor(function(d) {
                 return d;
             });
-    };
+    }
 
     //Render the figures that reside in the Highlights section
     //The figures are generated using dc numberDisplay. However, since I want the figures to remain static and not be changed via crossfilter, the dc numberDisplay values are then rendered using jQuery
@@ -241,7 +241,7 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key;
             });
-    };
+    }
     
     //Render the figure that interacts with the emissions over time charts
     function timeFigure(ndx) {
@@ -252,7 +252,7 @@ function makeGraph(error, ggData) {
             .valueAccessor(function(d) {
                 return d;
             });
-    };
+    }
     
     //Render the figure that expresses emissions over time as a percentage of total emissions
     function timeFigurePercentage(ndx) {
@@ -263,7 +263,7 @@ function makeGraph(error, ggData) {
             .valueAccessor(function(d) {
                 return d / sumEmissionsValue;
             });    
-    };
+    }
     
     //Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
@@ -306,14 +306,14 @@ function makeGraph(error, ggData) {
         $(window).resize(function() {
             chartsResponsive(lineChart, 600, 700, true);
         });
-    };
+    }
     
     //Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
         //Function to give each line on the composite chart a title
         function lineTitle(sourceArg, dataArg) {
             return sourceArg + dataArg.key + ": " + dataArg.value.toLocaleString("en") + " kilotons";
-        };
+        }
         
         var compositeChart = dc.compositeChart("#composite-chart"); //Define the call to compositeChart
             
@@ -415,7 +415,7 @@ function makeGraph(error, ggData) {
         $(window).resize(function() {
             chartsResponsive(compositeChart, 600, 700, true, true, 400, 500);
         });
-    };
+    }
     
     //Render the select menu to show data for a particular year
     function showYearSelector(ndx) {
@@ -428,7 +428,7 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key;
             });
-    };
+    }
     
     //Render the figure showing the amount of emissions within the period or for a given year
     function periodFigure(ndx) {
@@ -439,7 +439,7 @@ function makeGraph(error, ggData) {
             .valueAccessor(function(d) {
                 return d;
             });    
-    };
+    }
     
     //Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
@@ -479,7 +479,7 @@ function makeGraph(error, ggData) {
             pieChart
                 .transitionDuration(250); //Reset transitionDuration to default once the size changes have been applied
         });
-    };
+    }
     
     //Render the bar chart breaking down emissions by source
     function totalEmissionsPerSource(ndx) {
@@ -531,7 +531,7 @@ function makeGraph(error, ggData) {
                     .attr('text-anchor', 'middle')
                     .attr('fill', 'black')
                     .style({'font-size': '0.7rem', 'font-style': 'italic'});
-            };
+            }
         });
         
         //Remove values on top of bars when chart is being redrawn
@@ -548,7 +548,7 @@ function makeGraph(error, ggData) {
             
             adjustXTicks(); //The x ticks must also be rerendered or else they revert to their default and unwanted position
         });
-    };
+    }
     
     //Once the charts are rendered, jQuery is able to manipulate the DOM
     $(document).ready(function() {
@@ -580,7 +580,7 @@ function makeGraph(error, ggData) {
             menu
                 .replaceFilter([newFilter])
                 .redrawGroup();     
-        };
+        }
         
         //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not. Called on select box change
         function checkArray(valueArray){
@@ -672,7 +672,7 @@ function makeGraph(error, ggData) {
                         var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
                         modifiedArray[valueArrayLength] = " and " + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
                         $('#period-span').html("in" + modifiedArray); //Then print the array
-                    };
+                    }
 
                 } else { //Else the user has selected "Whole Period"
                     //It doesn't make sense for the user to be able to select "Whole Period" along with individual years, so if the user tries to select "Whole Period" along with separate years, only "Whole Period" will be selected
