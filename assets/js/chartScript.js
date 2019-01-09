@@ -126,24 +126,26 @@ function makeGraph(error, ggData) {
     });
     
     //FUNCTION CALLS
-    totalEmissionsFigure(ndx);
-    highlightsFigure(ndx, sumEmissions, true);
-    highlightsFigure(ndx, totalEmissionsPerYearGroup);
+    totalEmissionsFigure(ndx); //Render total emissions throughout the period
+    highlightsFigure(ndx, sumEmissions, true); //Render average emissions over the period
+    highlightsFigure(ndx, totalEmissionsPerYearGroup); //Render the most polluting year
     
-    showSourceSelector(ndx);
-    timeFigure(ndx);
-    timeFigurePercentage(ndx);
-    totalEmissionsOverTime(ndx);
-    compositeChart(ndx);
+    showSourceSelector(ndx); //Render the vehicle selector box
+    timeFigure(ndx); //Render the figure representing the emissions of selected vehicle types
+    timeFigurePercentage(ndx); //Render the figure representing the emissions percentage of selected vehicle types
     
-    showYearSelector(ndx);
-    periodFigure(ndx);
-    totalEmissionsPerSource(ndx);
-    totalEmissionsPerSourcePie(ndx);
+    totalEmissionsOverTime(ndx); //Render the line chart
+    compositeChart(ndx); //Render the composite chart
+    
+    showYearSelector(ndx); //Render the year select box
+    periodFigure(ndx); //Render the figure representing total emissions in selected years
 
-    dc.renderAll(); //Render all charts
+    totalEmissionsPerSourcePie(ndx); //Render the pie chart
+    totalEmissionsPerSource(ndx); //Render the bar chart
+
+    dc.renderAll(); //Render all charts to page
     
-    addForceCenter();
+    addForceCenter(); //Ensure charts are position correctly
     
     // // // DEFINE FUNCTIONS
     
