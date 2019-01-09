@@ -59,7 +59,7 @@ This project is an interactive data dashboard created with the dc.js library as 
 
 The typical user of this application is likely to be someone interested in data visualisations, being a person with at least some knowledge of how to read charts. The subject (environmentalism) of the dashboard may also be of interest to the general public, considering that environmental issues are often featured in the media. Most people are at least vaguely familiar with the greenhouse gas effect and the role that road transport has in emitting greenhouse gases.
 
-Because of this potential broad user-base, it was decided to keep the dashboard relatively simple; in total, there are only 4 charts on the dashboard, not including a number of dynamic number displays. This simplicity is hoped to reduce the chance of users experiencing information overload.
+Because of this potential broad user-base, it was decided to keep the dashboard relatively simple; in total, there are only 4 charts on the dashboard, not including a number of dynamic and static number displays. This simplicity is hoped to reduce the chance of users experiencing information overload.
 
 ### Wireframes
 Prior to work beginning on the website, wireframes were created in order to aid the design progress and provide direction during actual coding. These can be found in the "mockups" folder in the root directory of the project.
