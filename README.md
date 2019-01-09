@@ -56,6 +56,11 @@ This project is an SPA (single page application) interactive data dashboard. The
 
 The dashboard primarily relies on [dc.js](https://dc-js.github.io/dc.js/) in order to render the charts. dc in turn relies on [crossfilter](http://crossfilter.github.io/crossfilter/) and [d3.js](https://d3js.org/).
 
+**Total Emissions Figure**
+The figure representing the total emissions over the period is rendered using dc.js's numberDisplay class. The group used to render the figure sums all the numerical values with the key "Emissions" within the JSON data and returns this value.
+
+**Average Emissions Figure**
+Similarly to the total emissions figure, the average emissions figure uses numberDisplay to generate a value. However, this value is not rendered to the page using numberDisplay. Instead, the generated value is printed to the page using jQuery. This is because the numberDisplay generated value for the average figure changes when the user changes the select boxes found on the page, as the select boxes alter how the data is filtered. 
 
 ## UX
 
