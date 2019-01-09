@@ -67,14 +67,18 @@ Prior to work beginning on the website, wireframes were created in order to aid 
 The wireframes served as the initial inspiration for the project, although the finished project diverges from them on a number of points. DC.js is a versatile and (to my mind) complex library, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
 
 ## Features
-The website is an SPA consisting of a single HTML page, utilising JavaScript to render the charts. Styling is achieved with CSS using SCSS-syntax pre-processing.
+The website is an SPA data dashboard consisting of a single HTML page, utilising JavaScript to render the charts. Styling is achieved with CSS using SCSS-syntax pre-processing. The data the app works with is in JSON format.
 
-### Main Navigation
-The main navigation is consistent across all pages. It consists of 7 links labelled Home, News, Tour, Book Us, Music, Video, and Photo Gallery. The navigation is achieved with Bootstrap and is responsive, collapsing on all viewports less than 768px wide. When the navigation is collapsed it can be revealed if the user clicks or taps on the hamburger icon.
+### Navbar
+At the top of the app there is a navbar that serves as the main heading for the page. Since the app is a SPA, there are no links to other pages.
 
-In addition to the site navigation links, there are external links to The Monkees' social media channels that are located directly below the main navigation. When click/tapped on these open a new browser tab to then take the user to that social media channel.
+Immediately below the navbar, there are some chart icons rendered using the [Font Awesome](https://fontawesome.com/) toolkit. These icons are purely aesthetic. 
 
-In the wireframes for this project the navigation consisted of 8 links, rather than the 7 that were implemented. The reasons for this change are elaborated on in the [index.html](#index) section below.
+### Introductory Text
+Below the icons there is some brief introductory text. Early on in development the introductory text contained its own heading, contained several paragraphs of text as well as an image. However, it was decided that a heavy introductory section was unnecessary, took up too much screen real estate, and obstructed the main content of the app from coming into the user's focus quickly. It was therefore decided to make the introductory section as brief as possible.
+
+### Highlights
+The Highlights section contains 3 number displays generated through manipulating the JSON data. In the wireframes there are 2 number displays (total emissions and average emissions). It was decided during development to increase this number to 3 in order to bulk up the Highlights section and provide the user with more information at a glance.
 
 ### Footer
 The footer is also consistent across all site pages. The footer consists of 5 links; Home, Book Us, Facebook, Twitter and Youtube. The Home link takes the user back to index.html. The Book Us link takes the user to the Book Us page, this link serving as an additional call to action. The other links take the user to the corresponding social network, which opens in a new browser tab so as to prevent the user forgetting what page they have come from.
