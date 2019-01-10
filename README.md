@@ -56,12 +56,6 @@ This project is an SPA (single page application) interactive data dashboard. The
 
 The dashboard primarily relies on [dc.js](https://dc-js.github.io/dc.js/) in order to render the charts. dc in turn relies on [crossfilter](http://crossfilter.github.io/crossfilter/) and [d3.js](https://d3js.org/).
 
-**Total Emissions Figure**
-The figure representing the total emissions over the period is rendered using dc.js's numberDisplay class. The group used to render the figure sums all the numerical values with the key "Emissions" within the JSON data and returns this value.
-
-**Average Emissions Figure**
-Similarly to the total emissions figure, the average emissions figure uses numberDisplay to generate a value. However, this value is not rendered to the page using numberDisplay. Instead, the generated value is printed to the page using jQuery. This is because the numberDisplay generated value for the average figure changes when the user changes the select boxes found on the page, as the select boxes alter how the data is filtered. 
-
 ## UX
 
 The typical user of this application is likely to be someone interested in data visualisations, being a person with at least some knowledge of how to read charts. The subject (environmentalism) of the dashboard may also be of interest to the general public, considering that environmental issues are often featured in the media. Most people are at least vaguely familiar with the greenhouse gas effect and the role that road transport has in emitting greenhouse gases.
@@ -86,6 +80,15 @@ Below the icons there is some brief introductory text. Early on in development t
 
 ### Highlights
 The Highlights section contains 3 number displays generated through manipulating the JSON data. In the wireframes there are 2 number displays (total emissions and average emissions). It was decided during development to increase this number to 3 in order to bulk up the Highlights section and provide the user with more information at a glance.
+
+**Total Emissions Figure**
+The figure representing the total emissions over the period is rendered using dc.js's numberDisplay class. The group used to render the figure sums all the numerical values with the key "Emissions" within the JSON data and returns this value.
+
+**Average Emissions Figure**
+Similarly to the total emissions figure, the average emissions figure uses numberDisplay to generate a value. However, this value is not rendered to the page using the numberDisplay class itself. Instead, the generated value is printed to the page using jQuery. This is because the numberDisplay generated value for the average figure changes when the user changes the select boxes found on the page, as the select boxes alter how the data is filtered. Since the average emissions figure is supposed to represent the average emissions for all of the period and for all vehicle types, it does not make sense to have the average emissions figure dynamically change. jQuery was considered to be an easy workaround to this problem.
+
+**Most Polluting Year Figure**
+The third Highlights figure represents the most polluting year on record. This value is generated in a similar fashion to the average emissions figure, with numberDisplay being used to generate a value and jQuery being used to render the value to the page. This figure is not present in the wireframes and was added during development in order to bulk up the Highlights section.
 
 ### Footer
 The footer is also consistent across all site pages. The footer consists of 5 links; Home, Book Us, Facebook, Twitter and Youtube. The Home link takes the user back to index.html. The Book Us link takes the user to the Book Us page, this link serving as an additional call to action. The other links take the user to the corresponding social network, which opens in a new browser tab so as to prevent the user forgetting what page they have come from.
