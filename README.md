@@ -70,6 +70,14 @@ The wireframes served as the initial inspiration for the project, although the f
 ## Features
 The website is an SPA data dashboard consisting of a single HTML page, utilising JavaScript to render the charts and jQuery for additional data rendering and DOM manipulation. Styling is achieved with CSS using SCSS-syntax pre-processing. The data the app works with is in JSON format.
 
+### Loading System
+As the app was being developed, it was discovered that page loads looked untidy; content, especially charts, took much longer to load then other content even on relatively fast connections. It was decided to give the app a loading overlay which would cover the rest of the page whilst the main content is loaded. A plain green background is used, with a spinning graphic created purely with css borders and the text "Loading...". jQuery is used to detect when the page is fully loaded, and when this happens the loading overlay fades out and the main content comes into focus. 
+
+A delay of one second is used to ensure that the loading overlay is visible for at the very least one second. This ensures that the user is always able to see what is happening; users on very fast connections or those who have cookies saved might become confused by a green overlay that flashes on and off very quickly.
+
+### No JavaScript Detection
+Without JavaScript no charts can be rendered and the dashboard is essentially useless. Users without JavaScript see a green overlay with the words "No Javascript detected! Please enable JavaScript to view the dashboard". This is accomplished through a class on the body element called 'no-js'. On page load
+
 ### Navbar
 At the top of the app there is a navbar that serves as the main heading for the page. Since the app is an SPA, there are no links to other pages.
 
