@@ -83,6 +83,9 @@ At the top of the app there is a navbar that serves as the main heading for the 
 
 Immediately below the navbar, there are some chart icons rendered using the [Font Awesome](https://fontawesome.com/) toolkit. These icons are purely aesthetic. 
 
+### Touchscreen Warning
+Users accessing the app on a touchscreen-enabled device see a Bootstrap alert just below the navbar informing the user that the app is best viewed on a device with a mouse or trackpad. The ability to hover is essential to the full experience of the dashboard, enabling tooltips with additional information to display on the charts when the user hovers over them. The alert thus serves as a notice to the user that their experience of the dashboard without a hover-enabled device will be sub-optimal. The alert only shows for media without hover by using a CSS media query.
+
 ### Introductory Text
 Below the icons there is some brief introductory text. Early on in development the introductory text contained its own heading, contained several paragraphs of text as well as an image. However, it was decided that a heavy introductory section was unnecessary, took up too much screen real estate, and obstructed the main content of the app from coming into the user's focus quickly. It was therefore decided to make the introductory section as brief as possible.
 
