@@ -117,6 +117,11 @@ This responsiveness function is achieved with a combined jQuery/dc.js solution. 
 
 Using this responsiveness system gives the app the flexibility to be supported down to 758px, with the ability to take advantage of extra screen real estate on larger viewports by having charts side by side where possible.
 
+**Select Boxes**
+The select boxes enable the full functionality of dc.js and crossfilter by allowing the user to dynamically change the data displayed in the charts based on the criteria they select via the select boxes. There are in total four select boxes on the page, two for each section. The two in each section are identical; two were added as a usability boost. This is because the large charts take up a high proportion of screen real estate on all but the largest media, and it was felt that the app would become too cumbersome if the user had to scroll back to the top of a section to manipulate the data every single time they wished to do so. Identical select boxes at both the top and bottom of sections help mitigate this issue.
+
+The top and bottom select boxes are rendered differently. The top select box in each section is rendered using dc.js's selectMenu class. For the "Total Emissions Over Time Section", the select box is populated by a list of vehicles. For the "Total Emissions By Type Of Vehicle" section, the select box is populated by a list of years. Both select boxes contain as their default and unfiltered option an "All Vehicles" or "Whole Period" value.
+
 <a name="ie-feature"></a>
 **IE Compatibility**
 
