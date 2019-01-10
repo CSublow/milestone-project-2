@@ -68,10 +68,10 @@ Prior to work beginning on the website, wireframes were created in order to aid 
 The wireframes served as the initial inspiration for the project, although the finished project diverges from them on a number of points. dc.js is a versatile and (to my mind) complex library, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
 
 ## Features
-The website is an SPA data dashboard consisting of a single HTML page, utilising JavaScript to render the charts. Styling is achieved with CSS using SCSS-syntax pre-processing. The data the app works with is in JSON format.
+The website is an SPA data dashboard consisting of a single HTML page, utilising JavaScript to render the charts and jQuery for additional data rendering and DOM manipulation. Styling is achieved with CSS using SCSS-syntax pre-processing. The data the app works with is in JSON format.
 
 ### Navbar
-At the top of the app there is a navbar that serves as the main heading for the page. Since the app is a SPA, there are no links to other pages.
+At the top of the app there is a navbar that serves as the main heading for the page. Since the app is an SPA, there are no links to other pages.
 
 Immediately below the navbar, there are some chart icons rendered using the [Font Awesome](https://fontawesome.com/) toolkit. These icons are purely aesthetic. 
 
@@ -79,66 +79,32 @@ Immediately below the navbar, there are some chart icons rendered using the [Fon
 Below the icons there is some brief introductory text. Early on in development the introductory text contained its own heading, contained several paragraphs of text as well as an image. However, it was decided that a heavy introductory section was unnecessary, took up too much screen real estate, and obstructed the main content of the app from coming into the user's focus quickly. It was therefore decided to make the introductory section as brief as possible.
 
 ### Highlights
-The Highlights section contains 3 number displays generated through manipulating the JSON data. In the wireframes there are 2 number displays (total emissions and average emissions). It was decided during development to increase this number to 3 in order to bulk up the Highlights section and provide the user with more information at a glance.
+The Highlights section contains three number displays generated through manipulating the JSON data. In the wireframes there are two number displays (total emissions and average emissions). It was decided during development to increase this number to three in order to bulk up the Highlights section and provide the user with more information at a glance.
 
 **Total Emissions Figure**
 The figure representing the total emissions over the period is rendered using dc.js's numberDisplay class. The group used to render the figure sums all the numerical values with the key "Emissions" within the JSON data and returns this value.
 
 **Average Emissions Figure**
-Similarly to the total emissions figure, the average emissions figure uses numberDisplay to generate a value. However, this value is not rendered to the page using the numberDisplay class itself. Instead, the generated value is printed to the page using jQuery. This is because the numberDisplay generated value for the average figure changes when the user changes the select boxes found on the page, as the select boxes alter how the data is filtered. Since the average emissions figure is supposed to represent the average emissions for all of the period and for all vehicle types, it does not make sense to have the average emissions figure dynamically change. jQuery was considered to be an easy workaround to this problem.
+Similarly to the total emissions figure, the average emissions figure uses numberDisplay to generate a value. The value is calculated similarly to the total emissions figure by summing all the emissions values. This value is then divided by the number of years in order to come to an average.
+
+However, this value is not rendered to the page using the numberDisplay class itself. Instead, the generated value is printed to the page using jQuery. This is because the numberDisplay generated value for the average figure changes when the user changes the select boxes found on the page, as the select boxes alter how the data is filtered. Since the average emissions figure is supposed to represent the average emissions for all of the period and for all vehicle types, it does not make sense to have the average emissions figure dynamically change. jQuery was considered to be an easy workaround to this problem.
 
 **Most Polluting Year Figure**
-The third Highlights figure represents the most polluting year on record. This value is generated in a similar fashion to the average emissions figure, with numberDisplay being used to generate a value and jQuery being used to render the value to the page. This figure is not present in the wireframes and was added during development in order to bulk up the Highlights section.
+The third Highlights figure represents the most polluting year on record. This value is generated in a similar fashion to the average emissions figure, with numberDisplay being used to generate a value and jQuery being used to render the value to the page. The value is calculated using a group that returns from the data all years and their corresponding emissions values. By default the group returns the highest emissions value (and corresponding year) for the numberDisplay. This figure is not present in the wireframes and was added during development in order to bulk up the Highlights section.
 
-### Footer
-The footer is also consistent across all site pages. The footer consists of 5 links; Home, Book Us, Facebook, Twitter and Youtube. The Home link takes the user back to index.html. The Book Us link takes the user to the Book Us page, this link serving as an additional call to action. The other links take the user to the corresponding social network, which opens in a new browser tab so as to prevent the user forgetting what page they have come from.
-<a name="index"></a>
-### index.html
-As per normal convention this page acts as the site's home page. Below the main navigation the user will encounter a large and eye catching hero slider based off Jssor's Bootstrap jQuery slider. The slider is responsive and also touch-enabled for the benefit of mobile and other touch-enabled devices.
+### Charts
+The main content of the app consists of four charts divided into two sections. The **Total Emissions Over Time** section consists of a line chart and a multi-line composite chart. The **Total Emissions By Type Of Vehicle** section consists of a pie chart and a bar chart. In addition to the charts, each section contains two select boxes to enable manipulation of the charts, one select box towards the top of each section and one select box towards the bottom. There are also a few bullet points of text in each section giving an overview of the data contained within the charts, as well as some dynamically changing text which alters depending on the current selection as determined by the select boxes.
 
-Below the Jssor slider the user will encounter a Bootstrap row with 2 columns. The left column contains the latest music release from The Monkees, with links to the album page and an external "Buy Now" link that takes the user to amazon.com. The right column contains latest news, allowing the user to navigate to the individual news articles, or go to news.html which contains a full list of news stories. All the news entries are dated, and these, along with all dates on the site are formatted using the time element. Where needed the appropriate datetime attribute is added to time to increase the machine-readability of the app's dates.
+**Responsiveness**
+Although the project brief does not indicate that the app must be fully responsive, it was felt that some degree of responsiveness was neccesary. The charts are fairly large, with the default size of the line chart for example being 700px by 700px. To have two charts side by side would therefore require at a minimum 1400px width of screen real estate. With a stacked design, the amount of viewport needed would reduce to a minimum of 700px.
 
-Below the first Bootstrap row, the user encounters the History section which gives a brief overview of the history of The Monkees, along with embedded images of the individual band members as well as a group photo at the end of the section. This deviates from the original wireframes in that initially the History section would have had its own dedicated html page. The decision was made to integrate the History section onto index.html for three reasons:
+It was decided to accomodate both a side-by-side and stacked design. Using Bootstrap's grid system, the charts are stacked up to and including 1199px viewport width. At 1200px and above, the charts in each section are aligned side by side.
 
-Firstly, this fleshes out the content on index.html, which without the inclusion of the history section contains sparse content. Although this is not necessarily a bad choice (compare for example the sparsely filled out [Guns N' Roses homepage](https://www.gunsnroses.com/ "Guns N' Roses Homepage")), it was felt that The Monkees, with a history stretching back over many decades, should have their History content as a central feature of their website.
+In order to accomplish this responsiveness system, the chart sizes themselves had to be manipulated, since it should be noted that two 700px width charts on a 1200px width viewport would overlap. To counter this, the charts are set up to shrink to 600px width (500px for the pie chart which has a default width of 600px) on viewport width sizes between and including 1200px and 1330px using a custom responsiveness function.
 
-Secondly, an integrated History section reduces the size of the project and the size of the main navigation. A smaller navigation in particular reduces the chance of overloading the user with too many options, thus an integrated History section provides a boost to the site's overall usability.
+This responsiveness function is achieved with a combined jQuery/dc.js solution. The function has to be called in two situations; when the page is loaded to detect the viewport's size, and again if the user resizes the viewport when the app is already loaded. The function essentially works by passing in new arguments to the width methods of the chart objects, and then in the case of a window resize event, re-rerendering the charts. In addition, charts which have legends also have new arguments passed into the size and positioning methods of the legend objects.
 
-Thirdly, the History section provides a good place to implement an additional "Book Us" call to action aside from the main navigation and footer. Combining the index and history pages makes it more likely that the user will see this call to action, since almost all users of the site are going to land on the home page first. Having multiple calls to action on a webpage is [good UX](https://goodui.org/).
-<a name="news"></a>
-### news.html
-This page acts as a central hub of news articles. The page is minimal, consisting of two Bootstrap columns of 4 news heading each, with an aside element at the bottom of the page containing information for journalists and blog writers on how to get in touch with the band for press statements. Each news heading links to a seperate news page. A deviation from the wireframe exists here in that the aside element was added to the project during development. This came about as it was thought that journalist/blog-writer type users would want to see this feature.
-
-### Subpage Navigation
-All of the subpages in the site (news articles, music pages and video pages) have a sub navigation that is located directly below the page header element and is repeated at the bottom of each subpage so that the user doesn't have to scroll up in order to access the sub navigation, improving site usability and accessibility. The sub navigation allows the user to navigate to the next or previous piece of content without heading back to the main page. The video pages on the site work a bit differently; although they possess a sub navigation, the layout of the video pages allows the user to access any other video page from all of the video pages by using the video thumbnail links, so there is no "All Videos" link.
-
-A deviation from the wireframes exist in that for the music and news-article subpages, the sub navigation on the finished project sits below the header and above the page title whereas in the wireframes it is positioned below the page title. This change was implemented when validating the code through the [W3C validator](https://validator.w3.org/) and discovering that article elements should contain nested headings. It was therefore judged to be better to position the page headings within the main article elements. This change was not carried over to the video subpages since they contain much less content and do not have a unique page title.
-
-### News Article Subpage
-The news articles all feature a unique layout; they contain a different number of paragraphs, some have ordered lists and all have one image. The unique layout for each page is necessary in order to cater for the varying content. All of the news articles feature links to external content, these opening in a new browser tab. 
-
-In the wireframes it was debated as to whether to include the full news articles or just snippets, with links to the full content hosted on external platforms. In the end it was decided to include the full content on the website, as this would flesh out the pages and keep the user engaged with the website. In addition, the wireframes included social media share buttons so that the user could easily share stories in a format specified by the developer. This feature was not included in the current release due to a lack of clarity in the early stages of the project as to what the final URL of the project would be. It was also judged to be a non-essential feature, as users are still able to share any of the pages on the website, the only downside being that the page sharing has not been tailored to best reflect the content as judged by the developer.
-<a name="tour"></a>
-### tour.html
-This page contains a responsive table generated with Bootstrap's list-inline class. It features a number of tour dates with the date of each performance, location, and a link to buy tickets from a third party vendor.
-<a name="book"></a>
-### book-us.html
-The Book Us page is comprised of two components. The "Testimonials" section contains two quotes from previous clients of The Monkees achieved using Bootstrap media objects. There is also a contact form on the page that uses built in HTML5 validation to ensure correct imput of the Contact Name, Contact Email and Your Message fields. The form's submit button takes the user to action-page.html.
-
-The finished book-us.html page differs from the wireframe in that the testimonials section was implemented in the finished product. This decision was taken during the consideration of additional user stories that took place after the project was being coded. It was felt that prospective clients of The Monkees would need to see some sort of marketing in order to increase the chances of them making a booking.
-<a name="action"></a>
-### action-page.html
-This is a dummy action page which does not utilise any server-side functionality but simulates the process that the user would go through when they submit the contact form. This page consists of a "thank you" message.
-
-No wireframe was created for this page due to its simple format making a wireframe unnecessary.
-<a name="music"></a>
-### music.html
-This page acts as a hub for the music subpages. It comprises of the featured album cover image (also displayed on index.html) and album heading displayed at a prominent position towards the top of the page, along with other albums displayed three per row going down the page. This layout is responsive, and collapses to a one album per row stacked layout on smaller viewports. Each of the album images and headings is a link that takes the user through to the respective music subpage.
-
-### Music Subpage
-Each of the music subpages possesses the same layout. The first row consists of the album cover image and a release date along with a short album description. The second row consists of a spotify widget that enables the user to play the album in their browser. The responsive layout collapses on smaller screens, so that the album image, the description, and the spotify player are stacked on top of each other.
-
-A slight deviation from the wireframes exist in that on the finished product the spotify widget is below the rest of the content, whereas in the wireframe it was positioned to the right of the album image and directly below the album description. This approach was adopted due to it being discovered during coding that the spotify widget does not adapt well to small sizes. In order for the widget to be large enough to function correctly it had to be positioned below the rest of the content.
+Using this responsiveness system gives the app the flexibility to be supported down to 758px, with the ability to take advantage of extra screen real estate on larger viewports by having charts side by side where possible.
 
 <a name="ie-feature"></a>
 **IE Compatibility**
