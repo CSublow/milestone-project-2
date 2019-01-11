@@ -39,7 +39,7 @@ function defaultText(sourceSelect, periodSelect) { //Two arguments used here to 
     }
 }
 
-//DATA VISUALISATION FUNCTION
+// // // DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
     if (error) throw error;
     var ndx = crossfilter(ggData); //Load the data into a crossfilter
@@ -136,7 +136,7 @@ function makeGraph(error, ggData) {
         }
     });
     
-    //FUNCTION CALLS
+    // // // FUNCTION CALLS
     totalEmissionsFigure(ndx); //Render total emissions throughout the period
     highlightsFigure(ndx, sumEmissions, true); //Render average emissions over the period
     highlightsFigure(ndx, totalEmissionsPerYearGroup); //Render the most polluting year
@@ -168,7 +168,7 @@ function makeGraph(error, ggData) {
                 .width(chartWidthSmall);
             if (renderChart == true) { //Chart render only has to be called when the window resize function is invoked, not when the page is loaded initially
                 chartType.render();
-            };
+            }
             if (chartLegend == true) { //Only some chart types need a legend
                 chartType
                     .legend(dc.legend()
@@ -176,13 +176,13 @@ function makeGraph(error, ggData) {
                         .y(20)
                         .itemHeight(13)
                         .gap(5));
-            };
+            }
         } else { //Else the chart width is able to be higher
             chartType
                 .width(chartWidthLarge);
             if (renderChart == true) {
                 chartType.render();
-            };
+            }
             if (chartLegend == true) { //Only some chart types need a legend
                 chartType
                     .legend(dc.legend()
@@ -190,10 +190,10 @@ function makeGraph(error, ggData) {
                         .y(20)
                         .itemHeight(13)
                         .gap(5));
-            };
-        };
-        addForceCenter(); //Rerendering the chart removes the class, this has to be added back in
-    };
+            }
+        }
+        addForceCenter(); //Rerendering the chart removes the force center class, this has to be added back in
+    }
     
     //This function helps totalEmissionsPerSource's x axis ticks be more legible
     function adjustXTicks() {
