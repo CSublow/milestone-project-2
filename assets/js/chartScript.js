@@ -702,8 +702,8 @@ function resetSelects(select, resetDuplicate, button) { //The arg passed into 's
     //Reset the charts
     select.filterAll()
     
-    if (button) {
-        select.redrawGroup();  
+    if (button) { //This is only executed for the version of the function called by the html reset buttons
+        select.redrawGroup(); //The reset button must redraw
     }
 
     //Ensure the duplicate select box for source or year are reset  
