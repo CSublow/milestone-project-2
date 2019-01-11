@@ -595,7 +595,9 @@ function makeGraph(error, ggData) {
         //Main function for source select box change
         function sourceSelectChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
-                $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                if (targetDiv == '#source-selector select' || '#source-selector-2') { //If the changed box is one in the 'total emissions over time' section
+                    $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                }
                 
                 //Reset both year select boxes when the source select box is changed
                 resetSelects(yearSelectMenu, '#year-selector-2', false);
