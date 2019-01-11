@@ -686,7 +686,7 @@ function makeGraph(error, ggData) {
                     }
                 }
             });
-        };
+        }
     });
 }
 
