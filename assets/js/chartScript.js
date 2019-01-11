@@ -597,7 +597,7 @@ function makeGraph(error, ggData) {
         //Main function for source select box change
         function sourceSelectChange(targetDiv, targetMenu, otherDiv, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
-                if (targetDiv == '#source-selector select' || '#source-selector-2') { //If the changed box is one in the 'total emissions over time' section
+                if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') { //If the changed box is one in the 'total emissions over time' section
                     $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 }
                 
@@ -621,26 +621,26 @@ function makeGraph(error, ggData) {
                     $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
                     redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
-                    if (targetDiv == '#source-selector select' || '#source-selector-2') {
+                    if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
                         $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
                     }
                     
                     //The below logic chain checks for how many select options are currently selected
                     if (valueArrayLength == 0) { //If the user has only selected one value
-                        if (targetDiv == '#source-selector select' || '#source-selector-2') {
+                        if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
                             $('#show-source-span').html(modifiedArray); //Simply print the value they have selected
                         } else {
                            $('#period-span').html("in" + modifiedArray); //Simply print the value they have selected 
                         }
                     } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
                         var andArray = modifiedArray.join(" and "); //Join the two elements and separate them with "and"
-                        if (targetDiv == '#source-selector select' || '#source-selector-2') {
+                        if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
                             $('#show-source-span').html(andArray); //And then print the joined array
                         } else {
                             $('#period-span').html("in" + andArray); //And then print the joined array
                         }
                     } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
-                        if (targetDiv == '#source-selector select' || '#source-selector-2') { //If the user has only selected one value
+                        if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') { //If the user has only selected one value
                             var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
                             multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the last item
                             $('#show-source-span').html(multiArray); //Then print the array
@@ -658,7 +658,7 @@ function makeGraph(error, ggData) {
                     targetMenu
                         .filterAll()
                         .redrawGroup();
-                    if (targetDiv == '#source-selector select' || '#source-selector-2') {
+                    if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
                         $('#show-source-span').html("There was a total of "); //Update text on screen
                         $('#accounted').html("");
                         $('#percentage-p').css('visibility', 'hidden'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
