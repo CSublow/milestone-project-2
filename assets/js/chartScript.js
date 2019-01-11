@@ -328,7 +328,7 @@ function makeGraph(error, ggData) {
         
         var compositeChart = dc.compositeChart("#composite-chart"); //Define the call to compositeChart
             
-        chartsResponsive(compositeChart, 600, 700, false, true, 400, 500); //Pass in the relevant arguments
+        chartsResponsive(compositeChart, 600, 700, false, true, 400, 500);
         
         //Define the lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
@@ -514,6 +514,7 @@ function makeGraph(error, ggData) {
             })
             .colorAccessor(d => d.key) //Required to give each bar an individual color
             //The ordinal data is ordered alphabetically, so we assign colors in the same way
+            //Note: lpgColor is refering to "All LPG Vehicles", hence why it comes first
             .ordinalColors([lpgColor, busesAndCoachesColor, carsDieselColor, carsPetrolColor, hgvColor, lgvDieselColor, lgvPetrolColor, mopedsColor, motorcyclesColor]);
  
         //Remove click functionality from chart, this conflicts with the values that are dislayed above the bars
