@@ -598,8 +598,9 @@ function makeGraph(error, ggData) {
                 $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 
                 //Reset both year select boxes when the source select box is changed
-                yearSelectMenu.filterAll();
-                $('#year-selector-2').val("");
+                resetSelects(yearSelectMenu, '#year-selector-2');
+                // yearSelectMenu.filterAll();
+                // $('#year-selector-2').val("");
                 
                 valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array. The array elements are composed of the user's selection
 
