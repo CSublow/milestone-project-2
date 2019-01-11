@@ -605,7 +605,7 @@ function makeGraph(error, ggData) {
         //Main function for select box change
         function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
-                //These two vars tell the program which select box is currently being manipulated. Only one var could be used since there are only two types of select box in the current release of the app. However, doing it this way makes it easier to add more select boxes in the future
+                //These two vars tell the function which select box is currently being manipulated. Only one boolean var could be used since there are only two types of select box in the current release of the app. However, doing it this way makes it easier to add more select boxes in the future
                 var sourceSelect = false,
                     periodSelect = false;
                 
