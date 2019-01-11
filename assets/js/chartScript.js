@@ -594,8 +594,7 @@ function makeGraph(error, ggData) {
         //Main function for select box change
         function selectChange(targetDiv, targetMenu, otherDiv, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
-                var sourceSelect;
-                
+                var sourceSelect; //This var is used in order to not have to type out the long statement just below
                 if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
                     sourceSelect = true;
                 } else {
@@ -606,19 +605,19 @@ function makeGraph(error, ggData) {
                     $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 }
                 
-                //Reset both year select boxes when the source select box is changed
+                //Reset the select boxes in the other section
                 resetSelects(otherSelect, otherSelect2, false);
                 
-                valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array. The array elements are composed of the user's selection
+                valueArray = $(targetDiv).val(); //Since the select boxes are multiple, they returns an array. The array elements are composed of the user's selection
 
                 if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All Vehicles", since all other options have values)
-                    var valueArrayLength = valueArray.length - 1;
+                    var valueArrayLength = valueArray.length - 1; //Save valuearrayLength as a convenience var
                     
                     //Change the array so that there is a space at the beginning of each array element. This is so the array prints like a proper English sentence
                     var modifiedArray = valueArray.map(function(valueArray) {
                          return " " + valueArray;
                     });
-                    //For when there are 3 or more array items, I want them to print with commas separating them
+                    //For when there are 3 or more array items, I want them to print with commas separating them. This var is only used for the source selector section
                     var multiArray = valueArray.map(function(valueArray) {
                         return valueArray + ", ";
                     });
@@ -632,22 +631,24 @@ function makeGraph(error, ggData) {
                     
                     //The below logic chain checks for how many select options are currently selected
                     if (valueArrayLength == 0) { //If the user has only selected one value
+                        //Simply print the value they have selected
                         if (sourceSelect) {
-                            $('#show-source-span').html(modifiedArray); //Simply print the value they have selected
+                            $('#show-source-span').html(modifiedArray); 
                         } else {
-                           $('#period-span').html("in" + modifiedArray); //Simply print the value they have selected 
+                           $('#period-span').html("in" + modifiedArray);
                         }
                     } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
                         var andArray = modifiedArray.join(" and "); //Join the two elements and separate them with "and"
+                        //And then print the joined array
                         if (sourceSelect) {
-                            $('#show-source-span').html(andArray); //And then print the joined array
+                            $('#show-source-span').html(andArray);
                         } else {
-                            $('#period-span').html("in" + andArray); //And then print the joined array
+                            $('#period-span').html("in" + andArray);
                         }
                     } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
-                        if (sourceSelect) { //If the user has only selected one value
+                        if (sourceSelect) {
                             var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
-                            multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the last item
+                            multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
                             $('#show-source-span').html(multiArray); //Then print the array
                         } else {
                             var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
