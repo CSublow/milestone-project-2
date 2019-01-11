@@ -28,6 +28,17 @@ var generalColor = "#0b9c00",
 var sourceSelectMenu;
 var yearSelectMenu;
 
+//defaultText is global as it is called both within makeGraph() as well as in resetSelects()
+function defaultText(sourceSelect) {
+    if (sourceSelect) { //Default text for total emissions over time section
+        $('#show-source-span').html("There was a total of ");
+        $('#accounted').html("");
+        $('#percentage-p').css('visibility', 'hidden');
+    } else { //Default text for total emissions by type of vehicle section
+        $('#period-span').html(" throughout the whole period");
+    }
+}
+
 //DATA VISUALISATION FUNCTION
 function makeGraph(error, ggData) {
     if (error) throw error;
@@ -583,7 +594,7 @@ function makeGraph(error, ggData) {
         }
         
         //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not.
-        function checkArray(valueArray){
+        function checkArray(valueArray) {
            for (var i=0; i < valueArray.length; i++){ //Loop through the array
                if (valueArray[i] === "") //If the default option is selected   
                   return false;
@@ -669,11 +680,9 @@ function makeGraph(error, ggData) {
                         .filterAll()
                         .redrawGroup();
                     if (sourceSelect) {
-                        $('#show-source-span').html("There was a total of "); //Update text on screen
-                        $('#accounted').html("");
-                        $('#percentage-p').css('visibility', 'hidden'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                        defaultText(true);
                     } else {
-                        $('#period-span').html(" throughout the whole period"); //Update text on screen   
+                        defaultText(false);
                     }
                 }
             });
