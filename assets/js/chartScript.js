@@ -650,10 +650,14 @@ function makeGraph(error, ggData) {
                         // if (sourceSelect) {
                             var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
                             multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
+                            console.log(multiArray);
                             if (sourceSelect) {
                                 $('#show-source-span').html(multiArray); //Then print the array
                             } else {
-                                $('#period-span').html("in " + multiArray);//Then print the array          
+                                var firstItem = multiArray[0];
+                                multiArray[0] = "in " + firstItem;
+                                multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1');
+                                $('#period-span').html(multiArray);//Then print the array          
                             }
                         // } else {
                             // var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
