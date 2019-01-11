@@ -29,12 +29,12 @@ var sourceSelectMenu;
 var yearSelectMenu;
 
 //defaultText is global as it is called both within makeGraph() as well as in resetSelects()
-function defaultText(sourceSelect) {
+function defaultText(sourceSelect, periodSelect) { //Two arguments used here to make it easier to add more if additional select boxes were ever added
     if (sourceSelect) { //Default text for total emissions over time section
         $('#show-source-span').html("There was a total of ");
         $('#accounted').html("");
         $('#percentage-p').css('visibility', 'hidden');
-    } else { //Default text for total emissions by type of vehicle section
+    } else if (periodSelect) { //Default text for total emissions by type of vehicle section
         $('#period-span').html(" throughout the whole period");
     }
 }
@@ -680,7 +680,7 @@ function makeGraph(error, ggData) {
                     if (sourceSelect) {
                         defaultText(true);
                     } else if (periodSelect) {
-                        defaultText(false);
+                        defaultText(false, true);
                     }
                 }
             });
@@ -709,7 +709,7 @@ function resetSelects(select, resetDuplicate, button) { //The arg passed into 's
     //Reset to correct default text
     if (select == sourceSelectMenu) {
         defaultText(true);
-    } else {
-        defaultText(false);
+    } else if (select == yearSelectMenu) {
+        defaultText(false, true);
     }
 }
