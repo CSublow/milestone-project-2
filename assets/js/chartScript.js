@@ -575,14 +575,15 @@ function makeGraph(error, ggData) {
         yearSelectorChange('#year-selector select', '#year-selector-2');
         yearSelectorChange('#year-selector-2', '#year-selector select');
                 
-        //Redraw the graphs with required filter, this function is called when the select boxes are changed
+        // // // DEFINE SELECT BOX CHANGE FUNCTIONS
+        //Redraw the graphs with required filter
         function redrawGraphs(menu, newFilter) {
             menu
                 .replaceFilter([newFilter])
                 .redrawGroup();     
         }
         
-        //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not. Called on select box change
+        //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not.
         function checkArray(valueArray){
            for (var i=0; i < valueArray.length; i++){ //Loop through the array
                if (valueArray[i] === "") //If the default option is selected   
@@ -591,7 +592,7 @@ function makeGraph(error, ggData) {
            return true;
         }
                 
-        //Change the source figure descriptive text based on the value of the select element and ensure selection boxes match
+        //Main function for source select box change
         function sourceSelectChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
