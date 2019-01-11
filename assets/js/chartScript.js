@@ -654,9 +654,9 @@ function makeGraph(error, ggData) {
                             if (sourceSelect) {
                                 $('#show-source-span').html(multiArray); //Then print the array
                             } else {
-                                var firstItem = multiArray[0];
+                                var firstItem = multiArray[0]; //The first item here also needs changing
                                 multiArray[0] = "in " + firstItem;
-                                multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1');
+                                multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1'); //Replace the last white space so that the last item is snug with the ending '.'
                                 $('#period-span').html(multiArray);//Then print the array          
                             }
                         // } else {
