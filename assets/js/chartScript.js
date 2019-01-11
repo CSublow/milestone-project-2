@@ -598,7 +598,7 @@ function makeGraph(error, ggData) {
                 $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 
                 //Reset both year select boxes when the source select box is changed
-                resetSelects(yearSelectMenu, '#year-selector-2');
+                resetSelects(yearSelectMenu, '#year-selector-2', false);
                 // yearSelectMenu.filterAll();
                 // $('#year-selector-2').val("");
                 
@@ -651,8 +651,7 @@ function makeGraph(error, ggData) {
         function yearSelectorChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //On the year select boxes change...
                 //Reset both source select boxes when the year select boxes are changed
-                sourceSelectMenu.filterAll();
-                $('#source-selector-2').val("");
+                resetSelects(sourceSelectMenu, '#source-selector-2', false);
                 
                 valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
                 
@@ -699,12 +698,14 @@ function chartPopup() {
 }
 
 //Reset charts to default when user clicks the reset button
-function resetSelects(select, resetDuplicate) { //The arg passed into 'select' depends upon which button the user clicks
+function resetSelects(select, resetDuplicate, button) { //The arg passed into 'select' depends upon which button the user clicks
     //Reset the charts
-    select
-        .filterAll()
-        .redrawGroup();  
-      
+    select.filterAll()
+    
+    if (button) {
+        select.redrawGroup();  
+    }
+
     //Ensure the duplicate select box for source or year are reset  
     $(resetDuplicate).val("");
     
