@@ -605,11 +605,14 @@ function makeGraph(error, ggData) {
         //Main function for select box change
         function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
-                var sourceSelect; //This var is used in order to not have to type out the long statement just below
+                //These two vars tell the program which select box is currently being manipulated. Only one var could be used since there are only two types of select box in the current release of the app. However, doing it this way makes it easier to add more select boxes in the future
+                var sourceSelect = false,
+                    periodSelect = false;
+                
                 if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') { //If either of the source selects are the target
                     sourceSelect = true;
-                } else {
-                    sourceSelect = false;
+                } else if (targetDiv == '#year-selector select' || targetDiv == '#year-selector-2') { //Else if either of the period selects are the target
+                    periodSelect = true;
                 }
                 
                 if (sourceSelect) { //If the changed box is one in the 'total emissions over time' section
@@ -641,7 +644,7 @@ function makeGraph(error, ggData) {
                         //Simply print the value they have selected
                         if (sourceSelect) {
                             $('#show-source-span').html(" " + valueArray); 
-                        } else {
+                        } else if (periodSelect) {
                            $('#period-span').html("in " + valueArray);
                         }
                     } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
@@ -649,7 +652,7 @@ function makeGraph(error, ggData) {
                         //And then print the joined array
                         if (sourceSelect) {
                             $('#show-source-span').html(andArray);
-                        } else {
+                        } else if (periodSelect) {
                             $('#period-span').html("in " + andArray);
                         }
                     } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
@@ -659,7 +662,7 @@ function makeGraph(error, ggData) {
                             console.log(multiArray);
                             if (sourceSelect) {
                                 $('#show-source-span').html(multiArray); //Then print the array
-                            } else {
+                            } else if (periodSelect) {
                                 var firstItem = multiArray[0]; //The first item here also needs changing
                                 multiArray[0] = "in " + firstItem;
                                 multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1'); //Replace the last white space so that the last item is snug with the ending '.'
@@ -676,7 +679,7 @@ function makeGraph(error, ggData) {
                         .redrawGroup();
                     if (sourceSelect) {
                         defaultText(true);
-                    } else {
+                    } else if (periodSelect) {
                         defaultText(false);
                     }
                 }
