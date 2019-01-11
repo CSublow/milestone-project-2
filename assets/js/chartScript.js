@@ -606,7 +606,7 @@ function makeGraph(error, ggData) {
         function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 var sourceSelect; //This var is used in order to not have to type out the long statement just below
-                if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
+                if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') { //If either of the source selects are the target
                     sourceSelect = true;
                 } else {
                     sourceSelect = false;
