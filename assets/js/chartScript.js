@@ -646,6 +646,7 @@ function makeGraph(error, ggData) {
             });
         };
         
+        //Main function for year selector change
         function yearSelectorChange(targetDiv, otherDiv) {
             $(targetDiv).change(function() { //On the year select boxes change...
                 //Reset both source select boxes when the year select boxes are changed
