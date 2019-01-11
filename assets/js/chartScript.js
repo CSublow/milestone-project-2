@@ -617,16 +617,16 @@ function makeGraph(error, ggData) {
                     var modifiedArray = valueArray.map(function(valueArray) {
                          return " " + valueArray;
                     });
+                    
                     //For when there are 3 or more array items, I want them to print with commas separating them. This var is only used for the source selector section
                     var multiArray = valueArray.map(function(valueArray) {
                         return valueArray + ", ";
                     });
-                    
+            
                     $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
                     redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
                     if (sourceSelect) {
-                        console.log(multiArray);
                         $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
                     }
                     
@@ -634,28 +634,32 @@ function makeGraph(error, ggData) {
                     if (valueArrayLength == 0) { //If the user has only selected one value
                         //Simply print the value they have selected
                         if (sourceSelect) {
-                            $('#show-source-span').html(modifiedArray); 
+                            $('#show-source-span').html(" " + valueArray); 
                         } else {
-                           $('#period-span').html("in" + modifiedArray);
+                           $('#period-span').html("in " + valueArray);
                         }
                     } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
-                        var andArray = modifiedArray.join(" and "); //Join the two elements and separate them with "and"
+                        var andArray = valueArray.join(" and "); //Join the two elements and separate them with "and"
                         //And then print the joined array
                         if (sourceSelect) {
                             $('#show-source-span').html(andArray);
                         } else {
-                            $('#period-span').html("in" + andArray);
+                            $('#period-span').html("in " + andArray);
                         }
                     } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
-                        if (sourceSelect) {
+                        // if (sourceSelect) {
                             var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
                             multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
-                            $('#show-source-span').html(multiArray); //Then print the array
-                        } else {
-                            var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
-                            modifiedArray[valueArrayLength] = " and" + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
-                            $('#period-span').html("in" + modifiedArray); //Then print the array
-                        }
+                            if (sourceSelect) {
+                                $('#show-source-span').html(multiArray); //Then print the array
+                            } else {
+                                $('#period-span').html("in " + multiArray);//Then print the array          
+                            }
+                        // } else {
+                            // var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
+                            // modifiedArray[valueArrayLength] = " and" + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
+                            // $('#period-span').html("in" + modifiedArray); //Then print the array
+                        // }
                     }
                 } else { //Else the user has selected "All Vehicles"
                     //It doesn't make sense for the user to be able to select "All Vehicles" along with individual vehicle types, so if the user tries to select "All Vehicles" along with separate vehicles, only "All Vehicles" will be selected
