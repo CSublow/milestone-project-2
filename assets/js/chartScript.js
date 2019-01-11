@@ -568,8 +568,8 @@ function makeGraph(error, ggData) {
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
         //Make sure the sourceSelectChange function is invoked for both source selection boxes
-        sourceSelectChange('#source-selector select', '#source-selector-2');
-        sourceSelectChange('#source-selector-2', '#source-selector select');
+        sourceSelectChange('#source-selector select', sourceSelectMenu, '#source-selector-2', yearSelectMenu, '#year-selector-2');
+        sourceSelectChange('#source-selector-2', sourceSelectMenu,'#source-selector select', yearSelectMenu, '#year-selector-2');
         
         //Likewise for both year selects and the yearSelectorChange
         yearSelectorChange('#year-selector select', '#year-selector-2');
@@ -593,14 +593,14 @@ function makeGraph(error, ggData) {
         }
                 
         //Main function for source select box change
-        function sourceSelectChange(targetDiv, otherDiv) {
+        function sourceSelectChange(targetDiv, targetMenu, otherDiv, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 if (targetDiv == '#source-selector select' || '#source-selector-2') { //If the changed box is one in the 'total emissions over time' section
                     $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 }
                 
                 //Reset both year select boxes when the source select box is changed
-                resetSelects(yearSelectMenu, '#year-selector-2', false);
+                resetSelects(otherSelect, otherSelect2, false);
                 
                 valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array. The array elements are composed of the user's selection
 
@@ -617,7 +617,7 @@ function makeGraph(error, ggData) {
                     });
                     
                     $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
-                    redrawGraphs(sourceSelectMenu, $(targetDiv).val()); //Update the charts
+                    redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
                     $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
                     
