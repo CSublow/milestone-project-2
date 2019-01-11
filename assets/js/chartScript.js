@@ -567,15 +567,12 @@ function makeGraph(error, ggData) {
         
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
-        //Make sure the sourceSelectChange function is invoked for both source selection boxes
-        sourceSelectChange('#source-selector select', sourceSelectMenu, '#source-selector-2', yearSelectMenu, '#year-selector-2');
-        sourceSelectChange('#source-selector-2', sourceSelectMenu,'#source-selector select', yearSelectMenu, '#year-selector-2');
-        
-        // //Likewise for both year selects and the yearSelectorChange
-        // yearSelectorChange('#year-selector select', '#year-selector-2');
-        // yearSelectorChange('#year-selector-2', '#year-selector select');
-        sourceSelectChange('#year-selector select', yearSelectMenu, '#year-selector-2', sourceSelectMenu, '#source-selector-2');
-        sourceSelectChange('#year-selector-2', yearSelectMenu, '#year-selector select', sourceSelectMenu, '#source-selector-2');
+        //Make sure the selectChange function is invoked for all four selection boxes
+        selectChange('#source-selector select', sourceSelectMenu, '#source-selector-2', yearSelectMenu, '#year-selector-2');
+        selectChange('#source-selector-2', sourceSelectMenu,'#source-selector select', yearSelectMenu, '#year-selector-2');
+
+        selectChange('#year-selector select', yearSelectMenu, '#year-selector-2', sourceSelectMenu, '#source-selector-2');
+        selectChange('#year-selector-2', yearSelectMenu, '#year-selector select', sourceSelectMenu, '#source-selector-2');
                 
         // // // DEFINE SELECT BOX CHANGE FUNCTIONS
         //Redraw the graphs with required filter
@@ -594,8 +591,8 @@ function makeGraph(error, ggData) {
            return true;
         }
                 
-        //Main function for source select box change
-        function sourceSelectChange(targetDiv, targetMenu, otherDiv, otherSelect, otherSelect2) {
+        //Main function for select box change
+        function selectChange(targetDiv, targetMenu, otherDiv, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') { //If the changed box is one in the 'total emissions over time' section
                     $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
