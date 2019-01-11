@@ -711,8 +711,10 @@ function resetSelects(select, resetDuplicate, button) { //The arg passed into 's
     //Ensure the duplicate select box for source or year are reset  
     $(resetDuplicate).val("");
     
-    //Ensure the percentage-p is hidden on reset
-    if (resetDuplicate == '#source-selector-2') {
+    //Reset to correct default text
+    if (select == sourceSelectMenu) {
         $('#percentage-p').css('visibility', 'hidden');
+        $('#show-source-span').html("There was a total of "); //Update text on screen
+        $('#accounted').html("");
     }
 }
