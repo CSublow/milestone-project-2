@@ -659,11 +659,6 @@ function makeGraph(error, ggData) {
                                 multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1'); //Replace the last white space so that the last item is snug with the ending '.'
                                 $('#period-span').html(multiArray);//Then print the array          
                             }
-                        // } else {
-                            // var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
-                            // modifiedArray[valueArrayLength] = " and" + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
-                            // $('#period-span').html("in" + modifiedArray); //Then print the array
-                        // }
                     }
                 } else { //Else the user has selected "All Vehicles"
                     //It doesn't make sense for the user to be able to select "All Vehicles" along with individual vehicle types, so if the user tries to select "All Vehicles" along with separate vehicles, only "All Vehicles" will be selected
@@ -683,48 +678,6 @@ function makeGraph(error, ggData) {
                 }
             });
         };
-        
-        //Main function for year selector change
-        // function yearSelectorChange(targetDiv, otherDiv) {
-        //     $(targetDiv).change(function() { //On the year select boxes change...
-        //         //Reset both source select boxes when the year select boxes are changed
-        //         resetSelects(sourceSelectMenu, '#source-selector-2', false);
-                
-        //         valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array
-                
-        //         if (checkArray(valueArray)) { //If no empty value is found (this represents "Whole Period", since all other options have values)
-        //             var valueArrayLength = valueArray.length - 1;
-        //             //Change the array so that there is a space at the beginning of each array element
-        //             var modifiedArray = valueArray.map(function(valueArray) {
-        //                  return " " + valueArray;
-        //             });
-                    
-        //             $(otherDiv).val($(targetDiv).val()); //Set the other select box to match the target's values
-        //             redrawGraphs(yearSelectMenu, $(targetDiv).val()); //Update the display
-                    
-        //             if (valueArrayLength == 0) { //If the user has only selected one value
-        //                 $('#period-span').html("in" + modifiedArray); //Simply print the value they have selected
-        //             } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
-        //                 var andArray = modifiedArray.join(" and "); //Join the two elements and separate them with "and"
-        //                 $('#period-span').html("in" + andArray); //And then print the joined array
-        //             } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
-        //                 var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
-        //                 modifiedArray[valueArrayLength] = " and " + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
-        //                 $('#period-span').html("in" + modifiedArray); //Then print the array
-        //             }
-
-        //         } else { //Else the user has selected "Whole Period"
-        //             //It doesn't make sense for the user to be able to select "Whole Period" along with individual years, so if the user tries to select "Whole Period" along with separate years, only "Whole Period" will be selected
-        //             $(targetDiv).val("");
-        //             $(otherDiv).val("");
-        //             //Then draw graph to represent all data
-        //             yearSelectMenu
-        //                 .filterAll()
-        //                 .redrawGroup();
-        //             $('#period-span').html(" throughout the whole period"); //Update text on screen
-        //         }
-        //     });
-        // }
     });
 }
 
@@ -749,7 +702,9 @@ function resetSelects(select, resetDuplicate, button) { //The arg passed into 's
     //Reset to correct default text
     if (select == sourceSelectMenu) {
         $('#percentage-p').css('visibility', 'hidden');
-        $('#show-source-span').html("There was a total of "); //Update text on screen
+        $('#show-source-span').html("There was a total of ");
         $('#accounted').html("");
+    } else {
+        $('#period-span').html(" throughout the whole period");
     }
 }
