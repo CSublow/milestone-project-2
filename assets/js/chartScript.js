@@ -624,11 +624,6 @@ function makeGraph(error, ggData) {
                 if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All Vehicles", since all other options have values)
                     var valueArrayLength = valueArray.length - 1; //Save valuearrayLength as a convenience var
                     
-                    //Change the array so that there is a space at the beginning of each array element. This is so the array prints like a proper English sentence
-                    var modifiedArray = valueArray.map(function(valueArray) {
-                         return " " + valueArray;
-                    });
-                    
                     //For when there are 3 or more array items, I want them to print with commas separating them. This var is only used for the source selector section
                     var multiArray = valueArray.map(function(valueArray) {
                         return valueArray + ", ";
