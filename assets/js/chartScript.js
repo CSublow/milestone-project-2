@@ -24,7 +24,7 @@ var generalColor = "#0b9c00",
     lpgColor = "#A9BA9D";
     
 //Global Selector Vars
-//Declare outside of main function for use in reset buttons
+//Declare outside of main function for use in resetSelects()
 var sourceSelectMenu;
 var yearSelectMenu;
 
@@ -710,10 +710,8 @@ function resetSelects(select, resetDuplicate, button) { //The arg passed into 's
     
     //Reset to correct default text
     if (select == sourceSelectMenu) {
-        $('#percentage-p').css('visibility', 'hidden');
-        $('#show-source-span').html("There was a total of ");
-        $('#accounted').html("");
+        defaultText(true);
     } else {
-        $('#period-span').html(" throughout the whole period");
+        defaultText(false);
     }
 }
