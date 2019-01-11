@@ -619,7 +619,9 @@ function makeGraph(error, ggData) {
                     $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
                     redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
-                    $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
+                    if (targetDiv == '#source-selector select' || '#source-selector-2') {
+                        $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
+                    }
                     
                     //The below logic chain checks for how many select options are currently selected
                     if (valueArrayLength == 0) { //If the user has only selected one value
