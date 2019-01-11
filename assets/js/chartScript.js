@@ -626,6 +626,7 @@ function makeGraph(error, ggData) {
                     redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
                     if (sourceSelect) {
+                        console.log(multiArray);
                         $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
                     }
                     
@@ -652,7 +653,7 @@ function makeGraph(error, ggData) {
                             $('#show-source-span').html(multiArray); //Then print the array
                         } else {
                             var lastItem = modifiedArray[valueArrayLength]; //Get the last item of the array
-                            modifiedArray[valueArrayLength] = " and " + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
+                            modifiedArray[valueArrayLength] = " and" + lastItem; //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English 
                             $('#period-span').html("in" + modifiedArray); //Then print the array
                         }
                     }
