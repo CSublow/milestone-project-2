@@ -603,7 +603,7 @@ function makeGraph(error, ggData) {
         }
                 
         //Main function for select box change
-        function selectChange(targetDiv, targetMenu, otherDiv, otherSelect, otherSelect2) {
+        function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 var sourceSelect; //This var is used in order to not have to type out the long statement just below
                 if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
@@ -634,7 +634,7 @@ function makeGraph(error, ggData) {
                         return valueArray + ", ";
                     });
             
-                    $(otherDiv).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
+                    $(duplicateSelect).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
                     redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
                     if (sourceSelect) {
@@ -674,7 +674,7 @@ function makeGraph(error, ggData) {
                 } else { //Else the user has selected "All Vehicles"
                     //It doesn't make sense for the user to be able to select "All Vehicles" along with individual vehicle types, so if the user tries to select "All Vehicles" along with separate vehicles, only "All Vehicles" will be selected
                     $(targetDiv).val("");
-                    $(otherDiv).val("");
+                    $(duplicateSelect).val("");
                     //Then draw graph to represent all data
                     targetMenu
                         .filterAll()
