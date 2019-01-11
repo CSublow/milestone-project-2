@@ -599,8 +599,6 @@ function makeGraph(error, ggData) {
                 
                 //Reset both year select boxes when the source select box is changed
                 resetSelects(yearSelectMenu, '#year-selector-2', false);
-                // yearSelectMenu.filterAll();
-                // $('#year-selector-2').val("");
                 
                 valueArray = $(targetDiv).val(); //Since the select box is multiple, it returns an array. The array elements are composed of the user's selection
 
