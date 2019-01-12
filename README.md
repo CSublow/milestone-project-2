@@ -104,7 +104,7 @@ However, this value is not rendered to the page using the numberDisplay class it
 The third Highlights figure represents the most polluting year on record. This value is generated in a similar fashion to the average emissions figure, with numberDisplay being used to generate a value and jQuery being used to render the value to the page. The value is calculated using a group that returns from the data all years and their corresponding emissions values. By default the group returns the highest emissions value (and corresponding year) for the numberDisplay. This figure is not present in the wireframes and was added during development in order to bulk up the Highlights section.
 
 ### Main Content Overview
-The main content of the app consists of four charts divided into two sections. The **Total Emissions Over Time** section consists of a line chart and a multi-line composite chart. The **Total Emissions By Type Of Vehicle** section consists of a pie chart and a bar chart. In addition to the charts, each section contains two select boxes to enable manipulation of the charts, one select box towards the top of each section and one select box towards the bottom. There are also a few bullet points of text in each section giving an overview of the data contained within the charts, as well as some dynamically changing text which alters depending on the current selection as determined by the select boxes.
+The main content of the app consists of four charts divided into two sections. The **Total Emissions Over Time** section consists of a line chart and a multi-line composite chart. The **Total Emissions By Type Of Vehicle** section consists of a pie chart and a bar chart. In addition to the charts, each section contains two select boxes to enable manipulation of the charts, one select box towards the top of each section and one select box towards the bottom. There are also a few bullet points of text in each section giving an overview of the data contained within the charts, as well as some dynamica text which alters depending on the current selection as determined by the select boxes.
 
 ### Responsiveness
 Although the project brief does not indicate that the app must be fully responsive, it was felt that some degree of responsiveness was neccesary. The charts are fairly large, with the default size of the line chart for example being 700px by 700px. To have two charts side by side would therefore require at a minimum 1400px width of screen real estate. With a stacked design, the amount of viewport needed would reduce to a minimum of 700px.
@@ -120,11 +120,19 @@ Using this responsiveness system gives the app the flexibility to be supported d
 ### Select Boxes
 The select boxes enable the full functionality of dc.js and crossfilter by allowing the user to dynamically change the data displayed in the charts based on the criteria they select via the select boxes. There are in total four select boxes on the page, two for each section. The two in each section are identical; two were added as a usability boost. This is because the large charts take up a high proportion of screen real estate on all but the largest media, and it was felt that the app would become too cumbersome if the user had to scroll back to the top of a section to manipulate the data every single time they wished to do so. Identical select boxes at both the top and bottom of sections help mitigate this issue.
 
-The top and bottom select boxes in each section are rendered differently. The top select box in each section is rendered using dc.js's selectMenu class. This select box is then cloned using jQuery to the bottom select box, making both select boxes contain identical values.
-
 For the "Total Emissions Over Time Section", the select box is populated by a list of vehicles. For the "Total Emissions By Type Of Vehicle" section, the select box is populated by a list of years. Both select boxes contain as their default and unfiltered option an "All Vehicles" or "Whole Period" value.
 
-The select boxes are multiple; this allows the user to select multiple options, for example, viewing the emissions data for both petrol *and* diesel cars. If the user tries to include the default option in a multiple selection, only the default option will be selected, this functionality being accomplished with jQuery.
+The select boxes are multiple; this allows the user to select multiple options, for example, viewing the emissions data for both petrol and diesel cars. If the user tries to include the default option in a multiple selection, only the default option will be selected, this functionality being accomplished with jQuery.
+
+The top and bottom select boxes in each section are rendered differently. The top select box in each section is rendered using dc.js's selectMenu class. This select box is then cloned using jQuery to the bottom select box, making both select boxes contain identical values. 
+
+The select boxes' selections are also cloned. For example, if the user selects "Cars - Petrol" and "Cars - Diesel" in the top select box, the bottom select box will also have "Cars - Petrol" and "Cars - Diesel" selected. This is accomplished with one line of jQuery which fires on a select box change event.
+
+The select boxes include instructions; users are informed of the appropriate hotkeys to make multiple selections on both Windows and Mac platforms. It is presumed not all users will recognise how to make full use of a multiple select box.
+
+The select boxes can be reset via the reset buttons located directly below the dynamic text in each section. Each reset button only resets the charts within its own section. The reset button gives users an easy way to reset the charts.
+
+
 
 <a name="ie-feature"></a>
 **IE Compatibility**
