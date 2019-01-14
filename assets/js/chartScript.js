@@ -660,7 +660,6 @@ function makeGraph(error, ggData) {
                         // if (sourceSelect) {
                             var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
                             multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
-                            console.log(multiArray);
                             if (sourceSelect) {
                                 $('#show-source-span').html(multiArray); //Then print the array
                             } else if (periodSelect) {
