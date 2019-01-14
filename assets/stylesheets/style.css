@@ -2,24 +2,6 @@
 /**/
 /**/
 /**/
-/* using placeholders */
-/* placeholders should be used for code that is intended for reuse */
-/* in this example, each div will have the same background properties, but the image used on each div class is different */
-/**/
-/**/
-/**/
-/* select an element using its parent */
-/**/
-/**/
-/**/
-/* use shorthand to declare multiple properties at once */
-/**/
-/**/
-/**/
-/* import other stylesheets */
-/**/
-/**/
-/**/
 /*declare the name of the class as container */
 /**/
 /**/
@@ -30,10 +12,6 @@
 /**/
 /**/
 /* use mixins */
-/**/
-/**/
-/**/
-/* use placeholders */
 /**/
 /**/
 /**/
