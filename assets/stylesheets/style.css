@@ -25,7 +25,8 @@ body {
   min-width: 758px;
   max-width: 1990px;
   margin-top: 0;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  background-color: #eaeaea; }
 
 section {
   margin-top: 20px; }
@@ -37,15 +38,40 @@ hr {
   height: 5px;
   border-top: 2px solid rgba(0, 0, 0, 0.1); }
 
+.intro-text {
+  max-width: 99%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .25rem; }
+
 .highlights {
-  border: 2px solid #3ab33a; }
+  max-width: 99%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .25rem; }
+
+.total-time {
+  max-width: 99%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .25rem; }
+
+.total-vehicle {
+  max-width: 99%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .25rem; }
 
 footer {
   min-width: 758px;
   width: 100%;
   max-width: 1990px;
   position: absolute;
-  margin-top: 50px;
+  margin-top: 20px;
   padding-top: 10px;
   border-top: 2px solid rgba(0, 0, 0, 0.2);
   background-image: url("../images/color5.png"); }

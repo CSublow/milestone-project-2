@@ -12,6 +12,7 @@ body {
     @extend %force-center;
     margin-top: 0;
     font-family: 'Roboto', sans-serif;
+    background-color: #eaeaea;
 }
 
 section {
@@ -28,8 +29,36 @@ hr {
     border-top: 2px solid rgba(0,0,0,.1);
 }
 
+.intro-text {
+    max-width: 99%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .25rem;
+}
+
 .highlights {
-    border: 2px solid #3ab33a;
+    max-width: 99%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .25rem;
+}
+
+.total-time {
+    max-width: 99%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .25rem;
+}
+
+.total-vehicle {
+    max-width: 99%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .25rem;
 }
 
 footer {
@@ -37,7 +66,7 @@ footer {
     width: 100%;
     max-width: $maxWidth; //Needs to match body to ensure alignment, especially on larger viewports
     position: absolute;
-    margin-top: 50px;
+    margin-top: 20px;
     padding-top: 10px;
     border-top: 2px solid rgba(0,0,0,0.2);
     background-image: $bgImage;
