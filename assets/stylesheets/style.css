@@ -23,8 +23,6 @@ body, h2, .force-center, h1, .selector-container, select, .reset-button, .popup,
 -------------------- */
 body {
   min-width: 758px;
-  max-width: 1990px;
-  margin-top: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #eaeaea; }
 
@@ -57,7 +55,6 @@ hr {
 footer {
   min-width: 758px;
   width: 100%;
-  max-width: 1990px;
   position: absolute;
   margin-top: 20px;
   padding-top: 10px;

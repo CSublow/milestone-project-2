@@ -8,9 +8,9 @@
 body {
     //Variables used here for efficiency if this ever needs to change, footer uses same values
     min-width: $minWidth;
-    max-width: $maxWidth;
+    // max-width: $maxWidth;
     @extend %force-center;
-    margin-top: 0;
+    // margin-top: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #eaeaea;
 }
@@ -90,7 +90,7 @@ hr {
 footer {
     min-width: $minWidth; //Prevent the footer being squashed down on smaller viewports
     width: 100%;
-    max-width: $maxWidth; //Needs to match body to ensure alignment, especially on larger viewports
+    // max-width: $maxWidth; //Needs to match body to ensure alignment, especially on larger viewports
     position: absolute;
     margin-top: 20px;
     padding-top: 10px;
