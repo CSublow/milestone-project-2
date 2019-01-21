@@ -63,41 +63,43 @@
     <!-- Main -->
     <main class="container-fluid">
         <!-- Introduction -->
-        <section class="section-styles row">
-            <h2 class="sr-only">Introduction</h2> <!--Text for the benefit of screen reader users so they know what this section is composed of-->
-            <!-- Font Awesome Icons -->
-            <div class="fa-div col-12 text-center">
-                <i class="fas fa-chart-pie"></i>
-                <i class="fas fa-chart-line"></i>
-                <i class="fas fa-chart-bar"></i>
-                <i class="fas fa-chart-area"></i>
-            </div>
+        <div class="row row-reset">
+            <section class="section-styles-sm-l">
+                <h2 class="sr-only">Introduction</h2> <!--Text for the benefit of screen reader users so they know what this section is composed of-->
+                <!-- Font Awesome Icons -->
+                <div class="fa-div col-12 text-center">
+                    <i class="fas fa-chart-pie"></i>
+                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-chart-bar"></i>
+                    <i class="fas fa-chart-area"></i>
+                </div>
+                
+                <!-- Introduction Text and Image -->
+                <div class="offset-md-1 col-md-10">
+                    <p>The dashboard below visualises the latest official statistics available from UK government sources, covering road transport emissions between the years 1990 and 2016. More information on the statistics used to generate this dashboard can be found <a href="https://www.gov.uk/government/statistics/final-uk-greenhouse-gas-emissions-national-statistics-1990-2016" target="_blank">here</a>.</p>
+                </div>
+            </section>
             
-            <!-- Introduction Text and Image -->
-            <div class="offset-md-1 col-md-10">
-                <p>The dashboard below visualises the latest official statistics available from UK government sources, covering road transport emissions between the years 1990 and 2016. More information on the statistics used to generate this dashboard can be found <a href="https://www.gov.uk/government/statistics/final-uk-greenhouse-gas-emissions-national-statistics-1990-2016" target="_blank">here</a>.</p>
-            </div>
-        </section>
-        
-        <!-- Highlights Section -->
-        <section class="section-styles">
-            <h2 class="text-uppercase text-center">Highlights</h2>
-            <!-- Total Emissions Figure -->
-            <figure class="row text-center">
-                <div id="total-emissions-figure" class="col-12 highlights-figure"></div>
-                <figcaption class="col-12">Kilotons of greenhouse gasses emitted by UK road transport betwen 1990-2016.</figcaption>
-            </figure>
-            <!-- Average Emissions Figure -->
-            <figure class="row text-center">
-                <div id="average-emissions-figure" class="col-12 highlights-figure"></div>
-                <figcaption class="col-12">Average kilotons of emissions emitted each year.</figcaption>
-            </figure>
-            <!-- Most Polluting Year -->
-            <figure class="row text-center">
-                <div id="top-year-figure" class="col-12 highlights-figure"></div>
-                <figcaption class="col-12">Most polluting year on record.</figcaption>
-            </figure>
-        </section>
+            <!-- Highlights Section -->
+            <section class="section-styles-sm-l">
+                <h2 class="text-uppercase text-center">Highlights</h2>
+                <!-- Total Emissions Figure -->
+                <figure class="row text-center">
+                    <div id="total-emissions-figure" class="col-12 highlights-figure"></div>
+                    <figcaption class="col-12">Kilotons of greenhouse gasses emitted by UK road transport betwen 1990-2016.</figcaption>
+                </figure>
+                <!-- Average Emissions Figure -->
+                <figure class="row text-center">
+                    <div id="average-emissions-figure" class="col-12 highlights-figure"></div>
+                    <figcaption class="col-12">Average kilotons of emissions emitted each year.</figcaption>
+                </figure>
+                <!-- Most Polluting Year -->
+                <figure class="row text-center">
+                    <div id="top-year-figure" class="col-12 highlights-figure"></div>
+                    <figcaption class="col-12">Most polluting year on record.</figcaption>
+                </figure>
+            </section>
+        </div>
 
         <!-- Total Emissions Over Time Section -->
         <section class="row section-styles">

@@ -15,21 +15,34 @@ body {
     background-color: #eaeaea;
 }
 
-section {
-    margin-top: 20px;
-    max-width: 99%;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: .25rem;
+// section {
+//     margin-top: 20px;
+//     max-width: 99%;
+//     background-color: white;
+//     margin-left: 20px;
+//     margin-right: 20px;
+//     border-radius: .25rem;
+// }
+.row-reset {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .section-styles {
-    max-width: 99%;
+    max-width: 96%;
     background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: .25rem;    
+    margin-left: 2%;
+    /* margin-right: 20px; */
+    margin-top: 20px;
+    border-radius: .25rem;
+}
+
+.section-styles-sm-l {
+    width: 47%;
+    background-color: white;
+    border-radius: .25rem;
+    margin-left: 2%;
+    margin-top: 20px;
 }
 
 h2 {
