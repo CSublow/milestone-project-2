@@ -163,7 +163,7 @@ function makeGraph(error, ggData) {
     // // // GENERAL FUNCTIONS
     //Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
     function chartsResponsive(chartType, chartWidthSmall, chartWidthLarge, renderChart, chartLegend, legendXSmall, legendXLarge) {
-        if ($(window).width() > 1199 && $(window).width() < 1331) { //If the browser window is within the target width range
+        if ($(window).width() > 1199 && $(window).width() < 1433) { //If the browser window is within the target width range
             chartType
                 .width(chartWidthSmall);
             if (renderChart == true) { //Chart render only has to be called when the window resize function is invoked, not when the page is loaded initially
