@@ -6,10 +6,9 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 body {
-    //Variables used here for efficiency if this ever needs to change, footer uses same values
-    min-width: $minWidth;
+    min-width: $minWidth; //Variable used here for efficiency if this ever needs to change, footer uses same values
     // max-width: $maxWidth;
-    @extend %force-center;
+    // @extend %force-center;
     // margin-top: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #eaeaea;
