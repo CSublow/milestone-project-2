@@ -1,360 +1,80 @@
-/* Imports */
-/* Colors */
-/* Background Image */
-/* Structure */
-/* Loading */
-/* Media Queries 
---------------------*/
-/* Loading 
---------------------*/
-/* Animations */
-/* Only the necessary shorthand properties are added, if desired it won't take long to add delay in to this mixin as well */
-/* Structural
---------------------*/
-@import url("https://fonts.googleapis.com/css?family=Roboto");
-@import url("https://fonts.googleapis.com/css?family=Inconsolata");
-h2, .force-center, h1, .selector-container, select, .reset-button, .popup, figure, .img-figure img {
-  margin: 15px auto;
-  display: block; }
+/*
+Error: Undefined variable: "$bodyBackground".
+        on line 14 of components/structure.scss
+        from line 6 of style.scss
 
-.section-styles, .section-styles-sm {
-  background-color: #ffffff;
-  margin-left: 1%;
-  margin-top: 20px;
-  border-radius: .25rem; }
+9: @import "components/navbar";
+10: @import "components/charts";
+11: @import "components/piechart-popup";
+12: @import "components/images";
 
-/* Loading effect
---------------------*/
-/* Page Structure
--------------------- */
-body {
-  min-width: 920px;
-  font-family: 'Roboto', sans-serif;
-  background-color: #eaeaea; }
-
-.row-reset {
-  margin-left: 0;
-  margin-right: 0; }
-
-.section-styles {
-  max-width: 98%; }
-
-.section-styles-sm {
-  width: 48.5%; }
-
-h2 {
-  font-size: 2.5rem; }
-
-hr {
-  height: 5px;
-  border-top: 2px solid rgba(0, 0, 0, 0.1); }
-
-footer {
-  min-width: 920px;
-  width: 100%;
-  position: absolute;
-  margin-top: 20px;
-  padding-top: 10px;
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
-  background-image: url("../images/color5.png"); }
-  footer a {
-    margin: 0 20px;
-    color: #ffffff; }
-    footer a:hover {
-      color: #ffffff; }
-  footer p {
-    font-size: 0.75rem;
-    margin-top: -10px;
-    color: #ffffff; }
-
-.selection-description {
-  min-height: 80px; }
-
-/* ADD TO SEPARATE SCSS FILE?? */
-.fa-li {
-  margin-left: 58px;
-  font-size: 0.85rem; }
-
-ul {
-  list-style-type: none; }
-
-/* No JS Fallback
--------------------- */
-#no-js-display {
-  display: none; }
-
-.no-js #no-js-display {
-  width: 100%;
-  height: 100%;
-  background: #9bcd64;
-  color: #ffffff;
-  position: fixed;
-  display: block; }
-  .no-js #no-js-display div {
-    position: relative;
-    top: 50%;
-    text-align: center; }
-    .no-js #no-js-display div p {
-      font-size: 2rem; }
-      .no-js #no-js-display div p span {
-        font-size: 3rem; }
-    .no-js #no-js-display div i {
-      font-size: 3rem; }
-.no-js #loader-wrapper, .no-js nav, .no-js .alert, .no-js main, .no-js footer {
-  display: none; }
-
-/* Loading effect css courtesy of https://ihatetomatoes.net/create-css3-spinning-preloader/, adapted into scss */
-#loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background: #9bcd64; }
-  #loader-wrapper #loader {
-    border-width: 3px;
-    border-style: solid;
-    border-color: transparent;
-    border-top-color: #000000;
-    border-radius: 50%;
-    position: relative;
-    top: 50%;
-    right: 0;
-    bottom: 0;
-    left: 50%;
-    content: "";
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-    display: block;
-    width: 150px;
-    height: 150px;
-    margin: -75px 0 0 -75px;
-    z-index: 1500; }
-    #loader-wrapper #loader:before {
-      border-width: 3px;
-      border-style: solid;
-      border-color: transparent;
-      border-top-color: #000000;
-      border-radius: 50%;
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      bottom: 5px;
-      left: 5px;
-      content: "";
-      -webkit-animation: spin 3s linear infinite;
-      animation: spin 3s linear infinite; }
-    #loader-wrapper #loader:after {
-      border-width: 3px;
-      border-style: solid;
-      border-color: transparent;
-      border-top-color: #000000;
-      border-radius: 50%;
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      bottom: 15px;
-      left: 15px;
-      content: "";
-      -webkit-animation: spin 1.5s linear infinite;
-      animation: spin 1.5s linear infinite; }
-  #loader-wrapper p {
-    color: #ffffff;
-    z-index: 1500;
-    display: block;
-    position: relative;
-    top: 50%;
-    text-align: center;
-    font-size: 2rem; }
-
-/* The various vendor prefixes have been included in a mixin for conciseness */
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(0deg);
-    /* IE 9 */
-    transform: rotate(0deg);
-    /* Firefox 16+, IE 10+, Opera */ }
-  100% {
-    -webkit-transform: rotate(360deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(360deg);
-    /* IE 9 */
-    transform: rotate(360deg);
-    /* Firefox 16+, IE 10+, Opera */ } }
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(0deg);
-    /* IE 9 */
-    transform: rotate(0deg);
-    /* Firefox 16+, IE 10+, Opera */ }
-  100% {
-    -webkit-transform: rotate(360deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(360deg);
-    /* IE 9 */
-    transform: rotate(360deg);
-    /* Firefox 16+, IE 10+, Opera */ } }
-/* These styles only take effect when .loaded has been applied to the body via jQuery */
-.loaded #loader-wrapper {
-  /* Fade the loading wrapper out */
-  -webkit-transition: all 0.5s linear;
-  transition: all 0.5s linear;
-  opacity: 0;
-  visibility: hidden; }
-
-/* Navbar Styling
--------------------- */
-h1 {
-  font-size: 1.5rem;
-  color: #ffffff; }
-  @media (min-width: 1110px) {
-    h1 {
-      font-size: 2.5rem; } }
-
-.navbar {
-  background-color: #2a9445;
-  background-image: url("../images/color5.png");
-  border-bottom: 2px solid #000000;
-  flex-direction: column; }
-  .navbar h2 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2rem;
-    color: #ffffff; }
-    @media (min-width: 1110px) {
-      .navbar h2 {
-        font-size: 2rem; } }
-
-.alert {
-  display: none; }
-  @media (hover: none) {
-    .alert {
-      display: block; } }
-
-/* Chart Icons */
-.fa-div {
-  font-size: 50px;
-  margin: 0 auto; }
-  .fa-div i {
-    margin: 0 20px; }
-
-/* Chart Styling
--------------------- */
-.highlights-figure, .highlights-figure span {
-  font-weight: bold;
-  font-size: 1.5rem; }
-
-.selector-container {
-  border: 1px solid #000000;
-  max-width: 500px; }
-  .selector-container div {
-    width: 100%; }
-  .selector-container p {
-    text-align: center;
-    margin-bottom: -5px; }
-  .selector-container p:nth-child(2) {
-    font-size: 0.8rem;
-    font-style: italic; }
-
-#total-emissions-over-time .line {
-  stroke-width: 2.5px; }
-
-#total-emissions-per-source-pie {
-  width: 100%; }
-  #total-emissions-per-source-pie svg .pie-slice-group {
-    stroke: #000000;
-    stroke-width: 1px; }
-
-.x-axis-label, .y-axis-label {
-  font-family: 'Inconsolata', monospace; }
-
-.tick {
-  font-size: 1rem; }
-
-select {
-  padding: 10px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5); }
-
-/* Reset Button */
-button:focus {
-  outline: none; }
-
-.reset-button {
-  background-color: #f2f2f2;
-  border: 1px solid #bfbfbf;
-  box-shadow: inset 0 1px 0 white, inset 0 -1px 0 #d9d9d9, inset 0 0 0 1px #f2f2f2, 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  cursor: pointer;
-  display: block;
-  font-family: Verdana, sans-serif;
-  font-size: 12px;
-  line-height: 20px;
-  padding: 9px 16px 9px;
-  transition: all 100ms ease-out;
-  width: 200px; }
-  .reset-button:hover, .reset-button:focus {
-    background: #f2f2f2;
-    border-color: #8c8c8c;
-    box-shadow: inset 0 1px 0 white, inset 0 -1px 0 #d9d9d9, inset 0 0 0 1px #f2f2f2; }
-  .reset-button:active {
-    background: #f2f2f2;
-    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); }
-  .reset-button .fa {
-    color: #bfbfbf;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3); }
-
-/* Piechart Informative Popup
--------------------- */
-.popup {
-  cursor: pointer; }
-  @media (hover: none) {
-    .popup {
-      display: none; } }
-  @media (hover: hover) {
-    .popup {
-      display: block; } }
-  .popup .popuptext {
-    font-size: 0.8rem;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 14px 0 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: 89%;
-    left: 50%;
-    margin-left: -80px; }
-  .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent; }
-  .popup .hide {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s 0.3s, opacity 0.3s linear; }
-  .popup .fa-window-close {
-    position: absolute;
-    left: 141px;
-    bottom: 43px;
-    font-size: 1rem; }
-
-/* Image Styling
--------------------- */
-.img-figure {
-  max-width: 450px; }
-  @media (min-width: 992px) {
-    .img-figure {
-      float: right; } }
-
-/*# sourceMappingURL=style.css.map */
+Backtrace:
+components/structure.scss:14
+style.scss:6
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/script/tree/variable.rb:49:in `_perform'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/script/tree/node.rb:50:in `perform'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `with_base'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:440:in `map'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `with_base'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:325:in `map'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:88:in `block in with_import'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:88:in `with_import'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/stack.rb:79:in `with_base'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `map'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/root_node.rb:36:in `css_tree'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:209:in `each'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-3.7.2/lib/sass/plugin/compiler.rb:320:in `block in watch'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
+/usr/local/rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$bodyBackground\".\A         on line 14 of components/structure.scss\A         from line 6 of style.scss\A \A 9: @import \"components/navbar\";\A 10: @import \"components/charts\";\A 11: @import \"components/piechart-popup\";\A 12: @import \"components/images\";"; }
