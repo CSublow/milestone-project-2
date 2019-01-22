@@ -6,22 +6,11 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 body {
-    min-width: $minWidth; //Variable used here for efficiency if this ever needs to change, footer uses same values
-    // max-width: $maxWidth;
-    // @extend %force-center;
-    // margin-top: 0;
+    min-width: $minWidth;
     font-family: 'Roboto', sans-serif;
     background-color: $bodyBackground;
 }
 
-// section {
-//     margin-top: 20px;
-//     max-width: 99%;
-//     background-color: white;
-//     margin-left: 20px;
-//     margin-right: 20px;
-//     border-radius: .25rem;
-// }
 .row-reset {
     margin-left: 0;
     margin-right: 0;
@@ -42,44 +31,11 @@ h2 {
     font-size: 2.5rem;
 }
 
-// .intro-text {
-//     max-width: 99%;
-//     background-color: white;
-//     margin-left: auto;
-//     margin-right: auto;
-//     border-radius: .25rem;
-// }
-
-// .highlights {
-//     max-width: 99%;
-//     background-color: white;
-//     margin-left: auto;
-//     margin-right: auto;
-//     border-radius: .25rem;
-// }
-
-// .total-time {
-//     max-width: 99%;
-//     background-color: white;
-//     margin-left: auto;
-//     margin-right: auto;
-//     border-radius: .25rem;
-// }
-
-// .total-vehicle {
-//     max-width: 99%;
-//     background-color: white;
-//     margin-left: auto;
-//     margin-right: auto;
-//     border-radius: .25rem;
-// }
-
 footer {
-    min-width: $minWidth; //Prevent the footer being squashed down on smaller viewports
+    min-width: $minWidth;
     width: 100%;
-    // max-width: $maxWidth; //Needs to match body to ensure alignment, especially on larger viewports
     position: absolute;
-    margin-top: 20px;
+    margin-top: $sectionSpacing;
     padding-top: 10px;
     border-top: 2px solid rgba(0,0,0,0.2);
     background-image: $bgImage;
