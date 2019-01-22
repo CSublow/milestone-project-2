@@ -27,6 +27,7 @@ h2, .force-center, h1, .selector-container, select, .reset-button, .popup, figur
 --------------------*/
 /* Page Structure
 -------------------- */
+/* Import Fonts */
 body {
   min-width: 920px;
   font-family: 'Roboto', sans-serif;
@@ -66,7 +67,7 @@ footer {
 .selection-description {
   min-height: 80px; }
 
-/* ADD TO SEPARATE SCSS FILE?? */
+/* List Icons Styles */
 .fa-li {
   margin-left: 58px;
   font-size: 0.85rem; }

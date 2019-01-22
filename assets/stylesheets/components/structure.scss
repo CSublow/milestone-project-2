@@ -1,7 +1,7 @@
 /* Page Structure
 -------------------- */
 
-//Import Fonts
+/* Import Fonts */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
@@ -62,12 +62,12 @@ footer {
     @extend %force-center;
 }
 
-/* ADD TO SEPARATE SCSS FILE?? */
+/* List Icons Styles */
 .fa-li {
     margin-left: 58px;
     font-size: 0.85rem;
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: none; //Remove default list style so FA icons can be used instead
 }
