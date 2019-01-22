@@ -22,7 +22,7 @@ body, h2, .force-center, h1, .selector-container, select, .reset-button, .popup,
 /* Page Structure
 -------------------- */
 body {
-  min-width: 758px;
+  min-width: 920px;
   font-family: 'Roboto', sans-serif;
   background-color: #eaeaea; }
 
@@ -53,7 +53,7 @@ hr {
   border-top: 2px solid rgba(0, 0, 0, 0.1); }
 
 footer {
-  min-width: 758px;
+  min-width: 920px;
   width: 100%;
   position: absolute;
   margin-top: 20px;
