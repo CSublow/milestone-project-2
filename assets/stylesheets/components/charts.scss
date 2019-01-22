@@ -48,6 +48,11 @@
     font-family: 'Inconsolata', monospace;
 }
 
+
+.tick {
+    font-size: 1rem;
+}
+
 select {
     @extend %force-center;
     padding: 10px;
