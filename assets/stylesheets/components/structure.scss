@@ -34,7 +34,7 @@ body {
 }
 
 .section-styles-sm-l {
-    width: 48.5%;
+    max-width: 48.5%;
     @extend %section-styles
 }
 
