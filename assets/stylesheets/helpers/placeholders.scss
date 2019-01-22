@@ -5,6 +5,13 @@
     display: block;
 }
 
+%section-styles {
+    background-color: $pureWhite;
+    margin-left: 1%;
+    margin-top: 20px;
+    border-radius: .25rem;
+}
+
 /* Loading effect
 --------------------*/
 %loading-spin-border {

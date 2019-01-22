@@ -17,6 +17,12 @@ body, h2, .force-center, h1, .selector-container, select, .reset-button, .popup,
   margin: 15px auto;
   display: block; }
 
+.section-styles, .section-styles-sm-l {
+  background-color: #ffffff;
+  margin-left: 1%;
+  margin-top: 20px;
+  border-radius: .25rem; }
+
 /* Loading effect
 --------------------*/
 /* Page Structure
@@ -31,19 +37,10 @@ body {
   margin-right: 0; }
 
 .section-styles {
-  max-width: 98%;
-  background-color: white;
-  margin-left: 1%;
-  /* margin-right: 20px; */
-  margin-top: 20px;
-  border-radius: .25rem; }
+  max-width: 98%; }
 
 .section-styles-sm-l {
-  width: 48.5%;
-  background-color: white;
-  border-radius: .25rem;
-  margin-left: 1%;
-  margin-top: 20px; }
+  width: 48.5%; }
 
 h2 {
   font-size: 2.5rem; }
