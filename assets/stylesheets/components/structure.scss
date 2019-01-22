@@ -11,7 +11,7 @@ body {
     background-color: $bodyBackground;
 }
 
-.row-reset {
+.row-reset { //Removes margin added by bootstrap allowing the top two small sections to line up with the bottom larger sections
     margin-left: 0;
     margin-right: 0;
 }
