@@ -250,7 +250,8 @@ Used to test the app on IE9.
 The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity. These tools helped locate some markup issues, including h3 tags incorrectly closed with /h4, along with identifying obsolete code, such as <script type="javascript">. This helped resolve any errors in the markup and no errors present themselves on any of the html or css files.
 <a name="userstories"></a>
 
-In addition, the [WAVE](http://wave.webaim.org/about) accessibility tool by WebAIM was used in order to check the app for accessibility issues. One issue found was an ambiguous link contained within the introduction text. The concept of ambiguous links (as defined by [W3C]( https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html) was unknown to me prior to using this tool, so WAVE proved useful to both boosting the app’s accessibility as well as to my own learning.
+### Accessibility
+A high level of accessibility, though desired, was not considered to be of the highest priority for this app due to the visual nature of charts; it is simply not possible to replicate accurately the visual effect of things like proportion and trends through the medium of a screen reader. Regardless, the [WAVE](http://wave.webaim.org/about) accessibility tool by WebAIM was used in order to check the app for accessibility issues. One issue found was an ambiguous link contained within the introduction text. The concept of ambiguous links (as defined by [W3C]( https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html) was unknown to me prior to using this tool, so WAVE proved useful to both boosting the app’s accessibility as well as to my own learning.
 
 ### User Stories Testing
 Each of the user stories identified in the UX section was simulated. The results of these tests are as follows:
