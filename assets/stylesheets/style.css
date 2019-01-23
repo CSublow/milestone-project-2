@@ -212,9 +212,13 @@ h1 {
   @media (min-width: 1110px) {
     h1 {
       font-size: 2.5rem; } }
-  h1 p {
+  h1 span {
+    display: block;
     margin-top: 10px;
-    font-size: 2rem; }
+    font-size: 1.3rem; }
+    @media (min-width: 1110px) {
+      h1 span {
+        font-size: 2rem; } }
 
 .navbar {
   background-color: #2a9445;
