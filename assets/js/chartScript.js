@@ -567,7 +567,7 @@ function makeGraph(error, ggData) {
         var valueArray; //Declare the variable which the array of select options are contained in. The exact array depends upon the user's selection
         
         //HIDE PERCENTAGE INFORMATION
-        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions"
+        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions". The #percentage-p is hidden again within the defaultText() function
         
         //DUPLICATE SELECT BOXES
         var $sourceOptions = $('#source-selector select > option').clone(); //Duplicate the options from the 1st source select box to the 2nd source select box
@@ -578,17 +578,18 @@ function makeGraph(error, ggData) {
         $('#year-selector-2').append($yearOptions);
         $('#year-selector-2 option:nth-child(1)').attr('selected','selected'); //Set the first option of the cloned select box to be default
         
-        //ADJUST X AXIS TICKS
+        //ADJUST X AXIS TICKS FUNCTION CALL
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
-        //Make sure the selectChange function is invoked for all four selection boxes
+        //SELECT CHANGE FUNCTION CALL
+        //Needs to be invoked for all four selection boxes
         selectChange('#source-selector select', sourceSelectMenu, '#source-selector-2', yearSelectMenu, '#year-selector-2');
         selectChange('#source-selector-2', sourceSelectMenu,'#source-selector select', yearSelectMenu, '#year-selector-2');
 
         selectChange('#year-selector select', yearSelectMenu, '#year-selector-2', sourceSelectMenu, '#source-selector-2');
         selectChange('#year-selector-2', yearSelectMenu, '#year-selector select', sourceSelectMenu, '#source-selector-2');
                 
-        // // // DEFINE SELECT BOX CHANGE FUNCTIONS
+        //DEFINE SELECT BOX CHANGE FUNCTIONS
         //Redraw the graphs with required filter
         function redrawGraphs(menu, newFilter) {
             menu
@@ -605,10 +606,10 @@ function makeGraph(error, ggData) {
            return true;
         }
                 
-        //Main function for select box change
+        //Main function for select box change. This function changes the selection-description text depending on what option(s) is selected in the select boxes
         function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
-                //These two vars tell the function which select box is currently being manipulated. Only one boolean var could be used since there are only two types of select box in the current release of the app. However, doing it this way makes it easier to add more select boxes in the future
+                //These two vars tell the function which select box is currently being manipulated. Only one boolean var could be used here since there are only two types of select box in the current release of the app. However, doing it this way makes it easier to add more select boxes in the future
                 var sourceSelect = false,
                     periodSelect = false;
                 
@@ -671,15 +672,15 @@ function makeGraph(error, ggData) {
                                 $('#period-span').html(multiArray);//Then print the array          
                             }
                     }
-                } else { //Else the user has selected "All Vehicles"
-                    //It doesn't make sense for the user to be able to select "All Vehicles" along with individual vehicle types, so if the user tries to select "All Vehicles" along with separate vehicles, only "All Vehicles" will be selected
+                } else { //Else the user has selected "All Vehicles" or "Whole Period"
+                    //It doesn't make sense for the user to be able to select all types along with individual types, so if the user tries to select the all option along with separate types, only the all option will be selected
                     $(targetDiv).val("");
                     $(duplicateSelect).val("");
                     //Then draw graph to represent all data
                     targetMenu
                         .filterAll()
                         .redrawGroup();
-                    if (sourceSelect) {
+                    if (sourceSelect) { 
                         defaultText(true);
                     } else if (periodSelect) {
                         defaultText(false, true);
