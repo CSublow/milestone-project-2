@@ -562,14 +562,15 @@ function makeGraph(error, ggData) {
         });
     }
     
-    //Once the charts are rendered, jQuery is able to manipulate the DOM
-    $(document).ready(function() {
+    // // // JQUERY // // //
+    $(document).ready(function() { //jQuery works on the DOM with charts already rendered, this makes things either possible or easier
         var valueArray; //Declare the variable which the array of select options are contained in. The exact array depends upon the user's selection
         
+        //HIDE PERCENTAGE INFORMATION
         $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions"
         
-        //Duplicate the options from the 1st source select box to the 2nd source select box
-        var $sourceOptions = $('#source-selector select > option').clone();
+        //DUPLICATE SELECT BOXES
+        var $sourceOptions = $('#source-selector select > option').clone(); //Duplicate the options from the 1st source select box to the 2nd source select box
         $('#source-selector-2').append($sourceOptions);
         $('#source-selector-2 option:nth-child(1)').attr('selected','selected'); //Set the first option of the cloned select box to be default
         //Likewise for the year select boxes
@@ -577,6 +578,7 @@ function makeGraph(error, ggData) {
         $('#year-selector-2').append($yearOptions);
         $('#year-selector-2 option:nth-child(1)').attr('selected','selected'); //Set the first option of the cloned select box to be default
         
+        //ADJUST X AXIS TICKS
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
         //Make sure the selectChange function is invoked for all four selection boxes
