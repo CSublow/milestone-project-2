@@ -41,6 +41,11 @@
             stroke: $pureBlack;
             stroke-width: 1px;
         }
+        .pie-slice:hover {
+            path {
+                fill-opacity: 0.5;  
+            }
+        }
     }
 }
 

@@ -265,6 +265,8 @@ h1 {
   #total-emissions-per-source-pie svg .pie-slice-group {
     stroke: #000000;
     stroke-width: 1px; }
+  #total-emissions-per-source-pie svg .pie-slice:hover path {
+    fill-opacity: 0.5; }
 
 .x-axis-label, .y-axis-label {
   font-family: 'Inconsolata', monospace; }
