@@ -54,7 +54,7 @@
 
 This project is an SPA (single page application) interactive data dashboard. The dashboard visualises publically available data on emissions from road transport within the UK between the years 1990 and 2016.
 
-The dashboard primarily relies on [dc.js](https://dc-js.github.io/dc.js/) in order to render the charts. dc in turn relies on [crossfilter](http://crossfilter.github.io/crossfilter/) and [d3.js](https://d3js.org/).
+The dashboard primarily relies on [DC.js](https://dc-js.github.io/dc.js/), a JavaScript-based charting library. DC in turn relies on [Crossfilter](http://crossfilter.github.io/crossfilter/), a dataset explorer, and [D3.js](https://d3js.org/), which is utilised by DC in order to render charts in CSS-friendly SVG format.
 
 ## UX
 
@@ -63,9 +63,9 @@ The typical user of this application is likely to be someone interested in data 
 Because of this potential broad user-base, it was decided to keep the dashboard relatively simple; in total, there are only 4 charts on the dashboard, not including a number of dynamic and static number displays. This simplicity is hoped to reduce the chance of users experiencing information overload.
 
 ### Wireframes
-Prior to work beginning on the website, wireframes were created in order to aid the design progress and provide direction during actual coding. These can be found in the "mockups" folder in the root directory of the project.
+Prior to work beginning on the app, wireframes were created in order to aid the design progress and provide direction during actual coding. These can be found in the "mockups" folder in the root directory of the project.
 
-The wireframes served as the initial inspiration for the project, although the finished project diverges from them on a number of points. dc.js is a versatile and (to my mind) complex library, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
+The wireframes served as the initial inspiration for the project, although the finished project diverges from them on a number of points. DC.js, Crossfilter and D3.js are versatile and (to my mind) complex libraries, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
 
 ## Features
 The website is an SPA data dashboard consisting of a single HTML page, utilising JavaScript to render the charts and jQuery for additional data rendering and DOM manipulation. Styling is achieved with CSS using SCSS-syntax pre-processing. The data the app works with is in JSON format.
@@ -76,21 +76,20 @@ As the app was being developed, it was discovered that page loads looked untidy;
 A delay of one second is used to ensure that the loading overlay is visible for at the very least one second. This ensures that the user is always able to see what is happening; users on very fast connections or those who have cookies saved might become confused by a green overlay that flashes on and off very quickly.
 
 ### No JavaScript Detection
-Without JavaScript no charts can be rendered and the dashboard is essentially useless. Users without JavaScript see a green overlay with the words "No Javascript detected! Please enable JavaScript to view the dashboard". This is accomplished through a class on the body element called 'no-js', in combination with a <noscript> element containing the no JavaScript content. If a page loads with JavaScript enabled, the no-js class is removed and the <noscript> element is ignored, allowing the rest of the content to load as intended. Both a no-js class and a <noscript> element were neccesary to implement due to the loading overlay, which would display instead of the <noscript> content.
+Without JavaScript no charts can be rendered and the dashboard is essentially useless. Users without JavaScript see a green overlay with the words "No Javascript detected! Please enable JavaScript to view the dashboard". This is accomplished through a class on the body element called 'no-js', in combination with a <noscript> element containing the no JavaScript content. If a page loads with JavaScript enabled, the no-js class is removed and the <noscript> element is ignored, allowing the rest of the content to load as intended. Both a no-js class and a <noscript> element were neccesary to implement due to the loading overlay, which would display instead of the <noscript> content if no JavaScript was detected.
 
 ### Navbar
 At the top of the app there is a navbar that serves as the main heading for the page. Since the app is an SPA, there are no links to other pages.
 
-Immediately below the navbar, there are some chart icons rendered using the [Font Awesome](https://fontawesome.com/) toolkit. These icons are purely aesthetic. 
-
 ### Touchscreen Warning
 Users accessing the app on a touchscreen-enabled device see a Bootstrap alert just below the navbar informing the user that the app is best viewed on a device with a mouse or trackpad. The ability to hover is essential to the full experience of the dashboard, enabling tooltips with additional information to display on the charts when the user hovers over them. The alert thus serves as a notice to the user that their experience of the dashboard without a hover-enabled device will be sub-optimal. The alert only shows for media without hover by using a CSS media query.
 
-### Introductory Text
-Below the icons there is some brief introductory text. Early on in development the introductory text contained its own heading, contained several paragraphs of text as well as an image. However, it was decided that a heavy introductory section was unnecessary, took up too much screen real estate, and obstructed the main content of the app from coming into the user's focus quickly. It was therefore decided to make the introductory section as brief as possible.
+### Introductory Text and Highlights
+Immediately below the navbar, there are two sections rendered side by side using Bootstrap's grid system. The left section contains some chart icons rendered using the [Font Awesome](https://fontawesome.com/) toolkit. These icons are purely aesthetic. In addition to the icons there is some introductory text. 
 
-### Highlights
-The Highlights section contains three number displays generated through manipulating the JSON data. In the wireframes there are two number displays (total emissions and average emissions). It was decided during development to increase this number to three in order to bulk up the Highlights section and provide the user with more information at a glance.
+Early on in development the introductory text contained its own heading, contained several paragraphs of text, as well as an image. However, it was decided that a heavy introductory section was unnecessary, took up too much screen real estate, and obstructed the main content of the app from coming into the user's focus quickly. It was therefore decided to make the introductory section as brief as possible.
+
+The Highlights section contains three number displays:
 
 **Total Emissions Figure**
 The figure representing the total emissions over the period is rendered using dc.js's numberDisplay class. The group used to render the figure sums all the numerical values with the key "Emissions" within the JSON data and returns this value.
@@ -103,43 +102,56 @@ However, this value is not rendered to the page using the numberDisplay class it
 **Most Polluting Year Figure**
 The third Highlights figure represents the most polluting year on record. This value is generated in a similar fashion to the average emissions figure, with numberDisplay being used to generate a value and jQuery being used to render the value to the page. The value is calculated using a group that returns from the data all years and their corresponding emissions values. By default the group returns the highest emissions value (and corresponding year) for the numberDisplay. This figure is not present in the wireframes and was added during development in order to bulk up the Highlights section.
 
+**Deviations from wireframes**
+Some deviation from the wireframes exists here. The wireframes suggest that the Highlights and introductory text are grouped together, and early on in development this was the case. However, the side by side layout was chosen in order to cut down on the viewport height utilised by the app, moving the main chart content up allowing the user to notice it quicker.
+
+In the wireframes there are two number displays (total emissions and average emissions). It was decided during development to increase this number to three in order to bulk up the Highlights section and provide the user with more information at a glance.
+
 ### Main Content Overview
-The main content of the app consists of four charts divided into two sections. The **Total Emissions Over Time** section consists of a line chart and a multi-line composite chart. The **Total Emissions By Type Of Vehicle** section consists of a pie chart and a bar chart. In addition to the charts, each section contains two select boxes to enable manipulation of the charts, one select box towards the top of each section and one select box towards the bottom. There are also a few bullet points of text in each section giving an overview of the data contained within the charts, as well as some dynamica text which alters depending on the current selection as determined by the select boxes.
+The main content of the app consists of four charts divided into two sections. The **Total Emissions Over Time** section consists of a line chart and a multi-line composite chart. The **Total Emissions By Type Of Vehicle** section consists of a pie chart and a bar chart. In addition to the charts, each section contains two select boxes to enable manipulation of the charts, one select box towards the top of each section and one select box towards the bottom. There are also a few bullet points of text in each section giving an overview of the data contained within the charts, as well as some dynamic text which alters depending on the current selection as determined by the select boxes.
 
 ### Responsiveness
-Although the project brief does not indicate that the app must be fully responsive, it was felt that some degree of responsiveness was neccesary. The charts are fairly large, with the default size of the line chart for example being 700px by 700px. To have two charts side by side would therefore require at a minimum 1400px width of screen real estate. With a stacked design, the amount of viewport needed would reduce to a minimum of 700px.
+Although the project brief does not indicate that the app must be fully responsive (in line with the lack of support for responsiveness in DC.js), it was felt that some degree of responsiveness was neccesary. The charts are fairly large, with the default size of the line chart for example being 700px by 700px. To have two charts side by side would therefore require at a minimum 1400px width of screen real estate. With a stacked design, the amount of viewport needed would reduce to a minimum of 700px.
 
 It was decided to accomodate both a side-by-side and stacked design. Using Bootstrap's grid system, the charts are stacked up to and including 1199px viewport width. At 1200px and above, the charts in each section are aligned side by side.
 
-In order to accomplish this responsiveness system, the chart sizes themselves had to be manipulated, since it should be noted that two 700px width charts on a 1200px width viewport would overlap. To counter this, the charts are set up to shrink to 600px width (500px for the pie chart which has a default width of 600px) on viewport width sizes between and including 1200px and 1330px using a custom responsiveness function.
+In order to accomplish this responsiveness system, the chart sizes themselves had to be manipulated, since it should be noted that two 700px width charts on a 1200px width viewport would overlap. To counter this, the charts are set up to shrink to 600px width (500px for the pie chart which has a default width of 600px) on viewport width sizes between and including 1200px and 1433px using a custom responsiveness function.
 
 This responsiveness function is achieved with a combined jQuery/dc.js solution. The function has to be called in two situations; when the page is loaded to detect the viewport's size, and again if the user resizes the viewport when the app is already loaded. The function essentially works by passing in new arguments to the width methods of the chart objects, and then in the case of a window resize event, re-rerendering the charts. In addition, charts which have legends also have new arguments passed into the size and positioning methods of the legend objects.
 
-Using this responsiveness system gives the app the flexibility to be supported down to 758px, with the ability to take advantage of extra screen real estate on larger viewports by having charts side by side where possible.
+Using this responsiveness system gives the app the flexibility to be supported down to 920px, with the ability to take advantage of extra screen real estate on larger viewports by having charts side by side where possible.
 
 ### Select Boxes
-The select boxes enable the full functionality of dc.js and crossfilter by allowing the user to dynamically change the data displayed in the charts based on the criteria they select via the select boxes. There are in total four select boxes on the page, two for each section. The two in each section are identical; two were added as a usability boost. This is because the large charts take up a high proportion of screen real estate on all but the largest media, and it was felt that the app would become too cumbersome if the user had to scroll back to the top of a section to manipulate the data every single time they wished to do so. Identical select boxes at both the top and bottom of sections help mitigate this issue.
+The select boxes enable the full functionality of DC.js and Crossfilter by allowing the user to dynamically change the data displayed in the charts based on the criteria they select via the select boxes. There are in total four select boxes on the page, two for each section. The two in each section are identical; two were added as a usability boost. This is because the large charts take up a high proportion of screen real estate on all but the largest media, and it was felt that the app would become too cumbersome if the user had to scroll back to the top of a section to manipulate the data every single time they wished to do so. Identical select boxes at both the top and bottom of sections help mitigate this issue.
 
-For the "Total Emissions Over Time Section", the select box is populated by a list of vehicles. For the "Total Emissions By Type Of Vehicle" section, the select box is populated by a list of years. Both select boxes contain as their default and unfiltered option an "All Vehicles" or "Whole Period" value.
+For the **Total Emissions Over Time Section**, the select box is populated by a list of vehicles. For the **Total Emissions By Type Of Vehicle** section, the select box is populated by a list of years. Both select boxes contain as their default and unfiltered option an "All Vehicles" or "Whole Period" value respectively.
 
-The select boxes are multiple; this allows the user to select multiple options, for example, viewing the emissions data for both petrol and diesel cars. If the user tries to include the default option in a multiple selection, only the default option will be selected, this functionality being accomplished with jQuery.
+The select boxes are multiple; this allows the user to select multiple options, for example, viewing the emissions data for both petrol and diesel cars. If the user tries to include the default option in a multiple selection, only the default option will be selected; it doesn't make sense for the user to select "All Vehicles" along with petrol and diesel cars for example. this functionality is accomplished with jQuery.
 
 The top and bottom select boxes in each section are rendered differently. The top select box in each section is rendered using dc.js's selectMenu class. This select box is then cloned using jQuery to the bottom select box, making both select boxes contain identical values. 
 
 The select boxes' selections are also cloned. For example, if the user selects "Cars - Petrol" and "Cars - Diesel" in the top select box, the bottom select box will also have "Cars - Petrol" and "Cars - Diesel" selected. This is accomplished with one line of jQuery which fires on a select box change event.
 
-The select boxes include instructions; users are informed of the appropriate hotkeys to make multiple selections on both Windows and Mac platforms. It is presumed not all users will recognise how to make full use of a multiple select box.
+The select boxes include instructions; users are informed of the appropriate hotkeys to make multiple selections on both Windows and Mac platforms. Although multi-select boxes are found across the web, it is presumed the multi-select functionality will not be obvious to all users.
 
 The select boxes can be reset via the reset buttons located directly below the dynamic text in each section. Each reset button only resets the charts within its own section. The reset button gives users an easy way to reset the charts.
 
 ### Line Chart
-The line chart is the topmost chart when the layout is stacked, and the top left chart when the layout is in columns. This chart represents emissions data over time, with a line representing total emissions data of either all vehicles, or a custom selection of vehicles as defined by the user.
+The line chart is the topmost chart when the layout is stacked, and the top-left chart when the layout is in columns. This chart represents emissions data over time, with the years on record on the x axis and emissions in kilotons on the y axis. The line represents the emissions data of either all vehicles, or a custom selection of vehicles as defined by the user. The chart is rendered using DC.js's lineChart class. If the user hovers over the line, they can see the exact figure in kilotons of the emissions for a particular year.
 
 ### Composite Chart
-The composite chart is the second chart from top when the layout is stacked, and the top right chart when the layout is in columns. Similarly to the line chart, this chart represents emissions data over time. Unlike the line chart, the composite chart allows a comparison of trends for different vehicles by rendering multiple lines at once. The user can select which lines they want to render using the select boxes.
+The composite chart is the second chart from the top when the layout is stacked, and the top-right chart when the layout is in columns. Similarly to the line chart, this chart represents emissions data over time with the years on record on the x axis and the years on record on the y. Unlike the line chart, the composite chart allows a comparison of trends for different vehicles by rendering multiple lines at once, this being achieved with DC.js' compositeChart class. The user can select which lines they want to render using the select boxes.
+
+The chart also contains a legend, with each vehicle type colour coded. If the user hovers over an item in the legend, the corresponding line on the chart becomes bolder, and the opacity of the other lines is reduced, allowing the user to easily see which item on the legend represents which line.
+
+If the user hovers over a line, the tooltip displayed shows the vehicle type, year and emissions value for that particular data point.
 
 ### Pie Chart
 The pie chart is the third chart from the top when the layout is stacked, and the bottom left chart when the layout is in columns. The pie chart allows a clearer visualisation of the proportion of emissions generated by each vehicle type. The pie chart can be filtered via the select boxes to show data for either the whole period, or one or more years.
+
+The pie chart features a legend showing what vehicle type corresponds to what colour
+
+Since some vehicle types (e.g. LPG vehicles) make up a tiny fraction of emissions, some of the pie chart's slices are too small to contain labels
 
 ### Bar Chart
 The bar chart is the bottommost
@@ -237,6 +249,9 @@ Used to test the app on IE9.
 ### Code Validation
 The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity. These tools helped locate some markup issues, including h3 tags incorrectly closed with /h4, along with identifying obsolete code, such as <script type="javascript">. This helped resolve any errors in the markup and no errors present themselves on any of the html or css files.
 <a name="userstories"></a>
+
+In addition, the [WAVE](http://wave.webaim.org/about) accessibility tool by WebAIM was used in order to check the app for accesibility issues...
+
 ### User Stories Testing
 Each of the user stories identified in the UX section was simulated. The results of these tests are as follows:
 
