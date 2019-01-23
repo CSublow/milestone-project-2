@@ -480,7 +480,7 @@ function makeGraph(error, ggData) {
         pieChart.on('pretransition', function(chart) {
             pieChart.selectAll('path,.dc-legend-item').on('click', null);
         });
-        pieChart.filter = function() {}; //Remove chart interactivity, preventing slices from greying out
+        // pieChart.filter = function() {}; //Remove chart interactivity, preventing slices from greying out
         
         //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
