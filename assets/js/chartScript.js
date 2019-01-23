@@ -243,7 +243,7 @@ function makeGraph(error, ggData) {
 
     //Render the select menu to show data for a particular vehicle type
     function showSourceSelector(ndx) {
-        sourceSelectMenu = dc.selectMenu("#source-selector");
+        sourceSelectMenu = dc.selectMenu('#source-selector');
         sourceSelectMenu
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
