@@ -580,12 +580,6 @@ function makeGraph(error, ggData) {
         
         //ADJUST X AXIS TICKS FUNCTION CALL
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
-        
-        //ADD UNIQUE ID TO SELECTS
-        //Needed for labels to refer to the right control, for the benefit of users with assistive technologies
-        $("select").each(function(n) {
-            $(this).attr("id", "select" + (n + 1)); //select1, select2, select3, select4
-        });
 
         //SELECT CHANGE FUNCTION CALL
         //Needs to be invoked for all four selection boxes
