@@ -7,6 +7,10 @@ h1 {
     @include mqWidth(1110px) {
         font-size: 2.5rem;
     }
+    p {
+        margin-top: 10px;
+        font-size: 2rem;
+    }
 }
 
 .navbar {
@@ -15,7 +19,8 @@ h1 {
         image: $bgImage;
     }
     border-bottom: 2px solid $pureBlack;
-    flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the titles are stacked properly
+    // flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the titles are stacked properly
+    padding: 0; //Remove default Bootstrap padding, navbar is large enough at 0
     h2 {
        font: {
            family: 'Roboto', sans-serif;
