@@ -151,8 +151,7 @@ The pie chart is the third chart from the top when the layout is stacked, and th
 
 The pie chart features a legend showing what vehicle type corresponds to what colour. Hovering over an item in the legend highlights the corresponding pie chart segment. The segment is also highlighted if the user directly hovers over it; additional information is displayed on hover in a tool tip, containing the vehicle type, emissions in kilotons and also the exact percentage figure of the segment.
 
-
-Since some vehicle types (e.g. LPG vehicles) make up a tiny fraction of emissions, some of the pie chart's slices are too small to contain labels
+Since some vehicle types (e.g. LPG vehicles) make up a tiny fraction of emissions, some of the pie chart's slices are too small to contain labels.
 
 ### Bar Chart
 The bar chart is the bottommost
