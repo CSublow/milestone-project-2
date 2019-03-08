@@ -209,14 +209,14 @@ ul {
 h1 {
   font-size: 1.5rem;
   color: #ffffff; }
-  @media (min-width: 1110px) {
+  @media (min-width: 1216px) {
     h1 {
       font-size: 2.5rem; } }
   h1 span {
     display: block;
     margin-top: 10px;
     font-size: 1.3rem; }
-    @media (min-width: 1110px) {
+    @media (min-width: 1216px) {
       h1 span {
         font-size: 2rem; } }
 
@@ -230,7 +230,7 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
     color: #ffffff; }
-    @media (min-width: 1110px) {
+    @media (min-width: 1216px) {
       .navbar h2 {
         font-size: 2rem; } }
 
@@ -242,13 +242,16 @@ h1 {
 
 /* Chart Icons */
 .fa-div, .fa-div-navbar {
-  font-size: 50px;
+  font-size: 40px;
   margin: 0 auto; }
   .fa-div i, .fa-div-navbar i {
     margin: 0 20px; }
 
 .fa-div-navbar {
   color: #ffffff; }
+  @media (min-width: 1216px) {
+    .fa-div-navbar {
+      font-size: 50px; } }
 
 /* Chart Styling
 -------------------- */

@@ -4,14 +4,14 @@ h1 {
     font-size: 1.5rem;
     color: $pureWhite;
     @extend %force-center;
-    @include mqWidth(1110px) {
+    @include mqWidth(1216px) {
         font-size: 2.5rem;
     }
     span {
         display: block;
         margin-top: 10px;
         font-size: 1.3rem;
-        @include mqWidth(1110px) {
+        @include mqWidth(1216px) {
             font-size: 2rem;
         }
     }
@@ -32,7 +32,7 @@ h1 {
            size: 1.2rem;
        }
        color: $pureWhite;
-        @include mqWidth(1110px) {
+        @include mqWidth(1216px) {
             font-size: 2rem;
         }
     }
@@ -47,7 +47,7 @@ h1 {
 
 /* Chart Icons */
 .fa-div, .fa-div-navbar {
-    font-size: 50px;
+    font-size: 40px;
     margin: 0 auto;
     i {
         margin: 0 20px;
@@ -56,4 +56,7 @@ h1 {
 
 .fa-div-navbar {
     color: $pureWhite;
+    @include mqWidth(1216px) {
+        font-size: 50px;
+    }
 }
