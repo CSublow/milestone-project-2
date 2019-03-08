@@ -609,7 +609,11 @@ function makeGraph(error, ggData) {
         //Main function for select box change. This function changes the selection-description text depending on what option(s) is selected in the select boxes
         function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
-                //These two vars tell the function which select box is currently being manipulated. Only one boolean var could be used here since there are only two types of select box in the current release of the app. However, doing it this way makes it easier to add more select boxes in the future
+                /*
+                These two vars tell the function which select box is currently being manipulated. 
+                Only one boolean var could be used here since there are only two types of select box in the current release of the app. 
+                However, doing it this way makes it easier to add more select boxes in the future
+                */
                 var sourceSelect = false,
                     periodSelect = false;
                 
@@ -624,9 +628,9 @@ function makeGraph(error, ggData) {
                 }
                 
                 // //Reset the select boxes in the other section
-                // resetSelects(otherSelect, otherSelect2, false);
+                resetSelects(otherSelect, otherSelect2, false);
                 
-                valueArray = $(targetDiv).val(); //Since the select boxes are multiple, they returns an array. The array elements are composed of the user's selection
+                valueArray = $(targetDiv).val(); //Since the select boxes are multiple, they return an array. The array elements are composed of the user's selection
 
                 if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All Vehicles", since all other options have values)
                     var valueArrayLength = valueArray.length - 1; //Save valuearrayLength as a convenience var
@@ -698,7 +702,7 @@ function chartPopup() {
 }
 
 //Reset charts to default when user clicks the reset button
-function resetSelects(select, resetDuplicate, button) { //The arg passed into 'select' depends upon which button the user clicks
+function resetSelects(select, resetDuplicate, button) { //The arg passed into the select parameter depends upon which button the user clicks
     //Reset the charts
     select.filterAll()
     
@@ -706,7 +710,7 @@ function resetSelects(select, resetDuplicate, button) { //The arg passed into 's
         select.redrawGroup(); //The reset button must redraw
     }
 
-    //Ensure the duplicate select box for source or year are reset  
+    //Ensure the duplicate select box for source or year are also reset  
     $(resetDuplicate).val("");
     
     //Reset to correct default text
