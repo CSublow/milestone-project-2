@@ -21,6 +21,7 @@ h1 {
     background: {
         color: $backgroundGreen; //Backup background color in case failure to load image
         image: $bgImage;
+        size: 100% 100%;
     }
     border-bottom: 2px solid $pureBlack;
     // flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the titles are stacked properly
