@@ -26,6 +26,7 @@ h1 {
     border-bottom: 2px solid $pureBlack;
     // flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the titles are stacked properly
     padding: 0; //Remove default Bootstrap padding, navbar is large enough at 0
+    text-shadow: #000 0px 7px 10px;
     h2 {
        font: {
            family: 'Roboto', sans-serif;
