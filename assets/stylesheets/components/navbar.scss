@@ -4,14 +4,14 @@ h1 {
     font-size: 1.5rem;
     color: $pureWhite;
     @extend %force-center;
-    @include mqWidth(1216px) {
+    @include mqWidth($navbarBreakpoint) {
         font-size: 2.5rem;
     }
     span {
         display: block;
         margin-top: 10px;
         font-size: 1.3rem;
-        @include mqWidth(1216px) {
+        @include mqWidth($navbarBreakpoint) {
             font-size: 2rem;
         }
     }
@@ -33,7 +33,7 @@ h1 {
            size: 1.2rem;
        }
        color: $pureWhite;
-        @include mqWidth(1216px) {
+        @include mqWidth($navbarBreakpoint) {
             font-size: 2rem;
         }
     }
@@ -57,7 +57,7 @@ h1 {
 
 .fa-div-navbar {
     color: $pureWhite;
-    @include mqWidth(1216px) {
+    @include mqWidth($navbarBreakpoint) {
         font-size: 50px;
     }
 }
