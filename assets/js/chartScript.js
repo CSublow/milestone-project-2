@@ -597,7 +597,10 @@ function makeGraph(error, ggData) {
                 .redrawGroup();     
         }
         
-        //This function checks to see if any of the select box option values are empty. Since the only empty value is the default option, this function is essentially checking if the default option is selected or not.
+        /*
+        This function checks to see if any of the select box option values are empty
+        Since the only empty value is the default option, this function is essentially checking if the default option is selected or not.
+        */
         function checkArray(valueArray) {
            for (var i=0; i < valueArray.length; i++){ //Loop through the array
                if (valueArray[i] === "") //If the default option is selected   
@@ -606,7 +609,13 @@ function makeGraph(error, ggData) {
            return true;
         }
                 
-        //Main function for select box change. This function changes the selection-description text depending on what option(s) is selected in the select boxes
+        /* 
+        Main function for select box change. This function:
+            1. Changes the selection-description text depending on what option(s) is selected in the select boxes
+            2. Resets the select boxes in the other section when one section's select boxes are manipulated
+            3. Ensures the duplicate select box in each section always matches the first's values and vice versa
+            4. Ensures charts always update when any select box is changed
+        */
         function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 /*
@@ -617,13 +626,17 @@ function makeGraph(error, ggData) {
                 var sourceSelect = false,
                     periodSelect = false;
                 
-                if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') { //If either of the source selects are the target
+                /*
+                sourceSelect will be true if either of the select boxes in the TOTAL EMISSIONS OVER TIME section are manipulated
+                periodSelect will be true if either of the select boxes in the TOTAL EMISSIONS BY TYPE OF VEHICLE are manipulated
+                */
+                if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
                     sourceSelect = true;
-                } else if (targetDiv == '#year-selector select' || targetDiv == '#year-selector-2') { //Else if either of the period selects are the target
+                } else if (targetDiv == '#year-selector select' || targetDiv == '#year-selector-2') {
                     periodSelect = true;
                 }
                 
-                if (sourceSelect) { //If the changed box is one in the 'total emissions over time' section
+                if (sourceSelect) {
                     $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 }
                 
@@ -632,8 +645,8 @@ function makeGraph(error, ggData) {
                 
                 valueArray = $(targetDiv).val(); //Since the select boxes are multiple, they return an array. The array elements are composed of the user's selection
 
-                if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All Vehicles", since all other options have values)
-                    var valueArrayLength = valueArray.length - 1; //Save valuearrayLength as a convenience var
+                if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All", since all other options have values)
+                    var valueArrayLength = valueArray.length - 1; //Save valueArrayLength as a convenience var
                     
                     //For when there are 3 or more array items, I want them to print with commas separating them. This var is only used for the source selector section
                     var multiArray = valueArray.map(function(valueArray) {
@@ -650,21 +663,20 @@ function makeGraph(error, ggData) {
                     //The below logic chain checks for how many select options are currently selected
                     if (valueArrayLength == 0) { //If the user has only selected one value
                         //Simply print the value they have selected
-                        if (sourceSelect) {
+                        if (sourceSelect) { // For first two charts
                             $('#show-source-span').html(" " + valueArray); 
-                        } else if (periodSelect) {
+                        } else if (periodSelect) { // For last two charts
                            $('#period-span').html("in " + valueArray);
                         }
                     } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
                         var andArray = valueArray.join(" and "); //Join the two elements and separate them with "and"
                         //And then print the joined array
-                        if (sourceSelect) {
+                        if (sourceSelect) { // For first two charts
                             $('#show-source-span').html(andArray);
-                        } else if (periodSelect) {
+                        } else if (periodSelect) { // For last two charts
                             $('#period-span').html("in " + andArray);
                         }
                     } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
-                        // if (sourceSelect) {
                             var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
                             multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
                             if (sourceSelect) {
@@ -677,7 +689,10 @@ function makeGraph(error, ggData) {
                             }
                     }
                 } else { //Else the user has selected "All Vehicles" or "Whole Period"
-                    //It doesn't make sense for the user to be able to select all types along with individual types, so if the user tries to select the all option along with separate types, only the all option will be selected
+                    /*
+                    It doesn't make sense for the user to be able to select all types along with individual types
+                    So if the user tries to select the 'all' option along with separate types, only the 'all' option will be selected
+                    */
                     $(targetDiv).val("");
                     $(duplicateSelect).val("");
                     //Then draw graph to represent all data
