@@ -45,10 +45,14 @@ h1 {
 }
 
 /* Chart Icons */
-.fa-div {
+.fa-div, .fa-div-navbar {
     font-size: 50px;
     margin: 0 auto;
     i {
         margin: 0 20px;
     }
+}
+
+.fa-div-navbar {
+    color: $pureWhite;
 }

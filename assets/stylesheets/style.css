@@ -240,11 +240,14 @@ h1 {
       display: block; } }
 
 /* Chart Icons */
-.fa-div {
+.fa-div, .fa-div-navbar {
   font-size: 50px;
   margin: 0 auto; }
-  .fa-div i {
+  .fa-div i, .fa-div-navbar i {
     margin: 0 20px; }
+
+.fa-div-navbar {
+  color: #ffffff; }
 
 /* Chart Styling
 -------------------- */
