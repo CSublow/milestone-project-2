@@ -268,7 +268,7 @@ h1 {
     width: 100%; }
   .selector-container p {
     text-align: center;
-    margin-bottom: -5px; }
+    margin-bottom: -3px; }
   .selector-container p:nth-child(2) {
     font-size: 0.8rem;
     font-style: italic; }
