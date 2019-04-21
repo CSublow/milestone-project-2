@@ -29,7 +29,7 @@
             }
         }
     }
-    #loader-wrapper, header, .alert, main, footer {
-    display: none; //Remove all other elements except the no-js-display
+    #loader-wrapper, .alert, main, footer {
+        display: none; //Remove all other elements except the no-js-display
     }
 }
