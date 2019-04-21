@@ -98,7 +98,7 @@ ul {
         font-size: 3rem; }
     .no-js #no-js-display div i {
       font-size: 3rem; }
-.no-js #loader-wrapper, .no-js nav, .no-js .alert, .no-js main, .no-js footer {
+.no-js #loader-wrapper, .no-js header, .no-js .alert, .no-js main, .no-js footer {
   display: none; }
 
 /* Loading effect css courtesy of https://ihatetomatoes.net/create-css3-spinning-preloader/, adapted into scss */
