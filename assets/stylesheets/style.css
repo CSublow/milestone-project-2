@@ -2,7 +2,7 @@
 /* Colors */
 /* Background Image */
 /* Structure */
-/* Navbar */
+/* Header */
 /* Loading */
 /* Media Queries 
 --------------------*/
@@ -205,7 +205,7 @@ ul {
   opacity: 0;
   visibility: hidden; }
 
-/* Navbar Styling
+/* Header Styling
 -------------------- */
 h1 {
   font-size: 1.5rem;
