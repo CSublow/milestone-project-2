@@ -48,7 +48,8 @@ h2 {
   font-size: 2.5rem; }
 
 h3 {
-  font-size: 1rem; }
+  font-size: 1rem;
+  text-decoration: underline; }
 
 footer {
   min-width: 920px;
