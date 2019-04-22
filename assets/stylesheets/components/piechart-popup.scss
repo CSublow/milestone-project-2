@@ -20,19 +20,19 @@
         padding: 14px 0 8px;
         position: absolute;
         z-index: 1;
-        bottom: 89%;
+        bottom: 84%;
         left: 50%;
         margin-left: -80px;
-    }
-    .popuptext::after { //Popup arrow
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
+        &:after { //Popup arrow
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
     }
     .hide { //Toggle this class when clicking on the popup container (hide the popup)
         visibility: hidden;

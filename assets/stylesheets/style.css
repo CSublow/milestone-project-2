@@ -342,18 +342,18 @@ button:focus {
     padding: 14px 0 8px;
     position: absolute;
     z-index: 1;
-    bottom: 89%;
+    bottom: 84%;
     left: 50%;
     margin-left: -80px; }
-  .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent; }
+    .popup .popuptext:after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent; }
   .popup .hide {
     visibility: hidden;
     opacity: 0;
