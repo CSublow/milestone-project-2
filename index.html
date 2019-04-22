@@ -152,10 +152,16 @@
             </div>
             
             <!-- Total Emissions Over Time Line Chart -->
-            <div id="total-emissions-over-time" class="col-xl-6"></div>
+            <div class="col-xl-6">
+                <h3 class="text-center">Total emissions for selected vehicle types over time</h3>
+                <div id="total-emissions-over-time"></div>
+            </div>
             
             <!-- Total Emissions Over Time Composite Chart -->
-            <div id="composite-chart" class="col-xl-6"></div>
+            <div class="col-xl-6">
+                <h3 class="text-center">Comparative emissions for vehicle types over time</h3>
+                <div id="composite-chart" class="col-xl-6"></div>
+            </div>
             
             <!-- Duplicate Select Box -->
             <!-- Two identical select boxes are used for the benefit of users with smaller viewports. No need to scroll up to the top select box -->
@@ -202,17 +208,22 @@
                 <small class="force-center text-center">Tip: hover over the slices or bars with your cursor to see more information.</small>
             </div>
             
-            
             <!-- Pie Chart -->
-            <div id="pie-container" class="col-xl-6">
-                <div class="popup" onclick="chartPopup()">
-                    <span class="popuptext" id="myPopup">Hover over the slices to see more information<i class="fa fa-window-close" aria-hidden="true"></i></span>
-                </div>
-                <div id="total-emissions-per-source-pie"></div>
+            <div class="col-xl-6">
+                <h3 class="text-center">Proportion of emissions within selected time period</h3>
+                <div id="pie-container">
+                    <div class="popup" onclick="chartPopup()">
+                        <span class="popuptext" id="myPopup">Hover over the slices to see more information<i class="fa fa-window-close" aria-hidden="true"></i></span>
+                    </div>
+                    <div id="total-emissions-per-source-pie"></div>
+                </div>       
             </div>
             
             <!-- Bar Chart -->
-            <div id="total-emissions-per-source" class="col-xl-6"></div>
+            <div class="col-xl-6">
+                <h3 class="text-center">Emissions per vehicle type within seleted time period</h3>
+                <div id="total-emissions-per-source" class="col-xl-6"></div>
+            </div>
             
             <!-- Duplicate Select Box -->
             <div class="selector-container col-12">
