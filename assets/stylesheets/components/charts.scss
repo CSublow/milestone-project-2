@@ -1,6 +1,11 @@
 /* Chart Styling
 -------------------- */
 
+div {
+    .dc-chart {
+        float: none;
+    }
+}
 .highlights-figure, .highlights-figure span {
     font: {
         weight: bold;
