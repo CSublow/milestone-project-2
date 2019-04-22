@@ -29,6 +29,7 @@ body {
 h2 {
     @extend %force-center;
     font-size: 2.5rem;
+    text-decoration: underline;
 }
 
 h3 {

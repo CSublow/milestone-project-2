@@ -45,7 +45,8 @@ body {
   width: 48.5%; }
 
 h2 {
-  font-size: 2.5rem; }
+  font-size: 2.5rem;
+  text-decoration: underline; }
 
 h3 {
   font-size: 1rem;
