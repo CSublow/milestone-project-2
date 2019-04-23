@@ -81,31 +81,6 @@ footer {
 ul {
   list-style-type: none; }
 
-/* No JS Fallback
--------------------- */
-#no-js-display {
-  display: none; }
-
-.no-js #no-js-display {
-  width: 100%;
-  height: 100%;
-  background: #9bcd64;
-  color: #ffffff;
-  position: fixed;
-  display: block; }
-  .no-js #no-js-display div {
-    position: relative;
-    top: 50%;
-    text-align: center; }
-    .no-js #no-js-display div p {
-      font-size: 2rem; }
-      .no-js #no-js-display div p span {
-        font-size: 3rem; }
-    .no-js #no-js-display div i {
-      font-size: 3rem; }
-.no-js #loader-wrapper, .no-js .alert, .no-js main, .no-js footer {
-  display: none; }
-
 /* Loading effect css courtesy of https://ihatetomatoes.net/create-css3-spinning-preloader/, adapted into scss */
 #loader-wrapper {
   position: fixed;
@@ -337,5 +312,58 @@ button:focus {
   @media (min-width: 992px) {
     .img-figure {
       float: right; } }
+
+/* No JS Fallback
+-------------------- */
+#no-js-display {
+  display: none; }
+
+.no-js #no-js-display {
+  width: 100%;
+  height: 100%;
+  background: #9bcd64;
+  color: #ffffff;
+  position: fixed;
+  display: block; }
+  .no-js #no-js-display div {
+    position: relative;
+    top: 50%;
+    text-align: center; }
+    .no-js #no-js-display div p {
+      font-size: 2rem; }
+      .no-js #no-js-display div p span {
+        font-size: 3rem; }
+    .no-js #no-js-display div i {
+      font-size: 3rem; }
+.no-js #loader-wrapper, .no-js .alert, .no-js main, .no-js footer {
+  display: none; }
+
+/* Internet Explorer Fallback
+-------------------- */
+/* The app does not function correctly on any version of Miccrosoft's Internet Explorer
+    Require users to have a modern browser to be able to access the app
+*/
+#ms-ie-display {
+  display: none; }
+
+.ms-ie #ms-ie-display {
+  width: 100%;
+  height: 100%;
+  background: #9bcd64;
+  color: #ffffff;
+  position: fixed;
+  display: block; }
+  .ms-ie #ms-ie-display div {
+    position: relative;
+    top: 50%;
+    text-align: center; }
+    .ms-ie #ms-ie-display div p {
+      font-size: 2rem; }
+      .ms-ie #ms-ie-display div p span {
+        font-size: 3rem; }
+    .ms-ie #ms-ie-display div i {
+      font-size: 3rem; }
+.ms-ie #loader-wrapper, .ms-ie .alert, .ms-ie main, .ms-ie footer {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

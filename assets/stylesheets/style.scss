@@ -4,8 +4,10 @@
 @import "helpers/placeholders";
 
 @import "components/structure";
-@import "components/no-js";
 @import "components/loader";
 @import "components/header";
 @import "components/charts";
 @import "components/images";
+
+@import "components/no-js";
+@import "components/ms-ie";

@@ -1,13 +1,17 @@
-/* No JS Fallback
+/* Internet Explorer Fallback
 -------------------- */
+/* The app does not function correctly on any version of Miccrosoft's Internet Explorer
+    Require users to have a modern browser to be able to access the app
+*/
 
-#no-js-display {
-    display: none; //By default with Javascript enabled, the no-js-display is removed
+#ms-ie-display {
+    display: none; // By default, hide the ie-display
 }
 
-//If the body still has the no-js class which is normally removed (via Javascript), then show the no-js-display
-.no-js {
-    #no-js-display {
+// If .ms-ie is added to the class by the script, this means the user is on IE
+// Show them the display
+.ms-ie {
+    #ms-ie-display {
     width: 100%;
     height: 100%;
     background: $loaderGreen;
@@ -30,6 +34,6 @@
         }
     }
     #loader-wrapper, .alert, main, footer {
-        display: none; //Remove all other elements except the no-js-display and header
+        display: none; //Remove all other elements except the ms-ie-display and header
     }
 }
