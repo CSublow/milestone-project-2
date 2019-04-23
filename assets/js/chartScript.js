@@ -640,9 +640,6 @@ function makeGraph(error, ggData) {
                     $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 }
                 
-                //Reset the select boxes in the other section
-                resetSelects(otherSelect, otherSelect2, false);
-                
                 valueArray = $(targetDiv).val(); //Since the select boxes are multiple, they return an array. The array elements are composed of the user's selection
 
                 if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All", since all other options have values)
@@ -717,13 +714,11 @@ function chartPopup() {
 }
 
 //Reset charts to default when user clicks the reset button
-function resetSelects(select, resetDuplicate, button) { //The arg passed into the select parameter depends upon which button the user clicks
+function resetSelects(select, resetDuplicate) { //The arg passed into the select parameter depends upon which button the user clicks
     //Reset the charts
     select.filterAll()
     
-    if (button) { //This is only executed for the version of the function called by the html reset buttons
-        select.redrawGroup(); //The reset button must redraw
-    }
+    select.redrawGroup(); //The reset button must redraw the charts
 
     //Ensure the duplicate select box for source or year are also reset  
     $(resetDuplicate).val("");
