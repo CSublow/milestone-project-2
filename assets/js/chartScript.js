@@ -569,15 +569,6 @@ function makeGraph(error, ggData) {
         //HIDE PERCENTAGE INFORMATION
         $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions". The #percentage-p is hidden again within the defaultText() function
         
-        //DUPLICATE SELECT BOXES
-        var $sourceOptions = $('#source-selector select > option').clone(); //Duplicate the options from the 1st source select box to the 2nd source select box
-        $('#source-selector-2').append($sourceOptions);
-        $('#source-selector-2 option:nth-child(1)').attr('selected','selected'); //Set the first option of the cloned select box to be default
-        //Likewise for the year select boxes
-        var $yearOptions = $('#year-selector select > option').clone();
-        $('#year-selector-2').append($yearOptions);
-        $('#year-selector-2 option:nth-child(1)').attr('selected','selected'); //Set the first option of the cloned select box to be default
-        
         //ADJUST X AXIS TICKS FUNCTION CALL
         adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
 
@@ -612,11 +603,9 @@ function makeGraph(error, ggData) {
         /* 
         Main function for select box change. This function:
             1. Changes the selection-description text depending on what option(s) is selected in the select boxes
-            2. Resets the select boxes in the other section when one section's select boxes are manipulated
-            3. Ensures the duplicate select box in each section always matches the first's values and vice versa
             4. Ensures charts always update when any select box is changed
         */
-        function selectChange(targetDiv, targetMenu, duplicateSelect, otherSelect, otherSelect2) {
+        function selectChange(targetDiv, targetMenu) {
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 /*
                 These two vars tell the function which select box is currently being manipulated. 
@@ -627,12 +616,12 @@ function makeGraph(error, ggData) {
                     periodSelect = false;
                 
                 /*
-                sourceSelect will be true if either of the select boxes in the TOTAL EMISSIONS OVER TIME section are manipulated
-                periodSelect will be true if either of the select boxes in the TOTAL EMISSIONS BY TYPE OF VEHICLE are manipulated
+                sourceSelect will be true if the select box in the TOTAL EMISSIONS OVER TIME section is manipulated
+                periodSelect will be true if the select box in the TOTAL EMISSIONS BY TYPE OF VEHICLE is manipulated
                 */
-                if (targetDiv == '#source-selector select' || targetDiv == '#source-selector-2') {
+                if (targetDiv == '#source-selector select') {
                     sourceSelect = true;
-                } else if (targetDiv == '#year-selector select' || targetDiv == '#year-selector-2') {
+                } else if (targetDiv == '#year-selector select') {
                     periodSelect = true;
                 }
                 
@@ -650,7 +639,6 @@ function makeGraph(error, ggData) {
                         return valueArray + ", ";
                     });
             
-                    $(duplicateSelect).val($(targetDiv).val()); //Set the other (duplicate) select box to match the target's values
                     redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
                     if (sourceSelect) {
@@ -691,7 +679,6 @@ function makeGraph(error, ggData) {
                     So if the user tries to select the 'all' option along with separate types, only the 'all' option will be selected
                     */
                     $(targetDiv).val("");
-                    $(duplicateSelect).val("");
                     //Then draw graph to represent all data
                     targetMenu
                         .filterAll()
@@ -707,21 +694,12 @@ function makeGraph(error, ggData) {
     });
 }
 
-//Hide the informative pie chart pop up if the user clicks on it
-function chartPopup() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("hide");
-}
-
 //Reset charts to default when user clicks the reset button
-function resetSelects(select, resetDuplicate) { //The arg passed into the select parameter depends upon which button the user clicks
+function resetSelects(select) { //The arg passed into the select parameter depends upon which reset button (of the 2) the user clicks
     //Reset the charts
     select.filterAll()
     
     select.redrawGroup(); //The reset button must redraw the charts
-
-    //Ensure the duplicate select box for source or year are also reset  
-    $(resetDuplicate).val("");
     
     //Reset to correct default text
     if (select == sourceSelectMenu) {
