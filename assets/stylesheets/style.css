@@ -15,13 +15,13 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Inconsolata");
 h2, .force-center, h1, .selector-container, select, .reset-button, figure, .img-figure img {
-  margin: 15px auto;
+  margin: 10px auto;
   display: block; }
 
 .section-styles, .section-styles-sm {
   background-color: #ffffff;
   margin-left: 1%;
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: .25rem; }
 
 /* Loading effect
@@ -56,7 +56,7 @@ footer {
   min-width: 920px;
   width: 100%;
   position: absolute;
-  margin-top: 20px;
+  margin-top: 10px;
   padding-top: 10px;
   border-top: 2px solid rgba(0, 0, 0, 0.2);
   background-image: url("../images/color5.png"); }
@@ -217,14 +217,14 @@ h1 {
   color: #ffffff; }
   @media (min-width: 1300px) {
     h1 {
-      font-size: 2.5rem; } }
+      font-size: 2rem; } }
   h1 span {
     display: block;
     margin-top: 10px;
     font-size: 1.3rem; }
     @media (min-width: 1300px) {
       h1 span {
-        font-size: 2rem; } }
+        font-size: 1.5rem; } }
 
 .navbar {
   background-color: #2a9445;

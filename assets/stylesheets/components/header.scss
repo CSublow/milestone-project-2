@@ -5,14 +5,14 @@ h1 {
     color: $pureWhite;
     @extend %force-center;
     @include mqWidth($headerBreakpoint) {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     span {
         display: block;
         margin-top: 10px;
         font-size: 1.3rem;
         @include mqWidth($headerBreakpoint) {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
     }
 }
