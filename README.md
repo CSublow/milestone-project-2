@@ -74,9 +74,9 @@
 
 [8. Credits](#credits)
 
-[8.1. Data](#text-content)
+[8.1. Data](#data)
 
-[8.2. Images](#media)
+[8.2. Images](#images)
 
 [8.3. Acknowledgements](#acknowledgements)
 
@@ -402,7 +402,7 @@ The fix involves setting a 1ms delay on scrolling the page back to the select bo
 The fix is not perfect, since there is still a brief moment where the user can see the page ‘jump around’. However, the user should not as easily become disorientated with this fix. 
 
 ## Deployment
-The project is deployed on GitHub Pages, available [here]().
+The project is deployed on GitHub Pages, available [here](https://dhamma1991.github.io/milestone-project-2/).
 
 ## Credits
 ### Data
