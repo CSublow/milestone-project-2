@@ -335,6 +335,7 @@ Manual testing was conducted simulating the two types of users that have been pr
 The results of these tests are as follows
 
 **1. General User**
+
 For this test I made use of another person (User X) who is without programming knowledge and who possesses an average knowledge of how webpages work.
 
 The first thing this user did was go to the external link to the gov.uk website. After doing some reading there, they came back to the webpage, at first attempting to click the ‘back’ button on the browser. This did not work (the link opens in another tab). User X did however, after a few seconds, realise they were on another tab and come back to the webpage. I feel as though leaving the link opening in an external tab is the right move here, as this is the stronger convention with external links.
@@ -357,7 +358,8 @@ This led me to consider adding instructions, either on the button itself, or thr
 
 Other insights from User X’s testing was that the hover functionality works well and is apparent to the user. User X also made use of both select boxes, and the fact that they were duplicates seemed apparent. The user commented that they enjoyed the app and thought it was informative.
 
-** 2. Data Dashboard Enthusiast **
+**2. Data Dashboard Enthusiast**
+
 This was manual testing that I conducted myself, attempting to put myself into the shoes of someone who is interested in seeing data visualisations.
 
 Upon loading the app I am drawn to the header which informs me as to what page I am viewing. Going down the page I see the source for the data is linked within the introductory text. Clicking this link takes me to the gov.uk website where I am able to get some background on the statistics. The app itself remains open in my browser as the gov.uk website loads in another tab.
