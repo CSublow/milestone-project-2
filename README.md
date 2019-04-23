@@ -320,12 +320,15 @@ Used to test the app on IE9.
 
 ## Testing
 ### Code Validation
-The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity.
+The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity. The app passes both these testors with no errors.
 
 ### Accessibility
 A high level of accessibility, though desired, was not considered to be of the highest priority for this app due to the visual nature of charts; it is difficult to replicate accurately the visual effect of things like proportion and trends through the medium of a screen reader and related technologies. Nevertheless, the app can be navigated purely with a keyboard, although this by implication does not allow the user to make use of hover functionality.
 
-<a name="userstories"></a>
+### Automated Testing
+Automated testing was not used in this project; the vast majority of the JavaScript utilises DC.js and related libraries, and DC.js has a [history of being well-tested]( https://github.com/dc-js/dc.js/issues/392).
+
+
 ### User Stories Testing
 Manual testing was conducted simulating the two types of users that have been previously identified in the [UX](#ux) section. The user categories defined are:
 
