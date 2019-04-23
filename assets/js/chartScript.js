@@ -574,11 +574,8 @@ function makeGraph(error, ggData) {
 
         //SELECT CHANGE FUNCTION CALL
         //Needs to be invoked for all four selection boxes
-        selectChange('#source-selector select', sourceSelectMenu, '#source-selector-2', yearSelectMenu, '#year-selector-2');
-        selectChange('#source-selector-2', sourceSelectMenu,'#source-selector select', yearSelectMenu, '#year-selector-2');
-
-        selectChange('#year-selector select', yearSelectMenu, '#year-selector-2', sourceSelectMenu, '#source-selector-2');
-        selectChange('#year-selector-2', yearSelectMenu, '#year-selector select', sourceSelectMenu, '#source-selector-2');
+        selectChange('#source-selector select', sourceSelectMenu);
+        selectChange('#year-selector select', yearSelectMenu);
                 
         //DEFINE SELECT BOX CHANGE FUNCTIONS
         //Redraw the graphs with required filter
