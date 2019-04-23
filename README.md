@@ -312,9 +312,6 @@ The project uses Google Fonts to increase the visual appeal of the project.
 ### [Image Resize Tool]( https://imageresize.org/)
 Used to alter the dimensions of the header and footer image.
 
-### [jitbit.com Unused CSS Finder](https://www.jitbit.com/unusedcss/)
-Used to check the project's css for redundant selectors.
-
 ### [Browserling](https://www.browserling.com/internet-explorer-testing)
 Used to test the app on IE9.
 
@@ -371,7 +368,6 @@ I then out of curiosity decide to see what happens if I also select “All Vehic
 
 Scrolling down to the second section, I make a selection of all years in the 90’s decade. The charts adjust to fit my selection, along with the description text. I think the sentence reads kind of awkward. How the sentence is rendered is something that would be addressed in a subsequent release of the app.
 
-<a name="browser"></a>
 ### Browser and Responsiveness Testing
 The app was primarily developed on Google Chrome version 72.0.3626.121 on a Windows PC with a default maximised screen size of 1936px.
 
@@ -383,9 +379,14 @@ As detailed in the [Responsiveness](#responsiveness] section, some custom JavaSc
 
 In addition to Google Chrome's developer tools simulating devices, an iPhone 7 running iOS v11.3 was used to test the app with its native Safari browser. The website was also tested on Firefox v65.0, Safari v11.0.2 (on a MacBook Pro 15-inch Retina) and Edge v42.17134.1.0.
 
-There was no issue detected during testing on Firefox or Safari. There is however a rather apparent issue with Edge, for which I am at a loss as to how to fix. This issue is detailed within the [Known Issues](#known-issues) section.
+There was no issues detected during the testing of the mentioned browsers, apart from a rather apparent issue with Edge, for which I am at a loss as to how to fix. This issue is detailed within the [Known Issues](#known-issues) section.
 
-In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. A tool from [browserling](https://www.browserling.com/internet-explorer-testing) was also used in order to simulate the website running on IE9 and IE10. The only issue found during IE testing was that the Spotify player does not display correctly. On further investigation this was discovered to be due to the Spotify player [not being supported in IE](https://support.spotify.com/uk/using_spotify/the_basics/webplayer/). This led to additional content being added for the benefit of IE users which is detailed [here](#ie-feature).
+In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [mine wasn’t the only issue] https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11) and that issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
+
+I also used a tool from [browserling](https://www.browserling.com/internet-explorer-testing) to test the app on IE9, to see if the issue was confined to IE11. The same issue does occur in IE9.
+
+Due to IE being a legacy browser, and with Windows 10 (and Edge) becoming more and more common, I opted to not support IE in any of its incarnations. To this effect, a user trying to view the app on IE will see a page similar to the no-js functionality, asking them to upgrade their browser.
+
 
 <a name="known-issues"></a>
 ### Known Issues
