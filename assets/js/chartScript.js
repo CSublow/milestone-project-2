@@ -618,8 +618,27 @@ function makeGraph(error, ggData) {
                 */
                 if (targetDiv == '#source-selector select') {
                     sourceSelect = true;
+                    
                 } else if (targetDiv == '#year-selector select') {
                     periodSelect = true;
+                }
+                
+                // Fix required for Microsoft Edge browser only
+                // If the user manipulates the first select box, the page will scroll to the second select box
+                // However, if the second select box is NOT on its default value and the user manipulates the first select box, the page won't scroll
+                // No issues occur if both select boxes are NOT set to their default values
+                // The page will also scroll to the first select box when the second select box is clicked after the user has clicked the reset button for the first select box
+                // Fix by force setting the page to scroll to the first select box when the select box is manipulated and vice versa
+                if (document.documentMode || /Edge/.test(navigator.userAgent)) { // If the user's browser is Edge...
+                    console.log('Hello Microsoft User!');
+                    
+                    // setTimeout(function () { // In order for this to work there needs to be a delay
+                        if (sourceSelect) { // If the user has manipulated the first select box
+                            document.getElementById('source-selector-container').scrollIntoView(); // Sroll that select box's container into view                    
+                        } else if (periodSelect) { // Else if second select box
+                            document.getElementById('year-selector-container').scrollIntoView(); // Sroll that select box's container into view   
+                            }
+                    // }, 1);
                 }
                 
                 if (sourceSelect) {
@@ -694,7 +713,7 @@ function makeGraph(error, ggData) {
 //Reset charts to default when user clicks the reset button
 function resetSelects(select) { //The arg passed into the select parameter depends upon which reset button (of the 2) the user clicks
     //Reset the charts
-    select.filterAll()
+    select.filterAll();
     
     select.redrawGroup(); //The reset button must redraw the charts
     
