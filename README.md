@@ -14,11 +14,43 @@
 
 [3. Features](#features)
 
-[3.14. Features Left to Implement](#features-left-to-implement)
+[3.1. Loading System](#loading-system)
+
+[3.2. No JavaScript Detection](#no-javascript-detection)
+
+[3.3. Header](#header)
+
+[3.4. Touchscreen Warning](#touchscreen-warning)
+
+[3.5. Introductory Text and Highlights](#introductory-text-and-highlights)
+
+[3.6. Main Content Overview](#main-content-overview)
+
+[3.7. Responsiveness](#responsiveness)
+
+[3.8. Select Boxes](#select-boxes)
+
+[3.9. Dynamically Changing Text](#dynamically-changing-text)
+
+[3.10. Colour Scheme](#colour-scheme)
+
+[3.11. Line Chart](#line-chart)
+
+[3.12. Composite Chart](#composite-chart)
+
+[3.13. Pie Chart](#pie-chart)
+
+[3.14. Bar Chart](#bar-chart)
+
+[3.15. Features Left To Implement](#features-left-to-implement)
 
 ----------
 
-[4. Technologies Used](#technologies-used)
+[4. How Existing Features Fulfil User Requirements](#how-existing-features-fulfil-user-requirements)
+
+----------
+
+[5. Technologies Used](#technologies-used)
 
 ----------
 
@@ -108,17 +140,21 @@ Early on in development the introductory text contained its own heading, several
 The Highlights section, located to the right of the introductory text, contains three number displays:
 
 **Total Emissions Figure**
+
 The figure representing the total emissions over the period is rendered using DC.js's numberDisplay class. The group used to render the figure sums all the numerical values with the key "Emissions" within the JSON data and returns this value.
 
 **Average Emissions Figure**
+
 Like the total emissions figure, the average emissions figure uses numberDisplay to generate a value. The value is calculated similarly to the total emissions figure by summing all the emissions values. This value is then divided by the number of years to come to an average.
 
 This value is not rendered to the page using the numberDisplay class itself. Instead, the generated value is printed to the page using jQuery. This is because the numberDisplay generated value for the average figure changes when the user changes the select boxes found on the page, as the select boxes alter how the data is filtered. Since the average emissions figure is supposed to represent the average emissions for all the period and for all vehicle types, it does not make sense to have the average emissions figure dynamically change. jQuery was an easy workaround to this problem, as using jQuery takes the numberDisplay out of DC.js’s control.
 
 **Most Polluting Year Figure**
+
 The third Highlights figure represents the most polluting year on record. This value is generated in a similar fashion to the average emissions figure, with numberDisplay being used to generate a value and jQuery being used to render the value to the page. The value is calculated using a group that returns from the data all years and their corresponding emissions values. By default, the group returns the highest emissions value (and corresponding year) for the numberDisplay.
 
-**Deviations from wireframes**
+**Deviations From Wireframes**
+
 The introductory section involves some deviation from the wireframes. The wireframes suggest that the Highlights and introductory text are grouped together, and early on in development this was the case. However, the side by side layout was chosen to cut down on the viewport height utilised by the app, moving the main chart content up and allowing the user to notice it quicker.
 
 In the wireframes there are two number displays (total emissions and average emissions). It was decided during development to increase this number to three to bulk up the Highlights section, as it looked overly sparse and detracted from the overall design of the app.
@@ -147,7 +183,8 @@ This responsiveness function is achieved with a combined jQuery/DC.js solution. 
 
 Using this responsiveness system gives the app the flexibility to be fully responsive down to 920px, with the ability to take advantage of extra screen real estate on larger viewports by having charts side by side where possible. On viewports smaller than 920px the user must rely on their viewport’s scroll and zoom functionality to make use of the app
 
-### Select Boxeshttps://open.spotify.com/artist/17OArJzEhRR3OmhtGcnfBq
+### Select Boxes
+
 The select boxes enable the full functionality of DC.js and Crossfilter by allowing the user to dynamically change the data displayed in the charts based on the criteria they select via the select boxes. There are in total two select boxes on the page, one above the charts in each section. 
 
 For the **Total Emissions Over Time Section**, the select box is populated by a list of vehicles. For the **Total Emissions By Type Of Vehicle** section, the select box is populated by a list of years. Both select boxes contain as their default and unfiltered option an "All Vehicles" or "Whole Period" value respectively.
@@ -232,10 +269,10 @@ Since the data being explored only contains 3 dimensions (i.e. year, vehicle typ
 The segmented design of the app (with each section containing a white background colour surrounded by a darker grey background) is in the same vein as many other data dashboards that can be found around the web (e.g. the [Klipfolio](https://www.klipfolio.com/sites/default/files/field/image/executive-dashboard.png), [Datapine](https://www.datapine.com/blog/wp-content/uploads/2017/08/Web-Analytics-Dashboard-datapine.png), and [Dashthis](https://static.dashthis.com/media/1960/dashboard_dashboard.png) styles). Using this conventional style is hoped to make the app familiar to users who have seen data dashboards before.
 
 ## Technologies Used
-### [HTML5](https://www.w3.org/standards/webdesign/htmlcss)
+### HTML 5
 The project's markup uses HTML5 and makes as much use of HTML5 semantics as possible using W3C standards.
 
-### [CSS3](https://www.w3.org/standards/webdesign/htmlcss)
+### CSS 3
 The markup is styled using CSS3.
 
 ### [SASS Pre-Processing](https://sass-lang.com/)
@@ -260,10 +297,10 @@ jQuery is utilised by the project for a number of areas of functionality.
 ### [D3.js](https://d3js.org/)
 D3.js is a JavaScript library for manipulating documents based on data. D3.js is leveraged by DC.js.
 
-### Crossfilter(http://crossfilter.github.io/crossfilter/)
+### [Crossfilter](http://crossfilter.github.io/crossfilter/)
 Crossfilter is a JavaScript library used for exploring datasets. Crossfilter is also leveraged by DC.js.
 
-### DC.js(https://dc-js.github.io/dc.js/)
+### [DC.js](https://dc-js.github.io/dc.js/)
 DC.js is a JavaScript charting library based on D3.js and Crossfilter. DC.js is used to render the charts and number displays on the app, in addition to enabling their interactivity.
 
 ### [Font Awesome 5.3.1](https://fontawesome.com/)
