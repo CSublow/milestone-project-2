@@ -54,31 +54,31 @@
 
 ----------
 
-[5. Testing](#Testing)
+[6. Testing](#Testing)
 
-[5.1. Code Validation](#code-validation)
+[6.1. Code Validation](#code-validation)
 
-[5.2. User Stories Testing](#user-stories-testing)
+[6.2. Accessibility](#accessibility)
 
-[5.3. Browser and Responsiveness Testing](#browser)
+[6.3. User Stories Testing](#user-stories-testing)
 
-[5.4. Known Issues](#known-issues)
+[6.4. Browser and Responsiveness Testing](#browser-and-responsiveness-testing)
 
-[5.5. Other Testing](#other-testing)
-
-----------
-
-[6. Deployment](#deployment)
+[6.5. Known Issues](#known-issues)
 
 ----------
 
-[7. Credits](#credits)
+[7. Deployment](#deployment)
 
-[7.1. Text Content](#text-content)
+----------
 
-[7.2. Media](#media)
+[8. Credits](#credits)
 
-[7.3. Acknowledgements](#acknowledgements)
+[8.1. Data](#text-content)
+
+[8.2. Images](#media)
+
+[8.3. Acknowledgements](#acknowledgements)
 
 --------------------
 
