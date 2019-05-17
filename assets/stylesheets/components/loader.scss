@@ -28,7 +28,7 @@
         }
     }
     p {
-        color: $pureWhite;
+        color: white;
         z-index: $baseLoadZIndex + 500; //The text and the icon need to be on the same level, so have the same z-index
         display: block;
         position: relative;

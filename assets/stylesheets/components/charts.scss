@@ -15,7 +15,7 @@ div {
 
 .selector-container {
     @extend %force-center;
-    border: 1px solid $pureBlack;
+    border: 1px solid black;
     max-width: 500px;
     div {
         width: 100%; //Ensure %force-center has the desired effect for the select boxes
@@ -43,7 +43,7 @@ div {
     svg {
         .pie-slice-group {
             //Add a stroke to the pie slices
-            stroke: $pureBlack;
+            stroke: black;
             stroke-width: 1px;
         }
         .pie-slice:hover {

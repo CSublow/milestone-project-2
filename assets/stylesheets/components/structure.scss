@@ -47,15 +47,15 @@ footer {
     background-image: $bgImage;
     a {
         margin: 0 20px;
-        color: $pureWhite;
+        color: white;
         &:hover {
-            color: $pureWhite;
+            color: white;
         }
     }
     p {
         font-size: 0.75rem;
         margin-top: -10px;
-        color: $pureWhite;
+        color: white;
     }
 }
 

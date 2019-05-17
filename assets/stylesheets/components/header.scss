@@ -2,7 +2,7 @@
 -------------------- */
 h1 {
     font-size: 1.5rem;
-    color: $pureWhite;
+    color: white;
     @extend %force-center;
     @include mqWidth($headerBreakpoint) {
         font-size: 2rem;
@@ -23,7 +23,7 @@ h1 {
         image: $bgImage;
         size: 100% 100%;
     }
-    border-bottom: 2px solid $pureBlack;
+    border-bottom: 2px solid black;
     // flex-direction: column; //Bootstrap navbars are display: flex by default, so this declaration ensures the titles are stacked properly
     padding: 0; //Remove default Bootstrap padding, navbar is large enough at 0
     text-shadow: #000 0 3px 0;
@@ -32,7 +32,7 @@ h1 {
            family: 'Roboto', sans-serif;
            size: 1.2rem;
        }
-       color: $pureWhite;
+       color: white;
         @include mqWidth($headerBreakpoint) {
             font-size: 2rem;
         }
@@ -56,7 +56,7 @@ h1 {
 }
 
 .fa-div-navbar {
-    color: $pureWhite;
+    color: white;
     @include mqWidth($headerBreakpoint) {
         font-size: 50px;
     }
