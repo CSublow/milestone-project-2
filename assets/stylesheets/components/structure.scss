@@ -18,6 +18,12 @@ body {
 
 .section-styles {
     max-width: 98%;
+    
+    /* Keep text away from the edges of the viewport on smaller viewports */
+    @include mqMaxWidth(767px) {
+        padding: 20px; 
+    }
+    
     @extend %section-styles
 }
 

@@ -6,6 +6,12 @@
     }
 }
 
+@mixin mqMaxWidth($mqWidth) {
+    @media (max-width: $mqWidth) {
+        @content
+    }
+}
+
 @mixin mqHover($mqHover) {
     @media (hover: $mqHover) {
         @content

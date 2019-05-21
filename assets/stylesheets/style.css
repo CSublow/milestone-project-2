@@ -19,7 +19,7 @@ h2, .force-center, h1, .selector-container, select, .reset-button, figure, .img-
   display: block; }
 
 .section-styles, .section-styles-sm {
-  background-color: #ffffff;
+  background-color: white;
   margin-left: 1%;
   margin-top: 10px;
   border-radius: .25rem; }
@@ -39,7 +39,11 @@ body {
   margin-right: 0; }
 
 .section-styles {
-  max-width: 98%; }
+  max-width: 98%;
+  /* Keep text away from the edges of the viewport on smaller viewports */ }
+  @media (max-width: 767px) {
+    .section-styles {
+      padding: 20px; } }
 
 .section-styles-sm {
   width: 48.5%; }
@@ -62,13 +66,13 @@ footer {
   background-image: url("../images/color5.png"); }
   footer a {
     margin: 0 20px;
-    color: #ffffff; }
+    color: white; }
     footer a:hover {
-      color: #ffffff; }
+      color: white; }
   footer p {
     font-size: 0.75rem;
     margin-top: -10px;
-    color: #ffffff; }
+    color: white; }
 
 .selection-description {
   height: 60px; }
@@ -91,10 +95,13 @@ ul {
   z-index: 1000;
   background: #8bb85a; }
   #loader-wrapper #loader {
+    /* These declarations, including :before and :after, generate 3 circles that envelop each other. 
+        All but the top sides of the circles are then set to transparent so that when the spin animation 
+        is applied it gives the effect of lines going around in a circle */
     border-width: 3px;
     border-style: solid;
     border-color: transparent;
-    border-top-color: #000000;
+    border-top-color: black;
     border-radius: 50%;
     position: relative;
     top: 50%;
@@ -113,7 +120,7 @@ ul {
       border-width: 3px;
       border-style: solid;
       border-color: transparent;
-      border-top-color: #000000;
+      border-top-color: black;
       border-radius: 50%;
       position: absolute;
       top: 5px;
@@ -127,7 +134,7 @@ ul {
       border-width: 3px;
       border-style: solid;
       border-color: transparent;
-      border-top-color: #000000;
+      border-top-color: black;
       border-radius: 50%;
       position: absolute;
       top: 15px;
@@ -138,7 +145,7 @@ ul {
       -webkit-animation: spin 1.5s linear infinite;
       animation: spin 1.5s linear infinite; }
   #loader-wrapper p {
-    color: #ffffff;
+    color: white;
     z-index: 1500;
     display: block;
     position: relative;
@@ -189,7 +196,7 @@ ul {
 -------------------- */
 h1 {
   font-size: 1.5rem;
-  color: #ffffff; }
+  color: white; }
   @media (min-width: 1300px) {
     h1 {
       font-size: 2rem; } }
@@ -205,13 +212,13 @@ h1 {
   background-color: #2a9445;
   background-image: url("../images/color5.png");
   background-size: 100% 100%;
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid black;
   padding: 0;
   text-shadow: #000 0 3px 0; }
   .navbar h2 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
-    color: #ffffff; }
+    color: white; }
     @media (min-width: 1300px) {
       .navbar h2 {
         font-size: 2rem; } }
@@ -230,7 +237,7 @@ h1 {
     margin: 0 20px; }
 
 .fa-div-navbar {
-  color: #ffffff; }
+  color: white; }
   @media (min-width: 1300px) {
     .fa-div-navbar {
       font-size: 50px; } }
@@ -245,7 +252,7 @@ div .dc-chart {
   font-size: 1.5rem; }
 
 .selector-container {
-  border: 1px solid #000000;
+  border: 1px solid black;
   max-width: 500px; }
   .selector-container div {
     width: 100%; }
@@ -262,7 +269,7 @@ div .dc-chart {
 #total-emissions-per-source-pie {
   width: 100%; }
   #total-emissions-per-source-pie svg .pie-slice-group {
-    stroke: #000000;
+    stroke: black;
     stroke-width: 1px; }
   #total-emissions-per-source-pie svg .pie-slice:hover path {
     fill-opacity: 0.5; }
@@ -322,7 +329,7 @@ button:focus {
   width: 100%;
   height: 100%;
   background: #8bb85a;
-  color: #ffffff;
+  color: white;
   position: fixed;
   display: block; }
   .no-js #no-js-display div {
@@ -350,7 +357,7 @@ button:focus {
   width: 100%;
   height: 100%;
   background: #8bb85a;
-  color: #ffffff;
+  color: white;
   position: fixed;
   display: block; }
   .ms-ie #ms-ie-display div {
