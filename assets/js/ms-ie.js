@@ -1,4 +1,4 @@
-// Script partly based on the accepted answer on https://stackoverflow.com/questions/19999388/check-if-user-is-using-ie
+// Script partly based on the accepted answer here: https://stackoverflow.com/questions/19999388/check-if-user-is-using-ie
 
 var ua = window.navigator.userAgent;
 var msie = ua.indexOf("MSIE ");

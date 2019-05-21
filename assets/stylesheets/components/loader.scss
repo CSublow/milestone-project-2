@@ -10,7 +10,9 @@
     z-index: $baseLoadZIndex; //Ensure the loader wrapper sits above all other content
     background: $loaderGreen;
     #loader {
-        //These declarations, including :before and :after, generate 3 circles that envelop each other. All but the top sides of the circles are then set to transparent so that when the spin animation is applied it gives the effect of lines going around in a circle
+        /* These declarations, including :before and :after, generate 3 circles that envelop each other. 
+            All but the top sides of the circles are then set to transparent so that when the spin animation 
+            is applied it gives the effect of lines going around in a circle */
         @include loaderBorder(relative, 50%, 0, 0, 50%);
         @include animation(spin, 2s);
         display: block;
