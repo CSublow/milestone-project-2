@@ -305,7 +305,8 @@ function makeGraph(error, ggData) {
             .colorAccessor(d => d.key)
             .ordinalColors([generalColor]);
         
-        //Call the axes outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        //Call the axes outside of the main chart initialization code as recommended 
+        // here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         lineChart
             .xAxis()
                 .tickValues(ticks);
@@ -414,7 +415,8 @@ function makeGraph(error, ggData) {
                       mopedLine,
                       lpgLine]);
                       
-        //Call the x axis outside of the main chart initialization code as recommended here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        //Call the x axis outside of the main chart initialization code as recommended 
+        //here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
         compositeChart
             .xAxis()
                 .tickValues(ticks);
@@ -585,24 +587,25 @@ function makeGraph(error, ggData) {
                 .redrawGroup();     
         }
         
-        /*
-        This function checks to see if any of the select box option values are empty
-        Since the only empty value is the default option, this function is essentially checking if the default option is selected or not.
-        */
         function checkArray(valueArray) {
-           for (var i=0; i < valueArray.length; i++){ //Loop through the array
-               if (valueArray[i] === "") //If the default option is selected   
-                  return false;
-           }
+            /*
+            This function checks to see if any of the select box option values are empty
+            Since the only empty value is the default option, this function is essentially checking if 
+            the default option is selected or not.
+            */
+            for (var i=0; i < valueArray.length; i++){ //Loop through the array
+                if (valueArray[i] === "") //If the default option is selected   
+                    return false;
+            }
            return true;
         }
                 
-        /* 
-        Main function for select box change. This function:
-            1. Changes the selection-description text depending on what option(s) is selected in the select boxes
-            4. Ensures charts always update when any select box is changed
-        */
         function selectChange(targetDiv, targetMenu) {
+            /* 
+            Main function for select box change. This function:
+                1. Changes the selection-description text depending on what option(s) is selected in the select boxes
+                2. Ensures charts always update when any select box is changed
+            */
             $(targetDiv).change(function() { //When the select box the user clicks on changes
                 /*
                 These two vars tell the function which select box is currently being manipulated. 
