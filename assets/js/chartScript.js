@@ -1,18 +1,17 @@
-//Declare cloud9 global variables to prevent cloud9 warnings
+// Declare cloud9 global variables to prevent cloud9 warnings
 /*global $*/
 /*global crossfilter*/
 /*global queue*/
 /*global d3*/
 /*global dc*/
 
-//QUEUE
+/* QUEUE */
 queue()
-    .defer(d3.json, "assets/data/data.json") //Fetch the data
-    .await(makeGraph); //Call makeGraph when the data is ready 
+    .defer(d3.json, "assets/data/data.json") // Fetch the data
+    .await(makeGraph); // Call makeGraph when the data is ready 
 
-//Global Color Variables
+/* Global Color Variables */
 var generalColor = "#0b9c00",
-
     carsPetrolColor = "#9dc183",
     carsDieselColor = "#708238",
     lgvPetrolColor = "#c7ea46",
@@ -22,33 +21,37 @@ var generalColor = "#0b9c00",
     motorcyclesColor = "#4F7942",
     mopedsColor = "#29AB87",
     lpgColor = "#A9BA9D";
+/* /Global Color Variables */
     
-//Global Selector Vars
-//Declare outside of main function for use in resetSelects()
+/* Global Selector Vars */
+// Declare outside of main function for use in resetSelects()
 var sourceSelectMenu;
 var yearSelectMenu;
+/* /Global Selector Vars */
 
-//defaultText is global as it is called both within makeGraph() as well as in resetSelects()
-function defaultText(sourceSelect, periodSelect) { //Two arguments used here to make it easier to add more if additional select boxes were ever added
-    if (sourceSelect) { //Default text for total emissions over time section
+// defaultText is global as it is called both within makeGraph() as well as in resetSelects()
+function defaultText(sourceSelect, periodSelect) { // Two arguments used here to make it easier to add more if additional select boxes were ever added
+    if (sourceSelect) { // Default text for total emissions over time section
         $('#show-source-span').html("There was a total of ");
         $('#accounted').html("");
         $('#percentage-p').css('visibility', 'hidden');
-    } else if (periodSelect) { //Default text for total emissions by type of vehicle section
+    } else if (periodSelect) { // Default text for total emissions by type of vehicle section
         $('#period-span').html(" throughout the whole period");
     }
 }
 
-// // // DATA VISUALISATION FUNCTION
+/* DATA VISUALISATION FUNCTION */
 function makeGraph(error, ggData) {
     if (error) throw error;
-    var ndx = crossfilter(ggData); //Load the data into a crossfilter
     
-    //Dimensions
+    var ndx = crossfilter(ggData); // Load the data into a crossfilter
+    
+    /* Dimensions */
     var sourceDim = ndx.dimension(dc.pluck("Source")),
         yearDim = ndx.dimension(dc.pluck("Year"));
+    /* /Dimensions */
     
-    //Groups
+    /* Groups */
     var totalEmissionsPerSourceGroup = sourceDim.group().reduceSum(dc.pluck("Emissions")),
         
         totalEmissionsPerYearGroup = yearDim.group().reduceSum(dc.pluck("Emissions")),
@@ -59,7 +62,7 @@ function makeGraph(error, ggData) {
         
         countYears = yearDim.group().reduceCount().size();
         
-    //Source Groups
+    /* Source Groups */
     var totalEmissionsCarPetrolGroup = yearDim.group().reduceSum(function(d) {
             if (d.Source === "Cars - Petrol") {
                 return d.Emissions;
@@ -123,55 +126,60 @@ function makeGraph(error, ggData) {
                 return 0;
             }
         });
+    /* /Source Groups */
+    /* /Groups */
     
-    //Axes
-    //Explicitly map the domain in order to get custom tick layout for x axis on some charts
+    /* Axes */
+    // Explicitly map the domain in order to get custom tick layout for x axis on some charts
     var domain = ggData.map(function(d) {
         return d.Year;
     }),
         ticks = domain.filter(function(v, i) {
-        //Without the while loop, the years are returned several times over. I only want them returned once, hence the size of the countYears var is used as a reference
+        /* Without the while loop, the years are returned several times over. 
+            I only want them returned once, hence the size of the countYears var is used as a reference */
         while (i < countYears) {
             return i % 2 === 0;
         }
     });
+    /* /Axes */
     
-    // // // FUNCTION CALLS
-    totalEmissionsFigure(ndx); //Render total emissions throughout the period
-    highlightsFigure(ndx, sumEmissions, true); //Render average emissions over the period
+    /* FUNCTION CALLS */
+    totalEmissionsFigure(ndx); // Render total emissions throughout the period
+    highlightsFigure(ndx, sumEmissions, true); // Render average emissions over the period
     
-    /* This highlightsFigure call does not currently work as intended and has been replaced with a hard coded value */
-    // highlightsFigure(ndx, totalEmissionsPerYearGroup); //Render the most polluting year
+    /* This highlightsFigure call does not currently work as intended and has been replaced with a hard coded value 
+        More info about this can be found in the readme */
+    //  highlightsFigure(ndx, totalEmissionsPerYearGroup); // Render the most polluting year
     
-    showSourceSelector(ndx); //Render the vehicle selector box
-    timeFigure(ndx); //Render the figure representing the emissions of selected vehicle types
-    timeFigurePercentage(ndx); //Render the figure representing the emissions percentage of selected vehicle types
+    showSourceSelector(ndx); // Render the vehicle selector box
+    timeFigure(ndx); // Render the figure representing the emissions of selected vehicle types
+    timeFigurePercentage(ndx); // Render the figure representing the emissions percentage of selected vehicle types
     
-    totalEmissionsOverTime(ndx); //Render the line chart
-    compositeChart(ndx); //Render the composite chart
+    totalEmissionsOverTime(ndx); // Render the line chart
+    compositeChart(ndx); // Render the composite chart
     
-    showYearSelector(ndx); //Render the year select box
-    periodFigure(ndx); //Render the figure representing total emissions in selected years
+    showYearSelector(ndx); // Render the year select box
+    periodFigure(ndx); // Render the figure representing total emissions in selected years
 
-    totalEmissionsPerSourcePie(ndx); //Render the pie chart
-    totalEmissionsPerSource(ndx); //Render the bar chart
+    totalEmissionsPerSourcePie(ndx); // Render the pie chart
+    totalEmissionsPerSource(ndx); // Render the bar chart
 
-    dc.renderAll(); //Render all charts to page
+    dc.renderAll(); // Render all charts to page
     
-    addForceCenter(); //Ensure charts are position correctly
+    addForceCenter(); // Ensure charts are position correctly
+    /* /FUNCTION CALLS */
     
-    // // // DEFINE FUNCTIONS
-    
-    // // // GENERAL FUNCTIONS
-    //Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
+    /* DEFINE FUNCTIONS */
+    /* GENERAL FUNCTIONS */
+    // Responsiveness function, this adds a degree of responsiveness to the charts and works alongside bootstrap's rows system
     function chartsResponsive(chartType, chartWidthSmall, chartWidthLarge, renderChart, chartLegend, legendXSmall, legendXLarge) {
-        if ($(window).width() > 1180 && $(window).width() < 1433) { //If the browser window is within the target width range
+        if ($(window).width() > 1180 && $(window).width() < 1433) { // If the browser window is within the target width range
             chartType
                 .width(chartWidthSmall);
-            if (renderChart == true) { //Chart render only has to be called when the window resize function is invoked, not when the page is loaded initially
+            if (renderChart == true) { // Chart render only has to be called when the window resize function is invoked, not when the page is loaded initially
                 chartType.render();
             }
-            if (chartLegend == true) { //Only some chart types need a legend
+            if (chartLegend == true) { // Only some chart types need a legend
                 chartType
                     .legend(dc.legend()
                         .x(legendXSmall)
@@ -179,13 +187,13 @@ function makeGraph(error, ggData) {
                         .itemHeight(13)
                         .gap(5));
             }
-        } else { //Else the chart width is able to be higher
+        } else { // Else the chart width is able to be higher
             chartType
                 .width(chartWidthLarge);
             if (renderChart == true) {
                 chartType.render();
             }
-            if (chartLegend == true) { //Only some chart types need a legend
+            if (chartLegend == true) { // Only some chart types need a legend
                 chartType
                     .legend(dc.legend()
                         .x(legendXLarge)
@@ -194,29 +202,29 @@ function makeGraph(error, ggData) {
                         .gap(5));
             }
         }
-        addForceCenter(); //Rerendering the chart removes the force center class, this has to be added back in
+        addForceCenter(); // Rerendering the chart removes the force center class, this has to be added back in
     }
     
-    //This function helps totalEmissionsPerSource's x axis ticks be more legible
+    // This function helps totalEmissionsPerSource's x axis ticks be more legible
     function adjustXTicks() {
-        //Move every 2nd tick text down slightly
+        // Move every 2nd tick text down slightly
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) text")
             .style("transform", "translate(0,20px)");
             
-        //Increase the length of every 2nd tick line
+        // Increase the length of every 2nd tick line
         d3.selectAll("#total-emissions-per-source .x.axis .tick:nth-child(even) line")
             .attr("y2", "20");
     }
     
-    //Add a class used to center the charts in the viewport
+    // Add a class used to center the charts in the viewport
     function addForceCenter() {
         d3.selectAll('svg')
             .attr('class', 'force-center');
     }
+    /* /GENERAL FUNCTIONS */
     
-    // // // CHART RENDERING FUNCTIONS
-    
-    //Render the total emissions figure
+    /* CHART RENDERING FUNCTIONS */
+    // Render the total emissions figure
     function totalEmissionsFigure(ndx) {
         dc.numberDisplay("#total-emissions-figure")
             .group(sumEmissions)
@@ -225,19 +233,19 @@ function makeGraph(error, ggData) {
                 return d;
             });
     }
-
+    
     /* Render the figures that reside in the Highlights section
         The figures are generated using dc numberDisplay. However, since I want the figures to remain static and not be changed via crossfilter, 
         the dc numberDisplay values are then rendered using jQuery */
-    var averageGeneratedValue, topYearValue; //Declare the vars where generated values will live
+    var averageGeneratedValue, topYearValue; // Declare the vars where generated values will live
     function highlightsFigure(ndx, group, averageValue) {
-        dc.numberDisplay("null") //I don't actually want dc to render the value, hence I provide a dummy parent
+        dc.numberDisplay("null") // I don't actually want dc to render the value, hence I provide a dummy parent
             .group(group)
             .valueAccessor(function(d) {
-                if (averageValue) { //If it is the average emissions per year value we want
-                    averageGeneratedValue = d / countYears; //Generate a value and assign it to the variable  
-                    $('#average-emissions-figure').html(averageGeneratedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document.
-                } else { //Else the desired value is the most polluting year
+                if (averageValue) { // If it is the average emissions per year value we want
+                    averageGeneratedValue = d / countYears; // Generate a value and assign it to the variable  
+                    $('#average-emissions-figure').html(averageGeneratedValue.toLocaleString("en", {maximumFractionDigits: 2})); // jQuery is used to print the value to the document.
+                } else { // Else the desired value is the most polluting year
                     topYearValue = d.key;    
                     /* The jQuery here does not actually work as intended. A value is rendered to the page, but the value changes depending on the selection
                         the user makes in the source select box
@@ -249,7 +257,7 @@ function makeGraph(error, ggData) {
             });
     }    
 
-    //Render the select menu to show data for a particular vehicle type
+    // Render the select menu to show data for a particular vehicle type
     function showSourceSelector(ndx) {
         sourceSelectMenu = dc.selectMenu('#source-selector');
         sourceSelectMenu
@@ -262,7 +270,7 @@ function makeGraph(error, ggData) {
             });
     }
     
-    //Render the figure that interacts with the emissions over time charts
+    // Render the figure that interacts with the emissions over time charts
     function timeFigure(ndx) {
         dc.numberDisplay("#show-time-figure")
             .group(totalEmissionsPerYearGroupSum)
@@ -273,7 +281,7 @@ function makeGraph(error, ggData) {
             });
     }
     
-    //Render the figure that expresses emissions over time as a percentage of total emissions
+    // Render the figure that expresses emissions over time as a percentage of total emissions
     function timeFigurePercentage(ndx) {
         dc.numberDisplay("#show-time-figure-percentage")
             .group(totalEmissionsPerYearGroupSum)
@@ -284,11 +292,11 @@ function makeGraph(error, ggData) {
             });    
     }
     
-    //Render the total emissions over time chart
+    // Render the total emissions over time chart
     function totalEmissionsOverTime(ndx) {
-        var lineChart = dc.lineChart("#total-emissions-over-time"); //Define the call to lineChart
+        var lineChart = dc.lineChart("#total-emissions-over-time"); // Define the call to lineChart
             
-        chartsResponsive(lineChart, 600, 700, false); //Make sure the chart is responsive
+        chartsResponsive(lineChart, 600, 700, false); // Make sure the chart is responsive
         
         lineChart
             .height(700)
@@ -307,14 +315,14 @@ function makeGraph(error, ggData) {
             .yAxisPadding("5")
             .dotRadius(10)
             .title(function(d) {
-                //format the number as thousands with comma separator
+                // format the number as thousands with comma separator
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .colorAccessor(d => d.key)
             .ordinalColors([generalColor]);
         
-        //Call the axes outside of the main chart initialization code as recommended 
-        // here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        /* Call the axes outside of the main chart initialization code as recommended 
+            here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081 */    
         lineChart
             .xAxis()
                 .tickValues(ticks);
@@ -322,24 +330,24 @@ function makeGraph(error, ggData) {
             .yAxis()
                 .ticks([20]);
 
-        //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
+        // Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             chartsResponsive(lineChart, 600, 700, true);
         });
     }
     
-    //Render a composite chart showing all source's emissions over time
+    // Render a composite chart showing all source's emissions over time
     function compositeChart(ndx) {
-        //Function to give each line on the composite chart a title
+        // Function to give each line on the composite chart a title
         function lineTitle(sourceArg, dataArg) {
             return sourceArg + dataArg.key + ": " + dataArg.value.toLocaleString("en") + " kilotons";
         }
         
-        var compositeChart = dc.compositeChart("#composite-chart"); //Define the call to compositeChart
+        var compositeChart = dc.compositeChart("#composite-chart"); // Define the call to compositeChart
             
         chartsResponsive(compositeChart, 600, 700, false, true, 400, 500);
         
-        //Define the lines to go on composite chart
+        // Define the lines to go on composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
                                     .colors(carsPetrolColor)
                                     .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
@@ -399,7 +407,7 @@ function makeGraph(error, ggData) {
             .height(700)
             .margins({top:10, right:60, bottom: 40, left:60})
             .dimension(yearDim)
-            .group(totalEmissionsCarPetrolGroup) //It doesn't matter here which source group is used
+            .group(totalEmissionsCarPetrolGroup) // It doesn't matter here which source group is used
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
@@ -423,8 +431,8 @@ function makeGraph(error, ggData) {
                       mopedLine,
                       lpgLine]);
                       
-        //Call the x axis outside of the main chart initialization code as recommended 
-        //here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081    
+        /* Call the x axis outside of the main chart initialization code as recommended 
+            here https://stackoverflow.com/questions/40924437/skipping-overlapping-labels-on-x-axis-for-a-barchart-in-dc-js#40940081 */  
         compositeChart
             .xAxis()
                 .tickValues(ticks);
@@ -432,13 +440,13 @@ function makeGraph(error, ggData) {
             .yAxis()
                 .ticks([20]);
 
-        //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
+        // Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             chartsResponsive(compositeChart, 600, 700, true, true, 400, 500);
         });
     }
     
-    //Render the select menu to show data for a particular year
+    // Render the select menu to show data for a particular year
     function showYearSelector(ndx) {
         yearSelectMenu = dc.selectMenu('#year-selector');
         yearSelectMenu
@@ -451,7 +459,7 @@ function makeGraph(error, ggData) {
             });
     }
     
-    //Render the figure showing the amount of emissions within the period or for a given year
+    // Render the figure showing the amount of emissions within the period or for a given year
     function periodFigure(ndx) {
         dc.numberDisplay("#show-period-figure")
             .group(sumEmissions)
@@ -462,7 +470,7 @@ function makeGraph(error, ggData) {
             });    
     }
     
-    //Render the pie chart breaking down emissions by source
+    // Render the pie chart breaking down emissions by source
     function totalEmissionsPerSourcePie(ndx) {
         
         var pieChart = dc.pieChart("#total-emissions-per-source-pie");
@@ -474,35 +482,35 @@ function makeGraph(error, ggData) {
             .radius(275)
             .dimension(sourceDim)
             .group(totalEmissionsPerSourceGroup)
-            .label(function(d) { //Hide the labels, rely on the legend to orientate the user
+            .label(function(d) { // Hide the labels, rely on the legend to orientate the user
                 return "";
             })
             .title(function(d) {
-                //sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%"; //Format the title as the key + the value with commas separator + the percentage expressed by the pie chart's slice
+                // sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%"; // Format the title as the key + the value with commas separator + the percentage expressed by the pie chart's slice
             })
-            .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor]) //The colors here go in order of highest to lowest value for the whole period
+            .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor]) // The colors here go in order of highest to lowest value for the whole period
             .legend(dc.legend()
                 .itemHeight(13)
                 .gap(2));
 
-        //Remove click functionality from chart, this has to be done both here and on the bar chart to prevent clicks from rerendering the values that are displayed above the bar chart's bars
+        // Remove click functionality from chart, this has to be done both here and on the bar chart to prevent clicks from rerendering the values that are displayed above the bar chart's bars
         pieChart.on('pretransition', function(chart) {
             pieChart.selectAll('path,.dc-legend-item').on('click', null);
         });
-        // pieChart.filter = function() {}; //Remove chart interactivity, preventing slices from greying out
+        // pieChart.filter = function() {}; // Remove chart interactivity, preventing slices from greying out
         
-        //Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
+        // Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
             pieChart
-                .transitionDuration(0); //Remove transitionDuration before the chart has been resized
+                .transitionDuration(0); // Remove transitionDuration before the chart has been resized
             chartsResponsive(pieChart, 500, 600, true);
             pieChart
-                .transitionDuration(250); //Reset transitionDuration to default once the size changes have been applied
+                .transitionDuration(250); // Reset transitionDuration to default once the size changes have been applied
         });
     }
     
-    //Render the bar chart breaking down emissions by source
+    // Render the bar chart breaking down emissions by source
     function totalEmissionsPerSource(ndx) {
         var barChart = dc.barChart("#total-emissions-per-source");
         
@@ -522,23 +530,23 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
-            .colorAccessor(d => d.key) //Required to give each bar an individual color
-            //The ordinal data is ordered alphabetically, so we assign colors in the same way
-            //Note: lpgColor is refering to "All LPG Vehicles", hence why it comes first
+            .colorAccessor(d => d.key) // Required to give each bar an individual color
+            // The ordinal data is ordered alphabetically, so we assign colors in the same way
+            // Note: lpgColor is refering to "All LPG Vehicles", hence why it comes first
             .ordinalColors([lpgColor, busesAndCoachesColor, carsDieselColor, carsPetrolColor, hgvColor, lgvDieselColor, lgvPetrolColor, mopedsColor, motorcyclesColor]);
  
-        //Remove click functionality from chart, this conflicts with the values that are dislayed above the bars
+        // Remove click functionality from chart, this conflicts with the values that are dislayed above the bars
         barChart.on('pretransition', function(chart) {
             barChart.selectAll('rect.bar').on('click', null);
         });
         
-        //Show values on top of the bars
+        // Show values on top of the bars
         barChart.on('renderlet', function(chart){
         
             var barsData = [];
             var bars = chart.selectAll('.bar').each(function(d) { barsData.push(d); });
             
-            //Create group for labels 
+            // Create group for labels 
             var gLabels = d3.select(bars[0][0].parentNode).append('g').attr('id','inline-labels');
         
             for (var i = bars[0].length - 1; i >= 0; i--) {
@@ -556,34 +564,35 @@ function makeGraph(error, ggData) {
             }
         });
         
-        //Remove values on top of bars when chart is being redrawn
+        // Remove values on top of bars when chart is being redrawn
         barChart.on('preRedraw', function(chart){
             chart.select('#inline-labels').remove();
         });
     
         $(window).resize(function() {
             barChart
-                .transitionDuration(0); //Remove transitionDuration before the chart has been resized
+                .transitionDuration(0); // Remove transitionDuration before the chart has been resized
             chartsResponsive(barChart, 600, 700, true);
             barChart
-                .transitionDuration(250); //Reset transitionDuration to default once the size changes have been applied
+                .transitionDuration(250); // Reset transitionDuration to default once the size changes have been applied
             
-            adjustXTicks(); //The x ticks must also be rerendered or else they revert to their default and unwanted position
+            adjustXTicks(); // The x ticks must also be rerendered or else they revert to their default and unwanted position
         });
     }
+    /* /CHART RENDERING FUNCTIONS */
     
-    // // // JQUERY // // //
-    $(document).ready(function() { //jQuery works on the DOM with charts already rendered, this makes things either possible or easier
-        var valueArray; //Declare the variable which the array of select options are contained in. The exact array depends upon the user's selection
+    // //  // JQUERY // // //
+    $(document).ready(function() { // jQuery works on the DOM with charts already rendered, this makes things either possible or easier
+        var valueArray; // Declare the variable which the array of select options are contained in. The exact array depends upon the user's selection
         
-        //HIDE PERCENTAGE INFORMATION
-        $('#percentage-p').css('visibility', 'hidden'); //For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions". The #percentage-p is hidden again within the defaultText() function
+        // HIDE PERCENTAGE INFORMATION
+        $('#percentage-p').css('visibility', 'hidden'); // For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions". The #percentage-p is hidden again within the defaultText() function
         
-        //ADJUST X AXIS TICKS FUNCTION CALL
-        adjustXTicks(); //This function, for the bar chart, must be called once the document is ready
+        // ADJUST X AXIS TICKS FUNCTION CALL
+        adjustXTicks(); // This function, for the bar chart, must be called once the document is ready
 
-        //SELECT CHANGE FUNCTION CALL
-        //Needs to be invoked for all four selection boxes
+        // SELECT CHANGE FUNCTION CALL
+        // Needs to be invoked for all four selection boxes
         selectChange('#source-selector select', sourceSelectMenu);
         selectChange('#year-selector select', yearSelectMenu);
         
@@ -593,8 +602,8 @@ function makeGraph(error, ggData) {
             Since the only empty value is the default option, this function is essentially checking if 
             the default option is selected or not.
             */
-            for (var i=0; i < valueArray.length; i++){ //Loop through the array
-                if (valueArray[i] === "") //If the default option is selected   
+            for (var i=0; i < valueArray.length; i++){ // Loop through the array
+                if (valueArray[i] === "") // If the default option is selected   
                     return false;
             }
            return true;
@@ -606,7 +615,7 @@ function makeGraph(error, ggData) {
                 1. Changes the selection-description text depending on what option(s) is selected in the select boxes
                 2. Ensures charts always update when any select box is changed
             */
-            $(targetDiv).change(function() { //When the select box the user clicks on changes
+            $(targetDiv).change(function() { // When the select box the user clicks on changes
                 /*
                 These two vars tell the function which select box is currently being manipulated. 
                 Only one boolean var could be used here since there are only two types of select box in the current release of the app. 
@@ -645,58 +654,58 @@ function makeGraph(error, ggData) {
                 }
                 
                 if (sourceSelect) {
-                    $('#percentage-p').css('visibility', 'visible'); //I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                    $('#percentage-p').css('visibility', 'visible'); // I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
                 }
                 
-                valueArray = $(targetDiv).val(); //Since the select boxes are multiple, they return an array. The array elements are composed of the user's selection
+                valueArray = $(targetDiv).val(); // Since the select boxes are multiple, they return an array. The array elements are composed of the user's selection
 
-                if (checkArray(valueArray)) { //If no empty value is found (the empty value represents "All", since all other options have values)
-                    var valueArrayLength = valueArray.length - 1; //Save valueArrayLength as a convenience var
+                if (checkArray(valueArray)) { // If no empty value is found (the empty value represents "All", since all other options have values)
+                    var valueArrayLength = valueArray.length - 1; // Save valueArrayLength as a convenience var
                     
-                    //For when there are 3 or more array items, I want them to print with commas separating them. This var is only used for the source selector section
+                    // For when there are 3 or more array items, I want them to print with commas separating them. This var is only used for the source selector section
                     var multiArray = valueArray.map(function(valueArray) {
                         return valueArray + ", ";
                     });
                     
                     if (sourceSelect) {
-                        $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
+                        $('#accounted').html("accounted for"); // Add this string after the printed array so the sentence reads better
                     }
                     
-                    //The below logic chain checks for how many select options are currently selected
-                    if (valueArrayLength == 0) { //If the user has only selected one value
-                        //Simply print the value they have selected
+                    // The below logic chain checks for how many select options are currently selected
+                    if (valueArrayLength == 0) { // If the user has only selected one value
+                        // Simply print the value they have selected
                         if (sourceSelect) { // For first two charts
                             $('#show-source-span').html(" " + valueArray); 
                         } else if (periodSelect) { // For last two charts
                            $('#period-span').html("in " + valueArray);
                         }
-                    } else if (valueArrayLength == 1) { //Else if the user has selected 2 values
-                        var andArray = valueArray.join(" and "); //Join the two elements and separate them with "and"
-                        //And then print the joined array
+                    } else if (valueArrayLength == 1) { // Else if the user has selected 2 values
+                        var andArray = valueArray.join(" and "); // Join the two elements and separate them with "and"
+                        // And then print the joined array
                         if (sourceSelect) { // For first two charts
                             $('#show-source-span').html(andArray);
                         } else if (periodSelect) { // For last two charts
                             $('#period-span').html("in " + andArray);
                         }
-                    } else if (valueArrayLength > 1) { //Else if there are more than 2 values selected
-                            var lastItem = multiArray[valueArrayLength]; //Get the last item of the array
-                            multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); //Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
+                    } else if (valueArrayLength > 1) { // Else if there are more than 2 values selected
+                            var lastItem = multiArray[valueArrayLength]; // Get the last item of the array
+                            multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); // Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
                             if (sourceSelect) {
-                                $('#show-source-span').html(multiArray); //Then print the array
+                                $('#show-source-span').html(multiArray); // Then print the array
                             } else if (periodSelect) {
-                                var firstItem = multiArray[0]; //The first item here also needs changing
+                                var firstItem = multiArray[0]; // The first item here also needs changing
                                 multiArray[0] = "in " + firstItem;
-                                multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1'); //Replace the last white space so that the last item is snug with the ending '.'
-                                $('#period-span').html(multiArray);//Then print the array          
+                                multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1'); // Replace the last white space so that the last item is snug with the ending '.'
+                                $('#period-span').html(multiArray);// Then print the array          
                             }
                     }
-                } else { //Else the user has selected "All Vehicles" or "Whole Period"
+                } else { // Else the user has selected "All Vehicles" or "Whole Period"
                     /*
                     It doesn't make sense for the user to be able to select all types along with individual types
                     So if the user tries to select the 'all' option along with separate types, only the 'all' option will be selected
                     */
                     $(targetDiv).val("");
-                    //Then draw graph to represent all data
+                    // Then draw graph to represent all data
                     targetMenu
                         .filterAll()
                         .redrawGroup();
@@ -710,15 +719,16 @@ function makeGraph(error, ggData) {
         }
     });
 }
+/* /DATA VISUALISATION FUNCTION */
 
-//Reset charts to default when user clicks the reset button
-function resetSelects(select) { //The arg passed into the select parameter depends upon which reset button (of the 2) the user clicks
-    //Reset the charts
+// Reset charts to default when user clicks the reset button
+function resetSelects(select) { // The arg passed into the select parameter depends upon which reset button (of the 2) the user clicks
+    // Reset the charts
     select.filterAll();
     
-    select.redrawGroup(); //The reset button must redraw the charts
+    select.redrawGroup(); // The reset button must redraw the charts
     
-    //Reset to correct default text
+    // Reset to correct default text
     if (select == sourceSelectMenu) {
         defaultText(true);
     } else if (select == yearSelectMenu) {
