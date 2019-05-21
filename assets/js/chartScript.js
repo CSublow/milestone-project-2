@@ -202,6 +202,7 @@ function makeGraph(error, ggData) {
                         .gap(5));
             }
         }
+        
         addForceCenter(); // Rerendering the chart removes the force center class, this has to be added back in
     }
     
@@ -315,7 +316,7 @@ function makeGraph(error, ggData) {
             .yAxisPadding("5")
             .dotRadius(10)
             .title(function(d) {
-                // format the number as thousands with comma separator
+                // Format the number as thousands with comma separator
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
             .colorAccessor(d => d.key)
@@ -347,7 +348,7 @@ function makeGraph(error, ggData) {
             
         chartsResponsive(compositeChart, 600, 700, false, true, 400, 500);
         
-        // Define the lines to go on composite chart
+        // Define the lines to go on the composite chart
         var carsPetrolLine =    dc.lineChart(compositeChart)
                                     .colors(carsPetrolColor)
                                     .group(totalEmissionsCarPetrolGroup, "Cars - Petrol")
@@ -487,18 +488,20 @@ function makeGraph(error, ggData) {
             })
             .title(function(d) {
                 // sumEmissions.value(), rather than the var sumEmissionsValue I defined above, must be used here or else it won't return the values I want
-                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%"; // Format the title as the key + the value with commas separator + the percentage expressed by the pie chart's slice
+                // Format the title as the key + the value with commas separator + the percentage expressed by the pie chart's slice
+                return d.key + ": " + d.value.toLocaleString("en") + " kilotons" + " | " + ((d.value / sumEmissions.value()) * 100).toFixed(2) + "%"; 
             })
-            .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor]) // The colors here go in order of highest to lowest value for the whole period
+            // The colors here go in order of highest to lowest value for the whole period
+            .ordinalColors([carsPetrolColor, hgvColor, carsDieselColor, lgvDieselColor, busesAndCoachesColor, lgvPetrolColor, motorcyclesColor, lpgColor, mopedsColor])
             .legend(dc.legend()
                 .itemHeight(13)
                 .gap(2));
 
-        // Remove click functionality from chart, this has to be done both here and on the bar chart to prevent clicks from rerendering the values that are displayed above the bar chart's bars
+        /* Remove click functionality from chart, this has to be done both here and on the bar chart to 
+            prevent clicks from rerendering the values that are displayed above the bar chart's bars */
         pieChart.on('pretransition', function(chart) {
             pieChart.selectAll('path,.dc-legend-item').on('click', null);
         });
-        // pieChart.filter = function() {}; // Remove chart interactivity, preventing slices from greying out
         
         // Add a degree of responsiveness to the chart to ensure charts remain responsive if the user resizes the window
         $(window).resize(function() {
@@ -530,9 +533,9 @@ function makeGraph(error, ggData) {
             .title(function(d) {
                 return d.key + ": " + d.value.toLocaleString("en") + " kilotons";
             })
-            .colorAccessor(d => d.key) // Required to give each bar an individual color
-            // The ordinal data is ordered alphabetically, so we assign colors in the same way
-            // Note: lpgColor is refering to "All LPG Vehicles", hence why it comes first
+            .colorAccessor(d => d.key) /* Required to give each bar an individual color
+                The ordinal data is ordered alphabetically, so colors are assigned in the same way
+                Note: lpgColor is refering to "All LPG Vehicles", hence why it comes first */
             .ordinalColors([lpgColor, busesAndCoachesColor, carsDieselColor, carsPetrolColor, hgvColor, lgvDieselColor, lgvPetrolColor, mopedsColor, motorcyclesColor]);
  
         // Remove click functionality from chart, this conflicts with the values that are dislayed above the bars
@@ -581,27 +584,25 @@ function makeGraph(error, ggData) {
     }
     /* /CHART RENDERING FUNCTIONS */
     
-    // //  // JQUERY // // //
+    /* JQUERY */
     $(document).ready(function() { // jQuery works on the DOM with charts already rendered, this makes things either possible or easier
         var valueArray; // Declare the variable which the array of select options are contained in. The exact array depends upon the user's selection
         
-        // HIDE PERCENTAGE INFORMATION
-        $('#percentage-p').css('visibility', 'hidden'); // For the All Vehicles option which shows in the source select initially, hide the percentage information. It doesn't make sense to show "That is 100% of emissions". The #percentage-p is hidden again within the defaultText() function
+        /* For the All Vehicles option which shows in the source select initially, hide the percentage information. 
+            It doesn't make sense to show "That is 100% of emissions" */
+        $('#percentage-p').css('visibility', 'hidden'); 
         
-        // ADJUST X AXIS TICKS FUNCTION CALL
         adjustXTicks(); // This function, for the bar chart, must be called once the document is ready
 
-        // SELECT CHANGE FUNCTION CALL
-        // Needs to be invoked for all four selection boxes
+        /* Select Change Function Call
+            Needs to be invoked for both selection boxes */
         selectChange('#source-selector select', sourceSelectMenu);
         selectChange('#year-selector select', yearSelectMenu);
         
         function checkArray(valueArray) {
-            /*
-            This function checks to see if any of the select box option values are empty
-            Since the only empty value is the default option, this function is essentially checking if 
-            the default option is selected or not.
-            */
+            /* This function checks to see if any of the select box option values are empty
+                Since the only empty value is the default option, this function is essentially checking if 
+                the default option is selected or not. */
             for (var i=0; i < valueArray.length; i++){ // Loop through the array
                 if (valueArray[i] === "") // If the default option is selected   
                     return false;
@@ -610,24 +611,18 @@ function makeGraph(error, ggData) {
         }
                 
         function selectChange(targetDiv, targetMenu) {
-            /* 
-            Main function for select box change. This function:
+            /* Main function for select box change. This function:
                 1. Changes the selection-description text depending on what option(s) is selected in the select boxes
-                2. Ensures charts always update when any select box is changed
-            */
+                2. Ensures charts always update when any select box is changed */
             $(targetDiv).change(function() { // When the select box the user clicks on changes
-                /*
-                These two vars tell the function which select box is currently being manipulated. 
-                Only one boolean var could be used here since there are only two types of select box in the current release of the app. 
-                However, doing it this way makes it easier to add more select boxes in the future
-                */
+                /* These two vars tell the function which select box is currently being manipulated. 
+                    Only one boolean var could be used here since there are only two types of select box in the current release of the app. 
+                    However, doing it this way makes it easier to add more select boxes in the future */
                 var sourceSelect = false,
                     periodSelect = false;
                 
-                /*
-                sourceSelect will be true if the select box in the TOTAL EMISSIONS OVER TIME section is manipulated
-                periodSelect will be true if the select box in the TOTAL EMISSIONS BY TYPE OF VEHICLE is manipulated
-                */
+                /* sourceSelect will be true if the select box in the TOTAL EMISSIONS OVER TIME section is manipulated
+                    periodSelect will be true if the select box in the TOTAL EMISSIONS BY TYPE OF VEHICLE is manipulated */
                 if (targetDiv == '#source-selector select') {
                     sourceSelect = true;
                     
@@ -635,12 +630,13 @@ function makeGraph(error, ggData) {
                     periodSelect = true;
                 }
                 
-                // Fix required for Microsoft Edge browser only
-                // If the user manipulates the first select box, the page will scroll to the second select box
-                // However, if the second select box is NOT on its default value and the user manipulates the first select box, the page won't scroll
-                // No issues occur if both select boxes are NOT set to their default values
-                // The page will also scroll to the first select box when the second select box is clicked after the user has clicked the reset button for the first select box
-                // Fix by force setting the page to scroll to the first select box when the select box is manipulated and vice versa
+                /* Fix required for Microsoft Edge browser only
+                    If the user manipulates the first select box, the page will scroll to the second select box.
+                    However, if the second select box is NOT on its default value and the user manipulates the first select box, the page won't scroll.
+                    No issues occur if both select boxes are NOT set to their default values.
+                    The page will also scroll to the first select box when the second select box is clicked after the user has clicked the 
+                    reset button for the first select box.
+                    Fix by force setting the page to scroll to the first select box when the select box is manipulated and vice versa. */
                 if (document.documentMode || /Edge/.test(navigator.userAgent)) { // If the user's browser is Edge...
                     console.log('Hello Microsoft User!');
                     
@@ -654,7 +650,8 @@ function makeGraph(error, ggData) {
                 }
                 
                 if (sourceSelect) {
-                    $('#percentage-p').css('visibility', 'visible'); // I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                    // I want to ensure that the paragraph with the percentage information is shown for all selection options bar 'All Vehicles'
+                    $('#percentage-p').css('visibility', 'visible');
                 }
                 
                 valueArray = $(targetDiv).val(); // Since the select boxes are multiple, they return an array. The array elements are composed of the user's selection
@@ -689,21 +686,22 @@ function makeGraph(error, ggData) {
                         }
                     } else if (valueArrayLength > 1) { // Else if there are more than 2 values selected
                             var lastItem = multiArray[valueArrayLength]; // Get the last item of the array
-                            multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, ''); // Modify the last item of the array to have "and" before it, so that when the entire array is printed it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item
+                            /*  Modify the last item of the array to have "and" before it, so that when the entire array is printed 
+                                it reads like proper English. Remove the trailing ',' as it is unnecessary for the very last item */
+                            multiArray[valueArrayLength] = " and " + lastItem.replace(/,/g, '');
                             if (sourceSelect) {
                                 $('#show-source-span').html(multiArray); // Then print the array
                             } else if (periodSelect) {
                                 var firstItem = multiArray[0]; // The first item here also needs changing
                                 multiArray[0] = "in " + firstItem;
-                                multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1'); // Replace the last white space so that the last item is snug with the ending '.'
+                                // Replace the last white space so that the last item is snug with the ending '.'
+                                multiArray[valueArrayLength] = multiArray[valueArrayLength].replace(/ ([^ ]*)$/,'$1');
                                 $('#period-span').html(multiArray);// Then print the array          
                             }
                     }
                 } else { // Else the user has selected "All Vehicles" or "Whole Period"
-                    /*
-                    It doesn't make sense for the user to be able to select all types along with individual types
-                    So if the user tries to select the 'all' option along with separate types, only the 'all' option will be selected
-                    */
+                    /* It doesn't make sense for the user to be able to select all types along with individual types
+                        So if the user tries to select the 'all' option along with separate types, only the 'all' option will be selected */
                     $(targetDiv).val("");
                     // Then draw graph to represent all data
                     targetMenu
@@ -718,6 +716,7 @@ function makeGraph(error, ggData) {
             });
         }
     });
+    /* JQUERY */
 }
 /* /DATA VISUALISATION FUNCTION */
 
