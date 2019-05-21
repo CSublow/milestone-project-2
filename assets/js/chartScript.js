@@ -578,14 +578,6 @@ function makeGraph(error, ggData) {
         //Needs to be invoked for all four selection boxes
         selectChange('#source-selector select', sourceSelectMenu);
         selectChange('#year-selector select', yearSelectMenu);
-                
-        //DEFINE SELECT BOX CHANGE FUNCTIONS
-        //Redraw the graphs with required filter
-        function redrawGraphs(menu, newFilter) {
-            menu
-                .replaceFilter([newFilter])
-                .redrawGroup();     
-        }
         
         function checkArray(valueArray) {
             /*
@@ -657,8 +649,6 @@ function makeGraph(error, ggData) {
                     var multiArray = valueArray.map(function(valueArray) {
                         return valueArray + ", ";
                     });
-            
-                    redrawGraphs(targetMenu, $(targetDiv).val()); //Update the charts
                     
                     if (sourceSelect) {
                         $('#accounted').html("accounted for"); //Add this string after the printed array so the sentence reads better
