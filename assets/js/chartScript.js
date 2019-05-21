@@ -139,7 +139,9 @@ function makeGraph(error, ggData) {
     // // // FUNCTION CALLS
     totalEmissionsFigure(ndx); //Render total emissions throughout the period
     highlightsFigure(ndx, sumEmissions, true); //Render average emissions over the period
-    highlightsFigure(ndx, totalEmissionsPerYearGroup); //Render the most polluting year
+    
+    /* This highlightsFigure call does not currently work as intended and has been replaced with a hard coded value */
+    // highlightsFigure(ndx, totalEmissionsPerYearGroup); //Render the most polluting year
     
     showSourceSelector(ndx); //Render the vehicle selector box
     timeFigure(ndx); //Render the figure representing the emissions of selected vehicle types
@@ -224,8 +226,9 @@ function makeGraph(error, ggData) {
             });
     }
 
-    //Render the figures that reside in the Highlights section
-    //The figures are generated using dc numberDisplay. However, since I want the figures to remain static and not be changed via crossfilter, the dc numberDisplay values are then rendered using jQuery
+    /* Render the figures that reside in the Highlights section
+        The figures are generated using dc numberDisplay. However, since I want the figures to remain static and not be changed via crossfilter, 
+        the dc numberDisplay values are then rendered using jQuery */
     var averageGeneratedValue, topYearValue; //Declare the vars where generated values will live
     function highlightsFigure(ndx, group, averageValue) {
         dc.numberDisplay("null") //I don't actually want dc to render the value, hence I provide a dummy parent
@@ -235,7 +238,12 @@ function makeGraph(error, ggData) {
                     averageGeneratedValue = d / countYears; //Generate a value and assign it to the variable  
                     $('#average-emissions-figure').html(averageGeneratedValue.toLocaleString("en", {maximumFractionDigits: 2})); //jQuery is used to print the value to the document.
                 } else { //Else the desired value is the most polluting year
-                    topYearValue = d.key;     
+                    topYearValue = d.key;    
+                    /* The jQuery here does not actually work as intended. A value is rendered to the page, but the value changes depending on the selection
+                        the user makes in the source select box
+                        This was noticed late in the development process, so a hardcoded value has been used in its stead
+                        The call to highlightsFigure without the averageValue arg being passed in has been commented out, so
+                        this else block is currently unreachable */ 
                     $('#top-year-figure').html(topYearValue.toLocaleString("en", {maximumFractionDigits: 2}));
                 }
             });
