@@ -393,7 +393,7 @@ Due to IE being a legacy browser, and with Windows 10 (and Edge) becoming more a
 
 ### Known Issues
 
-** Edge Browser Issue **
+**Edge Browser Issue**
 
 A known issue with the app is in relation to the Edge browser. The issue revolves around the select boxes, which would auto-scroll on other select boxes other than the one the user was currently manipulating. This issue, puzzlingly, was not present if the other select box had anything other than its default value selected; the issue was only apparent if the other select box was unchanged.
 
@@ -407,7 +407,7 @@ The fix involves setting a 1ms delay on scrolling the page back to the select bo
 
 The fix is not perfect, since there is still a brief moment where the user can see the page ‘jump around’. However, the user should not as easily become disorientated with this fix, and the fix is in my opinion the lesser of two evils. 
 
-** No Print Support **
+**No Print Support**
 
 The app currently has no dedicated styles towards formatting the app’s layout if the user prints using browser print functionality. It was decided not to include any support for print, mainly because the app depends heavily on the user being able to interact with it through changing the select boxes and through hovering. It is not envisioned why a user would want to sacrifice this functionality in order to be able to print, especially because the app is fairly light in regards text; lots of text heavy content would make the app seem more likely to be print-worthy.
 
