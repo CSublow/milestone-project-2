@@ -638,15 +638,13 @@ function makeGraph(error, ggData) {
                     reset button for the first select box.
                     Fix by force setting the page to scroll to the first select box when the select box is manipulated and vice versa. */
                 if (document.documentMode || /Edge/.test(navigator.userAgent)) { // If the user's browser is Edge...
-                    console.log('Hello Microsoft User!');
-                    
-                    // setTimeout(function () { // In order for this to work there needs to be a delay
+                    setTimeout(function () { // In order for this to work there needs to be a delay
                         if (sourceSelect) { // If the user has manipulated the first select box
                             document.getElementById('source-selector-container').scrollIntoView(); // Sroll that select box's container into view                    
                         } else if (periodSelect) { // Else if second select box
                             document.getElementById('year-selector-container').scrollIntoView(); // Sroll that select box's container into view   
                             }
-                    // }, 1);
+                    }, 1);
                 }
                 
                 if (sourceSelect) {
