@@ -385,7 +385,7 @@ In addition to Google Chrome's developer device simulator tool, an iPhone 7 runn
 
 There was no issues detected during the testing of the mentioned browsers, apart from a rather apparent issue with Edge, for which I am at a loss as to how to fix. This issue is detailed within the [Known Issues](#known-issues) section.
 
-In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [issues with IE have been raised previously]https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11). Issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
+In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [issues with IE have been raised previously](https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11). Issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
 
 I also used a tool from [browserling](https://www.browserling.com/internet-explorer-testing) to test the app on IE9, to see if the issue was confined to IE11. The same issue occurs in IE9.
 
