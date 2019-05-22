@@ -97,7 +97,7 @@ Because of this potential broad user-base, it was decided to keep the dashboard 
 ### Wireframes
 Prior to work beginning on the app, wireframes were created to aid the design progress and provide direction during actual coding. These can be found in the "mockups" folder in the root directory of the project.
 
-The wireframes served as the initial inspiration for the project, although the finished project diverges from them on several points. DC.js, Crossfilter and D3.js are versatile libraries, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
+The wireframes served as the initial inspiration for the project, although the finished project diverges from them on several points. DC.js, Crossfilter and D3.js are versatile libraries, and this project was a learning exercise for me perhaps as much as it was an exercise in already acquired skills. Without a comprehensive knowledge of what the libraries at my disposal could do, I was unable to design to that effect. The differences between the wireframes and the finished project are detailed throughout this readme.
 
 ## Features
 The website is an SPA data dashboard consisting of a single HTML page, utilising JavaScript to render the charts and jQuery for additional data rendering and DOM manipulation. Styling is achieved with CSS using SASS pre-processing with SCSS syntax. The data the app works with is in JSON format, the data in its raw form was taken from the [uk.gov website]( https://www.gov.uk/government/statistics/final-uk-greenhouse-gas-emissions-national-statistics-1990-2016).
@@ -114,12 +114,12 @@ Without JavaScript no charts can be rendered, and the dashboard is essentially u
 The no-js functionality is accomplished through a class on the body element called 'no-js', in combination with a <noscript> element containing the no JavaScript content. If a page loads with JavaScript enabled, the no-js class is removed and the <noscript> element is ignored, allowing the rest of the content to load as intended. 
 Although using both may seem overkill, a combination of a no-js class and a <noscript> element was necessary to implement due to an issue with the loading overlay, which would display instead of the <noscript> content if no JavaScript was detected.
 
-The no JavaScript detection functionality was not considered during the design phase, so there is no wireframe
+The no JavaScript detection functionality was not considered needed during the design phase, so there is no wireframe for it.
 
 ### Header
-At the top of the app there is a header that serves as the main heading for the page. Earlier on in the development process the header used to contain some aesthetical chart icons rendered using the [Font Awesome](https://fontawesome.com/) toolkit.
+At the top of the app there is a header that serves as the main heading for the page. Earlier on in the development process the header used to contain some aesthetical chart icons rendered using the [Font Awesome](https://fontawesome.com/) toolkit. These are not present in the wireframes and were simply added during development as I thought they complimented the design.
 
-Although the icons were not nav links, during testing it was found that the icons could confuse users who mistook took the icons for link. It was thus decided to remove these icons from the current release.
+Although the icons were not nav links, during testing it was found that the icons could confuse users who mistook the icons for links. It was thus decided to remove these icons.
 
 The header is styled with Bootstrap navbar classes. The header is not however a navbar in the conventional sense, since it doesn’t contain links to other pages due to the SPA nature of the app. Although specifying this element as a <header> or <nav> makes no difference to the average user, a user using assistive technologies may become confused when accessing a <nav> element containing no links, thus it was considered better from an accessibility point of view to specify this element as <header>
 
@@ -133,7 +133,7 @@ The alert only shows for media without hover by using a CSS media query.
 The alert utilises Bootstrap classes.
 
 ### Introductory Text and Highlights
-Immediately below the header and alert, there are two sections rendered side by side using Bootstrap's grid system. The left section contains some aesthetical Font Awesome icons. In addition to the icons there is some introductory text. 
+Immediately below the header and alert, there are two sections rendered side by side using Bootstrap's grid system. The left section contains some aesthetical Font Awesome icons, in addition to some introductory text. 
 
 Early on in development the introductory text contained its own heading, several paragraphs of text, as well as an image. However, it was decided that a heavy introductory section was unnecessary, took up too much screen real estate, and obstructed the main content of the app from coming into the user's focus quickly. It was therefore decided to make the introductory section as brief as possible in order to not distract users from the main content.
 
@@ -151,7 +151,13 @@ This value is not rendered to the page using the numberDisplay class itself. Ins
 
 **Most Polluting Year Figure**
 
-The third Highlights figure represents the most polluting year on record. This value is generated in a similar fashion to the average emissions figure, with numberDisplay being used to generate a value and jQuery being used to render the value to the page. The value is calculated using a group that returns from the data all years and their corresponding emissions values. By default, the group returns the highest emissions value (and corresponding year) for the numberDisplay.
+The third Highlights figure represents the most polluting year on record. 
+
+Unlike the other values, this figure is hardcoded into the HTML. Originally the figure was rendered to the page using jQuery in a similar way to the Average Emissions Figure, but it was noticed late on in the development process that the jQuery rendered value wasn’t actually working as intended, and was changing when the source select box was changed. It was not considered worth the time, considering a submission deadline approaching, to fix this issue using DC.js, especially considering that the value (the year 2007) does not actually need DC.js or Crossfilter once it has been rendered. To the end user it doesn’t actually matter how this figure is rendered, so long as the figure is accurate.
+
+I intend to work on this issue in the future and ensure the Most Polluting Year Figure is generated using the underlying mechanics of DC.js, if for nothing else other than the learning opportunity.
+
+It is still possible to see how I was rendering the Most Polluting Year Figure before, when it was rendered using DC.js and jQuery. The code has not been deleted and was just commented out.
 
 **Deviations From Wireframes**
 
@@ -175,9 +181,9 @@ Although the project brief does not indicate that the app must be fully responsi
 
 It was decided to accommodate both a side-by-side and stacked design. Using Bootstrap's grid system, the charts are stacked up to and including 1199px viewport width. At 1200px and above, the charts in each section are aligned side by side.
 
-To accomplish this responsiveness system, the chart sizes themselves had to be manipulated, since it should be noted that two 700px width charts on a 1200px width viewport would overlap. To counter this, the charts are set up to shrink to 600px width (500px for the pie chart which has a default width of 600px) on viewport width sizes between and including 1181px and 1432px using a custom responsiveness function.
+To accomplish this responsiveness system, the chart sizes themselves had to be manipulated, since it should be noted that two 700px width charts on a 1200px width viewport would overlap. To counter this, the charts are set up to shrink to 600px width (500px for the pie chart which has a normal width of 600px) on viewport width sizes between and including 1181px and 1432px using a custom responsiveness function.
 
-1181px was chosen for the lower breakpoint as opposed to the logical 1199px (i.e. the same as Bootstrap’s) as there was issues found during testing with Chrome on Windows, through interestingly not on Mac. The issue was that the charts would not ‘shrink’ once the 1200px breakpoint was reached, with the charts continuing to overlap until about the 1215px point was reached. To fix this, a lower breakpoint figure was added to give some margin, hopefully fixing the issue in all use cases. 
+1181px was chosen for the lower breakpoint as opposed to the logical 1199px (i.e. the same as Bootstrap’s) as there was issues found during testing with Chrome on Windows, through interestingly not Chrome on Mac. The issue was that the charts would not ‘shrink’ once the 1200px breakpoint was reached, with the charts continuing to overlap until about the 1215px point was reached. To fix this, a lower breakpoint figure was added to give some margin, hopefully fixing the issue in all use cases. 
 
 This responsiveness function is achieved with a combined jQuery/DC.js solution. The function has to be called in two situations; when the page is loaded to detect the viewport's size, and again if the user resizes the viewport when the app is already loaded. The function essentially works by passing in new arguments to the width methods of the chart objects, and then in the case of a window resize event, re-rendering the charts. In addition, charts which have legends also have new arguments passed into the size and positioning methods of the legend objects.
 
@@ -195,7 +201,7 @@ The select boxes include instructions; users are informed of the appropriate hot
 
 The select boxes can be reset via the reset buttons located directly below the dynamic text in each section. Each reset button only resets the charts within its own section. The reset button gives users an easy way to reset the charts.
 
-Earlier on in development the project featured two duplicate select boxes in each section as opposed to just one; an additional one was added as a usability boost. This is because the charts take up a high proportion of screen real estate on all but the largest media, and it was felt that the app would become too cumbersome if the user had to scroll back to the top of a section to manipulate the data. Identical select boxes at both the top and bottom of sections I thought would help mitigate this issue.
+Earlier on in development the project featured two duplicate select boxes in each section as opposed to just one; an additional one was added as a usability boost. This is because the charts take up a high proportion of screen real estate on all but the largest media, and it was felt that the app would become too cumbersome if the user had to scroll back to the top of a section to manipulate the data. Identical select boxes at both the top and bottom of sections would possibly help mitigate this issue.
 
 However, issues discovered during testing made the duplicate select box idea cumbersome, and caused me to take the decision to scrap this idea and have just one select box in each section. These issues are detailed in the [Known Issues](#known-issues) section.
 
@@ -212,21 +218,21 @@ The line chart is the topmost chart when the layout is stacked, and the top-left
 
 The line represents the emissions data of either all vehicles, or a custom selection of vehicles as defined by the user. The chart is rendered using DC.js's lineChart class. If the user hovers over the line, they can see the exact figure in kilotons of the emissions for a given year.
 
-The line chart within the wireframes is quite barebones; it was during development where I was able to explore the capabilities of the DC.js library that the finished look of the chart took effect. This can be said about all the charts within the app.
+The line chart within the wireframes is quite barebones; it was during development, where I was able to explore the capabilities of the DC.js library, that the finished look of the chart took effect. This can be said about all the charts within the app.
 
 ### Composite Chart
-The composite chart is the second chart from the top when the layout is stacked, and the top-right chart when the layout is in columns. Similarly to the line chart, this chart represents emissions data over time with the years on record on the x axis and the years on record on the y. Unlike the line chart, the composite chart allows a comparison of trends for different vehicles by rendering multiple lines at once, this being achieved with DC.js' compositeChart class. The user can select which lines they want to render using the select boxes.
+The composite chart is the second chart from the top when the layout is stacked, and the top-right chart when the layout is in columns. Similar to the line chart, this chart represents emissions data over time with the years on record on the x axis and the years on record on the y. Unlike the line chart, the composite chart allows a comparison of trends for different vehicles by rendering multiple lines at once, this being achieved with DC.js' compositeChart class. The user can select which lines they want to render using the select boxes.
 
 The chart also contains a legend, with each vehicle type colour coded. If the user hovers over an item in the legend, the corresponding line on the chart becomes bolder, and the opacity of the other lines is reduced, allowing the user to easily see which item on the legend represents which line.
 
 If the user hovers over a data point on a line, the tooltip displayed shows the vehicle type, year and emissions value for that particular data point.
 
 ### Pie Chart
-The pie chart is the third chart from the top when the layout is stacked, and the bottom left chart when the layout is in columns. The pie chart allows a clearer visualisation of the proportion of emissions generated by each vehicle type. The pie chart can be filtered via the select boxes to show data for either the whole period, or one or more years.
+The pie chart is the third chart from the top when the layout is stacked, and the bottom left chart when the layout is in columns. The pie chart allows a clearer visualisation of the proportion of emissions generated by each vehicle type. The pie chart can be filtered via the select box to show data for either the whole period, or one or more years.
 
 The pie chart features a legend showing what vehicle type corresponds to what colour. Hovering over an item in the legend highlights the corresponding pie chart segment. The segment is also highlighted if the user directly hovers over it; additional information is displayed on hover in a tool tip, containing the vehicle type, emissions in kilotons, and the exact percentage figure represented by the segment.
 
-The chat does not feature labels; the user must rely on the colour scheme, hover and highlight functionality to orientate themselves around the chart. Although labels could be easily included using DC.js, it was felt including labels would make the chart inconsistent; some of the pie chart’s slices are tiny, and even with external labels the user would not be able to clearly see which label corresponds to which slive. The pie chart is nevertheless included as it gives a good sense of the proportion difference in emissions between high polluters (e.g. petrol cars) and lesser polluters, such as buses and coaches.
+The chart does not feature labels; the user must rely on the colour scheme, hover and highlight functionality to orientate themselves around the chart. Although labels could be easily included using DC.js, it was felt including labels would make the chart inconsistent; some of the pie chart’s slices are tiny, and even with external labels the user would not be able to clearly see which label corresponds to which slice. The pie chart is nevertheless included as it gives a good sense of the proportion difference in emissions between high polluters (e.g. petrol cars) and lesser polluters, such as buses and coaches.
 ### Bar Chart
 The bar chart is the bottommost chart when stacked, and bottom-right when the layout is columnar. Vehicle type is shown on the x axis, with emissions in kilotons on the y axis. The bar chart provides users with an easy way to compare the relative sizes of emissions between vehicle types.
 
@@ -244,10 +250,10 @@ All the major social networks provide the ability for developers to specify how 
 
 The main reason for not implementing the share buttons for the first release is that the app will be initially hosted on GitHub Pages, which would not be considered desirable as the final URL for the project when hosted with the public in mind. Since the social networking buttons need the URL of the app, implementing them in the first release will require work in changing the URL to its final form when/if the buttons were implemented.
 
-For this reason, social share buttons should be included in a later version of the app which is hosted elsewhere with an appropriate public-facing url
+For this reason, social share buttons should be included in a later version of the app which is hosted elsewhere with an appropriate public-facing URL.
 
 **“Further Reading” feature**
-For the current release, the app is quite sparse in background information on some of the concepts covered (e.g. emissions, the greenhouse effect, air quality, transportation trends). It is envisioned that a future version of the app could have a dedicated section to external sources where such information may be found by the user. It could also be envisioned that the app itself contains further reading, although this may be beyond the scope of an SPA and would require the design and implementation of a navigation system.
+For the current release, the app is quite sparse in background information on some of the concepts covered (e.g. emissions, the greenhouse effect, air quality, transportation trends). It is envisioned that a future version of the app could have a dedicated section containing perhaps external resources where such information may be found by the user. It could also be envisioned that the app itself contains further reading, although this may be beyond the scope of an SPA and would require the design and implementation of a navigation system.
 
 ** More refined descriptive text **
 In the current release, there is some dynamic descriptive text that changes depending on the user’s select box selections. In the ‘Total Emissions By Type OF Vehicle’ section, this text can become clunky if the user selects lots of options. For example, if the user selects ‘1990’, ‘1991’, ‘1992’, ‘1993’, ‘1994’ and ‘1995’, the descriptive text will read:
@@ -282,7 +288,7 @@ SASS pre-processing (using SCSS syntax) is used to render the project’s style.
 The Bootstrap 4 framework is used to simplify the process of generating the website's structure, speed up its styling and ensuring its responsiveness.
 
 ### [Real Favicon Generator](https://realfavicongenerator.net/)
-This tool was used to construct favicons for the project. How favicons are rendered is different depending on the browser or platform used, and this tool simplifies the process by providing the appropriate markup and icon for each platform.
+This tool was used to construct favicons for the project. How favicons are rendered is different depending on the browser or platform used, and this tool simplifies the process by providing the appropriate markup and icon for different platforms.
 
 ### JavaScript 
 The app is heavily dependent on JavaScript, allowing the implementation of the loading system and providing the base for D3, Crossfilter and DC
@@ -292,7 +298,7 @@ jQuery is utilised by the project for a number of areas of functionality.
 
 1. Bootstrap depends on jQuery for its JavaScript components
 2. jQuery is used to implement the app’s loading system
-3. Some of the custom chart functionality beyond what is immediately supplied by DC.js is accomplished with jQuery (e.g. the duplicate select boxes)
+3. Some of the custom chart functionality beyond what is immediately supplied by DC.js is accomplished with jQuery (e.g. the dynamic text changing based on the user’s selection)
 
 ### [D3.js](https://d3js.org/)
 D3.js is a JavaScript library for manipulating documents based on data. D3.js is leveraged by DC.js.
@@ -317,14 +323,10 @@ Used to test the app on IE9.
 
 ## Testing
 ### Code Validation
-The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity. The app passes both these testors with no errors.
-
-### Accessibility
-A high level of accessibility, though desired, was not considered to be of the highest priority for this app due to the visual nature of charts; it is difficult to replicate accurately the visual effect of things like proportion and trends through the medium of a screen reader and related technologies. Nevertheless, the app can be navigated purely with a keyboard, although this by implication does not allow the user to make use of hover functionality.
+The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity. Both the index.html and style.css files pass these testors with no errors.
 
 ### Automated Testing
 Automated testing was not used in this project; the vast majority of the JavaScript utilises DC.js and related libraries, and DC.js has a [history of being well-tested]( https://github.com/dc-js/dc.js/issues/392).
-
 
 ### User Stories Testing
 Manual testing was conducted simulating the two types of users that have been previously identified in the [UX](#ux) section. The user categories defined are:
@@ -338,37 +340,37 @@ The results of these tests are as follows
 
 For this test I made use of another person (User X) who is without programming knowledge and who possesses an average knowledge of how webpages work.
 
-The first thing this user did was go to the external link to the gov.uk website. After doing some reading there, they came back to the webpage, at first attempting to click the ‘back’ button on the browser. This did not work (the link opens in another tab). User X did however, after a few seconds, realise they were on another tab and come back to the webpage. I feel as though leaving the link opening in an external tab is the right move here, as this is the stronger convention with external links.
+The first thing this user did was go to the external link to the gov.uk website. After doing some reading there, they came back to the webpage, at first attempting to click the ‘back’ button on the browser. This did not work (the link opens in another tab). User X did however, after a few seconds, realise they were on another tab and come back to the webpage. I feel as though leaving the link opening in an external tab is the right decision, as this is the stronger convention with external links.
 
 Next, User X began manipulating the select box. This was however without the charts actually in view. It took a moment for them to scroll down the webpage and manipulate the select boxes with the charts in view.
 
 This led me to decide there may be a ‘screen real estate’ problem on my page. The introductory content perhaps takes up too much room, and there is too much margin between elements. To help resolve this issue, I took these steps after User X had finished testing:
 
-1. Reducing both the page’s main heading and subheading by .5 rem on the larger breakpoint setting
+1. Reducing both the page’s main heading and subheading by .5 rem when 1300px has been exceeded.
 
 2. Reducing the spacing between sections (where the grey background is visible) by 10px
 
-3. Reducing the margin property of the %force-center placeholder from 15px to 10px for the top and bottom margin. The %force-center placeholder is used throughout the app on multiple elements in order to properly structure the content.
+3. Reducing the margin property of the %force-center placeholder from 15px to 10px for the top and bottom margin. The %force-center placeholder is used throughout the app on multiple elements in order to structure the content.
 
 These 3 steps helped condense the content somewhat, although the charts will still require the user to scroll down in order to come into focus on all but the largest viewports. It was decided to leave this issue there, since applying further fixes would require a redesign of the app, which was an undesirable step to take when in the testing phase.
 
 Another issue found during User X’s testing was that the user had to ask what the ‘Reset Charts’ button does. I asked them to click the button, and once User X had clicked it the functionality became apparent.
 
-This led me to consider adding instructions, either on the button itself, or through some text close by, that explains to users what the ‘Reset Charts’ button does. However, I felt that with the problem of screen real estate as already mentioned would render this impractical, and would clutter up the design of the app as it stands leading to the necessity of a redesign. Furthermore, the functionality of the button did become apparent to User X once they had clicked it, so I feel justified in leaving the Reset Charts button as part of the ‘learning curve’ of the app.
+This led me to consider adding instructions, either on the button itself, or through some text close by, that explains to users what the ‘Reset Charts’ button does. However, I felt that with the problem of screen real estate as already mentioned would render this impractical, and would clutter up the design of the app, potentially leading to the necessity of a redesign. Furthermore, the functionality of the button did become apparent to User X once they had clicked it, so I feel justified in leaving the Reset Charts button as part of the ‘learning curve’ of the app.
 
-Other insights from User X’s testing was that the hover functionality works well and is apparent to the user. User X also made use of both select boxes, and the fact that they were duplicates seemed apparent. The user commented that they enjoyed the app and thought it was informative.
+Other insights from User X’s testing was that the hover functionality works well and is apparent to the user. The user commented that they enjoyed the app and thought it was informative.
 
 **2. Data Dashboard Enthusiast**
 
 This was manual testing that I conducted myself, attempting to put myself into the shoes of someone who is interested in seeing data visualisations.
 
-Upon loading the app I am drawn to the header which informs me as to what page I am viewing. Going down the page I see the source for the data is linked within the introductory text. Clicking this link takes me to the gov.uk website where I am able to get some background on the statistics. The app itself remains open in my browser as the gov.uk website loads in another tab.
+Upon loading the app I am drawn to the header which informs me as to what page I am viewing. Going down the page I see the source for the data is linked within the introductory text. Clicking this link takes me to the gov.uk website where I am able to get some background on the data. The app itself remains open in my browser as the gov.uk website loads in another tab.
 
-Coming back to the app, I begin to manipulate the select boxes in the first section. I select both “Cars – Petrol” and “Cars – Diesel” and am able to see the charts adjust to my selection. The titles above the charts aid my ability to comprehend the data.
+Coming back to the app, I begin to manipulate the select box in the first section. I select both “Cars – Petrol” and “Cars – Diesel” and am able to see the charts adjust to my selection. The titles above the charts aid my ability to comprehend the data.
 
-I then out of curiosity decide to see what happens if I also select “All Vehicles” along with “Cars- Petrol” and “Cars – Diesel”. The select box deselects the other options and only selects “All Vehicles”, this is expected functionality.
+I then out of curiosity decide to see what happens if I also select “All Vehicles” along with “Cars- Petrol” and “Cars – Diesel”. The select box deselects the other options and only selects “All Vehicles”, this is intended functionality.
 
-Scrolling down to the second section, I make a selection of all years in the 90’s decade. The charts adjust to fit my selection, along with the description text. I think the sentence reads kind of awkward. How the sentence is rendered is something that would be addressed in a subsequent release of the app.
+Scrolling down to the second section, I make a selection of all years in the 90’s decade. The charts adjust to fit my selection, along with the description text. I think the sentence reads awkwardly. How the sentence is rendered is something that would be addressed in a subsequent release of the app.
 
 ### Browser and Responsiveness Testing
 The app was primarily developed on Google Chrome version 72.0.3626.121 on a Windows PC with a default maximised screen size of 1936px.
@@ -377,37 +379,37 @@ The app was not designed with smaller viewports in mind; DC.js charts lack a bui
 
 The upper limits of the app’s responsiveness exceed 3500px, with the app still looking presentable and usable at these higher ranges.
 
-As detailed in the [Responsiveness](#responsiveness] section, some custom JavaScript was written to give the charts a basic degree of responsiveness. Without these scripts, supporting down to 920px would be impossible without jeopardising the design of the app on larger viewports, since the stacked chart design on smaller viewports does not look as good on larger viewports, nor does it follow conventional web design principles.
+As detailed in the [Responsiveness](#responsiveness] section, some custom JavaScript was written to give the charts a basic degree of responsiveness. Without these scripts, supporting down to 920px would be impossible without jeopardising the design of the app on larger viewports, since the stacked chart design on smaller viewports does not look as good on larger viewports, nor does it follow conventional web design principles of taking up the available space.
 
-In addition to Google Chrome's developer tools simulating devices, an iPhone 7 running iOS v11.3 was used to test the app with its native Safari browser. The website was also tested on Firefox v65.0, Safari v11.0.2 (on a MacBook Pro 15-inch Retina) and Edge v42.17134.1.0.
+In addition to Google Chrome's developer device simulator tool, an iPhone 7 running iOS v11.3 was used to test the app with its native Safari browser. The website was also tested on Firefox v65.0, Safari v11.0.2 (on a MacBook Pro 15-inch Retina) and Edge v42.17134.1.0.
 
 There was no issues detected during the testing of the mentioned browsers, apart from a rather apparent issue with Edge, for which I am at a loss as to how to fix. This issue is detailed within the [Known Issues](#known-issues) section.
 
-In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [mine wasn’t the only issue] https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11) and that issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
+In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [issues with IE have been raised previously]https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11). Issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
 
-I also used a tool from [browserling](https://www.browserling.com/internet-explorer-testing) to test the app on IE9, to see if the issue was confined to IE11. The same issue does occur in IE9.
+I also used a tool from [browserling](https://www.browserling.com/internet-explorer-testing) to test the app on IE9, to see if the issue was confined to IE11. The same issue occurs in IE9.
 
-Due to IE being a legacy browser, and with Windows 10 (and Edge) becoming more and more common, I opted to not support IE in any of its incarnations. To this effect, a user trying to view the app on IE will see a page similar to the no-js functionality, asking them to upgrade their browser.
+Due to IE being a legacy browser, and with Windows 10 (and Edge) becoming more and more common, I opted to not support IE in any of its incarnations. To this effect, a user trying to view the app on IE will see a page asking them to upgrade their browser.
 
 ### Known Issues
 
 ** Edge Browser Issue **
 
-A known issue with the app is in relation to the Edge browser. The issue revolves around the select boxes, which would auto-scroll on other select boxes other than the one the user was currently manipulating. This issue, puzzlingly, was not present if the other select box to the one the user was currently manipulating had anything other than its default value selected; the issue was only apparent if the other select box had been unchanged.
+A known issue with the app is in relation to the Edge browser. The issue revolves around the select boxes, which would auto-scroll on other select boxes other than the one the user was currently manipulating. This issue, puzzlingly, was not present if the other select box had anything other than its default value selected; the issue was only apparent if the other select box was unchanged.
 
 I believe this issue has something to do with the fact that Edge has all select boxes on the page contain a ‘highlighted’ option even if the user does not have a select box within focus. Other browsers do not have this, and on other browsers if the user clicks away from a select box the select box selection will become greyed out. However, this does not explain why the issue only occurred with default selections.
 
 This was an annoying issue, since at one point the app featured 4 select boxes (2 identical ones in each section. The reason for having duplicate select boxes was to aid usability on smaller devices; the user would have multiple places where they could manipulate the charts.
 
-In the end I decided to scrap this possibly unnecessary boost to usability by removing the duplicate select box in each section, not only because of the Edge issue, but also because of concerns about ‘screen real estate’ that I have detailed [elsewhere](#userstories). Through doing this, I was able to implement a rather scrappy solution in order to fix the issue with the two remaining select boxes on the page, which is to my mind unideal but will have to make do for the first release.
+In the end I decided to scrap this possible boost to usability by removing the duplicate select box in each section, not only because of the Edge issue, but also because of concerns about ‘screen real estate’ that I have detailed [elsewhere](#userstories). Through doing this, I was able to implement a rather scrappy solution in order to fix the issue with the two remaining select boxes on the page, which is to my mind not ideal but will have to make do for the first release, given limited time.
 
 The fix involves setting a 1ms delay on scrolling the page back to the select box the user is currently manipulating using JavaScript’s scrollIntoView() method. This fix only fires for the Edge browser, so users on other browsers will experience the correct functionality.
 
-The fix is not perfect, since there is still a brief moment where the user can see the page ‘jump around’. However, the user should not as easily become disorientated with this fix. 
+The fix is not perfect, since there is still a brief moment where the user can see the page ‘jump around’. However, the user should not as easily become disorientated with this fix, and the fix is in my opinion the lesser of two evils. 
 
 ** No Print Support **
 
-The app currently has no dedicated styles towards formatting the app’s layout if the user prints using browser print functionality. It was decided not to include any support for print, mainly because the app depends heavily on the user being able to interact with it through changing the select boxes and through hovering. It is not envisioned why a user would want to sacrifice this functionality in order to be able to print, especially because the app is fairly text light; lots of text heavy content would make the app seem more likely to be print-worthy.
+The app currently has no dedicated styles towards formatting the app’s layout if the user prints using browser print functionality. It was decided not to include any support for print, mainly because the app depends heavily on the user being able to interact with it through changing the select boxes and through hovering. It is not envisioned why a user would want to sacrifice this functionality in order to be able to print, especially because the app is fairly light in regards text; lots of text heavy content would make the app seem more likely to be print-worthy.
 
 ## Deployment
 The project is deployed on GitHub Pages, available [here](https://dhamma1991.github.io/milestone-project-2/).
