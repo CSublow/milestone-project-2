@@ -640,9 +640,9 @@ function makeGraph(error, ggData) {
                 if (document.documentMode || /Edge/.test(navigator.userAgent)) { // If the user's browser is Edge...
                     setTimeout(function () { // In order for this to work there needs to be a delay
                         if (sourceSelect) { // If the user has manipulated the first select box
-                            document.getElementById('source-selector-container').scrollIntoView(); // Sroll that select box's container into view                    
+                            document.getElementById('source-selector-container').scrollIntoView(); // Scroll that select box's container into view                    
                         } else if (periodSelect) { // Else if second select box
-                            document.getElementById('year-selector-container').scrollIntoView(); // Sroll that select box's container into view   
+                            document.getElementById('year-selector-container').scrollIntoView(); // Scroll that select box's container into view   
                             }
                     }, 1);
                 }
