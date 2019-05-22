@@ -245,7 +245,8 @@ The bar chart serves as a complimentary tool for the pie chart. Due to the exact
 ### Features Left to Implement
 Some features are left open to the idea of implementation but were not featured in this release.
 
-**Social share buttons **
+**Social share buttons**
+
 All the major social networks provide the ability for developers to specify how they wish website pages to be shared, as well as the ability to implement specific social media sharing buttons on pages. This feature would be considered desirable for a future release, as it would expand the reach (and thus impact) of the dashboard.
 
 The main reason for not implementing the share buttons for the first release is that the app will be initially hosted on GitHub Pages, which would not be considered desirable as the final URL for the project when hosted with the public in mind. Since the social networking buttons need the URL of the app, implementing them in the first release will require work in changing the URL to its final form when/if the buttons were implemented.
@@ -253,9 +254,11 @@ The main reason for not implementing the share buttons for the first release is 
 For this reason, social share buttons should be included in a later version of the app which is hosted elsewhere with an appropriate public-facing URL.
 
 **“Further Reading” feature**
+
 For the current release, the app is quite sparse in background information on some of the concepts covered (e.g. emissions, the greenhouse effect, air quality, transportation trends). It is envisioned that a future version of the app could have a dedicated section containing perhaps external resources where such information may be found by the user. It could also be envisioned that the app itself contains further reading, although this may be beyond the scope of an SPA and would require the design and implementation of a navigation system.
 
-** More refined descriptive text **
+**More refined descriptive text**
+
 In the current release, there is some dynamic descriptive text that changes depending on the user’s select box selections. In the ‘Total Emissions By Type OF Vehicle’ section, this text can become clunky if the user selects lots of options. For example, if the user selects ‘1990’, ‘1991’, ‘1992’, ‘1993’, ‘1994’ and ‘1995’, the descriptive text will read:
 
 “There was a total of 672,638 kilotons of emissions in 1990, 1991, 1992, 1993, 1994, and 1995”
